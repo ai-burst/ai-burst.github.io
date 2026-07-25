@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-07-25</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">25 Jul 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">9 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.033</span>
+      </div>
+      <h1>Daily Signal — 2026-07-25</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<h3 id="claude-opus-5-launches-nearfable-5-performance-at-half-the-price">Claude Opus 5 Launches: Near‑Fable 5 Performance at Half the Price</h3>
+<p>Anthropic dropped Claude Opus 5 today, a reasoning‑focused model that matches or surpasses the much larger Fable 5 on several internal benchmarks at roughly half the token cost. The launch is accompanied by higher resistance to prompt injection, improvements in agentic planning, and broad availability—including an immediate public preview on Snowflake Cortex AI. Early community reactions, highlighted by Simon Willison, emphasize that the model stays thoughtful and proactive, while also being “the least prompt‑injectable model yet.”</p>
+<p><strong>Why it matters to you:</strong> Opus 5 becomes the new default for high‑quality, cost‑efficient reasoning in your agent pipelines. Its native integration with Snowflake Cortex AI means you can run governed inference directly on data within your Snowflake environment without moving it. For local/open‑weight fans, this might raise the bar for what a hosted model can deliver, reinforcing the urgency of closing the gap with open models.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ul>
+<li><strong>Test it in your agent harnesses:</strong> Swap out Fable 5 or GPT‑5.6 where high‑stakes reasoning is needed; compare latency and cost in real workloads against the 50% price reduction.</li>
+<li><strong>Leverage Snowflake Cortex AI’s governance:</strong> If you already use Snowflake, start experimenting with Opus 5 via <code>CORTEX_COMPLETE()</code> inside your secure environment—budget guards and permission controls are built‑in (see the cost‑optimization articles in Work Watch).</li>
+<li><strong>Evaluate prompt injection resistance:</strong> Run your existing red‑team evals to see if Opus 5’s improved security simplifies guardrails in your production agents.</li>
+</ul>
+<p><a href="https://www.anthropic.com/news/claude-opus-5">Anthropic announcement</a> · <a href="https://www.snowflake.com/blog/claude-opus-5-snowflake-cortex-ai">Snowflake Cortex AI availability</a> · <a href="https://simonwillison.net/2026/Jul/24/introducing-claude-opus-5/">Simon Willison’s notes</a></p>
+<h3 id="laguna-s-21-a-new-118b-openweight-coding-model-from-poolside">Laguna S 2.1: A New 118B Open‑Weight Coding Model from Poolside</h3>
+<p>US startup Poolside released Laguna S 2.1, an open‑weight 118B parameter model that punches far above its weight on software engineering benchmarks like SWE‑bench, reportedly beating models 10× its size. The initial rollout was messy—incorrect chat templates, missing files, and several overthinking loops—but the community quickly converged on fixes, and many users now report solid reasoning performance if you stick with Q8 or better quantization. Multiple threads are already comparing it favorably to Qwen 3.5‑122B for code‑heavy tasks, though some note it occasionally over‑thinks trivial questions.</p>
+<p><strong>Why it matters to you:</strong> This is the most interesting open‑weight coding model in the ~120B class from a non‑Chinese lab, and it’s already usable on consumer multi‑GPU rigs. It could become a strong alternative for self‑hosted coding assistants without sending code to external APIs.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ul>
+<li><strong>Download and quantize carefully:</strong> Use Q8 quantization or higher—43‑45 GB of VRAM/RAM—and avoid lower quants that degrade its reasoning. Check the latest template and system prompt fixes shared on the LocalLLaMA subreddit.</li>
+<li><strong>Run a code‑benchmarking shootout:</strong> Compare it against Qwen 3.5‑122B, Gemma 4‑MoE, and DeepSeek‑Coder variants on your own repository tasks (unit‑test generation, refactoring, debugging) to determine where it excels.</li>
+<li><strong>Contribute fixes or feedback</strong> directly to the Laguna team’s GitHub; they’ve already pushed updates just hours after the initial flawed release.</li>
+</ul>
+<p><a href="https://www.reddit.com/r/LocalLLaMA/comments/1v5ahaz/laguna_s21_updated_2_hours_ago_a_post_to_show/">Reddit community reaction &amp; quant tips</a> · <a href="https://www.reddit.com/r/LocalLLaMA/comments/1v56o1h/if_youre_running_laguna_s_21_and_it_feels_stupid/">Detailed local testing thread</a> · <a href="https://www.reddit.com/r/LocalLLaMA/comments/1v5luta/attention_survey_july_2026_23_model_open_weight/">Poolside’s release (official repo not directly given)</a></p>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li>
+<p><strong>Cost Governance for Cortex AI:</strong> Two new Medium posts from Snowflake’s engineering team walk through setting up AI spend visibility, optimization, and budgets. “You’re Concerned with Costs…” explains three levers: visibility into Cortex credit consumption, model‑level defaults to pick cost‑effective inference, and RBAC controls to limit who can invoke expensive models. “Build AI Monitors and Budgets, Before Building with AI” presents a self‑service monitoring app built on Account Usage views and recommends establishing guardrails as step zero before launching any AI feature. <strong>Why this matters:</strong> With Opus 5 now available on Cortex, you’ll want these controls in place immediately to avoid surprise bills.<br />
+  (<a href="https://medium.com/snowflake/youre-concerned-with-costs-so-are-we-here-s-how-you-can-control-them-578b6e00d6b8">Cost levers article</a>) · (<a href="https://medium.com/snowflake/build-ai-monitors-and-budgets-before-building-with-ai-205c4e81ad6a">Monitors &amp; budgets guide</a>)</p>
+</li>
+<li>
+<p><strong>Secret Zero Solved for OpenFlow:</strong> The “Solving Secret Zero in Snowflake Openflow with Workload Identity Federation” post details how to remove the chicken‑and-egg problem where an application needs a secret to fetch its own secrets from a vault. By federating workload identity, Openflow can authenticate without any static credentials. <strong>Why this matters:</strong> If you’re building data pipelines or agents that interact with Snowflake via Openflow, this eliminates a common security headache and simplifies CI/CD.<br />
+  (<a href="https://medium.com/snowflake/solving-secret-zero-in-snowflake-openflow-with-workload-identity-federation-e80efeadf786">Secret Zero article</a>)</p>
+</li>
+<li>
+<p><strong>Recursive Queries:</strong> Another Medium piece explores recursive CTEs in Snowflake beyond hierarchical org charts—modeling lineage, DAG walking, entity resolution chains, and lightweight graph traversal. <strong>Why this matters:</strong> For dbt modelers, these patterns can replace complex iterative Python UDFs and keep transformations entirely in SQL, which aligns with dbt’s declarative style.<br />
+  (<a href="https://medium.com/snowflake/recursive-queries-in-snowflake-b18880b87d3f">Recursive queries article</a>)</p>
+</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong>dbt Snowflake Native App Retirement:</strong> dbt Labs announced they will retire their Snowflake Native App in November 2026. Users relying on the app to run dbt on Snowflake will need to migrate to alternative deployment patterns (likely the traditional dbt Cloud runner or self‑hosted Airflow/Prefect orchestrators). No new features will be added, and support ends with the retirement. <strong>Action item:</strong> Audit any production workflows that still depend on the Native App and start planning your migration now—six months sounds like a lot, but enterprise move‑fast timelines can be tight.<br />
+  (<a href="https://www.getdbt.com/blog/retiring-the-dbt-snowflake-native-app">Official dbt blog post</a>)</li>
+</ul>
+<details class="watchlist" id="todays-watchlist" open><summary>Today’s Watchlist</summary>
+<ol>
+<li>
+<p><strong>Claude Opus 5 Just Dropped and Beats Fable 5 (at Half the Cost)</strong><br />
+<a href="https://www.youtube.com/watch?v=s2ngxmDZekE">AI Revolution</a> · 15 min<br />
+   This news‑roundup covers the Opus 5 launch in depth, plus new accusations against Kimi K3 and three fresh Google Gemini models. It’s a one‑stop catch‑up on the most important model‑providers stories this week, delivered in the broad compilation style you prefer. The video dissects Anthropic’s own benchmarks and the cost‑performance trade‑offs, giving you a solid comparison before you start integrating Opus 5.</p>
+</li>
+<li>
+<p><strong>Why Your Dev Infrastructure Isn’t Ready for AI Agents (And How to Fix It) | Snowflake Dev Day 2026</strong><br />
+<a href="https://www.youtube.com/watch?v=914YEzvee0E">Snowflake Developers</a> · 21 min<br />
+   Factory CTO Eno Reyes argues that traditional dev pipelines break when autonomous AI agents write, test, and deploy code at machine speed. This talk from Snowflake Dev Day outlines what “paving the roads” for agentic systems looks like—essential viewing if you’re running agents inside or alongside Snowflake (or any data platform). The talk ties directly to Snowflake’s evolving agent infrastructure vision.</p>
+</li>
+<li>
+<p><strong>Laguna S 2.1: The Best Local Model? Beats GLM 5.2</strong><br />
+<a href="https://www.youtube.com/watch?v=xSZoPhY9BGA">Cloud Codes</a> · 10 min<br />
+   A focused deep dive into the new open‑weight 118B coding model, showing benchmark wins and early hands‑on results. It’s the best way to get a quick, visual overview of what Laguna can do and how it stacks up against other large open models, without wading through subreddit threads.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>Industry Heavyweights Defend Open‑Weight AI Models</strong><br />
+  Over 20 companies, including NVIDIA, Meta, Microsoft, Palantir, and Hugging Face, signed a letter urging policymakers to avoid premature restrictions on open‑weight models. The letter argues that open models accelerate innovation and security and should not be regulated out of fear. A day later, Microsoft’s website appeared to list OpenAI among the signatories—a twist that sparked heated debate on whether OpenAI is softening its stance on openness. If you build or rely on local LLMs, this coalition’s momentum is a positive signal that may protect future releases from regulatory headwinds.<br />
+  (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v5c3vt/more_than_20_companies_including_nvidia_meta/">Reddit discussion</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1v5uqa3/microsofts_website_shows_openai_as_one_of_the/">follow‑up on OpenAI’s appearance</a>)</p>
+</li>
+<li>
+<p><strong>Hugging Face Releases “The Stack v3” – Largest Open Code Dataset Yet</strong><br />
+  The new Stack v3 comprises over 20 TB of permissively licensed source code, spanning hundreds of programming languages. It’s a critical resource for training coding‑specialized models and fine‑tuning local LLMs on real‑world code patterns. If you’re experimenting with code‑centric fine‑tuning (Unsloth, axolotl), this dataset is the new gold standard.<br />
+  (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v59aek/hugging_face_releases_the_stack_v3_largest_open/">Reddit announcement</a>)</p>
+</li>
+<li>
+<p><strong>Stripe Eyes $10 Billion Acquisition of OpenRouter</strong><br />
+  Bloomberg reports that Stripe is in talks to acquire OpenRouter, the popular model marketplace that gives unified API access to hundreds of open‑weight and commercial models. For data engineers, this could mean tighter billing integration (Cortex‑style credit tracking on any provider) and potentially easier procurement of inference endpoints. It’s a reminder that the model‑as‑a‑service layer is consolidating rapidly.<br />
+  (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v5l9m6/stripe_eyes_10_billion_deal_for_ai_model/">Reddit thread with Bloomberg link</a>)</p>
+</li>
+<li>
+<p><strong>CachyLLama: Persistent KV Cache for Llama.cpp</strong><br />
+  A fork of llama.cpp introduces an SSD‑backed KV cache that survives restarts, plus smarter cache management that cuts prompt reprocessing time for long‑running agent sessions. This is a practical performance boost for anyone running chatting/agent loops on sluggish hardware, and it could be a game‑changer for <code>llama.cpp</code>‑based local assistants.<br />
+  (<a href="https://github.com/fewtarius/CachyLLama">GitHub</a>)</p>
+</li>
+<li>
+<p><strong>New Quantization Technique Promises Statistically‑Lossless Compression</strong><br />
+  A paper posted to the LocalLLaMA subreddit describes a statistically‑lossless quantization method that preserves output distributions with negligible degradation. If productionized, it could let you run larger models on the same hardware without sacrificing accuracy—exactly the kind of advance the local scene needs.<br />
+  (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v5j35f/paper_statisticallylossless_quantization_of_large/">Paper discussion</a>)</p>
+</li>
+<li>
+<p><strong>AMD Releases Instella‑MoE‑16B‑A3B‑Think, a New Open‑Weight MoE Model</strong><br />
+  AMD joins the open‑source model fray with a mixture‑of‑experts design that activates only 3B out of 16B parameters, targeting strong reasoning in a small memory footprint. It’s a sign that silicon vendors see open‑weight models as a way to differentiate their hardware ecosystems.<br />
+  (<a href="https://huggingface.co/amd/Instella-MoE-16B-A3B-Think">Hugging Face model page</a>)</p>
+</li>
+<li>
+<p><strong>FLUX 3 Announced: Multimodal Flow Model as Visual Intelligence Backbone</strong><br />
+  Black Forest Labs’ FLUX 3 aims to unify image generation, editing, and understanding under a single flow‑based architecture. While still a preview, it hints at the next wave of multimodal open models that could eventually serve as vision‑enabled agents.<br />
+  (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v56kja/flux_3_real_world_models_towards_multimodal_flow/">Reddit post with technical details</a>)</p>
+</li>
+<li>
+<p><strong>Hetzner Is Working on LLM Inference</strong><br />
+  The European cloud provider is building a managed inference service, likely targeting cost‑sensitive users who want API endpoints without the overhead of hyperscalers. This could become a convenient home for self‑hosted open‑weight models when you need a bit of cloud acceleration.<br />
+  (<a href="https://sliplane.io/blog/hetzner-inference">Blog/HN discussion</a>)</p>
+</li>
+<li>
+<p><strong>Gemma 4 26B A4B Runs on iPhone 17 Pro via Model Paging</strong><br />
+  A demonstration shows Google’s 26B Gemini‑class model running on‑device by swapping model layers in and out of memory. This opens the door to always‑available, private AI assistants that handle substantial reasoning tasks without an internet connection.<br />
+  (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v5p5sf/gemma_4_26b_a4b_running_on_iphone_17_pro_via/">Reddit post with demo</a>)</p>
+</li>
+<li>
+<p><strong>Gigatoken: Tokenization 1,000× Faster Than tiktoken</strong><br />
+  An open‑source BPE tokenizer written by a Stanford PhD student processes up to 24 GB of text per second, removing the data‑prep bottleneck for LLM training and inference. It’s a tool you’ll want in your data pipeline if you’re doing large‑scale corpus preprocessing. (See the video dissection in Worth a Skim.)<br />
+  (<a href="https://www.youtube.com/watch?v=vFtJeZ7ifTA">Cloud Codes video</a>)</p>
+</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>Train Local Model on Your Own Codebase (Unsloth: Local &amp; Private)</strong><br />
+<a href="https://www.youtube.com/watch?v=9VpaPURdBb4">Cloud Codes</a> · 10 min  </p>
+<ul>
+<li>A step‑by‑step guide to fine‑tuning a local LLM (e.g., CodeLlama variants) on your personal codebase using Unsloth, a library that slashes VRAM requirements and training time.  </li>
+<li>Uses a consumer GPU (or free Colab) and shows how to format code into instruction‑tuning examples, set up LoRA adapters, and export merges to GGUF for local inference.  </li>
+<li>The key takeaway: a fine‑tuned model grasps your naming conventions, project structure, and API patterns, drastically improving coding‑assistant quality without sending code off‑device.  </li>
+<li>Practical for Snowflake‑adjacent scripting too—imagine fine‑tuning on your SnowSQL/dbt macros and testing it as a co‑pilot for data transformations.</li>
+</ul>
+<p><strong>Tokenization Just Got 1,000× Faster! (Gigatoken)</strong><br />
+<a href="https://www.youtube.com/watch?v=vFtJeZ7ifTA">Cloud Codes</a> · 11 min  </p>
+<ul>
+<li>Explains why traditional tokenizers like <code>tiktoken</code> and Hugging Face’s <code>tokenizers</code> library are CPU‑bound and how Gigatoken rewrites the BPE algorithm to exploit massive parallelism on modern hardware.  </li>
+<li>Benchmarks show 24 GB/s throughput, making it feasible to tokenize web‑scale corpora on a single machine in minutes rather than days.  </li>
+<li>The architecture uses an efficient trie‑based merge‑mining step and avoids the classic “merge‑one‑pair‑at‑a‑time” serial bottleneck.  </li>
+<li>For anyone building custom tokenizers for domain‑specific datasets (e.g., SQL, dbt Jinja) or optimizing data pipelines for large‑scale training, Gigatoken is a drop‑in replacement that could slash preprocessing costs.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong><a href="https://github.com/sqlish/ct-eligibility">sqlish/ct‑eligibility</a></strong><br />
+  Uses Snowflake Cortex to parse unstructured clinical trial eligibility criteria into structured facts, achieving 88.6% field‑level accuracy. A great reference architecture for AI‑powered document extraction directly inside Snowflake—you could adapt the approach to any unstructured‑to‑structured pipeline (contracts, logs, etc.).</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/SultanAlfaifi/mustakshif">SultanAlfaifi/mustakshif</a></strong><br />
+  A bilingual desktop app and CLI that helps Windows users discover and try local AI models that fit their PC’s specs. Perfect if you’re onboarding team members to local LLMs without manual VRAM calculations.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/Prism-Shadow/penguin-harness">Prism‑Shadow/penguin‑harness</a></strong><br />
+  A self‑improving agent builder that lives on your desktop, automating the lifecycle of building, testing, and refining LLM‑powered agents. Starred 153 times in a short period—likely interesting for experimenting with home‑grown agents before deploying to a platform like Snowflake Cortex AI or dbt Cloud’s planned agent‑hosting features.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-07-24.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-07-24</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today’s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
