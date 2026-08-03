@@ -3,5 +3,5 @@
 # Sonar family, or any model with the :online suffix). Plain chat models like
 # DeepSeek cannot search and will invent news.
 research: perplexity/sonar                     # daily news sweep (cents/run, real search)
-curation: deepseek/deepseek-v4-pro             # ranking + writing; no web access needed
-deep_research: perplexity/sonar-deep-research  # weekly deep dive (~$2/run)
+curation: deepseek/deepseek-v4-flash-latest             # ranking + writing; no web access needed
+deep_research: perplexity/sonar  # weekly deep dive (~$2/run)
