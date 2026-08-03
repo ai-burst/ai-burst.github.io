@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-07-12</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">12 Jul 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">11 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.037</span>
+      </div>
+      <h1>Daily Signal — 2026-07-12</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>DeepSeek begins developing its own AI chip, signaling a tectonic shift in open-weight model independence.</strong></p>
+<p>China's DeepSeek is quietly building its own AI silicon, Reuters reported this week (<a href="https://www.reuters.com/world/china/chinas-deepseek-developing-its-own-ai-chip-sources-say-2026-07-07/">Reuters</a>). This isn't just another corporate hardware move — it's the open-weight ecosystem's most aggressive vertical integration play yet. DeepSeek's models already dominate the local LLM leaderboards, and owning the inference silicon would let them optimize model architectures for specific hardware characteristics rather than the other way around. Crucially, this happens against a backdrop of growing US tech industry anxiety about Chinese open-source models and speculation about potential Trump administration executive orders (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uthozd/the_us_tech_industry_is_increasingly_anxious/">Politico via r/LocalLLaMA</a>).</p>
+<p><strong>How to make the most of this right now:</strong></p>
+<ol>
+<li>
+<p><strong>Run DeepSeek models locally before any potential policy shift.</strong> If export controls or usage restrictions emerge, having quantized weights cached on your own hardware becomes significantly more valuable. Qwen 3.6 27B Q8_0 is already the community darling for 24GB VRAM setups, and DeepSeek's MoE architecture means you can push 122B+ parameter models on consumer hardware today (see Hardware Watch below).</p>
+</li>
+<li>
+<p><strong>Monitor the Jacobian-Lens ecosystem.</strong> Anthropic released their J-Space hallucination detection tooling, and the open-source community is already racing to productionize it for independent models. Local implementations for llama.cpp GGUF models are live (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uu32z6/interactive_jacobianlens_visualizer_and_live/">r/LocalLLaMA</a>), and stress-test results across Qwen3-4B show promise — but also reveal dataset-specific brittleness (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uu61wb/i_mapped_anthropics_jspace_hallucination_signal/">r/LocalLLaMA</a>). If DeepSeek's chip optimizes for these interpretability signals natively, the edge over black-box APIs could be substantial.</p>
+</li>
+<li>
+<p><strong>Start planning PCIe topology now if you're multi-GPU curious.</strong> Community experiments with 6x MI50s on PEX8749 switches (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1utlh96/6x_mi50s_on_pcie_vs_4x_mi50s_on_pex8749_and_2x_on/">r/LocalLLaMA</a>) and $80 Tesla P100s getting silent fp16 math fixes in llama.cpp (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uu6p9o/your_80_tesla_p100_has_been_doing_silently_noisy/">r/LocalLLaMA</a>) prove the inference economics are shifting fast. Own-hardware independence is becoming a practical reality, not just an ideology.</p>
+</li>
+</ol>
+<hr />
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p>A new end-to-end reference architecture emerged: <strong>Crop-Climate-Analytics-AWS-Snowflake-Power-BI</strong> (<a href="https://github.com/NKS-way/Crop-Climate-Analytics-AWS-Snowflake-Power-BI">GitHub</a>) demonstrates a production pipeline ingesting multi-year agricultural climate data into Snowflake for modeling and Power BI visualization. While it's a demo project rather than an official Snowflake release, it's a useful template for anyone building Snowflake-centric data platforms — particularly the multi-environment S3-to-Snowflake ingestion pattern and the dimensional modeling layer that feeds Power BI. Worth studying if your team is evaluating Snowflake as the analytical engine for domain-specific dashboards.</p>
+<h3 id="dbt">dbt</h3>
+<p>Two dbt repos surfaced, though neither is a core release. <strong>mtg-dbt</strong> (<a href="https://github.com/DanySone/mtg-dbt">GitHub</a>) appears to be an early-stage dbt project (the repo is empty of description, but the name suggests Magic: The Gathering analytics — an increasingly common pattern of dbt being used for hobbyist data modeling, which speaks to its accessibility). More substantially, <strong>Production-Grade Data Platform</strong> (<a href="https://github.com/abdulkashim444-lgtm/Production-Grade_Data-Platform">GitHub</a>) positions dbt as the transformation layer within a larger stack that includes Kafka, Spark/Flink, FastAPI, React, Kubernetes, and Prometheus/Grafana monitoring. The architecture diagram alone is worth a look if you're designing a modern data platform — it's a coherent blueprint for how dbt fits into a streaming + batch pipeline with CI/CD.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p>No new Cortex Code (CoCo/CoWork) developments appeared in today's material. The absence is notable given Snowflake's aggressive AI roadmap through mid-2026, but this cycle was quiet.</p>
+<hr />
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<p><strong><a href="https://www.youtube.com/watch?v=Ti1V7OI2Rro">AI Search: Girlfriend simulators, GPT 5.6, Grok 4.5, Seedream 5.0, Muse Spark, robot surgery</a></strong> <em>(40 min)</em> — This is the definitive weekly roundup you want. Covers GPT 5.6 (the latest frontier model push), Grok 4.5, Seedream 5, Muse Spark 1.1, LingBot World 2, and even humanoid robot surgery. The breadth is exceptional: if you only watch one AI news video this week, this is it. The GPT 5.6 segment alone is worth the click — it's the model that Abacus AI is already routing to alongside Claude Opus and 100+ others in their "personal superintelligence" system (see Worth a Skim below for the deeper dive on that architecture).</p>
+<p><strong><a href="https://www.youtube.com/watch?v=0eMRWYD2eeQ">AI Revolution: Abacus AI Just Dropped Personal Superintelligence (GPT-5.6 + Fable 5)</a></strong> <em>(14 min)</em> — This is the companion deep-dive to the AI Search roundup, and it's architecturally fascinating. Abacus combines GPT-5.6, Fable 5, Claude Opus, and 100+ models through a Custom Router that splits work across models per-task, while giving agents an always-on cloud machine with root access. The claim that these agents can inspect repositories, build complete apps, create databases, debug errors, deploy public services, host open models, and keep autonomous systems running after the conversation ends — that's a legitimate step toward persistent AI workers, not just chatbots. For an LLM developer, the routing architecture alone makes this essential viewing.</p>
+<p><strong><a href="https://www.youtube.com/watch?v=eozCDUxwU8k">Cloud Codes: The Best Local AI Hardware (APPLE vs NVIDIA)</a></strong> <em>(9 min)</em> — A highly practical, no-nonsense breakdown of why Apple Silicon's Unified Memory Architecture demolishes NVIDIA's PCIe-bottlenecked cards for running massive models locally. The key claim: a 32GB RTX 5090 hits a crippling PCIe bottleneck when trying to run a 70B model, while Apple's architecture handles it gracefully. Given that the LocalLLaMA subreddit is currently buzzing with experiments running Qwen 122B on 24GB VRAM + 64GB RAM (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uts3ly/is_it_possible_to_run_qwen_122b_in_64gb_ram_24gb/">r/LocalLLaMA</a>) and quad 5060 Ti setups (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uturng/i_benched_quad_5060tis_for_code_generation_with/">r/LocalLLaMA</a>), this video is perfectly timed for anyone reconsidering their hardware strategy.</p>
+<hr />
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>Xiaomi quietly uploads MiMo-V2.5-DFlash weights to Hugging Face</strong> — The 300B+ parameter vision-language model now has official DFlash weights publicly available (<a href="https://huggingface.co/XiaomiMiMo/MiMo-V2.5-DFlash">Hugging Face</a>), and the LocalLLaMA community is already asking for GGUF conversions (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uu8d1v/xiaomi_quietly_uploaded_mimov25dflash_official/">r/LocalLLaMA discussion</a>). According to early testers, it runs at 8-10 tokens/second on 2x24GB cards with VRAM offloading. This is one of the strongest open-weight multimodal models available, and the quiet upload suggests Xiaomi may be testing the waters for broader open-source engagement. If you have the hardware, a GGUF quant of this model would be a significant addition to your local toolkit.</p>
+<p><strong>Anthropic's Jacobian-Lens ignites open-source steering tooling explosion</strong> — Within days of Anthropic releasing their J-Space interpretability framework (<a href="https://github.com/anthropics/jacobian-lens">GitHub</a>), the community has produced an interactive visualizer and live steerer for GGUF models on llama.cpp (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uu32z6/interactive_jacobianlens_visualizer_and_live/">r/LocalLLaMA</a>), a tool that exports permanently modified models with altered behavior (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1utpxo6/i_created_a_super_harmful_model_d_by_tweaking_its/">r/LocalLLaMA</a>), and a cross-dataset hallucination-detection stress test revealing where the technique works and where it breaks (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uu61wb/i_mapped_anthropics_jspace_hallucination_signal/">r/LocalLLaMA</a>). For LLM developers building reliable agents, J-Space-based confidence scoring is a potential game-changer — but the stress-test results suggest it's not yet deployable without dataset-specific calibration.</p>
+<p><strong>llama.cpp b9966 ships critical sm-tensor performance fix</strong> — The latest llama.cpp release (<a href="https://github.com/ggml-org/llama.cpp/releases">GitHub</a>) fixes an embarrassing performance bug: 29 regex patterns were being recompiled per tensor per token on the decode thread instead of being cached. The fix eliminates this overhead entirely — if you're running <code>-sm tensor</code> in production, update immediately. Separately, the community discovered that Tesla P100 GPUs (the $80 eBay workhorses) have been doing silently noisy fp16 math due to a missing flag exemption that GTX 10-series and P40s already had (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uu6p9o/your_80_tesla_p100_has_been_doing_silently_noisy/">r/LocalLLaMA</a>). The fix is three lines and ships in turboquant v0.3.0.</p>
+<p><strong>Qwen 3.6 27B dominates the local inference conversation</strong> — Multiple threads today confirm this model's position as the community's default recommendation for 24GB-class hardware. Benchmarks show it running at 50 tok/s on an RTX 5060 Ti (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1utefpr/running_qwen3_30b_a3b_at_50_toks_on_rtx_5060_ti/">r/LocalLLaMA</a>), quad 5060 Tis delivering strong code generation results (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uturng/i_benched_quad_5060tis_for_code_generation_with/">r/LocalLLaMA</a>), and users debating how far they can push the context window (100K+ with Q8_0) (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1utr3uk/ctx_how_far_can_you_reasonably_go_with_qwen_36_27b/">r/LocalLLaMA</a>). The recurring question: what's the next meaningful jump from Qwen 3.6 27B?(<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uu1g3m/next_best_jump_from_qwen_36_27b/">r/LocalLLaMA</a>) The answer from the community appears to be: not much, unless you can afford substantially more VRAM for the MoE 122B variants.</p>
+<p><strong>MoE model skepticism persists despite empirical strength</strong> — A thoughtful thread asks why mixture-of-experts models are "belittled" compared to dense architectures when the practical performance often contradicts the active-parameter-count dismissal (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1utkqfg/why_are_moe_models_so_belittled/">r/LocalLLaMA</a>). The core argument: if a 122B MoE with 10B active parameters is "just" worth a 10B dense model, why do providers invest in MoE at all? The routing overhead is real, but the total parameter count clearly provides knowledge capacity that pure 10B models can't match. For practitioners deciding between Qwen 3.6 27B (dense) and Qwen 122B MoE (with aggressive quantization), this debate directly impacts hardware planning.</p>
+<p><strong>Local LLM hardware experimentation hits new extremes</strong> — The subreddit is a hardware laboratory today: someone got 20GB VRAM with 448GB/s bandwidth for $100 using P102-100 cards (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1utwqf8/ultra_budget_20gb_vram_with_448gbs_for_100_bucks/">r/LocalLLaMA</a>), another ran massive MoE models on a laptop with GTX 1050 Mobile 4GB by offloading to NVMe (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uu6qvh/i_would_like_to_share_my_experience_working_with/">r/LocalLLaMA</a>), and a detailed EPYC CCD benchmark shows that 48 threads on a 9374F unexpectedly outperforms both 32 and 64 threads for decoding (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1utjleq/are_epyc_ccds_all_you_need_benchmarks/">r/LocalLLaMA</a>). If you're spec'ing a dedicated inference box, the PCIe bandwidth measurements under dual GPU with pipeline and tensor parallelism (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1utz50z/measuring_pcie_transfer_under_dual_gpu_with/">r/LocalLLaMA</a>) are essential reading.</p>
+<p><strong>Mesh LLM proposes distributed AI computing on iroh</strong> — A new approach to distributed inference using the iroh peer-to-peer networking library (<a href="https://www.iroh.computer/blog/mesh-llm">iroh.computer</a>), generating significant Hacker News discussion (203 points, 46 comments). The concept: treat AI inference as a mesh workload distributed across peer nodes rather than requiring centralized GPU clusters. For the local LLM scene, this could mean pooling the VRAM of multiple machines on a home network — turning that old rig in the corner into additional compute capacity. Still very early, but the architecture is worth tracking.</p>
+<p><strong>Simon Willison ships sqlite-utils 4.1</strong> — The latest dot-release of the indispensable SQLite CLI toolkit adds a <code>--code</code> option to <code>insert</code> and <code>upsert</code> commands, allowing inline Python code execution during import pipelines (<a href="https://simonwillison.net/2026/Jul/11/sqlite-utils/#atom-everything">Simon Willison's blog</a>). For data engineers who use SQLite as a lightweight analytical store (increasingly common in LLM eval pipelines and local data warehousing), this is a meaningful quality-of-life improvement that follows closely on the 4.0 release days earlier.</p>
+<p><strong>OpenCV 5.0 ships first major rewrite in 8 years, with native LLM support</strong> — The world's most popular computer vision library can now run large language models natively through its rewritten deep learning engine, which took ONNX operator coverage from 23% to over 80% and beats ONNX Runtime on CPU benchmarks. For anyone building vision-enabled local LLM applications, OpenCV 5.0 eliminates a dependency layer and provides a unified API for both CV and NLP inference.</p>
+<hr />
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong><a href="https://www.youtube.com/watch?v=NJpP5Z26g0w">Cloud Codes: Rust + Mojo Are Quietly Replacing Python in AI</a></strong> <em>(10 min)</em> — The "Two-Language Problem" thesis: Python is the steering wheel but the engine is increasingly Rust and C++. Key claims from the transcript:</p>
+<ul>
+<li>The Global Interpreter Lock (GIL) fundamentally caps Python's performance at scale, and the real work is happening in native code that Python merely orchestrates.</li>
+<li>Mojo positions itself as a Python-superset that compiles to native, eliminating the two-language gap — but Rust's safety guarantees make it the default for production inference infrastructure.</li>
+<li>For LLM developers, the implication is clear: understanding Rust's FFI and Mojo's compilation model will increasingly matter for performance-critical inference code.</li>
+<li><em>Why it's here but not the playlist:</em> This is a solid architectural overview, but it's a single-topic deep dive rather than a news roundup. The claims are interesting but not actionable unless you're actively rewriting inference infrastructure.</li>
+</ul>
+<p><strong><a href="https://www.youtube.com/watch?v=-Z_0KNu8uQg">Cloud Codes: Go + HTMX + SQLite: The Ultimate Stack for the AI Era</a></strong> <em>(9 min)</em> — Argues that Go, HTMX, and SQLite minimize LLM hallucinations in code generation because LLMs are better at generating raw HTML (via HTMX) than JSX/React components. Key claims:</p>
+<ul>
+<li>Go's static typing provides a "safety net" that catches LLM-generated errors at compile time, unlike Python.</li>
+<li>SQLite (via the increasingly popular sqlite-utils workflow) is the right persistence layer for AI-generated apps because it requires zero configuration and the schema can be generated trivially.</li>
+<li><em>Why it's here but not the playlist:</em> The "LLMs generate better code for X stack than Y" thesis is interesting but unproven — it's one data engineering team's opinion rather than a systematic finding. Worth considering if you're building LLM-assisted development workflows, but not essential viewing.</li>
+</ul>
+<p><strong><a href="https://www.youtube.com/watch?v=IDciliH3k3w">Your AI Guy: Meta Is Creating AI's Chernobyl Moment</a></strong> <em>(18 min)</em> — Sensationalist framing of Meta's AI acceleration as a catastrophic risk. Key claims from the transcript:</p>
+<ul>
+<li>Meta's aggressive model releases and infrastructure investments are outpacing safety research, creating systemic risk.</li>
+<li>The competition for AI dominance is producing a "race to the bottom" where safety guardrails are treated as optional.</li>
+<li><em>Why it's here but not the playlist:</em> The Chernobyl metaphor is clickbait, and the video lacks specific technical analysis. It's essentially a long-form opinion piece with limited actionable information for practitioners. The actual risk conversation is more nuanced and better covered in the J-Space hallucination detection work happening in the real open-source community.</li>
+</ul>
+<hr />
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/abdulkashim444-lgtm/Production-Grade_Data-Platform">Production-Grade Data Platform</a></strong> — A comprehensive reference architecture placing dbt as the transformation layer in a full microservices stack (Kafka, Spark/Flink, FastAPI, React, Kubernetes). Worth studying for the dbt-in-production patterns, particularly the CI/CD integration with Prometheus and Grafana monitoring — this is the kind of end-to-end observability setup that most dbt projects eventually need but rarely see documented.</li>
+<li><strong><a href="https://github.com/DanySone/mtg-dbt">mtg-dbt</a></strong> — An early-stage dbt project (empty description, likely Magic: The Gathering analytics). The interesting signal here is the growing adoption of dbt for personal/hobbyist data modeling, which speaks to the framework's accessibility and the broader trend of analytics engineering skills being applied outside traditional enterprise contexts. Watch this space for modeling patterns.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong><a href="https://github.com/NKS-way/Crop-Climate-Analytics-AWS-Snowflake-Power-BI">Crop-Climate-Analytics-AWS-Snowflake-Power-BI</a></strong> — An end-to-end pipeline ingesting multi-year agricultural climate data into Snowflake and visualizing it in Power BI. The architecture demonstrates the S3-to-Snowflake ingestion pattern, dimensional modeling for domain-specific analytics, and the Snowflake-to-Power-BI connector. A useful template for anyone building Snowflake-centric dashboards with external data sources.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/TheTom/llama-cpp-turboquant/releases/tag/tqp-v0.3.0">llama-cpp-turboquant v0.3.0</a></strong> — The release that fixes Tesla P100 fp16 math precision. If you're running any SM 6.0 GPU (P100) with llama.cpp, this is a mandatory update — the silent precision loss has been present for years and the fix is three lines. Essential for anyone building budget inference rigs.</li>
+<li><strong><a href="https://www.reddit.com/r/LocalLLaMA/comments/1uu32z6/interactive_jacobianlens_visualizer_and_live/">Jacobian-Lens interactive visualizer for GGUF</a></strong> — Live steering and visualization of Anthropic's J-Space for llama.cpp GGUF models. This is bleeding-edge interpretability tooling made practical: you can see and manipulate model internals in real-time, which has immediate applications for debugging hallucination and refusal behaviors in local deployments.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/loop-js/loop.js">loop.js</a></strong> — A "loop engineering" framework where agents iterate in Rounds until a skeptical, read-only Verify agent settles the goal. This represents a pattern shift from single-shot agent calls to multi-round verification loops, directly relevant to building reliable LLM agents. The Verify agent's read-only constraint is a clever safety design pattern.</li>
+<li><strong><a href="https://github.com/JWM0203/MeetingCopilot">MeetingCopilot</a></strong> — Real-time stealth meeting/interview copilot with local FunASR speech recognition and BYOK LLM, invisible to screen sharing. The architecture is fascinating from an agent design perspective: first-person teleprompter answers that operate within the constraints of screen-capture detection. Ethically dubious, technically impressive.</li>
+<li><strong><a href="https://github.com/Alisa0808/vox-director">Vox Director</a></strong> — An agent skill that turns one topic into a finished Vox-style paper-collage explainer video, automated end-to-end. Demonstrates the multi-modal output generation pattern that's increasingly important for LLM agents: the agent coordinates Atlas Cloud for generation and ffmpeg for assembly, producing a polished final product from a single prompt.</li>
+</ul>
+<hr />
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/JWM0203/MeetingCopilot">MeetingCopilot</a> — Real-time stealth meeting copilot with local ASR + BYOK LLM teleprompter, invisible to screen sharing</li>
+<li>✅ <a href="https://github.com/loop-js/loop.js">loop.js</a> — Agent framework with Rounds and a skeptical read-only Verify agent for loop engineering</li>
+<li>✅ <a href="https://github.com/Alisa0808/vox-director">Vox Director</a> — End-to-end automated Vox-style explainer video generation agent skill</li>
+<li>✅ <a href="https://github.com/abdulkashim444-lgtm/Production-Grade_Data-Platform">Production-Grade Data Platform</a> — Enterprise reference architecture with dbt, Kafka, Spark, Kubernetes, and observability</li>
+<li>✅ <a href="https://github.com/NKS-way/Crop-Climate-Analytics-AWS-Snowflake-Power-BI">Crop-Climate-Analytics-AWS-Snowflake-Power-BI</a> — End-to-end pipeline ingesting climate data into Snowflake for Power BI visualization</li>
+<li><a href="https://github.com/DanySone/mtg-dbt">mtg-dbt</a> — Early-stage dbt project (Magic: The Gathering analytics pattern)</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-07-11.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-07-11</span></a><a class="pager-link pager-next" href="2026-07-12-weekly.html"><span class="mono dim">Newer</span><span>Weekly Signal — 2026-07-12</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-07-21</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">21 Jul 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">7 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.055</span>
+      </div>
+      <h1>Daily Signal — 2026-07-21</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p>The open-weight ecosystem is experiencing a perfect storm of explosive demand, sudden disruptions, and geopolitical manoeuvring. Moonshot has <strong>temporarily paused new Kimi K3 subscriptions</strong> after extreme demand overwhelmed its compute infrastructure (<a href="https://www.youtube.com/watch?v=EenYgrkqzE0">AI Revolution</a>). At the same time, Kimi K3 was used to uncover <strong>15 real-world security bugs</strong> that frontier models like Codex and Fable refused to triage due to “cyber guardrails,” a finding that Hugging Face confirmed mirrors their own unsettling experiences (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v1k3pw/kimi_k3_just_fixed_15_critical_security_bugs_that/">r/LocalLLaMA</a>). These incidents, paired with Alibaba’s <strong>Qwen 3.8 Max launch</strong> and the rumour that <strong>DeepSeek V4 open weights</strong> may be imminent (the release version has been spotted on the API, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1v1nj6e/deepseek_v4_flash_release_version_appears_to_have/">r/LocalLLaMA</a>, unverified), suggest the open‑weight race is shifting from “catching up” to defining the frontier. Against this backdrop, multiple sources inside the U.S. administration report that parts of the <strong>Trump White House are reigniting efforts to impose de facto bans on foreign open‑source AI models</strong>, just as Chinese open weights gain traction and American labs fall behind (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v1j3ns/sources_parts_of_the_trump_administration_are/">r/LocalLLaMA</a>, unverified).  </p>
+<p><strong>How to make the most of it today</strong>  </p>
+<ul>
+<li><strong>Local-first hedging:</strong> Run models like Bonsai 27B (a ternary‑weight 27B‑parameter model that fits in 4 GB) fully offline on your laptop or phone to guarantee access regardless of cloud API outages or regulatory bans.  </li>
+<li><strong>Diversify your model fleet:</strong> Keep ready‑to‑go GGUF quants of DeepSeek V4, Qwen 3.8 Max, Kimi K3, and Motif 3 Beta on your own storage so you can switch if a provider disappears or a model is pulled.  </li>
+<li><strong>Leverage AMD for fine‑tuning:</strong> With Unsloth now officially supporting AMD GPUs (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v1nor4/unsloth_now_supports_amd/">Reddit announcement</a>), you can train and adapt models on lower‑cost, non‑Nvidia hardware—critical if supply‑side restrictions tighten.</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li><strong>Document Intelligence with Cortex AI Functions</strong> (new) — Snowflake now lets you turn business documents (PDFs, scanned contracts) into structured, queryable data directly inside Cortex using AI functions. This promises to simplify enterprise search and automated document processing without moving data outside the platform. (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/document-intelligence-snowflake-cortex-ai-functions">Snowflake Blog</a>)  </li>
+<li><strong>Data Quality Checks in Snowsight powered by Cortex</strong> — A new capability that lets you <strong>create automated data quality checks from the Snowsight UI</strong>, optionally with Cortex generating them for you. This integrates natively with Snowflake’s monitoring, making anomaly detection and pipeline integrity much easier to maintain. (<a href="https://medium.com/snowflake/creating-data-quality-checks-in-snowsight-using-snowflake-cortex-dba2bfa95ba7?source=rss----34b6daafc07---4">Medium / Snowflake</a>)  </li>
+<li><strong>Cortex AI for sales forecasting</strong> — An internal Snowflake team used Cortex to <strong>predict deal outcomes from CRM field quality</strong>, turning vague notes into confidence scores. Though built for sales, the pattern of extracting signals from unstructured enterprise data is broadly applicable to any data‑rich Snowflake environment. (<a href="https://medium.com/snowflake/crm-fields-to-deal-wins-how-cortex-ai-changed-our-sales-forecast-f119a4279745?source=rss----34b6daafc07---4">Medium / Snowflake</a>)</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong>dbt-core v2.0.0‑alpha.5 released</strong> — The latest pre‑release brings <strong>Redshift catalog macros</strong> that use <code>SHOW TABLES</code> and <code>SVV_REDSHIFT_COLUMNS</code> for cross‑database data‑sharing, <strong><code>defer_job_id</code></strong> support via the <code>DBT_CLOUD_DEFER_JOB_ID</code> env var for targeted manifest deferral, and a <code>catalog_database</code> fix. Pack a test run today if you rely on Redshift or dbt Cloud deferral. (<a href="https://github.com/dbt-labs/dbt-core/releases/tag/v2.0.0-alpha.5">GitHub Releases</a>)  </li>
+<li><strong>dbt Summit 2026 sessions preview</strong> — A breakdown by role (analytics engineer, data leader, exec) of hands‑on labs and breakouts. Worth scanning to lock in your must‑attend sessions early. (<a href="https://www.getdbt.com/blog/dbt-summit-2026-sessions-by-role">dbt Blog</a>)</li>
+</ul>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong>Kimi K3 Gets Shut Down… Then China Drops Another AI Winner!</strong> — AI Revolution (16:39)<br />
+   A fast‑paced news roundup that stitches together Kimi K3’s demand‑driven pause, DeepSeek V4’s continued rise, and Qwen 3.8 Max’s debut into a coherent narrative on the China‑led open‑weight surge. If you only watch one video today, this one hits multiple stories in one sitting—exactly your preferred format.<br />
+<a href="https://www.youtube.com/watch?v=EenYgrkqzE0">https://www.youtube.com/watch?v=EenYgrkqzE0</a></p>
+</li>
+<li>
+<p><strong>Building for AI Agents, Not Humans | Snowflake Dev Day 2026</strong> — Snowflake Developers (22:20)<br />
+   Vercel CTO Malte Ubl lays out a concrete framework for designing APIs, permissions, docs, and UX when AI agents become your primary users. Directly relevant to how you might need to rethink Snowflake‑backed services and Cortex‑driven interfaces in an agent‑first world.<br />
+<a href="https://www.youtube.com/watch?v=ZiUro3OOYCE">https://www.youtube.com/watch?v=ZiUro3OOYCE</a></p>
+</li>
+<li>
+<p><strong>Run a 27B AI Model on Your Laptop &amp; Phone (Bonsai 27B)</strong> — Cloud Codes (9:41)<br />
+   A marvellous hands‑on demonstration of <strong>ternary‑weight compression</strong> that shrinks a full 27B‑parameter Qwen 3.6 to just 4 GB, enabling offline inference on an iPhone. If you’re after local LLM VRAM reduction breakthroughs, this is exceptional.<br />
+<a href="https://www.youtube.com/watch?v=X5ku8GgfSj8">https://www.youtube.com/watch?v=X5ku8GgfSj8</a></p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>Unsloth officially adds AMD support</strong> — You can now fine‑tune and run Qwen, DeepSeek, Kimi, and GLM models on AMD GPUs natively. With potential supply chain chokepoints on Nvidia hardware, this broadens your local‑training options significantly. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v1nor4/unsloth_now_supports_amd/">r/LocalLLaMA</a>)  </p>
+</li>
+<li>
+<p><strong>Kimi K3’s security audit prowess is staggering</strong> — A user reported that Kimi K3 found and fixed 15 critical bugs that Codex and Fable refused to touch, a dynamic Hugging Face calls “very scary” for defenders. It underscores the weaponisation potential of open‑weight models in cybersecurity, both for good and ill. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v1k3pw/kimi_k3_just_fixed_15_critical_security_bugs_that/">r/LocalLLaMA</a>)  </p>
+</li>
+<li>
+<p><strong>DeepSeek V4 open weights may be imminent</strong> (unverified) — The release version of V4 has appeared on the official API, and community sleuths think open weights could follow. If true, it would land as a near‑frontier open model at a fraction of the cost. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v1nj6e/deepseek_v4_flash_release_version_appears_to_have/">r/LocalLLaMA</a>)  </p>
+</li>
+<li>
+<p><strong>Motif 3 Beta released</strong> — A new open model from Motif Technologies is now on Hugging Face. Early community chatter is positive; worth pulling down for local evals. (<a href="https://huggingface.co/Motif-Technologies/Motif-3-Beta">HuggingFace</a>)  </p>
+</li>
+<li>
+<p><strong>MiniCPM5-2B appears</strong> — OpenBMB has teased a new 2B‑parameter model, but it isn’t yet on Hugging Face. When available, it’ll be a strong candidate for lightweight edge/on‑device tasks. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v1m264/openbmb_released_minicpm52b_not_yet_available_at/">r/LocalLLaMA</a>)  </p>
+</li>
+<li>
+<p><strong>NInfer pushes 543 tok/s on a single RTX 5090</strong> — A custom C++/CUDA engine hits extreme decode speeds on Qwen3.6‑35B‑A3B MoE, showing what’s possible with from‑scratch optimisation. Could inspire future llama.cpp backends. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v1no8e/543_toks_singlerequest_qwen3635ba3b_on_one_rtx/">r/LocalLLaMA</a> + <a href="https://github.com/Neroued/ninfer">GitHub</a>)  </p>
+</li>
+<li>
+<p><strong>Coding agents are making reverse‑engineering cheap</strong> — Simon Willison notes the reduced cost of writing code means people routinely reverse‑engineer home devices with agent‑assisted code. Expect enterprises to face similar exposure with internal services. (<a href="https://simonwillison.net/2026/Jul/20/cheap-reverse-engineering/#atom-everything">simonwillison.net</a>)  </p>
+</li>
+<li>
+<p><strong>Ben Thompson’s proposal: legalise data scraping and push US open models to compete</strong> — Arguing that American labs’ hypocritical data‑scraping stance is losing the race, he suggests a law to permit training on public data and incentivise open‑weight releases. A policy read for those tracking the open‑source vs. regulation axis. (<a href="https://stratechery.com/2026/whos-afraid-of-chinese-models/">Stratechery</a>)  </p>
+</li>
+<li>
+<p><strong>Head of US AI safety agency resigns</strong> — The departure comes during the administration’s renewed push to restrict foreign open models, adding uncertainty to AI governance. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v1tmyz/head_of_us_ai_safety_agency_resigns/">Reuters via r/LocalLLaMA</a>)  </p>
+</li>
+<li>
+<p><strong>AI data‑centre cancellations skyrocket</strong> — Multiple hyperscale projects are being delayed or scrapped, suggesting an oversupply of GPU capacity. If sustained, this could lower compute costs for training and inference. (See dissection below.)  </p>
+</li>
+<li>
+<p><strong>OpenClaw’s star fades</strong> — Once the talk of the local‑agent community, the platform’s usage‑based pricing caused a rapid user exodus. A reminder that agent‑framework lock‑in is risky. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v1pvgb/so_what_happened_with_openclaw/">r/LocalLLaMA</a>)  </p>
+</li>
+<li>
+<p><strong>DavidAU’s Qwen 3.6 27B fine‑tune shows unexpected gains</strong> — The infamous model‑tinkerer released a “Fable‑Fusion‑711‑Uncensored‑Heretic” variant that reportedly exceeds base Qwen in some benchmarks, despite community scepticism. Another data point on how fast community fine‑tuning cycles move. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1v275de/davidau_somehow_managed_to_improve_qwen_36_27b/">r/LocalLLaMA</a>)</p>
+</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<h3 id="qwen-38-max-is-insane-your-ai-guy-1549">QWEN 3.8 Max Is Insane! — Your AI Guy (15:49)</h3>
+<ul>
+<li>Extensive testing across coding, reasoning, math, and agent tasks places Qwen 3.8 Max just behind “Fable” (an ambiguous internal codename) and ahead of GPT‑5.6, Claude, and others on several fronts.  </li>
+<li>The model’s speed and pricing make it a practical choice for production agent pipelines, challenging the notion that open models are only for experimentation.  </li>
+<li>Benchmarks suggest it is currently the <strong>strongest open‑weight model</strong>, though real‑world variability and the “Fable” comparison need independent verification.  </li>
+<li>If you need deep per‑task numbers, watch the full breakdown, but the headline ranking is already captured in today’s AI Revolution roundup.<br />
+<a href="https://www.youtube.com/watch?v=CylumEieXEk">https://www.youtube.com/watch?v=CylumEieXEk</a></li>
+</ul>
+<h3 id="ai-bubble-data-center-cancellations-are-sky-rocketing-tech-unfiltered-1451">AI Bubble: Data Center Cancellations Are Sky Rocketing — Tech Unfiltered (14:51)</h3>
+<ul>
+<li>Large AI data‑centre projects from hyperscalers and startups alike are being delayed or cancelled outright, indicating a potential overbuild relative to actual AI inference demand.  </li>
+<li>Cloud spending trends appear to be cooling, which could translate into <strong>cheaper GPU instances</strong> for training and experimentation in the coming quarters.  </li>
+<li>The video frames this as a “reality check,” not an AI winter—AI adoption continues, but the infrastructure boom may have overshot near‑term needs.  </li>
+<li>While tangential to Snowflake or dbt, GPU cost trends directly affect the economics of running local‑LLM inference in the cloud and any GPU‑backed workloads in Snowflake.<br />
+<a href="https://www.youtube.com/watch?v=hSz11hGoWjo">https://www.youtube.com/watch?v=hSz11hGoWjo</a></li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong>MeghanaKandagatla-USF/DBTwithSnowflake</strong> — A complete end‑to‑end tutorial for running dbt locally with Snowflake. Perfect for onboarding new analytics engineers or refreshing your local dev loop. (<a href="https://github.com/MeghanaKandagatla-USF/DBTwithSnowflake">GitHub</a>)</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong>unslothai/unsloth</strong> — The local training/running UI now with official AMD support; still the easiest way to fine‑tune your own Qwen, Kimi, or DeepSeek variants without touching a CLI. (<a href="https://github.com/unslothai/unsloth">GitHub</a>)</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong>Graphify-Labs/graphify</strong> — Turn any codebase (docs, SQL schemas, configs, PDFs) into a queryable knowledge graph that you can use as a skill for Claude Code, Cursor, Codex, or Gemini CLI. Highly relevant for navigating large dbt projects or Snowflake data models. (<a href="https://github.com/Graphify-Labs/graphify">GitHub</a>)  </li>
+<li><strong>EthanXiang777/circuit-framework</strong> — A multi‑agent LLM trading system that showcases how to build and orchestrate agent swarms for data‑intensive tasks. Useful reference for anyone building agentic data pipeline components. (<a href="https://github.com/EthanXiang777/circuit-framework">GitHub</a>)</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<p>✅ <a href="https://github.com/Graphify-Labs/graphify">Graphify-Labs/graphify</a> — Turn any codebase into a queryable knowledge graph for AI agents.<br />
+✅ <a href="https://github.com/unslothai/unsloth">unslothai/unsloth</a> — Local UI for training and running open models, now with AMD support.<br />
+✅ <a href="https://github.com/EthanXiang777/circuit-framework">EthanXiang777/circuit-framework</a> — Multi‑agent LLM trading research system.<br />
+✅ <a href="https://github.com/MeghanaKandagatla-USF/DBTwithSnowflake">MeghanaKandagatla-USF/DBTwithSnowflake</a> — dbt with Snowflake tutorial.<br />
+✅ <a href="https://github.com/wudaixiongjie/react-data-analysis-agent">wudaixiongjie/react-data-analysis-agent</a> — LangChain ReAct CSV analysis agent with DeepSeek, evals, and Docker.<br />
+<a href="https://github.com/tyler-west2006/bethesda-rpg-translator-v2026">tyler-west2006/bethesda-rpg-translator-v2026</a> — Windows localization utility with local LLM integration for Bethesda RPGs.<br />
+<a href="https://github.com/tjohncan/star-schema">tjohncan/star-schema</a> — Curating scientific information with modern data tech.<br />
+<a href="https://github.com/CalynJ/dbt-invoice-">CalynJ/dbt-invoice-</a> — dbt invoice project (details sparse).<br />
+<a href="https://github.com/JinToliq/Contexture">JinToliq/Contexture</a> — MVVM framework for Unity UI.</p>
+      <nav class="pager"><a class="pager-link" href="2026-07-20.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-07-20</span></a><a class="pager-link pager-next" href="2026-07-22.html"><span class="mono dim">Newer</span><span>Daily Signal — 2026-07-22</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>

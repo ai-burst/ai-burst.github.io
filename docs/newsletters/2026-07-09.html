@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-07-09</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">09 Jul 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">9 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.058</span>
+      </div>
+      <h1>Daily Signal — 2026-07-09</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>OpenAI unveils GPT‑Live — a new, much smarter voice model for ChatGPT.</strong> The long-anticipated upgrade to voice mode is real, and it's a generational leap. The new model can listen, speak, see images (via camera or screen), and stay temporally aware — you can interrupt, refer to “what we talked about 10 minutes ago,” and even hand off harder problems to GPT‑5.5 behind the scenes. The demos (image interaction, natural conversation, discoverability widgets) show a strikingly fluid assistant that behaves more like a human partner than a step-by-step bot.</p>
+<ul>
+<li><strong>How to make the most of it:</strong> If you’re building local voice assistants, study the <em>GPT‑Live architecture</em>. It splits fast-turnaround tasks from deeper reasoning by delegating to a frontier model — a pattern you can emulate with a small local model for quick responses and a larger one for heavy lifting (<a href="https://openai.com/index/introducing-gpt-live/">OpenAI blog</a>, <a href="https://simonwillison.net/2026/Jul/8/introducing-gptlive/#atom-everything">Simon Willison's notes</a>).</li>
+<li><strong>For data/AI engineers:</strong> The ability to see your screen and maintain live context means future coding agents might pair with voice for real-time code reviews or on-the-fly Snowflake query fixes. Start thinking about how <em>voice + visual context</em> could accelerate your dbt/CoCo workflows.</li>
+<li><strong>Caveat emptor:</strong> This is OpenAI’s cloud-only model; no open-weight equivalent exists yet. But it raises the bar for what a “reasonable” local voice model should try to achieve, and pushes the frontier on interruptibility and tool-use — qualities that will trickle down to open models within months.</li>
+</ul>
+<hr />
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li><strong>ML Jobs in Snowflake Data Clean Rooms now generally available.</strong> You can now train and score machine‑learning models across multiple parties <em>without moving the underlying sensitive records</em>. For organizations that share data with partners but must respect privacy boundaries, this is a substantial unlock — think privacy‑preserving joint‑customer scoring, fraud detection, or supply‑chain forecasting. The GA means production‑grade governance is baked in (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/ml-jobs-snowflake-data-clean-rooms">Snowflake blog</a>).</li>
+<li><strong>Snowplan V2 brings AI‑driven financial planning into Snowflake.</strong> The new FP&amp;A tool promises faster forecasting and more agile decision‑making directly inside the warehouse. If your stack already combines Snowflake and dbt for operational analytics, being able to pull planning models into the same governed data layer reduces the classic “export‑to‑Excel” sprawl (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/fpa-ai-modernization-snowplan-v2">Snowflake blog</a>).</li>
+<li><strong>Type‑2 Slowly Changing Dimensions can now be built directly as Dynamic Tables.</strong> A Snowflake Principal Architect has detailed how to implement SCD‑2 inside Dynamic Tables, eliminating the need for complex insert‑update‑delete orchestration. This is a long‑sought pattern for dbt‑style transformation on Snowflake — your slowly changing dimensions can now be purely declarative (<a href="https://medium.com/snowflake/your-slowly-changing-dimension-as-a-snowflake-dynamic-table-67c35ce76afc?source=rss----34b6daafc07---4">Medium</a>).</li>
+<li><strong>Snowflake CLI v3.22.0</strong> adds the ability to set tags on Streamlit apps during deploy and relaxes config‑file permission checks (with an opt‑in flag). The tags feature is a small but welcome step toward full metadata‑driven governance of Snowflake‑hosted apps (<a href="https://github.com/snowflakedb/snowflake-cli/releases/tag/v3.22.0">GitHub releases</a>).</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong>dbt productivity gains quantified: 58.7 FTEs, $1.75M/year.</strong> A new dbt Labs blog post reports that customers recoup significant capacity through modern data transformation practices. While not a feature release, it’s ammunition for your next budget conversation — the argument that a well‑tuned dbt project on Snowflake pays for itself is now backed by concrete numbers (<a href="https://www.getdbt.com/blog/data-infrastructure-productivity-gains">dbt blog</a>).</li>
+</ul>
+<h3 id="cortex-code">Cortex Code</h3>
+<ul>
+<li><strong>“Close the Loop” — unifying Claude Code and CoCo for Snowflake data + AI engineering.</strong> This Medium piece from Snowflake engineers demonstrates a single <em>Act → Observe → Reason → Repeat</em> loop that ties together Claude Code (for general software), CoCo (the Cortex Code agent for Snowflake‑specific SQL/Python/data tasks), and the overall application stack. The practical takeaway: you no longer need to copy‑paste between agents; one orchestrated loop can handle schema migrations, dbt model changes, and Streamlit app updates in a single, coherent session. For data engineers already using CoCo, embedding it into a larger agentic workflow unlocks end‑to‑end reliability (<a href="https://medium.com/snowflake/close-the-loop-loop-engineering-in-claude-code-0bd3f5e3c50e?source=rss----34b6daafc07---4">Medium</a>).</li>
+</ul>
+<hr />
+<details class="watchlist" id="todays-watchlist" open><summary>Today’s Watchlist</summary>
+<ol>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=V_tRPdeK-AU">China Just Started The AI Cold War: Best AI Models Get Locked</a></strong> (AI Revolution, 14 min)<br />
+   A dense roundup covering Beijing locking down Alibaba/ByteDance models, DeepSeek building its own chip, Claude Code’s security warning, MoWorld’s real‑time world model without Nvidia, OpenAI preparing GPT‑5.6, and Anthropic’s Fable 5 extension. For an engineer who tracks both the open‑weight landscape and the geopolitics shaping model availability, this is the one video that catches you up on all of today’s major threads.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=dk1Y3VtC3F8">12 Open Source AI Tools That Feel ILLEGAL To Know About</a></strong> (Cloud Codes, 14 min)<br />
+   A hands‑on compilation that walks through building a self‑hosted AI stack with Ollama, Qdrant, Chonkie, and other open‑source replacements for paid SaaS. It hits squarely on the local‑LLM developer’s daily reality — how to reduce hallucination, serve models cheaply, and avoid vendor lock‑in. The inclusion of Qdrant and Chonkie as a RAG‑fix combo is especially useful if you’re running a private knowledge‑base agent.</p>
+</li>
+</ol>
+<hr />
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>MiniMax plans a 2.7‑trillion‑parameter model “M3 Pro.”</strong> Unverified reports say the Chinese startup will release the model later this year, potentially making it the largest open‑weight model ever offered. If true, it would radically shift the local‑LLM landscape — but running even a heavily quantized version would require exorbitant hardware (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uqnqsc/chinas_minimax_plans_to_launch_27trillion/">Reddit discussion</a>).</p>
+</li>
+<li>
+<p><strong>Samsung’s chip division earns more in one year than the previous 40 years combined.</strong> Surging memory and storage prices — driven by AI demand — have made Samsung the world’s most profitable company. A direct consequence: the memory bandwidth that largely determines LLM token cost is getting <em>more</em> expensive, not cheaper. The “Why AI Tokens Are So Expensive” video below dissects the hardware reality; this profit report confirms the underlying trend is accelerating (<a href="https://www.tomshardware.com/tech-industry/samsungs-chip-division-expects-to-out-earn-its-entire-40-year-history-in-2026">Tom’s Hardware</a>, via <a href="https://www.reddit.com/r/LocalLLaMA/comments/1urh2mg/now_brothers_we_know_why_we_are_so_fucked_up/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>GLM‑5.2 sparks safety panic — and it can run on consumer gear.</strong> The fully open 753B‑parameter MoE model sparked sensational headlines about “scary” open‑source AI, yet enthusiasts are already quantizing it to run on 4× DGX Sparks (25 t/s at 100K context). The reality check: GLM‑5.2 in 4‑bit scored 70.8% on Terminal‑Bench 2.1, respectable but far from the full‑precision model’s 81.0%, and a reminder that intelligence still scales with compute (<a href="https://futurism.com/artificial-intelligence/open-source-ai-model-scary-mythos">Futurism article</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1urhzox/glm52_fearmongering_in_the_press/">Reddit discussion</a>; run report: <a href="https://www.reddit.com/r/LocalLLaMA/comments/1ur41ou/4bit_glm52_753b_moe_on_4_dgx_spark_708_on/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>Seasonic PSU calculator leaks RTX 5080 SUPER (24 GB) and RTX 5070 Ti SUPER (24 GB).</strong> Unverified but tantalizing: next‑gen Nvidia cards with substantially more VRAM could appear. If confirmed, 24 GB on a single 5070‑class card would be a game‑changer for local LLM developers who rely on single‑GPU setups to run 27B–33B models at quality quants (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uqzv4q/seasonic_psu_calculator_now_mentions_rtx_5080/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>Qwen3.6‑27b: best local coding model or brittle spaghetti‑code generator?</strong> The Cloud Codes video below claims it rivals Claude Sonnet when coupled with Multi‑Token Prediction and 4‑bit quantization on a single RTX 3090. But Reddit developers report that at scale (100k+ LoC projects) it ignores architecture, mixes concerns, and skips test automation. The truth is context‑dependent: for single‑file tasks it flies; for enterprise‑grade software, you still need strong scaffolding (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uqzjdy/qwen3627b_does_not_understand_software/">Reddit critique</a>).</p>
+</li>
+<li>
+<p><strong>MTPLX V2 pushes Qwen3.6‑27b to 82 t/s on a MacBook Pro.</strong> The new MLX‑based inference engine lets Apple‑Silicon users extract desktop‑class speed from a 27B model. If you’re developing on a Mac, this is a direct upgrade to your local coding assistant’s responsiveness (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1ure84m/82_tps_on_qwen_36_27b_on_a_macbook_pro/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>Tess‑4‑27B: a fine‑tune from Migel Tissera surfaces.</strong> Based likely on Qwen, it’s another creative writing / assistant variant. Early adopters should verify any claims against your own eval harness before swapping it in (<a href="https://huggingface.co/">Hugging Face</a> via <a href="https://www.reddit.com/r/LocalLLaMA/comments/1uqxnwn/tess427b_by_migel_tissera/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>Kimi‑K2.6‑dspark quant released by Novita.</strong> A compact, quantized variant of the Kimi model appears on Hugging Face, adding another option for low‑resource inference (<a href="https://huggingface.co/novita/kimi-k2.6-dspark">Hugging Face</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1uqntyy/novitakimik26dspark_hugging_face/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>llama.cpp gains Q2_0 ternary‑quant support for Bonsai 1.58‑bit models.</strong> A new pull request adds CPU inference for extreme 1.58‑bit ternary models, pushing the limit of how small a viable model can be. This is a niche experiment today, but it signals where memory‑constrained edge deployment is heading (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uqur7o/ternary_bonsai_158bit_models_ggml_add_q2_0/">PR discussion</a>).</p>
+</li>
+<li>
+<p><strong>Robostral Navigate: Mistral releases a single‑camera navigation AI.</strong> An open‑weight vision‑language‑action model for robot navigation, fine‑tunable and local‑runnable. Useful for anyone exploring embodied AI with local models (<a href="https://mistral.ai/news/robostral-navigate">Mistral blog</a> via <a href="https://www.reddit.com/r/LocalLLaMA/comments/1uqtzes/robostral_navigate_singlecamera_ai_navigation/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>Bun rewritten in Rust by a sophisticated agentic loop.</strong> Jarred Sumner used a dynamic agent‑based workflow to port Bun from Zig to Rust — a real‑world example of how AI can accomplish a massive, high‑stakes refactor. The patterns described (dynamic workflows, trial runs, automated verification) are directly applicable to data engineering migrations on Snowflake/dbt (<a href="https://bun.com/blog/bun-in-rust">Bun blog</a> via <a href="https://simonwillison.net/2026/Jul/8/rewriting-bun-in-rust/#atom-everything">Simon Willison</a>).</p>
+</li>
+</ul>
+<hr />
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=iDxrS6zpEX4">Best Local Coding Model Right Now in 2026</a></strong> (Cloud Codes, 15 min)  </p>
+<blockquote>
+<p><em>Key takeaways</em>  </p>
+</blockquote>
+</li>
+<li>
+<p>Qwen3.6‑27B with Multi‑Token Prediction (MTP) and 4‑bit GGUF quantization via Unsloth fits on a single used RTX 3090 and rivals cloud services like Claude Sonnet for many tasks.  </p>
+</li>
+<li>The video walks through the stack: model download, quantization, local inference server setup, and integration with coding tools.  </li>
+<li>
+<p>The central claim is that this combination delivers “free, private, and lightning‑fast” coding assistance. However, real‑world feedback (see Headlines) suggests scaling to large codebases exposes architectural blind spots — use it as a fast first‑pass generator, not an autonomous architect.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=YdkMwsbiWSw">Why AI Tokens Are So Expensive (The Real Reason)</a></strong> (Cloud Codes, 8 min)  </p>
+<blockquote>
+<p><em>Key takeaways</em>  </p>
+</blockquote>
+</li>
+<li>
+<p>Output tokens cost ~6× more than input tokens because the <em>decode</em> phase is memory‑bandwidth‑bound: each token generation requires reading the entire KV cache, which saturates H100 memory bandwidth.  </p>
+</li>
+<li>The KV cache is both the magic behind fast generation and the bottleneck; re‑using it across requests can reclaim cost, but most APIs charge as if it’s always recomputed.  </li>
+<li>
+<p>Understanding the prefill/decode split helps you optimize prompt design and agent loops — minimizing unnecessary output tokens is a direct cost saver.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=VHKXIHP4i10">Google OKF vs RAG Confusion, Finally Cleared Up</a></strong> (Cloud Codes, 9 min)  </p>
+<blockquote>
+<p><em>Key takeaways</em>  </p>
+</blockquote>
+</li>
+<li>
+<p>OKF (Open Knowledge Format) is a <em>format</em> for curated, pre‑digested knowledge; RAG is a <em>process</em> for retrieving relevant chunks at query time. They complement, not compete.  </p>
+</li>
+<li>Standard RAG pipelines lose high‑level context during chunking; OKF can supply that context, making the RAG step far more effective for complex agents.  </li>
+<li>For Snowflake‑based RAG applications (e.g., using Cortex Search), you can pre‑build OKF‑like curated summaries on top of your governed data, then feed them into retrieval, boosting accuracy without changing infrastructure.</li>
+</ul>
+<hr />
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/elementary-data/elementary">elementary‑data/elementary</a></strong> — The go‑to dbt‑native data observability tool that monitors your pipelines out of the box. Self‑hostable, and integrates directly with your dbt artifacts to detect anomalies, schema changes, and freshness issues. Once installed, you get a clean dashboard of pipeline health without building custom monitors.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/ohad6k/ditto">ohad6k/ditto</a></strong> — Mines your Claude Code and Codex logs to build a local <em>you.md</em> agent profile. This is a clever way to capture your coding preferences, shortcuts, and stylistic habits across sessions and tools, making your local agent feel more personal without manual note‑taking.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/eminerdeger/opsflow-ai">eminerdeger/opsflow‑ai</a></strong> — A synthetic operational data platform that uses PostgreSQL + dbt for statistical anomaly detection and root‑cause analysis. Perfect for testing dbt‑based observability models with realistic, correlated data before deploying to production.</li>
+</ul>
+<hr />
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <strong><a href="https://github.com/elementary-data/elementary">elementary‑data/elementary</a></strong> — dbt‑native data observability, self‑hosted or cloud (2,377 stars).</li>
+<li>✅ <strong><a href="https://github.com/ohad6k/ditto">ohad6k/ditto</a></strong> — Mine Claude Code/Codex logs into a local agent profile (42 stars).</li>
+<li>✅ <strong><a href="https://github.com/eminerdeger/opsflow-ai">eminerdeger/opsflow‑ai</a></strong> — Synthetic operational data with PostgreSQL + dbt analytics (1 star).</li>
+<li>✅ <strong><a href="https://github.com/rodrigobnogueira/faker-observability-provider">rodrigobnogueira/faker‑observability‑provider</a></strong> — Correlated OTel‑style trace trees and log formats for observability testing (1 star).</li>
+<li>✅ <strong><a href="https://github.com/azhangd/nba-analytics-duckdb">azhangd/nba‑analytics‑duckdb</a></strong> — Local analytics warehouse with DuckDB, Dagster, and dbt (2 stars).</li>
+<li><strong><a href="https://github.com/simonlin1212/Vibe-Research">simonlin1212/Vibe‑Research</a></strong> — Personal trading research agent powered by AI (568 stars).</li>
+<li><strong><a href="https://github.com/strategy-guidewin/n8n-nodes-datadog-incident-observability">strategy‑guidewin/n8n‑nodes‑datadog‑incident‑observability</a></strong> — Datadog incident observability node for n8n workflows (0 stars).</li>
+<li><strong><a href="https://github.com/svy-tui/svy">svy‑tui/svy</a></strong> — Interactive TUI for historical sysstat data (1 star).</li>
+<li><strong><a href="https://github.com/evgeniimatveev/Snowflake-A-Z">evgeniimatveev/Snowflake‑A‑Z</a></strong> — Hands‑on Snowflake practice from SQL to Streamlit dashboard (1 star).</li>
+<li><strong><a href="https://github.com/Ankit-c2104/airbnb-dbt-snowflake-project">Ankit‑c2104/airbnb‑dbt‑snowflake‑project</a></strong> — End‑to‑end Snowflake‑dbt sample project (1 star).</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-07-08.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-07-08</span></a><a class="pager-link pager-next" href="2026-07-10.html"><span class="mono dim">Newer</span><span>Daily Signal — 2026-07-10</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today’s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>

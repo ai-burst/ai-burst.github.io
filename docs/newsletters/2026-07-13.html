@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-07-13</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">13 Jul 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.051</span>
+      </div>
+      <h1>Daily Signal — 2026-07-13</h1>
+      <h2 id="breaking-news-colibri-engine-puts-a-744b-moe-model-on-a-laptop">Breaking News: Colibri Engine Puts a 744B MoE Model on a Laptop</h2>
+<p>The local LLM scene just crossed a threshold that many thought was years away. A new 1,300-line C engine called <strong>Colibri</strong> (<a href="https://www.youtube.com/watch?v=19xCOJxWU0A">video</a>) has demonstrated running <strong>GLM-5.2</strong>—a 744-billion-parameter mixture-of-experts (MoE) model—on a laptop with just 25GB of RAM and <strong>no GPU</strong>. The trick lies in the MoE architecture: only about 40B parameters are active per token, so Colibri pins the dense core in RAM and streams the remaining 21,504 experts off the SSD on demand, exactly when the router asks for them. The result is usable inference on hardware that would normally need an order of magnitude more memory.</p>
+<p>Why this matters for the open-weight world: it means frontier-scale models can now run on consumer hardware without cloud dependency, drastically lowering the barrier for experimentation, agentic loops, and privacy-sensitive workloads. The engine is lightweight, portable, and designed to be used with any MoE model that follows a similar pattern—not just GLM-5.2.</p>
+<p><strong>How to make the most of it right now:</strong></p>
+<ul>
+<li><strong>Try it on your existing MoE models</strong> – Colibri’s source is small enough to audit and adapt. If you run any large MoE (like DeepSeek-V2 variants or Qwen-MoE), measuring the active-parameter count and restructuring the loader to stream experts from SSD can yield similar gains.</li>
+<li><strong>Pair it with a fast NVMe drive</strong> – The approach relies on low-latency SSD reads. A PCIe 4.0/5.0 NVMe with high random read IOPS will make the streaming feel nearly seamless.</li>
+<li><strong>Combine with quantization</strong> – Even 4-bit or 5-bit quants of the dense core can further reduce RAM pressure. The Colibri demo already uses a compact representation; applying a quality quant like Voodoo Quant (see Headlines) could push the limits even lower.</li>
+</ul>
+<p>A second piece of breaking news for agentic practitioners: <strong>llama.cpp b9978</strong> fixes a long-standing checkpoint bug that was silently degrading multi-turn agent performance (<a href="https://github.com/ggml-org/llama.cpp/releases/tag/b9978">release</a>). The bug caused every agent turn to create a new checkpoint, collapsing the coverage window so that context rewinds—common in tool-calling loops—erased all checkpoints and forced a full reprocess. The fix ensures closely-spaced checkpoints are spaced correctly, saving tokens and improving latency in agentic workflows. If you run llama.cpp for agent loops, update immediately.</p>
+<hr />
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p>A new open-source project, <strong>commit-chronicles</strong> (<a href="https://github.com/anchildress1/commit-chronicles">repo</a>), uses <strong>Snowflake Cortex</strong> to power developer analytics dashboards—visualizing commit history, coding habits, productivity trends, and even AI-assisted commits. For data teams already using Snowflake, this is a lightweight way to bring git metrics into the warehouse without external SaaS tools. The project is early but shows how Cortex can serve as the backend for internal analytics apps.</p>
+<p>Another entry, <strong>snowflake-coco-smart-agro</strong> (<a href="https://github.com/sujanmolla09-bd/snowflake-coco-smart-agro">repo</a>), was built for the Snowflake CoCo CLI Hackathon 2026. It’s an AI-powered smart agriculture agent leveraging Cortex Code (CoCo) to generate and execute SQL and Python against Snowflake data. While more of a demo, it demonstrates the pattern of using CoCo as an agent for domain-specific analytics—something to watch as the tooling matures.</p>
+<h3 id="dbt">dbt</h3>
+<p>A small but useful example: <strong>dbt-databricks-lakehouse-sample</strong> (<a href="https://github.com/Anton-Stechman/dbt-databricks-lakehouse-sample">repo</a>) provides a complete dbt project for a Databricks-based lakehouse. While it’s not a new release, it’s a handy reference for anyone bridging dbt with Databricks (or considering Snowflake vs. Databricks lakehouse patterns). The project includes incremental models, snapshots, and tests—all good for studying best practices.</p>
+<hr />
+<details class="watchlist" id="todays-watchlist" open><summary>Today’s Watchlist</summary>
+<ol>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=byAXKYmeZho">GPT 5.6 Mystery, New 2.7T AI, DeepSeek New AI Chip, Orca World Model, Grok 4.5 and More AI News</a></strong> (18 min) – A classic AI Revolution weekly roundup. Covers the GPT-5.6 Sol launch, MiniMax’s 2.7T param model, DeepSeek building its own chip, ByteDance’s Seedream 5.0 Pro, and the BAAI Orca world model. If you need a single sit-down to catch up on the entire AI model race, this is it.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=19xCOJxWU0A">We Just Hit the Local LLM Tipping Point (Colibri)</a></strong> (8 min) – The deep dive behind today’s breaking news. Devsplainers walks through the MoE streaming mechanism that makes a 744B model run on a laptop. Essential viewing for anyone who wants to understand the technical loophole and how to replicate it with other MoE models.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=1mW19vaAvdY">“AI Just Broke: GPT-5.6 Sol, Grok 4.5 &amp; Meta Muse in One Week”</a></strong> (15 min) – Your AI Guy’s take on the same wave of releases. It adds context on the competitive dynamics and what these models mean for developers, agents, and the open-weight community. Good complement to the AI Revolution video if you want a second perspective.</p>
+</li>
+</ol>
+<hr />
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>Apple sues OpenAI over alleged trade secret theft</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uus189/apple_sues_openai_alleging_trade_secret_theft/">discussion</a>). The lawsuit claims the scheme was “at every level,” potentially involving the use of Apple’s proprietary data to train models. For the local/open-weight community, this adds another layer of uncertainty around frontier model provenance and may accelerate the push for fully auditable, open-weight alternatives.</p>
+</li>
+<li>
+<p><strong>moondream3.1-9B-A2B — a vision MoE for edge devices</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uunqcz/moondream319ba2b/">Reddit</a>). The new vision language model packs 9B total parameters but only 2B active, using a mixture-of-experts design tailored for low-resource inference. It’s a direct competitor to the tiny-VLM trend, promising strong image understanding with minimal VRAM—ideal for local agent vision tasks.</p>
+</li>
+<li>
+<p><strong>Voodoo Quant beats Unsloth Dynamic 2.0 by 95% on KLD</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uua3jd/voodoo_quant_beats_unsloth_dynamic_20_kld_by_95/">Reddit</a>). A new quantization method tested on Qwen3.5 0.8B and 2B shows drastically lower Kullback-Leibler divergence compared to the current leading dynamic quant. If the approach scales to larger models, it could significantly improve quality for 4-bit and below quants, making big models even more memory-friendly.</p>
+</li>
+<li>
+<p><strong>Anthropic’s J-space reasoning found in open Qwen3-8B</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uugulk/anthropic_found_claude_reasoning_in_silence/">Reddit</a>). Researchers applied the “Jacobian lens” (J-lens) to Qwen3-8B and discovered a hidden internal workspace similar to Claude’s J-space—silent reasoning chains that never appear in the output text. This could open new avenues for interpretability and steering of local models, potentially improving reliability in agentic tasks.</p>
+</li>
+<li>
+<p><strong>llama.cpp agentic workflows checkpoint fix</strong> — already covered in Breaking News, but worth reiterating: update to b9978 eliminates the reprocess penalty for multi-turn agent loops. The fix is particularly impactful for tool-calling and reasoning chains where context is long.</p>
+</li>
+<li>
+<p><strong>Running Qwen3.5-122B on Mac Studio 96GB: three bugs fixed</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uuwrc0/running_qwen35122b_on_mac_studio_96gb_fixed_3/">Reddit</a>). A user detailed three specific bugs in the qMLX serving stack that caused 3–5 minute cold fills on long-context agent coding. The fixes (prompt instability, message ID collisions, and a KV cache eviction issue) turn the Mac Studio into a viable long-context agent machine for the 122B model.</p>
+</li>
+<li>
+<p><strong>PrismML claims to compress Qwen3.6-27B to run on an iPhone</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uv54fv/compressed_version_of_qwen3627b_coming_from/">Reddit</a>). The Khosla-backed startup promises the largest-ever AI model on a smartphone. If the compression technique preserves quality, this could dramatically expand on-device agent capabilities and challenge the assumption that large models need cloud.</p>
+</li>
+<li>
+<p><strong>Flash-MSA: million-token training with sparse attention</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uv1f1q/flashmsa_accelerating_milliontoken_training_with/">Reddit</a>). New kernel work accelerates training of long-context models by leveraging structured sparsity in attention. While aimed at training, the technique could eventually trickle down to inference, enabling local models to handle even longer contexts.</p>
+</li>
+<li>
+<p><strong>24GB VRAM llama-server config exchange</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uukj2m/24gb_vram_llamaserver_config_exchange_thread/">Reddit</a>). A community thread collecting proven configurations for llama-server on RTX 3090/4090/7900 XTX. The focus is on maximizing VRAM utilization while keeping KV cache at 200k+ tokens. A goldmine for anyone squeezing 24GB GPUs.</p>
+</li>
+<li>
+<p><strong>Fable access extended again</strong> (<a href="https://simonwillison.net/2026/Jul/12/bump/">Simon Willison</a>). Anthropic has bumped Fable 5 availability on paid plans through July 19, keeping Claude Code’s weekly rate limits 50% higher. For developers relying on Fable for complex coding tasks, this is a short reprieve; the recurring pattern of extensions suggests the model may become a permanent fixture, but uncertainty remains.</p>
+</li>
+<li>
+<p><strong>Simon Willison on Directly Responsible Individuals</strong> (<a href="https://simonwillison.net/2026/Jul/12/directly-responsible-individuals/">blog</a>). A short note linking to GitLab’s DRI handbook. While not directly about AI, the concept of clear ownership for AI projects is critical for data/AI engineers. Worth a read for anyone scaling AI teams.</p>
+</li>
+</ul>
+<hr />
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong><a href="https://www.youtube.com/watch?v=psSL3Fi5zJE">SQLite + AI: The Database Revolution Nobody is Talking About</a></strong> (8 min)  </p>
+<ul>
+<li>Advances <code>sqlite-vec</code>, a zero-dependency C extension that brings vector search (KNN, cosine distance) directly into SQLite, eliminating the need for Pinecone, Weaviate, or ChromaDB.  </li>
+<li>Shows how to build a fully local RAG pipeline with just a single SQLite file—no separate vector database, no cloud.  </li>
+<li>Argues that for 80% of use cases, the simplicity and portability of SQLite with vector search outperforms managed solutions, especially for local LLM apps.  </li>
+</ul>
+<p><strong><a href="https://www.youtube.com/watch?v=IwN-eK1s8og">Every Local AI I Run Now Shares ONE Memory | (LLM Wiki + OKF)</a></strong> (15 min)  </p>
+<ul>
+<li>Builds a “librarian” agent that uses a folder of markdown files as a shared, permanent memory for all local agents, implementing Andrej Karpathy’s LLM-wiki concept and Google’s Open Knowledge Format (OKF) spec.  </li>
+<li>No vector database, no cloud API, no re-embedding—just MCP calls and a simple directory structure. The harness, memory, and model all run on the same box via llama.cpp.  </li>
+<li>The demo shows how teaching one agent a fact makes it instantly available to all others, a practical pattern for building collaborative local agent systems.  </li>
+</ul>
+<p><strong><a href="https://www.youtube.com/watch?v=keillCm88ZY">GitHub Trending Today #40</a></strong> (15 min)  </p>
+<ul>
+<li>Highlights 35 trending open-source projects, including <strong>Agent Skills</strong> (a framework for building agent skills) and <strong>ax</strong> (a lightweight HTTP framework for edge computing).  </li>
+<li>While not all projects are AI-related, the compilation is useful for spotting tools that could integrate with LLM workflows or data pipelines.  </li>
+<li>The rapid-fire format makes it easy to skim for anything that catches your eye; the text version link is provided for quick scanning.  </li>
+</ul>
+<hr />
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong>commit-chronicles</strong> (<a href="https://github.com/anchildress1/commit-chronicles">repo</a>) – Snowflake Cortex-powered developer analytics. I’d use it to track AI-assisted commits and team productivity trends directly in our warehouse.</li>
+<li><strong>snowflake-coco-smart-agro</strong> (<a href="https://github.com/sujanmolla09-bd/snowflake-coco-smart-agro">repo</a>) – A CoCo CLI hackathon project that shows how to build an agent that generates SQL/Python for agriculture analytics. Good inspiration for internal CoCo agents.</li>
+</ul>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong>dbt-databricks-lakehouse-sample</strong> (<a href="https://github.com/Anton-Stechman/dbt-databricks-lakehouse-sample">repo</a>) – A complete dbt project for Databricks lakehouse. I’d study it for incremental model patterns and to compare with our Snowflake dbt setups.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong>2Wild-Vision-Mode</strong> (<a href="https://github.com/tonyd2wild/2Wild-Vision-Mode">repo</a>) – One-shot setup to give any blind LLM vision via a tiny local VLM (Qwen3.5-0.8B). Works on Mac (MLX), PC+NVIDIA (llama.cpp), and DGX Spark. I’d use it to add vision to a local coding agent without a large VLM.</li>
+<li><strong>laap-AGI</strong> (<a href="https://github.com/lorryjovens-hub/laap-AGI">repo</a>) – A zero-LLM cognitive architecture for digital lifeforms, with a Rust PSI core and quantum reasoning. It’s a fascinating alternative to LLM-based agents, though more experimental than practical.</li>
+<li><strong>Danus</strong> (<a href="https://github.com/frenzymath/Danus">repo</a>) – Orchestrates mathematical reasoning agents with fact-graph memory. Could be used to build a local math assistant that doesn’t rely on frontier models.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong>awesome-agentic-commerce</strong> (<a href="https://github.com/MentionNetwork/awesome-agentic-commerce">repo</a>) – Curated list of protocols, MCP servers, tools, and APIs for AI agents that shop, sell, and transact. Useful for exploring e-commerce automation with local agents.</li>
+<li><strong>codex-pulse</strong> (<a href="https://github.com/SisyphusSQ/codex-pulse">repo</a>) – A local-first macOS observability companion for Codex usage, quotas, and sessions. If you’re a heavy Codex user, this helps track your limits and data health.</li>
+</ul>
+<hr />
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li><a href="https://github.com/sequelize/sequelize">sequelize/sequelize</a> – Feature-rich ORM for Node.js/TypeScript, now with Snowflake support (30k stars). ✅</li>
+<li><a href="https://github.com/EaseFilterSDK/rust-file-security-sdk">EaseFilterSDK/rust-file-security-sdk</a> – Rust SDK for file system security filters (monitor, control, encryption).</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-07-12-weekly.html"><span class="mono dim">Older</span><span>Weekly Signal — 2026-07-12</span></a><a class="pager-link pager-next" href="2026-07-14.html"><span class="mono dim">Newer</span><span>Daily Signal — 2026-07-14</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news-colibri-engine-puts-a-744b-moe-model-on-a-laptop">Breaking News: Colibri Engine Puts a 744B MoE Model on a Laptop</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today’s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>

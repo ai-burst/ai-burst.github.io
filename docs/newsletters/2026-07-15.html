@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-07-15</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">15 Jul 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">7 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.030</span>
+      </div>
+      <h1>Daily Signal — 2026-07-15</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Open-weight floodgates: Kimi K3, DeepSeek V4, Bonsai 27B and the quest for ever-more-efficient local models</strong></p>
+<p>A week that could reshape the local‑LLM landscape: Kimi K3 is expected to drop within hours, DeepSeek V4’s general‑availability launch is slated for later this week, and PrismML shipped a 27‑billion‑parameter ternary <strong>Bonsai</strong> model that runs near‑fp16 quality on as little as 10 GB of memory – including live in‑browser via WebGPU (<a href="https://huggingface.co/PrismML/Bonsai-Qwen-3.6-27B-Base-1bit">PrismML Bonsai Qwen 3.6 27B HuggingFace</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1uwf1x4/prismml_bonsai_qwen_36_27b/">Reddit discussion</a>). Separately, Zhipu AI teased a new GLM model (likely GLM‑5.5) arriving in August, and the GLM‑5.2 MoE can already be streamed from an SSD on a laptop with zero GPU via the <strong>Colibri</strong> runtime (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uwbpmw/a_new_glm_model_incoming/">Reddit rumour</a>, <a href="https://www.youtube.com/watch?v=mkr4idOtj20">Colibri demo video</a>). If even half of these deliveries land, open‑weight model choice and inference efficiency will take a step‑change that data engineers running local stacks cannot ignore.</p>
+<p><strong>How to make the most of it today:</strong></p>
+<ol>
+<li><strong>Try Bonsai 27B in your browser</strong> – the WebGPU demo uses 1‑bit quantisation, fitting a 27B dense model into ~5 GB. It’s a practical playground for evaluating ternary quality on your real prompts without installing anything.</li>
+<li><strong>Keep an eye on the PRs</strong> – the Community‑driven <strong>MTP decoding patch for pre‑Ampere GPUs</strong> (Kepler–Turing) means older hardware can soon accelerate speculative decode too (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uwjd45/mtp_decoding_patched_for_preampere_gpus/">GitHub discussion</a>). Combined with upcoming Kimi K3/DeepSeek V4 weights, you may be able to serve frontier‑class reasoning on modest infra.</li>
+<li><strong>Watch quantisation tooling</strong> – the Qwen 3.5 122B “Heretic” ROCm FP4 iMatrix quant (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uwq1ia/qwen_35_122b_heretic_rocmfp4_imatrix/">Reddit</a>) and the buzz around 1‑bit Bonsai signal that the ecosystem is racing to turn massive models into anything that fits on a single machine.</li>
+</ol>
+<hr />
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Iceberg table ownership is the new metadata battleground.</strong> A new Snowflake Medium article cuts through the confusion: the decisive factor for whether an Iceberg table is Snowflake‑managed or self‑managed is who owns the metadata lifecycle – not where the Parquet files sit (<a href="https://medium.com/snowflake/snowflake-managed-vs-self-managed-iceberg-tables-what-actually-determines-the-difference-c5615ba0d280?source=rss----34b6daafc07---4">Snowflake‑Managed vs. Self‑Managed Iceberg Tables</a>). For data engineers already using external engines alongside Snowflake, this crystallises the governance decision: you can let Spark write the files but let Snowflake govern the table, striking a balance between openness and manageable operations.  </p>
+<p>Meanwhile, the deep‑dive <strong>“Iceberg Catalogs: Below the Surface”</strong> delivers a reproducible scorecard for Iceberg catalog interoperability, reinforcing that “catalog lock‑in” is now the real risk, not the table format itself (<a href="https://medium.com/snowflake/iceberg-catalogs-below-the-surface-2d646645f4ad?source=rss----34b6daafc07---4">Iceberg Catalogs</a>). If you’re architecting a multi‑engine platform in 2026, the catalog layer needs as much design attention as the storage format did two years ago.</p>
+<p>On the streaming side, a joint Snowflake–AWS article shows how <strong>Apache Flink + Snowflake</strong> contextualises raw SCADA sensor data in sub‑second windows, turning industrial telemetry into analyst‑ready rows without a batch intermediate (<a href="https://medium.com/snowflake/sub-second-contextualization-at-scale-turning-raw-scada-data-into-analyst-ready-rows-with-flink-cf68b64d1a19?source=rss----34b6daafc07---4">Sub-Second Contextualization at Scale</a>). For teams chewing on real‑time operational analytics, this pattern – enrich in‑flight, land directly into Snowflake – is a production‑ready template.</p>
+<p>Rounding out the Snowflake day: <strong>Snowflake CLI v3.22.1</strong> fixed a governance‑tag issue in <code>snow streamlit deploy</code> that could fail when the deploying role lacked APPLY on schema‑inherited tags. The <code>tags</code> property in snowflake.yml now behaves more predictably: omit it to leave existing tags untouched; use <code>tags: []</code> to clear directly‑set tags (<a href="https://github.com/snowflakedb/snowflake-cli/releases/tag/v3.22.1">Release notes</a>).</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>dbt‑core v1.12.0‑rc3</strong> landed with some quality‑of‑life improvements for CLI users and a critical DAG fix: hints based on dbt usage (e.g., suggesting <code>dbt build</code> when you only invoked <code>run</code> plus <code>test</code>) help newcomers avoid common missteps, while a regression that could drop UDF dependencies when an overload SQL file was absorbed has been corrected (<a href="https://github.com/dbt-labs/dbt-core/releases/tag/v1.12.0rc3">Release notes</a>). If you’re already running v1.12 RC, upgrading to RC3 eliminates a potential dependency‑tree surprise.</p>
+<hr />
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<p><strong>1. GitHub Trending Skill #4: self-learning-skills, lazyskills, guard-skills, agent-skills, edict-agent</strong><br />
+<a href="https://www.youtube.com/watch?v=AEtqjE5dFaM">Watch on YouTube</a> (15 min)<br />
+A 35‑skill compilation from the “Github Awesome” channel that’s basically your Monday newsletter in video form. It spans lazy skill frameworks, guard‑skill safety layers, agent‑skill orchestration patterns (including edict‑agent), and self‑learning‑skill loops. For anyone building multi‑agent LLM systems on open‑weight stacks, these bite‑sized demos are a rapid survey of what the community is coding right now – pick the three that fit your current pipeline and drop them into your <code>skills/</code> folder.</p>
+<p><strong>2. 7 AI Conspiracies That Turn Out To Be Real (AI Myth Busters Ep01)</strong><br />
+<a href="https://www.youtube.com/watch?v=4IxurE-fNmw">Watch on YouTube</a> (14 min)<br />
+Part myth‑busting, part industry surveillance, this video investigates thirteen claims spanning ChatGPT’s “winter laziness,” per‑prompt water consumption, AI‑detector reliability, bot traffic, model collapse, and Claude’s alleged blackmail attempt. It’s a solid gut‑check for LLM developers who need to separate genuine model behaviour quirks from folklore – the em‑dash detector segment alone will change how you think about AI‑written text heuristics.</p>
+<hr />
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>PrismML’s ternary Bonsai 27B rewrites the cost‑capacity equation.</strong> The 1‑bit quantised Qwen 3.6 base model achieves near‑fp16 fidelity while requiring only ~5 GB of memory and running directly in the browser via WebGPU kernels (<a href="https://prismml.com/news/bonsai-27b">PrismML blog</a>, <a href="https://huggingface.co/PrismML/Bonsai-Qwen-3.6-27B-Base-1bit">HuggingFace</a>). Early reports show it’s usable even on an 8 GB Jetson Orin Nano at 4.3 t/s (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uwoemt/prismml_bonsai_27b_is_surprisingly_usable_on_the/">Reddit</a>). This isn’t a toy: it means a 27B‑class model can now serve as a local reasoning engine on edge hardware, a CD‑N‑deliverable web app, or a private‑cloud inference node with minimal GPU footprint.</p>
+<p><strong>KAT‑Coder‑Air V2.5, the coding specialist from Kuaishou’s AI team, will be released as open weights soon</strong> – a sign that the open‑weight coding‑model race is hot on the heels of frontier code assistants (<a href="https://xcancel.com/KwaiAICoder/status/2075482952696578544">Tweet</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1uwbe7w/katcoderair_v25_open_model_soon/">Reddit</a>). If you’re pipelining SQL/dbt generation or YAML‑heavy CI tasks, this is worth queueing for testing as soon as the weights drop.</p>
+<p><strong>OpenAI’s Codex gained GPT‑5.6 “Ultra” mode, Computer Use improvements, inline editing, PR review integration, and a “Sites” feature that lets you build and publish web apps directly inside the assistant</strong> (<a href="https://www.youtube.com/watch?v=eiQgljOrkWU">OpenAI video</a>). The combined effect shifts Codex from a code‑generation tool toward a fully‑hosted IDE‑class environment. For data engineers who already lean on LLMs for Snowflake UDFs or dbt model scaffolding, these tighter feedback loops reduce the round‑trip to manual testing. The “Sites” demo even generates a working web game from a plain‑English description, hinting at where Snowflake‑Streamlit‑in‑ChatGPT might be heading.</p>
+<p><strong>The Trump administration is reportedly discussing streamlined US open‑model export rules</strong>, allowing American releases of equal or lesser capability to leading Chinese open models (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uw9ucd/source_the_trump_administration_and_industry/">Reddit</a>). If confirmed, this would remove a significant chilling effect on US‑based open‑weight releases and could accelerate the already‑frenzied model cadence. For now, treat it as sourced rumour, but the directional signal aligns with the flurry of new models we’re seeing.</p>
+<p><strong>Satya Nadella issued a warning about companies inadvertently feeding sensitive business information to AI providers</strong>, urging a “sovereign AI” approach to avoid model labs becoming competitors (<a href="https://techcrunch.com/2026/07/13/satya-nadella-has-issued-a-shocking-warning-to-companies-using-ai/">TechCrunch</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1uwqgqs/some_of_yall_wonder_why_anyone_would_self_host_ai/">Reddit discussion</a>). Coming from the CEO of Microsoft, the push toward self‑hosting and local inference adds executive‑level validation to the “stop renting, build your own” movement that many local‑LLM practitioners have been championing.</p>
+<p><strong>Gemma‑4‑31B‑AntiHal</strong>, a steered variant that deliberately pushes back on false premises, shows how interpretability techniques can improve factual reliability without tanking benchmarks (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1uwhwt8/gemma431bantihal_gemma_steered_to_push_back_on/">Reddit</a>). For eval‑sensitive workflows (e.g., data pipeline troubleshooting where a model confidently hallucinating a table name is disastrous) this kind of refus‑to‑hallucinate tuning is a pragmatic countermeasure worth running in a side‑by‑side AB test.</p>
+<p><strong>gwern’s “Guardian Angels” essay makes a case for deeply‑personalised LLMs that act as a user‑owned productivity and security layer</strong> – effectively a local‑first LLM riding ahead of every external request (<a href="https://gwern.net/guardian-angel">gwern.net</a>). The piece is a stimulating architectural provocation, especially for data engineers already running local models for privacy; it envisions a “watch‑AI” that audits every API call in real time.</p>
+<hr />
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<h3 id="waggle-a-30byte-token-that-gives-each-subagent-its-own-view-of-the-plan">waggle: a 30‑byte token that gives each subagent its own view of the plan</h3>
+<p><a href="https://www.youtube.com/watch?v=5x483rdvHcw">Video</a> (0.4 min, <a href="https://github.com/modiqo/waggle">GitHub</a>)</p>
+<ul>
+<li>Replaces the “paste the whole plan into every subagent” anti‑pattern with a tiny token; each subagent resolves it into only the slice it needs.</li>
+<li>Every read is counted, so a subagent that ignored its assigned portion – effectively bluffing – can be caught before results are trusted.</li>
+<li>One revoke of the plan token propagates to all subagents instantly, solving stale‑state races.</li>
+<li>MCP‑native and configurable with a single line, making it a drop‑in reliability lens for existing multi‑agent systems.</li>
+</ul>
+<h3 id="stop-renting-ai-build-your-own-llm-for-100">Stop Renting AI | Build Your Own LLM for $100</h3>
+<p><a href="https://www.youtube.com/watch?v=0jcJigwk_Xc">Video</a> (9 min)</p>
+<ul>
+<li>Walks through the complete 5‑stage pipeline: data preparation, BPE tokenisation, transformer architecture build, training via Karpathy’s nanochat, and inference.</li>
+<li>Claims GPT‑2‑level models can be trained from scratch for &lt;$50 using consumer hardware and open libraries (nanochat, Sebastian Raschka’s code).</li>
+<li>Practical demo of system‑level cost breakdown – useful for engineers who want to understand the full stack before relying on hosted APIs or fine‑tunes.</li>
+</ul>
+<h3 id="run-the-glm52-on-your-laptop-locally-no-gpu-needed">Run the GLM‑5.2 on Your Laptop Locally (No GPU Needed)</h3>
+<p><a href="https://www.youtube.com/watch?v=mkr4idOtj20">Video</a> (10 min)</p>
+<ul>
+<li>Shows <strong>Colibri</strong>, a pure‑C project that streams a 744 B‑parameter MoE model directly from an SSD, loading only the ~2 B active experts at any time.</li>
+<li>Walks through the sparse mixture‑of‑experts architecture and why it enables “frontier model on a laptop with 25 GB RAM and no GPU” – a mind‑shift for data engineers who think GPU‑offloading is the only path.</li>
+<li>The demo achieves interactive speeds, demonstrating that streaming MoE inference can be a practical local solution for real‑world coding and analysis tasks.</li>
+</ul>
+<hr />
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/northgraindata/dbt-resend">northgraindata/dbt-resend</a></strong> – dbt package for Resend email analytics, delivering warehouse‑ready marts with lifecycle metrics and webhook events. Handy if your marketing data flows through Resend.</li>
+<li><strong><a href="https://github.com/northgraindata/dbt-http">northgraindata/dbt-http</a></strong> – adapter‑aware HTTP request and URL‑read macros for dbt projects. Could simplify pulling API‑sourced datasets into your transformation pipeline without custom Python.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/anshupriyan/Local-Recall">anshupriyan/Local‑Recall</a></strong> – A local‑only alternative to Microsoft Recall: captures screen, OCRs with WinRT, indexes embeddings in SQLite, and queries conversationally via your local LLM (LM Studio). A privacy‑first memory augmentation for your desktop.</li>
+<li><strong><a href="https://github.com/xdLawless2/horseflow">xdLawless2/horseflow</a></strong> – Self‑hosted push‑to‑talk dictation integrating local Whisper and LLM cleanup. Useful for hands‑free note‑taking or quick data exploration without ever touching the cloud.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/switchtosumit/AI-Data-Guardian">switchtosumit/AI‑Data‑Guardian</a></strong> – An AI‑powered data observability platform built around LLM agents. Curious to see if it can detect dbt model anomalies or Snowflake query regressions with less false noise than rule‑based monitors.</li>
+</ul>
+<hr />
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <strong><a href="https://github.com/teja111111/Snowflake_Modern_Data_Engineering">teja111111/Snowflake_Modern_Data_Engineering</a></strong> – a Snowflake‑centric modern data project scaffold.</li>
+<li><strong><a href="https://github.com/amitshekhariitbhu/100-days-of-ai">amitshekhariitbhu/100‑days‑of‑ai</a></strong> – structured 100‑day AI learning path from basics to agent‑in‑production.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-07-14.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-07-14</span></a><a class="pager-link pager-next" href="2026-07-16.html"><span class="mono dim">Newer</span><span>Daily Signal — 2026-07-16</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>

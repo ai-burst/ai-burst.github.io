@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-08-02</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">02 Aug 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">7 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.022</span>
+      </div>
+      <h1>Daily Signal — 2026-08-02</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>DeepSeek-V4-Flash-0731 lands, closing the gap between local open-weight models and the frontier from just five months ago.</strong> The freshly quantised 284B Mixture-of-Experts model—released in native MXFP4 and immediately converted to GGUF by Unsloth—scores at the level of the top proprietary model from March 2026. That means an RTX 3090 with 128GB of system RAM can now serve roughly 12.5 tokens per second at IQ3_S, while a triple‑MI50 rig manages ~15 t/s and an A6000 with 256GB DDR4 holds a steady 17.2 t/s at Q8_K_XL. Early Reddit reports are mixed on instruction-following, but the community is moving fast: a llama.cpp fix for tool‑calling loops landed overnight. Meanwhile, Kimi K3—a 2.78‑trillion‑parameter sparse model—has been coaxed onto a <strong>single</strong> consumer CPU with as little as 29GB of RAM via the WASTE engine, producing 0.5 tokens per second off an NVMe drive. Put plainly: models that would have required a datacenter rack six months ago are now hobbiest‑runable.</p>
+<p><strong>How to make the most of it today:</strong></p>
+<ol>
+<li><strong>Grab the tool‑calling fix immediately.</strong> The <code>llama.cpp</code> PR <a href="https://github.com/ggml-org/llama.cpp/pull/26269">#26269</a> corrects the looping and broken tool invocations that plagued early V4 Flash quants; apply it before wiring the model into agentic code.</li>
+<li><strong>Choose your quant pragmatically.</strong> If experts spill to RAM, try the expert‑only IQ3 requant from <a href="https://huggingface.co/TacoTakumi/DeepSeek-V4-Flash-0731-GGUF">TacoTakumi</a> (better KLD than UD‑IQ3_S, 1.4× decode speeds) or the IQ2_M benchmarks from dual‑3060 setups (≈3.5 t/s) to stay under VRAM ceilings.</li>
+<li><strong>Experiment with CPU‑only inference for sprawling MoEs.</strong> The WASTE engine (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vche00/weightaware_streaming_tensor_engine_run_kimi_k3/">Reddit post</a>) proves that even massive models can stream off an NVMe disk with zero GPU—perfect for batch jobs or “push &amp; wait” workloads.</li>
+</ol>
+<hr />
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/itslokeshsingh/DBT-PROJECT-GUIDE">itslokeshsingh/DBT-PROJECT-GUIDE</a></strong> (⭐ 1) is a fresh community showcase of modern dbt practices: SQL transformations, Jinja, snapshots, testing, and Git workflows all wired together. Though small, it’s a handy reference for onboarding new analytics engineers or standardising project structure across a growing team.</li>
+</ul>
+<h3 id="cortex-code">Cortex Code</h3>
+<ul>
+<li><strong><a href="https://github.com/TanvirIslam-BD/Snowflake-Fraud-Detection-Command-Center">Snowflake-Fraud-Detection-Command-Center</a></strong> (⭐ 1) demonstrates a full CoCo CLI‑built agent that autonomously scans 10k+ transactions, detects velocity attacks and improbable travel, scores risk via AI reasoning, and executes graduated actions (block/hold/monitor)—all with audit trails and a Streamlit dashboard deployed directly on Snowflake. A practical blueprint for anyone building compliance‑first AI workflows inside Snowflake.</li>
+<li><strong><a href="https://github.com/tspannhw/SNACKAI-CoCo-RAGContractSearch">SNACKAI-CoCo-RAGContractSearch</a></strong> (⭐ 1) from Tim Spann shows how to pair Snowflake with RAG for PDF contract search, offering an easy‑to‑adapt pattern for CoCo‑powered document intelligence without external vector‑store plumbing.</li>
+</ul>
+<hr />
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=OrcBSpADCGk">New Deepseek, Seedance 2.5, Minimax H3, Gemini Robotics, AMD models: AI NEWS</a></strong> (28 min) — AI Search’s signature wide‑angle roundup. Covers DeepSeek-V4 Flash, Kimi K3 open-sourcing, Inkling Small, Prism, Seedance 2.5 video gen, the Minimax H3 model, and Gemini Robotics 2. Perfect for catching the full sweep of the week’s AI developments in one sitting.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=MwkZ7DwhRXk">Run “DeepSeek V4 Flash 0731” Locally (No GPU Needed)</a></strong> (15 min) — An exceptional deep dive into running the 284B MoE in GGUF quants on llama.cpp. The video walks through Unsloth’s quants, the IQ2_M/IQ3_S trade‑offs, and critically, the Datacurve findings that DeepSeek’s vendor‑run benchmark scores are inflated by memorisation. Essential viewing if you plan to integrate V4 Flash into your local toolchain.</p>
+</li>
+</ol>
+<hr />
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>EU AI Act takes effect today.</strong> As of August 2, all AI‑generated images, audio, video, and text must be labelled as such in the EU. For local‑LLM users, this means any output shared publicly—be it a generated code snippet or a synthetic dataset—should carry a clear disclosure. Full compliance may require adding metadata tagging to your inference pipeline. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vcqpn4/eu_ai_act_takes_effect_tomorrow_august_2_2026/">Reddit discussion</a>)</p>
+</li>
+<li>
+<p><strong>Microsoft shepherds open‑weight coalition.</strong> A letter titled “Open Weights and American AI Leadership”, signed by 235 stakeholders, argues that open‑weight models are critical for national competitiveness. Expect this to influence policy debates and possibly embolden further releases in the open‑weight ecosystem. (<a href="https://simonwillison.net/2026/Aug/2/open-letters/#atom-everything">Simon Willison summary</a> → <a href="https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/">Microsoft’s page</a>)</p>
+</li>
+<li>
+<p><strong>Laguna S 2.1 now ships with FP8 and NVFP4 weights.</strong> The official weights drop improves efficiency for local inference, especially on hardware with native FP8 support. This makes the model an even more attractive option for desktops/workstations that want high quality without blowing the VRAM budget. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vcn9uw/new_official_weights_for_laguna_s_21_fp8_nvfp4/">Reddit announcement</a>)</p>
+</li>
+<li>
+<p><strong>DeepSeek-V4 Flash tool‑calling fixed in llama.cpp.</strong> Pull request <a href="https://github.com/ggml-org/llama.cpp/pull/26269">#26269</a> addresses the broken function‑calling behaviour that made the model unusable for many agent setups. If you were hitting loops or ignored system prompts yesterday, update today. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vcwaag/fix_for_deep_seek_v4_flash_0731_tool_calling_has/">Reddit notice</a>)</p>
+</li>
+<li>
+<p><strong>Koboldcpp v1.118 released.</strong> A new release that folds in the latest upstream fixes—likely including the tool‑calling patch—and adds minor tweaks. A staple frontend for anyone running GGUF models locally. (<a href="https://github.com/LostRuins/koboldcpp/releases/tag/v1.118">GitHub releases</a>)</p>
+</li>
+<li>
+<p><strong>LongCat-Flash-Lite-Sparse hits the weights hub.</strong> Another open‑weight drop, this model focuses on sparse architectures for long‑context tasks. Early testers suggest it’s a promising alternative for RAG and summarisation workloads. (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vcpv6u/longcatflashlitesparse_is_now_available_for/">Reddit post</a>)</p>
+</li>
+<li>
+<p><strong>Simon Willison ships Datasette Apps 0.2a0 with agent‑debugging tools.</strong> The new release adds <code>app_debug()</code> so that an AI agent can invisibly test a Datasette application using JavaScript, improving the reliability of agent‑built apps. A neat example of agents that can verify their own work. (<a href="https://simonwillison.net/2026/Aug/1/datasette-apps/#atom-everything">Simon Willison</a>)</p>
+</li>
+<li>
+<p><strong>Greg Brockman reflects on AI agents in Slack.</strong> OpenAI’s president notes that co‑workers dislike when someone’s ChatGPT contacts them for help, even if they’d gladly do the same task for a human. A reminder that social norms still shape agent adoption, and that we must design AI intermediaries that respect those norms. (<a href="https://simonwillison.net/2026/Aug/1/greg-brockman/#atom-everything">Greg Brockman via Simon Willison</a>)</p>
+</li>
+</ul>
+<hr />
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>Video: Run “Kimi K3” on a Laptop With 32 GB RAM (No GPU Needed)</strong> (<a href="https://www.youtube.com/watch?v=Et_I4fj1etk">link</a>)  </p>
+<ul>
+<li>Marco Bambini’s WASTE engine (6,000 lines of pure C) streams the 2.78‑trillion‑param checkpoint off an NVMe disk, achieving 0.50 t/s on a laptop with just 29 GB of RAM—no GPU required.  </li>
+<li>The secret is that only 16 of 896 experts fire per token, so the engine never loads the entire model; it’s a “weight‑aware streaming” approach that treats experts like paged memory.  </li>
+<li>Practical implication: you can now tinker with a true frontier‑scale model over a coffee break, without cloud costs.</li>
+</ul>
+<p><strong>Video: DeepSeek Just Broke the Price Chart Again..</strong> (<a href="https://www.youtube.com/watch?v=j9yRafShNDs">link</a>)  </p>
+<ul>
+<li>DeepSeek has slashed API pricing so aggressively that OpenAI, Anthropic, and xAI are reportedly rethinking their own pricing roadmaps.  </li>
+<li>The video argues that this isn’t just a cost war—it’s a signal that model scaling may be hitting diminishing returns, forcing providers to compete on efficiency rather than raw capability.  </li>
+<li>For local‑LLM enthusiasts, the takeaway is that open‑weight models are now directly disrupting the economic model of closed‑source APIs, which strengthens the case for investing in local infrastructure.</li>
+</ul>
+<hr />
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/itslokeshsingh/DBT-PROJECT-GUIDE">DBT-PROJECT-GUIDE</a></strong> — A ready‑to‑study dbt project covering transformations, data modelling, Jinja, snapshots, testing, and Git workflows. Great for onboarding new team members or refreshing modern dbt practice.</li>
+</ul>
+<h3 id="snowflake-cortex-code">Snowflake / Cortex Code</h3>
+<ul>
+<li><strong><a href="https://github.com/TanvirIslam-BD/Snowflake-Fraud-Detection-Command-Center">Snowflake-Fraud-Detection-Command-Center</a></strong> — A fully self‑contained fraud‑detection agent built with Snowflake’s CoCo CLI. Demonstrates autonomous transaction scanning, AI‑scored risk assessment, and graduated enforcement actions, all with a Streamlit dashboard. Excellent reference for real‑world Cortex Code agents.</li>
+<li><strong><a href="https://github.com/tspannhw/SNACKAI-CoCo-RAGContractSearch">SNACKAI-CoCo-RAGContractSearch</a></strong> — A minimal Snowflake‑first RAG pattern for PDF contracts, showcasing Cortex Code’s ability to search and reason over documents without external vector services.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/khoj-ai/khoj">khoj-ai/khoj</a></strong> (⭐ 36 k) — Self‑hosted AI second brain that turns any online or local LLM (Llama, Qwen, Mistral, GPT, Claude, Gemini) into a personal, autonomous assistant. It does deep research, schedules automations, and builds custom agents—fully private. A prime building block for a local‑first AI workflow.</li>
+<li><strong><a href="https://github.com/rafcopy/auto-cut-agent">rafcopy/auto-cut-agent</a></strong> — An AI‑powered editing agent for Adobe Premiere Pro, using a local Node server and AI models for silence removal, take deduplication, and captions. Demonstrates how local LLMs can plug into creative tools without phoning home.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/ilindaniel/impeccable-lite">ilindaniel/impeccable-lite</a></strong> — A lightweight alternative to the Impeccable UI agent that boils good design patterns down to a single <code>SKILL.md</code> file. Ideal for giving coding agents taste without heavy plugin machinery.</li>
+<li><strong><a href="https://github.com/CoordClaw/CoordClaw">CoordClaw/CoordClaw</a></strong> — A multi‑agent system inspired by management theory, where teams are defined in natural language and collaboration happens via a message loop (not hard‑coded DAGs). Includes auditable work logs and human oversight, useful for exploring emergent agent cooperation.</li>
+<li><strong><a href="https://github.com/AnXMuy/AgenticASR">AnXMuy/AgenticASR</a></strong> — Official repo for “AgenticASR,” an agent‑based approach to refining speech recognition in noisy real‑world scenarios. Could be integrated into local‑LLM voice pipelines for better robustness.</li>
+</ul>
+<hr />
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li><strong><a href="https://github.com/artbyjazi/autoclip">artbyjazi/autoclip</a></strong> — Open‑source, local‑first AI video clipper; long video in, caption‑burned 9:16 clips out, using Whisper and Ollama.</li>
+<li><strong><a href="https://github.com/ice-only/localai-rag-live2d">ice-only/localai-rag-live2d</a></strong> — Local AI chat agent with RAG and a Live2D interface, keeping all data on‑device.</li>
+<li><strong><a href="https://github.com/AFan4724/clone-chat">AFan4724/clone-chat</a></strong> — Clones someone’s texting style from real chat history; local‑first LLM agent with long‑term memory and proactive messaging.</li>
+<li><strong><a href="https://github.com/DrDecki/VitaDBtoo-db">DrDecki/VitaDBtoo-db</a></strong> — Static backend for a VitaDB revival, serving app metadata via GitHub Pages.</li>
+<li><strong><a href="https://github.com/premkumarrs/autonomous-ai-data-reliability-platform">premkumarrs/autonomous-ai-data-reliability-platform</a></strong> — End‑to‑end IoT data platform with a Medallion Lakehouse, AI anomaly detection, and observability.</li>
+<li><strong><a href="https://github.com/UsmarHaider/churnguard">UsmarHaider/churnguard</a></strong> — Customer churn prediction service with data validation, CV model selection, probability calibration, and a FastAPI inference API.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-08-01.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-08-01</span></a><a class="pager-link pager-next" href="2026-08-02-weekly.html"><span class="mono dim">Newer</span><span>Weekly Signal — 2026-08-02</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
