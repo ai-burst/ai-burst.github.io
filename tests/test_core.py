@@ -29,6 +29,38 @@ def test_model_for():
     assert "/" in model_for("deep_research")
 
 
+def test_complete_surfaces_error_body():
+    import os
+    from src import llm
+
+    class FakeResp:  # a 400 as OpenRouter actually returns one
+        ok, status_code = False, 400
+        text = '{"error":{"message":"bad-slug is not a valid model ID","code":400}}'
+
+        def raise_for_status(self):  # what requests would do: status only, no body
+            raise llm.requests.HTTPError("400 Client Error: Bad Request for url: x")
+
+    old_post = llm.requests.post
+    old_key = os.environ.get("OPENROUTER_API_KEY")
+    llm.requests.post = lambda *a, **k: FakeResp()
+    os.environ["OPENROUTER_API_KEY"] = "test-key-not-used"
+    try:
+        llm.complete("curation", "hi")
+    except llm.requests.HTTPError as e:
+        # the message must name the rejected model AND echo the body — without both,
+        # a typo in models.yaml is indistinguishable from any other 400
+        assert "not a valid model ID" in str(e)
+        assert llm.model_for("curation") in str(e)
+    else:
+        raise AssertionError("complete() swallowed a 400")
+    finally:
+        llm.requests.post = old_post
+        if old_key is None:
+            del os.environ["OPENROUTER_API_KEY"]
+        else:
+            os.environ["OPENROUTER_API_KEY"] = old_key
+
+
 def test_citation_urls():
     from src.llm import _citation_urls
     top = {"citations": ["http://a", "http://b"],

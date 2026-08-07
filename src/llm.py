@@ -49,7 +49,13 @@ def complete(role, prompt, system=None, timeout=1800, with_citations=False):
         json={"model": model_for(role), "messages": messages,
               "usage": {"include": True}},  # OpenRouter returns actual cost
     )
-    r.raise_for_status()
+    if not r.ok:
+        # raise_for_status() alone says only "400 Bad Request"; the reason lives in
+        # the body (unknown model id, out of credit, context overflow). A dropped
+        # character in a models.yaml slug cost 5 days of silent failures once.
+        raise requests.HTTPError(
+            f"{r.status_code} from OpenRouter (model={model_for(role)!r}): "
+            f"{r.text[:1000]}", response=r)
     data = r.json()
     u = data.get("usage") or {}
     cost = u.get("cost")
