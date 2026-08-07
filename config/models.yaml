@@ -1,7 +1,13 @@
-# OpenRouter model IDs. Swap freely as cheaper/better models appear.
+# OpenRouter model IDs. Swap freely as cheaper/better models appear, but the slug
+# must appear verbatim in https://openrouter.ai/api/v1/models — an unrecognised ID
+# is an HTTP 400 at call time, not a fallback, so a typo here kills the whole run.
 # NOTE: research + deep_research need models with real web search (Perplexity
 # Sonar family, or any model with the :online suffix). Plain chat models like
 # DeepSeek cannot search and will invent news.
-research: perplexity/sonar                     # daily news sweep (cents/run, real search)
-curation: deepseek/deepseek-v4-flash-latest             # ranking + writing; no web access needed
-deep_research: perplexity/sonar  # weekly deep dive (~$2/run)
+research: perplexity/sonar          # daily news sweep (cents/run, real search)
+                                    # the leading ~ is PART OF THE SLUG (OpenRouter
+                                    # marks always-latest aliases that way); quoted so
+                                    # YAML can't mistake it for a null. Dropping the ~
+                                    # is a 400 — that broke every run Aug 3-7.
+curation: "~deepseek/deepseek-v4-flash-latest"  # ranking + writing; no web access needed
+deep_research: perplexity/sonar     # weekly deep dive
