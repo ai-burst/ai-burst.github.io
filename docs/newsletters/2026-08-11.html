@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-08-11</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">11 Aug 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">9 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.014</span>
+      </div>
+      <h1>Daily Signal — 2026-08-11</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Meta is back in open weights: Muse Glimmer 30B lands under Apache 2.0.</strong></p>
+<p>Meta Research unveiled Muse Glimmer, a 30B open-weight model under a clean Apache 2.0 license, explicitly optimized for “always-on local agent workflows” (<a href="https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model">official announcement</a>; <a href="https://simonwillison.net/2026/Aug/10/introducing-muse-glimmer/#atom-everything">Simon Willison's write-up</a>). The community moved fast: Unsloth published GGUF quants (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkhbuc/unslothmuseglimmer30bgguf_hugging_face/">r/LocalLLaMA</a>), and llama.cpp support is already landing via PR #26841 (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkjul1/model_muse_glimmer_support_by_pcuenca_pull/">r/LocalLLaMA</a>).</p>
+<p>Early hands-on reports are unusually positive for a day-one release:</p>
+<ul>
+<li>It fits on a single RTX 3090 with full context, the DFlash draft model, and mmproj at Q4_K_XL (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkm42m/muse_glimmer_actually_fits_on_a_single_rtx_3090/">r/LocalLLaMA</a>).</li>
+<li>It quantizes surprisingly well, with one user reporting IQ3_XXS behaved better than Qwen/Gemma at the same size (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkn16q/early_signs_that_museglimmer30b_might_quantize/">r/LocalLLaMA</a>).</li>
+<li>Its reasoning traces are far more compact than the Qwen/Gemma style, closer to Grok-level efficient thinking (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vl2iio/observations_on_museglimmer_reasoning_traces/">r/LocalLLaMA</a>).</li>
+<li>One benchmark shows it slightly behind Qwen on raw intelligence but using far fewer tokens per task (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkxpnd/muse_glimmer_benchmark/">r/LocalLLaMA</a>).</li>
+</ul>
+<p>The critical take is just as important: some users report surprisingly heavy refusals for harmless utility code, and one found it worse than Qwen 3.6 27B on a single-file HTML game task (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkkw6n/glimmer_seems_pretty_censored/">censorship report</a>; <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vku03t/please_share_your_experience_about_muse_glimmer/">game test</a>). Your mileage will depend heavily on the harness and task mix.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ol>
+<li><strong>On a 24GB card, start with the Q4_K_XL GGUF + DFlash draft model + mmproj</strong> — one user's <code>llama-server</code> setup keeps full context on a single RTX 3090 (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkm42m/muse_glimmer_actually_fits_on_a_single_rtx_3090/">details</a>).</li>
+<li><strong>If you're VRAM-constrained, try IQ3_XXS before dismissing it.</strong> Early signals say it quantizes much better than its peers at that aggression level (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkn16q/early_signs_that_museglimmer30b_might_quantize/">r/LocalLLaMA</a>).</li>
+<li><strong>Run a quick refusal/utility-code smoke test before wiring it into your agent loop.</strong> It looks great for efficient agentic tasks, but day-one reports suggest it can be overly cautious (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkkw6n/glimmer_seems_pretty_censored/">r/LocalLLaMA</a>).</li>
+</ol>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<p>Everything Snowflake-, dbt-, and Cortex-Code-related from today's feeds, pulled up so it lands before the general headlines.</p>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Snowflake AI Pulse: July 2026.</strong> The monthly Snowflake AI roundup is out — 83 minutes covering CoCo, CoWork, Cortex Agents, AI Functions, and Real-time ML (<a href="https://www.youtube.com/watch?v=lnP94Y-68SU">video</a>). It's too long for the daily playlist, but it's effectively Snowflake's own release recap for the month; worth skimming the chapters most relevant to you.</p>
+<p><strong>Cortex AI Functions for contract review.</strong> A short walkthrough shows Cortex AI Functions reading a stack of contract PDFs into one structured table — counterparty, contract value, effective/expiration dates, payment terms, renewal terms, governing law (<a href="https://www.youtube.com/watch?v=W4djNdmaE5Y">video</a>). This is the fastest path to "unstructured documents become queryable Snowflake data" if you haven't tried it yet.</p>
+<p><strong>Snowflake AIM is being positioned as autonomous data engineering.</strong> A new Snowflake Medium post introduces Snowflake AIM, targeting the classic migration spreadsheet problem that goes stale within weeks (<a href="https://medium.com/snowflake/the-future-of-data-engineering-is-autonomous-meet-snowflake-aim-9d3f048faee3?source=rss----34b6daafc07---4">Snowflake AIM post</a>). No hands-on details in the post, but this looks like the direction Snowflake wants for migrations and conversion tracking.</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>dbt Core 2.0.0-beta.1 is out.</strong> Released August 10, this beta includes: an option to use the default <code>profile.yml</code> during <code>init</code>, continuing children when a parent errors, a <code>selector</code> selector method, overloaded UDFs via the <code>overrides</code> block, <code>dbt state explain</code> in Fusion, and test optimization that skips provably redundant tests (<a href="https://github.com/dbt-labs/dbt-core/releases/tag/v2.0.0-beta.1">GitHub release</a>).</p>
+<p><strong>dbt Summit 2026 keynotes and product sessions are documented.</strong> The official blog is now the primary source for what was announced at Summit, covering the keynotes and the product sessions behind them (<a href="https://www.getdbt.com/blog/dbt-summit-2026-keynotes-product-sessions">dbt blog</a>).</p>
+<p><strong>What does Core v2 mean for dbt platform customers? Not much — and that's good.</strong> Per dbt Labs' Aika Zikibayeva, platform customers are already on the same dbt Fusion engine, so the transition is low-drama. Upgrading is self-serve: the platform shows which jobs are eligible, and the dbt Wizard helps fix whatever blocks Fusion (<a href="https://www.youtube.com/watch?v=vjevvBNJoKs">dbt Labs video</a>).</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>"Same model, 3.9x cheaper: The harness is the difference."</strong> Snowflake's Medium blog directly answers the question "why use CoCo when the model underneath is identical?" — context, skills, and how the agent explores your warehouse are the differentiators, not the raw model. That's the most practical Cortex Code framing I've seen in a while (<a href="https://medium.com/snowflake/same-model-3-9x-cheaper-the-harness-is-the-difference-8b8cefcb01b4?source=rss----34b6daafc07---4">Snowflake Medium</a>).</p>
+<p><strong>CoCo cost controls: per-user quota setup.</strong> Michael Young shows how to use Snowflake user tags to enforce CoCo consumption — monthly and daily credit limits, automatic blocking when a user crosses the line, no tickets or manual steps (<a href="https://www.youtube.com/watch?v=e78ci15kBz8">video</a>). This is the kind of governance finance will ask for eventually, so better to have it in place first.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<p>These three videos are the daily playlist — all broad, multi-story roundups or model-release shows rather than narrow deep dives. Total runtime: ~44 minutes.</p>
+<ol>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=FhQQs0UT4qc">The AI Safety Tests Are Broken. All Of Them.</a></strong> — <em>AI Revolution</em> · 14m 41s. A multi-vendor safety roundup in the classic "this week in AI" style: Meta, Anthropic, OpenAI, and Kimi models slipping through cyber safety tests, OpenAI slowing Astra over cyber risks, and Stanford AI creating 16 functioning viruses. Most interesting claim: lawmakers are starting to ask whether humans are losing control.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=rpejFyVKEDg">China Just Dropped an AI 100x Cheaper That Beats Claude Fable 5..</a></strong> — <em>Your AI Guy</em> · 15m 4s. The DeepSeek V4-Flash cost story, framed around independent testing that puts one benchmark workload at ~$0.03 vs ~$3.15 for Claude Fable 5. It's a model-release roundup with real pricing substance — exactly the open-weight-vs-frontier comparison that matters right now.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=LViTqChz-kU">Muse Spark 1.2 - Meta's New Frontier Model Is 260x Cheaper Than Fable!</a></strong> — <em>Your AI Guy</em> · 14m 13s. Meta's frontier/coding-agent model, with the claim that Muse Spark 1.2 powers Muse Code, coordinates multiple sub-agents, and launches with aggressive API pricing. Treat the "260x cheaper" number as vendor-video marketing until official pricing docs land, but the model-release angle matters.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>Qwen 3.8-27B is coming this week.</strong> The official Qwen account confirmed a 27B release; no primary release page in today's feed, so treat the exact date as unverified. It's arriving just as Muse Glimmer establishes the new local-agent baseline (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vl8bpt/qwen_3827b_coming_this_week/">r/LocalLLaMA</a>).</p>
+</li>
+<li>
+<p><strong>DeepSeek V4 Flash 0731 is being called the DGX Spark "killer app."</strong> One user reports it's excellent for coding/agentic use, fits perfectly on a 2x Spark cluster, and hits ~60 tk/s with the right vLLM recipe (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkpm5p/deepseek_v4_flash_0731_is_the_killer_app_that_is/">r/LocalLLaMA</a>). Separately, someone bolted basic vision onto V4 Flash by training a 40M connector on 100K examples — a useful recipe for giving non-VLM models multimodal abilities (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vl6ior/i_gave_deepseek_v4_flash_basic_vision_by_training/">r/LocalLLaMA</a>).</p>
+</li>
+<li>
+<p><strong>Edge LLMs keep getting smaller.</strong> Needle 2 is a single 14MB binary (45M params at 2-bit) that runs a session in 28MB RAM and hits 500 tok/s on a Raspberry Pi 5, targeting phones, wearables, smart home, and robots (<a href="https://cactuscompute.com/needle">Show HN</a>; <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkqy66/needle_2_14mb_agentic_llm_for_phones_wearables/">r/LocalLLaMA</a>).</p>
+</li>
+<li>
+<p><strong>DiffusionGemma gets a technical report.</strong> The arXiv paper is out — worth a skim if you're tracking diffusion-based LLM architectures and non-transformer alternatives (<a href="https://arxiv.org/abs/2608.00146">arXiv</a>).</p>
+</li>
+<li>
+<p><strong>A 1B-parameter LLM trained from scratch on 20B tokens for ~$200.</strong> A community training log with useful datapoints on cost, data, and what a tiny run can actually teach you (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkydi5/i_trained_a_1bparameter_llm_from_scratch_on_20b/">r/LocalLLaMA</a>).</p>
+</li>
+<li>
+<p><strong>h3.c brings MiniMax H3 video generation to Apple Silicon.</strong> antirez's pure C/Metal implementation has no Python or PyTorch anywhere, and generates video with synced stereo audio. It needs M3/M5-class Max silicon and substantial unified memory (<a href="https://www.youtube.com/watch?v=TyUyM7Et1VI">video</a>).</p>
+</li>
+<li>
+<p><strong>OpenAI's GPT-5.6 Sol gets a finance case study.</strong> Model ML claims 21% fewer tokens per PowerPoint deck than Fable 5, a 16.6-point lead over Opus 5 on decks ready for substantive review, and 36% fewer tokens per Excel workbook (<a href="https://www.youtube.com/watch?v=OEkxKdhtQng">OpenAI video</a>). Vendor-published benchmarks, but the cost-per-token framing is useful.</p>
+</li>
+<li>
+<p><strong>Best Local LLMs — August 2026 roundup.</strong> The community thread says this is one of the best periods for open-weight models, with "Opus level" models on non-insane hardware and a big industry alliance forming. Skepticism still applies, but the sentiment lines up with the Glimmer/DeepSeek momentum (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkmhyl/best_local_llms_august_2026/">r/LocalLLaMA</a>).</p>
+</li>
+<li>
+<p><strong>Inference-engine items to verify.</strong> The deep-research pass surfaced an unverified claim that Ollama merged K/V cache quantization, which would halve context memory, but no official release is out yet (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1h62u1p/ollama_has_merged_in_kv_cache_quantisation/">source</a>). A secondary roundup also claims vLLM v0.26.0 landed with substantial changes (<a href="https://zenn.dev/ainewsdaily/articles/20260731_local_llm_t1">source</a>). Treat both as "check upstream" items, not confirmed notes.</p>
+</li>
+<li>
+<p><strong>Muse Spark 1.2 and Motif-3 are also in the wild.</strong> Spark 1.2 chatter focuses on its 260x-cheaper-than-Fable pricing and Muse Code agent (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkw0f7/muse_spark_12_open_source_before_llama_4_behemoth/">r/LocalLLaMA</a>; <a href="https://www.youtube.com/watch?v=LViTqChz-kU">Your AI Guy video</a>). Motif-Technologies' official Motif-3 release was shared too, but the thread has little detail (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkl6cs/motiftechnologiesmotif3_official_realese/">r/LocalLLaMA</a>).</p>
+</li>
+<li>
+<p><strong>Long-context memory trick worth bookmarking.</strong> Someone reports loading nearly 1M tokens with a 17GB model in 24GB VRAM and successfully extracting 7 needles from various parts of the context. Details are thin, but it's exactly the kind of experiment that pushes practical local context limits (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkicyd/1m_context_with_17_gb_model_in_24_gb_vram_for_the/">r/LocalLLaMA</a>).</p>
+</li>
+<li>
+<p><strong>Local harness questions are heating up.</strong> A thread asks for the best open-source Claude-Code-like harness for local models (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vktpl2/best_opensource_harness_like_claude_code/">r/LocalLLaMA</a>), and someone built a web-design benchmark comparing Muse Glimmer 30B, Qwen 3.6 27B, and DeepSeek V4 Flash 0731 (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkvdg0/i_made_a_webdesign_benchmark_for_local_models/">r/LocalLLaMA</a>). The harness may matter more than the model.</p>
+</li>
+<li>
+<p><strong>Macro bubble talk.</strong> Tech Unfiltered argues the GPU/data-center spending race is "worse than a bubble" — useful context for capacity planning, not a news event (<a href="https://www.youtube.com/watch?v=iRSGFwnl038">video</a>).</p>
+</li>
+<li>
+<p><strong>"Humanising LLM Outputs Is Dumb" is top of HN.</strong> The essay argues we should stop measuring LLM writing against human norms; 189 points and 117 comments at last check (<a href="https://kuber.studio/blog/Reflections/Humanising-LLM-Outputs-is-Actually-Dumb">article</a>).</p>
+</li>
+<li>
+<p><strong>Zuck on open-release strategy is making the rounds.</strong> A screenshot of Mark Zuckerberg commenting on releases is being shared on r/LocalLLaMA. Unverified and probably strategy chatter, but the timing with Spark/Glimmer is interesting (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vkk6vy/mark_zuckerberg_on_releases/">r/LocalLLaMA</a>).</p>
+</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p>Deep dives that didn't make the playlist but deserve your attention when you have time.</p>
+<ul>
+<li><strong>Colibrì vs llama.cpp: Running DeepSeek V4 284B on CPU</strong> (<a href="https://www.youtube.com/watch?v=pIN-2oVJpyU">video</a>, 23m 48s). This is the most audacious local-inference claim of the day: running 360GB-class models on an 8GB-RAM consumer CPU using "Colibri" technology. Key takeaways:</li>
+<li>The pitch is a direct challenge to the GPU-centric llama.cpp/vLLM assumption.</li>
+<li>It claims a fundamentally different way of handling model components to bypass high-end GPU requirements.</li>
+<li>
+<p>There are no reproducible benchmark numbers in the listing, so treat the "8GB RAM" framing as a claim until someone validates it.</p>
+</li>
+<li>
+<p><strong>This 2.6B Model Runs Agents on Phones (LFM2.5 Explained)</strong> (<a href="https://www.youtube.com/watch?v=qIkH_SauxpY">video</a>, 8m 30s). Liquid AI's LFM 2.5 replaces heavy transformer attention with CPU-friendly short convolutions.</p>
+</li>
+<li>A 2.6B model executing multi-step tool-calling agents locally on a smartphone — even in airplane mode.</li>
+<li>This is the strongest counterpoint to the "bigger GPU cluster" narrative in local LLMs.</li>
+<li>
+<p>Relevant if you're planning edge deployments or on-device agent prototypes.</p>
+</li>
+<li>
+<p><strong>OpenCode vs Claude Code and Codex: The Harness War</strong> (<a href="https://www.youtube.com/watch?v=KpU6Zmdl9g4">video</a>, 8m 30s). One developer ran the same model through Claude Code, OpenCode, and Pi; all three produced identical diffs, but Claude Code took nearly four times longer.</p>
+</li>
+<li>The wrapper around the model is where your subscription money goes.</li>
+<li>Five-round showdown: factory builds (Claude Code, Codex) vs challengers (OpenCode, oh-my-pi, Factory Droid).</li>
+<li>For local workflows, this reinforces the "harness choice matters more than model" theme from today's headlines.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/Mog9/Octane">Mog9/Octane</a></strong> — Zero-config speculative decoding runtime for local LLMs, with automatic drafter selection, dynamic adaptation, and an OpenAI-compatible API. Exactly the kind of thing to try when Muse Glimmer or Qwen quants feel slow on consumer GPUs.</li>
+</ul>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/sverrbear/stitch-lineage">sverrbear/stitch-lineage</a></strong> — dbt ↔ Metabase column lineage and interactive ERD, local-first, treating the dbt repo as the database. Useful for lineage questions without standing up a heavy catalog tool.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong><a href="https://github.com/anjeongkyun/testcontainers-fakesnow">anjeongkyun/testcontainers-fakesnow</a></strong> — Testcontainers module for fakesnow, letting you test Snowflake-flavored SQL on the JVM with the real <code>snowflake-jdbc</code> driver and no Snowflake account. Great for CI in dbt/Snowflake projects.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li>
+<p><strong><a href="https://github.com/EvilFreelancer/secs">EvilFreelancer/secs</a></strong> — Turns Claude Code, Cursor, or Codex into an authorized information-security assistant with 35 agent skills, a toolchain installer, and a local Metasploitable 3 lab. Nice reference pattern for constraint-heavy agent skills.</p>
+</li>
+<li>
+<p><strong><a href="https://github.com/arcspots/FactoryMindAI">arcspots/FactoryMindAI</a></strong> — Predictive and prescriptive maintenance platform using ML, RAG, and local LLMs. A concrete reference architecture for industrial agent applications.</p>
+</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <strong><a href="https://github.com/microsoftbi/DBTUI">microsoftbi/DBTUI</a></strong> — A dbt UI project under the microsoftbi org; only 1 star and no description yet, but worth watching as a possible visual layer for dbt.</li>
+<li><a href="https://github.com/Davvex87/tracker.ds">Davvex87/tracker.ds</a> — Haxe data structures with observable/serializable events; not relevant to the data/AI stack.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-08-10.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-08-10</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
