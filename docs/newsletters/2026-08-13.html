@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-08-13</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">13 Aug 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.010</span>
+      </div>
+      <h1>Daily Signal — 2026-08-13</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Qwen 3.8 is here — and it's a monster.</strong> The <a href="https://huggingface.co/">Qwen3.8-2.4T-A95B</a> release landed overnight, a 2.4-trillion-parameter Mixture-of-Experts model with 95B active parameters, and the community is already asking the only question that matters: <em>how the hell do we run this locally?</em> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmgozv/qwen3824ta95b_released/">Reddit discussion</a>). The timing is deliberate — the subreddit is calling today "Models Day," with the <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vm7iqx/its_the_final_countdown_baby_qwen_is_out_in_just/">Qwen 3.8 27B release countdown</a> sitting at under seven hours at the time of writing, and the <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmexhu/exact_qwen_38_27b_release_date_and_time/">exact release time confirmed</a> for later today. The 27B is the one most of us can actually run, and the community is <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmjkrg/which_qwen38_model_size_do_you_want_the_most/">polling on which size matters most</a> while hardware owners debate <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmqduk/qwen_38_27b_mtp_or_dflash/">MTP vs. DFlash heads</a> for speculative decoding.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ul>
+<li><strong>For the 2.4T:</strong> Don't even think about full weights. The realistic path is heavily quantized GGUF or MoE-aware distillation — the community is already <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmvpjc/how_do_you_plan_to_run_qwen3824ta95b_locally/">wrestling with how to fit it</a> alongside DeepSeek V4 Pro and Kimi K3. Expect 1-2 bit quantizations to be the only viable route on consumer hardware.</li>
+<li><strong>For the 27B:</strong> Watch for DFlash/MTP support in llama.cpp builds — the <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmskes/qwen36_35b_2_min_vs_muse_glimmer_30b_4_min_on/">Qwen 3.6 35B vs. Muse Glimmer benchmark</a> shows speculative decoding is the difference between 2-minute and 4-minute generation on an RTX 5080.</li>
+<li><strong>Check your KV cache budget:</strong> <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmhc4h/gemma_4_qat_handles_kv_cache_quantization_much/">Gemma 4 QAT benchmarks</a> show quantization-aware training handles KV cache compression far better than post-hoc quantization — worth checking whether Qwen 3.8 ships QAT variants before committing to a quantization strategy.</li>
+</ul>
+<p>Also breaking: <strong>DeepSeek V4 Pro 0813</strong> is <a href="https://openrouter.ai/deepseek/deepseek-v4-pro-0813">live on OpenRouter</a>, API-only for now, with <a href="https://simonwillison.net/2026/Aug/12/deepseek-v4-pro-0813/">Simon Willison noting</a> that open weights are unconfirmed but likely given the pattern of previous releases.</p>
+<hr />
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>CoCo cost controls are now a real governance feature.</strong> Michael Young's <a href="https://www.youtube.com/watch?v=6JCTF0pf4BY">walkthrough on per-user AI quotas</a> shows how to use user tags to enforce monthly and daily credit limits on CoCo consumption, with automatic access blocking when a user crosses the line — no tickets, no manual steps. This is the "know before finance asks" capability that's been missing from Cortex AI spend management.</p>
+<p><strong>Cross-region inference (CRI) is a hard dependency for CoCo — and it's not the data-residency nightmare it sounds like.</strong> Two new Snowflake posts clarify the mechanics: <a href="https://medium.com/snowflake/cross-region-inference-what-it-is-and-what-enabling-it-actually-involves-b7a79608e8c7">what enabling CRI actually involves</a> (if the account-level parameter is DISABLED, CoCo opens to nothing) and a <a href="https://medium.com/snowflake/how-to-set-up-cross-region-inference-for-coco-in-emea-a7dd5650b261?source=rss----34b6daafc07---4">EMEA-specific setup guide</a> that addresses the common misconception that cross-region means data leaving the EU. You can scope CRI to EU regions only, and traffic rides your existing network path. If your security team has paused a CoCo rollout over this, send them the EMEA post.</p>
+<p><strong>Cortex Analyst production guide.</strong> A <a href="https://medium.com/snowflake/cortex-analyst-snowflake-agents-the-definitive-guide-to-a-production-grade-analyst-service-%EF%B8%8F-39b22d2614f7?source=rss----34b6daafc07---4">definitive guide to building a production-grade analyst service</a> covers the two complaints that dominate every Cortex Analyst project: response time and correctness. The author's first questions are always the same — how is the semantic model set up, are orchestration instructions right, did you spend real time on them? Worth reading before your next agent project.</p>
+<p><strong>Openflow for document intelligence.</strong> A <a href="https://www.youtube.com/watch?v=RN21wQgc3Zc">6-minute walkthrough</a> shows connecting Google Drive to Snowflake via Openflow as a managed, near-real-time integration, pre-processing unstructured content for AI consumption. If your enterprise knowledge lives in Drive, this is the pipeline pattern to steal.</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>dbt-core shipped four patch releases yesterday.</strong> <a href="https://github.com/dbt-labs/dbt-core/releases/tag/v1.12.2">v1.12.2</a> adds a deprecation warning for old dbt versions and fixes Databricks adapter config key validation (no more spurious <code>CustomKeyInConfigDeprecation</code> warnings for <code>query_tags</code>, <code>zorder</code>, <code>options</code>). <a href="https://github.com/dbt-labs/dbt-core/releases/tag/v1.12.1">v1.12.1</a> adds OpenTelemetry span instrumentation for node and hook execution (gated behind <code>--snowflake-projects-otel</code>, off by default) and fixes the inflated "X of Y" node count when unit tests are selected. <a href="https://github.com/dbt-labs/dbt-core/releases/tag/v1.11.13">v1.11.13</a> fixes an intermittent "references a model that does not exist" parsing error with versioned models caused by non-deterministic filesystem parse order — that one's been biting people. <a href="https://github.com/dbt-labs/dbt-core/releases/tag/v1.10.23">v1.10.23</a> is the deprecation warning only. If you're on 1.11.x with versioned models, the parse-order fix is worth the upgrade.</p>
+<p><strong>dbt State works on Core, not just platform.</strong> A <a href="https://www.youtube.com/watch?v=ORjNl4aYPAw">short clip from dbt Labs</a> confirms dbt State runs anywhere you run dbt — Core or platform, with any orchestrator. Set your lag tolerance based on job frequency and it only builds what changed. The full webinar is September 1 with Joel Labes and Reuben McCreanor.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>Streamlit apps via Cortex Code CLI.</strong> Chanin Nantasenamat's <a href="https://www.youtube.com/watch?v=ymyrvUdXLU0">19-minute walkthrough</a> shows building Streamlit apps with AI agents using Cortex Code CLI — agent skills take user intent, handle the coding tasks, and free the human to focus elsewhere. Context retrieval from web search and local file creation are handled by the agents underneath.</p>
+<p><strong>FastMCP's creator on agent design.</strong> Jeremiah Lowin's <a href="https://www.youtube.com/watch?v=je80FazbbRk">interview with Tristan Handy</a> is nominally about FastMCP — the weekend project that became the MCP reference implementation after OpenAI and Google both adopted the protocol — but the real content is his take on agent design: "don't hand a bazooka to an agent making a sandwich." He quit his job at Prefect for 60 days to maintain the repo that hit #1 trending on GitHub. Worth the watch for anyone building agents on MCP.</p>
+<hr />
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=VKhW4QnQMts">AI Just Hacked a Government... And Its Nuclear Agency!</a></strong> (AI Revolution, 17 min) — The broad roundup you want this morning: AI agents ran a four-day autonomous cyber attack on a government, mapping 21 systems and cracking 85 accounts, built entirely from free open-source tools. Also covers the new research extracting hidden reasoning traces from Claude, GPT, and Gemini — including passwords. Directly relevant to the reasoning-extraction story in today's headlines.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=P_gT4ED3B1Q">GitHub Trending Weekly #44</a></strong> (Github Awesome, 11 min) — The weekly compilation of 25 trending open-source projects, including git-knife, shadcn's chatbot-template, and Waku. The fastest way to scan what's hot in the OSS ecosystem without clicking through 25 repos.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=VAFVymP21q0">MoE: The Routing Trick Behind Every Model You Actually Run</a></strong> (Devsplainers, 8 min) — With Qwen3.8-2.4T-A95B landing today, this explainer on Mixture-of-Experts is perfectly timed. The key claim: a model that computes with 2% of itself still has to keep 100% of itself in memory — which is exactly the hardware reality check the Qwen 2.4T release demands.</p>
+</li>
+</ol>
+<hr />
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>Hidden reasoning traces extracted from Claude, GPT, and Gemini.</strong> A <a href="https://arxiv.org/pdf/2608.09867">new paper</a> demonstrates a gap allowing extraction of 100% of reasoning tokens from all Claude and GPT models via API. The <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmawd2/hidden_reasoning_from_claude_and_gpt_are_decoded/">LocalLLaMA discussion</a> notes the implications for open source: the extracted reasoning shows Claude <em>knows</em> when it's being benchmarked on AIME questions, which has serious implications for benchmark integrity across the industry.</p>
+<p><strong>NVIDIA doubled the RTX PRO 6000 Blackwell's price.</strong> The 96GB card that started pre-orders below $8,000 last year now carries a <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vn0dn0/nvidia_doubles_rtx_pro_6000_blackwells_msrp_to_a/">$16,000 MSRP</a>. For local LLM enthusiasts this is a gut punch — the 96GB card was the de facto single-GPU answer for running 70B+ models. The <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmebb1/nvidias_fastest_blackwell_gpu_the_96_gb_rtx_pro/">original thread</a> frames it as demand-driven pricing, but it pushes the "GPU-impoverished" crowd further toward quantization and MoE models.</p>
+<p><strong>Muse Glimmer 30B runs 3.3x faster on Mac with mlx-dspark.</strong> A <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmo2sp/metas_muse_glimmer_30b_now_runs_up_to_33x_faster/">community benchmark</a> shows Meta's model getting a massive speedup on Apple Silicon via the mlx-dspark speculative decoding path. Also relevant: <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmaofu/intel_llmscaler_ready_with_muse_glimmer_support/">Intel's LLM-Scaler now supports Muse Glimmer</a>, and a <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmt1y3/i_ran_deepseek_v4_flash_284b_dspark_on_one_rtx/">DeepSeek V4 Flash 284B + DSpark benchmark</a> on a single RTX PRO 6000 found the drafter was <em>faster in system RAM than VRAM</em> — a counterintuitive result worth remembering for memory-constrained setups.</p>
+<p><strong>Agentic AI is changing CPU-to-GPU ratios.</strong> <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vm9w5x/according_to_amd_arm_and_microsoft_agentic_ai/">AMD, Arm, and Microsoft argue</a> that agents don't cut GPU demand — they pile on orchestration, retrieval, and tool-calling work that runs on CPUs, pushing ratios from 1:4 toward 1:2 or even 1:1. Agents fire off 15x more requests than humans, and they run nonstop.</p>
+<p><strong>Small multimodal models keep getting better.</strong> <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmfy8w/liquidailfm25vl3b_hugging_face/">LFM2.5-VL-3B</a> from Liquid AI runs locally on an iPhone 17 and <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmp9gj/lfm25vl3b_recognizes_steve_from_minecraft_running/">recognizes Steve from Minecraft</a>. <a href="https://www.reddit.com/r/LocalLLaMA/comments/1vmjmna/coherelabsnorthmicrovisioninstruct_hugging_face/">Cohere's North-Micro-Vision-Instruct</a> also dropped. The 3B-class vision models are becoming genuinely useful on-device.</p>
+<hr />
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>"Don't hand a bazooka to an agent making a sandwich"</strong> — <a href="https://www.youtube.com/watch?v=je80FazbbRk">Jeremiah Lowin on the dbt Labs channel</a> (56 min, too long for the playlist):</p>
+<ul>
+<li>FastMCP went from weekend side project to Anthropic's official SDK to #1 trending on GitHub after OpenAI and Google adopted MCP — the protocol won because it's simple, not because it's clever.</li>
+<li>Lowin's agent design philosophy: scope tools to the task. Giving an agent a bazooka for a sandwich-making task is how you get catastrophic failures.</li>
+<li>He changed his own job at Prefect for 60 days to maintain the repo — a useful data point on how much maintenance a "small" open-source project that becomes infrastructure actually requires.</li>
+</ul>
+<p><strong>Mojo 1.0 is stable</strong> — <a href="https://www.youtube.com/watch?v=oKaQrSJLXeo">Cloud Codes</a> (10 min):</p>
+<ul>
+<li>Modular shipped Mojo 1.0 on August 11 with a 1.x stability promise, positioning it as the CUDA replacement.</li>
+<li>The skepticism is warranted: zero new performance figures in the release notes, and Qualcomm's $3.9B acquisition raises questions about direction.</li>
+<li>For local LLM work, Mojo is still a watch-and-see — CUDA isn't going anywhere.</li>
+</ul>
+<p><strong>Dropbox's $75M AWS exit had a hidden invoice</strong> — <a href="https://www.youtube.com/watch?v=m5NLYxscKio">Cloud Codes</a> (9.7 min):</p>
+<ul>
+<li>The headline savings of $74.6M from leaving S3 came with $53M in hardware depreciation costs buried on page 73 of the SEC filing.</li>
+<li>The lesson for Snowflake cost optimization: migration costs are real, and "cloud exit" math rarely works out as cleanly as the press release suggests.</li>
+</ul>
+<hr />
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/Yam-ghub/dbt_project">Yam-ghub/dbt_project</a></strong> — A reference dbt project structure. Sparse on description, but if you're looking for a clean starting layout for a new dbt project, worth a skim for patterns.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong><a href="https://github.com/NANDAN-CREATOR/etl-databricks-to-snowflake-sync-agent">NANDAN-CREATOR/etl-databricks-to-snowflake-sync-agent</a></strong> — An agentic data engineering pattern: Databricks Silver Delta to Snowflake sync with a checksum-before-sync-confirm guardrail, using Ollama for the LLM layer. The guardrail pattern — verify before you sync — is the kind of thing that saves you from silent data corruption.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/jjjardev/HoardCore">jjjardev/HoardCore</a></strong> — A fully-local agent harness for retrieval and deep research: SQLite vault, hybrid FTS5 retrieval, and a DISCOVER → INGEST → RECALL → EMIT research loop with provenance tracking. If you're building a local RAG pipeline and want provenance baked in, this is a clean reference.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/agents-universe/agents-universe">agents-universe/agents-universe</a></strong> — "Let agents learn and work like humans" — a Chinese-language agent framework with 56 stars and climbing. Worth watching for agent orchestration patterns, especially if you're building multi-agent systems.</li>
+</ul>
+<hr />
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <strong><a href="https://github.com/dinosn/security-knowledge-base">dinosn/security-knowledge-base</a></strong> — Local-first, evidence-led security knowledge base with a model-neutral JSON CLI and human-reviewed proposals. Relevant if you're building RAG over security docs.</li>
+<li>✅ <strong><a href="https://github.com/led829155-droid/RecSys-MLops">led829155-droid/RecSys-MLops</a></strong> — Production-style end-to-end e-commerce recommendation platform with data engineering, MLOps, serving, governance, and observability on Kubernetes. A solid reference architecture for ML platform work.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-08-12.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-08-12</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
