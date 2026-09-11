@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-09-11</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">11 Sep 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.009</span>
+      </div>
+      <h1>Daily Signal — 2026-09-11</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>DeepSeek V4.1 Flash just killed its own flagship — and the details matter for everyone running open weights.</strong> DeepSeek reports that V4.1 Flash beat its own V4 Pro so decisively that it is switching off the flagship and migrating Pro customers to the cheaper, faster model (<a href="https://www.youtube.com/watch?v=Weom9fQnnJ0">video</a>). The architecture behind the win is a Causal Encoder-Decoder with an 890-byte-per-token KV cache, sparse Mixture-of-Experts routing, and an "Engram memory" system — changes that cut inference costs dramatically rather than just adding parameters (<a href="https://www.youtube.com/watch?v=Weom9fQnnJ0">video</a>). The community is already describing the CEA (Causal Encoder-Decoder) split as an "inference architecture leap" because it opens the door to GPU pooling where prefill-specialized and decode-specialized hardware run different halves of the model (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wcf6kq/the_cea_architecture_is_a_bigger_deal_than_i/">Reddit r/LocalLLaMA</a>). V4.1 Flash is now live in HuggingChat for immediate testing (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wcng44/deepseek_v41_flash_is_available_in_huggingchat/">Reddit r/LocalLLaMA</a>).</p>
+<p><strong>How to make the most of it today:</strong></p>
+<ul>
+<li>Read the community <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wcesmy/guide_to_using_reasoning_effort_on_deepseek_v41/">guide to <code>reasoning_effort</code> on V4.1 Flash</a> before benchmarking — tuning effort is reportedly the difference between flagship-level and mediocre results.</li>
+<li>If you have a spare CPU-only box, there's already an <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wcu3fw/cpu_only_experimental_sloppy_deepseek_v41_flash/">experimental "sloppy" CPU implementation</a> built for overnight, long-running agentic jobs — not for chat, but genuinely useful for batch work.</li>
+<li>Watch the <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wd4xxv/someone_apparently_managed_to_kind_of_replicate/">hobbyist attempt to replicate V4.1-style KV prefill tricks on Qwen</a> — even partial reproductions of the CEA trick are already landing in the open-weight ecosystem.</li>
+</ul>
+<p>Separately, note the unverified rumour doing the rounds: a leaked OpenAI model reportedly codenamed <strong>BEL</strong> — claimed to exceed 10 trillion parameters and to be the successor to GPT-6 Astra — supposedly already powered 10,000 AI agents attacking an open maths problem (<a href="https://www.youtube.com/watch?v=GxaygGgG7o8">AI Revolution video</a>). Treat as rumour until OpenAI confirms.</p>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Claude Fable 5.1 is coming to Cortex AI.</strong> Snowflake announced Anthropic Claude Fable 5.1 on Snowflake Cortex AI on Sep 9, 2026 (<a href="https://www.snowflake.com/en/blog/ai-ml/">blog index</a>, <a href="https://www.snowflake.com/en/blog/">Snowflake blog</a>). With Claude models already Lua-customers' default in many governed AI workloads, Fable 5.1 on Cortex closes the loop for teams that want frontier reasoning without exfiltrating data to third-party APIs — worth checking availability and pricing on your region's release schedule.</p>
+<p><strong>Snowpark Python hits v1.55.0</strong> with two ergonomics wins: <code>DataFrame.to_polars()</code> for direct conversion to a Polars DataFrame (with an optional <code>transport="parquet"</code> mode for large data-transfer-dominated workloads), and interval type support for Python UDFs/stored procedures via <code>datetime.timedelta</code> annotations (<a href="https://github.com/snowflakedb/snowpark-python/releases/tag/v1.55.0">release notes</a>). If you're doing heavy pandas-to-polars migrations on Snowflake, the Parquet transport bypass is a genuine cost lever.</p>
+<p><strong>Snowflake is shipping "skills" and "plugins" sharing</strong> — a dedicated catalog inside Snowflake where you can search, install, and publish trusted skills, with admin governance over what's "official" and token-saving standardization across teams (<a href="https://www.youtube.com/watch?v=H8CDAzEw2_U">Snowflake Developers video</a>). This is the pragmatic layer that makes agentic workflows reproducible inside governed Snowflake orgs rather than living in ad-hoc notebooks.</p>
+<p><strong>Two reference architectures worth reading:</strong> Snowflake published an <a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-native-accounts-payable-snowflake">AI-native Accounts Payable app (InvoiceIQ)</a> that turns messy invoices into finance-ready ERP records natively on the platform, and a <a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/autonomous-data-engineering">5-stage maturity model for autonomous data engineering</a> arguing that generic AI coding tools speed up code but don't fix governance — the agentic era requires staged guardrails. Roughly adjacent, the Office of the CFO case study on <a href="https://medium.com/snowflake/what-does-finance-look-like-when-it-runs-on-snowflakes-data-platform-2529ef2c3b2a?source=rss----34b6daafc07---4">finance running on Snowflake</a> claims cash application went from a multi-day manual grind to a same-day, auditable process, reclaiming 250+ hours a month. Also new in preview: <a href="https://docs.snowflake.com/en/release-notes/new-features">AI mode for sensitive data classification</a> (10.32 weekly release notes) (<a href="https://docs.snowflake.com/en/release-notes/weekly-releases-2026">release notes index</a>).</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>dbt v2.0.0-rc.2 is out</strong> (<a href="https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-rc.2">release notes</a>). Headline features: ClickHouse now supports dbt unit tests; the Snowflake adapter gains a beta <code>interactive_table</code> materialization that works with <code>mv_on_schema_change</code> defaults and replays MV queries on full refresh — directly relevant if you've been fighting Snowflake materialized views inside dbt. The broader <a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">September release notes</a> also flag wider availability of dbt State and permission-set changes that will affect how you wire CI/CD.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>The data team is becoming an agent-management team.</strong> The dbt roundup features Emilie Schario's argument that data people — not software engineers — are best positioned to manage a "portfolio of agents," on the premise that you no longer have ICs, you have managers (<a href="https://roundup.getdbt.com/p/you-dont-have-ics-anymore-you-have">dbt roundup</a>). For anyone using Cortex Code or hosted Codex-style harnesses, this reframes your job: your highest-leverage work is deciding which agents exist, what tools they can reach, and which runbooks they follow — not writing the transforms yourself.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=Weom9fQnnJ0">How DeepSeek V4.1 Flash Killed Its Own Flagship</a></strong> (Devsplainers, 7.9 min) — The single most on-topic video for the open-weight story of the day: it unpacks how a model with far less active compute became faster, cheaper, and better at agentic coding, covering the Causal Encoder-Decoder, the 890-byte-per-token KV cache, sparse MoE routing, and Engram memory — and why training mattered more than architecture.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=GxaygGgG7o8">OpenAI's New GPT 7 Leaked: It's Called BEL and It's Massive</a></strong> (AI Revolution, 16.2 min) — Roundup-style coverage of the unverified BEL leak (claimed &gt;10T parameters) plus OpenAI's confirmation that an unnamed internal post-Astra model powered 10,000 agents attacking an unsolved maths problem. Good for separating signal from hype in one sitting.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=m82PtDxLv8A">Nvidia's Biggest AI Bet Just BACKFIRED</a></strong> (Your AI Guy, 14.9 min) — A broad industry roundup on GPU economics: massive AI infrastructure spend, custom chips from Google/Amazon/Meta, circular financing concerns, and memory shortages. Relevant to anyone trying to sanity-check hardware costs for local or hosted inference.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>OpenAI released its Agents API</strong> — a hosted version of the Codex harness for your applications, with MCP tool connectivity and runbook-following out of the box; the demo shows an agent investigating production incidents and delivering a shareable evidence-backed report (<a href="https://www.youtube.com/watch?v=2YHa1vhnmK0">video</a>). This is the managed alternative to rolling your own harness.</p>
+</li>
+<li>
+<p><strong>ChatGPT Work now has a Data agent</strong> — plug in your data sources and context, ask questions, and get answers plus interactive dashboards (<a href="https://www.youtube.com/watch?v=MSiAd36bGeQ">video</a>, <a href="https://openai.com/index/put-data-to-work/">OpenAI post</a>). Positioned as "everyone can put data to work" — relevant if you're evaluating against Snowflake/Cortex or dbt Semantic Layer for self-serve analytics.</p>
+</li>
+<li>
+<p><strong>OpenAI's internal telemetry shows recursive self-improvement is closing</strong> — autonomous coding agents now log 3.14 agent workdays per human researcher workday, with median token spend of $600–$7,000 per person daily; AI models helped tape out OpenAI's custom "Jalapeño" inference chip in nine months and authored kernels 1.8× faster than humans (<a href="https://www.youtube.com/watch?v=NEsOhkrvsng">Cloud Codes video</a>). The video raises containment concerns, but the numbers are the headline.</p>
+</li>
+<li>
+<p><strong>Another researcher accuses OpenAI of training on conversations then claiming a breakthrough</strong> — unverified, but it adds pressure to the provenance questions swirling around frontier labs (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wcmgbn/another_researcher_accuses_openai_of_training_on/">Reddit r/LocalLLaMA</a>).</p>
+</li>
+<li>
+<p><strong>GigaChat-3.5-Reasoning released</strong> — a 432B-A28B MoE reasoning model now available in the lineup (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wchl1x/gigachat35reasoning/">Reddit r/LocalLLaMA</a>). Worth a look if you want a non-US reasoning checkpoint to evaluate on your own evals.</p>
+</li>
+<li>
+<p><strong>YuE2-3B released</strong> — a new 3B music-generation model that the community is calling surprisingly solid for its size (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wd19c7/new_music_model_yue23b_released/">Reddit r/LocalLLaMA</a>).</p>
+</li>
+<li>
+<p><strong>Cherenkov: an Apple Silicon inference engine pushing Qwen3.8-Flash-Next to 8–22 tok/s in ~21GB</strong> on a 32GB M4 MacBook Air, using predictive expert streaming and mixed-precision execution instead of loading the whole model (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wcwith/faster_than_light_in_air_822_tgs_qwen38flashnext/">Reddit r/LocalLLaMA</a>). If you do local dev on a laptop, this is the most interesting memory-constrained inference project of the day.</p>
+</li>
+<li>
+<p><strong>Inference providers are fighting for single-digit margins</strong> — one provider at $10k monthly revenue kept only ~$200 profit due to GPU costs, with customers price-matching down to what the majors charge; the consensus is majors are running a distribution play at low/negative margins (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wcyuhf/are_inference_providers_able_to_make_any_margins/">Reddit r/LocalLLaMA</a>). Relevant if you're choosing between DIY hosting and API providers.</p>
+</li>
+<li>
+<p><strong>"Flash" models are now 512GB</strong> — community note that a "flash/deployable" tier now exceeds what used to be a giant model, with the under-100GB class rebranded as "tiny" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wcvmuo/i_find_it_funny_that_a_flash_model_is_now_512gb/">Reddit r/LocalLLaMA</a>).</p>
+</li>
+<li>
+<p><strong>Datasette shipped urgent security patches</strong> — v1.0a39 and v0.65.4; upgrade if you run Datasette in any internal tooling (<a href="https://simonwillison.net/2026/Sep/11/datasette-security/">Simon Willison</a>).</p>
+</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li><strong>"These 33 Lines Cut Claude Code Token Usage by 90%"</strong> (<a href="https://www.youtube.com/watch?v=_V1cjKmbJd8">Cloud Codes</a>) — didn't make the playlist as it's a narrow engineering deep-dive, but the substance is worth stealing:</li>
+<li>Spotify's open-source Shunt plugin (portal-ai-plugins) uses a 33-line <code>PreToolUse</code> bash hook that intercepts Claude Code's file-reading tools, cutting bulk-read token consumption by ~82–94% on large monorepos.</li>
+<li>
+<p>The trick is a hard 350-line threshold that delegates large context ingestion to lightweight worker models (Gemini 2.5 Flash) via an internal gateway — replacing advisory CLAUDE.md routing with deterministic execution boundaries.</p>
+</li>
+<li>
+<p><strong>"AI Models Making AI Models at OpenAI (RSI Achieved?)"</strong> (<a href="https://www.youtube.com/watch?v=NEsOhkrvsng">Cloud Codes</a>) — the rest of the telemetry story beyond the headline numbers:</p>
+</li>
+<li>Containment failures are what the video argues are coming; agent workdays exceeding human workdays change how you should think about your own agent loops.</li>
+<li>
+<p>The Jalapeño chip story — nine months from spec to tape-out with model assistance — is the strongest signal that hardware is where self-improvement compounds fastest.</p>
+</li>
+<li>
+<p><strong>"Poisoning AI is trivially easy.."</strong> (<a href="https://www.youtube.com/watch?v=j8Js1AMlGD8">Tech Unfiltered</a>) — a cautionary survey:</p>
+</li>
+<li>New research suggests poisoning AI behaviour doesn't require massive compute or insider access; training data and external information sources are increasingly open attack surfaces.</li>
+<li>For anyone wiring agents to MCP tools and web context, this is the security category to watch — prompt-injection is the prologue, data poisoning is the sequel.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/dbt-labs/dbt">dbt-labs/dbt</a></strong> — the v2.0.0-rc.2 release is the thing to track; rc.2 brings ClickHouse unit tests and the beta <code>interactive_table</code> materialization for Snowflake.</li>
+<li><strong><a href="https://github.com/RicardoAGL/onto-datamodel">RicardoAGL/onto-datamodel</a></strong> — citation-grounded ontology generation for data models, proven on dbt + DuckDB, to ground AI agents in your actual data model — useful for agentic dbt assists.</li>
+<li><strong><a href="https://github.com/brunolnetto/deh-dbt-mastery">brunolnetto/deh-dbt-mastery</a></strong> — a dbt mastery learning path repo, worth a skim for training material structure.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/hsj576/virtual-ai-infra-team">hsj576/virtual-ai-infra-team</a></strong> — an open-source "virtual AI infra team" that discovers, benchmarks, and safely upgrades local LLM inference with independent quality gates, an OpenAI-compatible API, and automatic rollback. Essentially agentic management for your local serving stack.</li>
+<li><strong><a href="https://github.com/barbieri/local-openfinance">barbieri/local-openfinance</a></strong> — syncs Brazilian Open Finance data via an MCP server into local SQLite, annotates expenses, and produces LLM reports with a localhost web UI — a clean reference for building MCP-based local data pipes.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/undefined-ui/second-brain-os">undefined-ui/second-brain-os</a></strong> — a self-maintaining AI "second brain" with a starter vault, agent skills, and scripts for self-organizing knowledge bases inside Claude Code and Obsidian; a practical pattern for agent-maintained documentation.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/chasers/o11y-proxy">chasers/o11y-proxy</a> — one unified proxy for all observability data; relevant to data observability pipelines.</li>
+<li>✅ <a href="https://github.com/aarab-ayoub/Nexus-2.0">aarab-ayoub/Nexus-2.0</a> — production lakehouse platform: CDC ingestion, Spark+dbt, Iceberg, Airflow, Terraform, full observability — a useful end-to-end reference architecture.</li>
+<li><a href="https://github.com/tshemsedinov/reslop">tshemsedinov/reslop</a> — interactive terminal code review of git diffs with intra-line highlighting.</li>
+<li><a href="https://github.com/prashobh-ai/Qualizeal_Fabric">prashobh-ai/Qualizeal_Fabric</a> — enterprise knowledge fabric with governance, telemetry, and cost-effective model switching.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-09-10.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-09-10</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
