@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-09-20</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">20 Sep 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">6 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.007</span>
+      </div>
+      <h1>Daily Signal — 2026-09-20</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>JEV / "System One" models are the story of the day — and the open-weight community is already building a counter-wave.</strong> TypeSafe, the company founded by a ChatGPT inventor who left OpenAI, spent the week pushing JEV as a fundamentally different kind of AI that skips language generation entirely and emits machine-native decisions (Choice/Score/Noul outputs), claiming up to 200× faster inference than LLMs (<a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev">TypeSafe's announcement</a>; also covered in <a href="https://www.youtube.com/watch?v=mSHGRE4Ljpc">AI Revolution's explainer</a>). The claims are vendor-reported and not yet independently benchmarked, but the ecosystem reaction has been anything but slow: GitHub's trending feed is now saturated with JEV tooling — <code>fast-jev-compaction</code>, <code>jev-trader</code>, <code>jev-search</code>, <code>pg-jev</code>, <code>jev-review</code> (<a href="https://www.youtube.com/watch?v=hKfHfdVhqT8">GitHub Awesome roundup</a>) — and early community experiments are already pitting JEV and sibling model Laya against fine-tuned generative models like Qwen 3.5 at playing Doom (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wl1yzq/i_gave_jev_laya_finetuned_modernce_and_qwen35_the/">Reddit thread</a>).</p>
+<p>The open-source response was effectively immediate:</p>
+<ul>
+<li><strong>Von (395M)</strong> shipped as a drop-in replacement for JEV, running entirely on CPU with 1–2 GB memory and 25–300 ms responses (<a href="https://github.com/wfzyx/von">GitHub</a>, <a href="https://huggingface.co/wfzyx/von-1.0">Hugging Face</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wkpxn6/von_opensource_395m_system_one_model/">discussion</a>).</li>
+<li><strong>LLM2Jev</strong> adapts local language models into JEV-compatible structured decision engines using prefill-only binary inference (<a href="https://github.com/Yinsongxu/LLM2Jev">GitHub</a>).</li>
+<li><strong>fast-browser-use</strong> applies the same "single-token reflex" idea to browser automation, calling itself local-first and hallucination-free (<a href="https://github.com/APUS-AI-Lab/fast-browser-use">GitHub</a>).</li>
+</ul>
+<p><strong>How to make the most of it:</strong></p>
+<ol>
+<li><strong>Pull Von tonight for your CPU-only environments.</strong> At 395M params and under 2 GB RAM, it's cheap to side-by-side against your current classifier/routing prompts — the JEV-compatible output format is a genuinely different engineering trade-off.</li>
+<li><strong>Route high-volume, low-entropy decisions to prefill-only engines.</strong> If you're burning GPT/Claude tokens on intent routing, guardrails, or scoring, an LLM2Jev-style adapter is a plausible 100–200× latency/cost cut — keep generative calls only for open-ended work.</li>
+<li><strong>Run your own evals before trusting the hype.</strong> The Doom comparison shows System One models behave differently from generative LLMs, not necessarily better; headline latency numbers don't tell you about task completion quality.</li>
+</ol>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Multimodal <code>AI_SUMMARIZE</code> entered public preview</strong> in Snowflake's Sep 14 release notes (<a href="https://docs.snowflake.com/en/release-notes/new-features">Snowflake release notes</a>). Practical upshot: you can now do document/image summarization as a SQL function without wiring an external API call into your pipelines — worth testing against your Cortex-built extraction workflows before you keep paying per-token to a third party.</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>The big one for your stack: Snowflake announced GA for dbt artifacts reuse in dbt Projects on Snowflake</strong>, covering Slim CI, defer to production, failed-execution recovery, and concurrent execution (<a href="https://docs.snowflake.com/en/release-notes/feature-releases-2026">feature release notes</a>, <a href="https://docs.snowflake.com/en/release-notes/all-release-notes">all release notes</a>). This is the single most cost-relevant item in today's feed: it means PRs stop rebuilding unchanged models, production can be safely deferred against, and crashed runs resume rather than restarting. If you haven't enabled defer-to-prod in your Snowflake dbt projects yet, this GA is the cue — especially for your longer dimensional models.</p>
+<p>No Cortex Code (CoCo/CoWork) news in today's material.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li><strong><a href="https://www.youtube.com/watch?v=hygMRgnDD7w">OpenAI hacked, Jev, Google's RSI, Qwen 3.8 Omni, Bonsai 2, new Gemini Live: AI NEWS</a></strong> (41 min) — The broad roundup in exactly the style you asked for: one sitting, ten stories. The most useful segment is the clustering of new open-weight releases — Qwen 3.8 Omni/Live, Bonsai 2 27B, Viggle's Meridian, R2T2, plus Dream RSI and Google's Gemini 3.8 Live — so you can decide which ones deserve a deeper local test.</li>
+<li><strong><a href="https://www.youtube.com/watch?v=mSHGRE4Ljpc">JEV Just Broke the Internet: This Is a New Kind of AI</a></strong> (15 min) — The exceptional deep dive that earns playlist placement today: why a ChatGPT inventor left OpenAI, how JEV works without generating language, and why developers are rushing to adopt it. Paired with the roundup, it gives you both the map and the mechanism.</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li><strong>Qwen 3.8 Flash-Next is the benchmark story on every piece of hardware this week.</strong> On a Strix Halo APU, halogen 0.12.0 manages 38 tok/s decode at 1M context — useful long-context numbers for local document work (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wkyny9/qwen38flashnext_at_1m_context_on_strix_halo_38/">Reddit</a>). On a single RTX 5090, the FreeToken engine claims ~50 tok/s generation and 2,300 tok/s prefill, enabled by expert caching that llama.cpp still lacks for MoE models (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wl06np/qwen38flashnext_on_1x_rtx_5090_tg50_ts_pp2300_ts/">Reddit</a>, <a href="https://github.com/FlashML-org/FreeToken">FreeToken</a>, <a href="https://github.com/ggml-org/llama.cpp/discussions/24528">llama.cpp discussion #24528</a>). The 3×3090 crowd is also converging on Flash-Next as their "current best fit" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wl5hfk/to_the_dozens_of_3x_3090_local_llm_people_i_found/">Reddit</a>).</li>
+<li><strong>Ternary quantization is getting surprisingly usable.</strong> Direct tests of Qwen 3.8 27B IQ3_XXS (10.18 GiB) vs Bonsai 2 Ternary PQ2 (6.42 GiB) show the 4 GB saving comes with real trade-offs (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wkorli/i_tested_qwen38_27b_iq3_xxs_1018gib_vs_bonsai/">Reddit</a>), but a separate run of <code>Ternary-Bonsai-2-27B-PQ2_0</code> reports it is "not completely lobotomized" — meaningful for 6–8 GB cards where 27B-class models were previously impossible (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wkwz69/ternarybonsai227bpq2_0_is_not_completely/">Reddit</a>).</li>
+<li><strong>Ollama is rolling: 0.34.3-rc1 landed Sep 19 with a llama.cpp integration update</strong>, right behind 0.34.2 stable on Sep 15 (<a href="https://github.com/ollama/ollama">Ollama repo</a>, <a href="https://github.com/ollama/ollama/releases">releases</a>). Worth upgrading if you're on 0.34.0 — the llama.cpp sync likely includes the MoE/expert path improvements the community is chasing.</li>
+<li><strong>China's CXMT says its new memory-chip platform entered mass production</strong> (<a href="https://www.reuters.com/world/asia-pacific/chinas-cxmt-says-new-memory-chip-platform-enters-mass-production-2026-09-20/">Reuters</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wl9c2o/chinas_cxmt_says_new_memorychip_platform_enters/">discussion</a>). More DRAM supply from a non-Samsung/SK competitor matters for the price of the RAM that your local-quantized workloads and KV caches live in.</li>
+<li><strong>StepFun released Step-5-Preview-BF16 on Hugging Face</strong>, and early local-LLM reactions are unusually warm — worth a look if you're evaluating open-weight alternatives to Qwen for coding/agent tasks (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wl6gro/this_looks_promising_stepfunaistep5previewbf16/">Reddit</a>).</li>
+<li><strong>Radeon RX 10800 XT rumoured to beat the RTX 5090 by 15–25% in 4K gaming and local AI</strong> — unverified pre-release speculation, but significant for the local-LLM hardware outlook if AMD finally has real ROCm muscle at the top end (<a href="https://en.gamegpu.com/news/zhelezo/radeon-rx-10800-xt-mozhet-obojti-rtx-5090-na-15-25-v-igrakh-v-v-4k-i-lokalnom-ii">GameGPU</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wl1hlj/radeon_rx_10800_xt_can_outperform_the_rtx_5090_by/">discussion</a>).</li>
+<li><strong>OpenAI reportedly hacked in 72 hours via a crafted HEIC upload</strong> — reported via a detailed YouTube walkthrough, not a primary advisory, so treat as a live investigation: the described chain runs FastImage → ImageMagick → libheif 1.19.7 heap overflow → code execution on OpenAI's Discourse forum → SSO misconfiguration → an employee's Codex agent access (<a href="https://www.youtube.com/watch?v=sT4EVoAx6vI">Cloud Codes</a>). The lesson for your own apps survives regardless: any user-upload path that touches image libraries is a code-execution surface.</li>
+<li><strong>CMP 170HX owners found a +36% memory-bandwidth overclock.</strong> One user pushed the mining card to 1.89 TB/s, taking Qwen 3.8 27B generation from 110 to 202 tok/s — cheap second-hand VRAM still has headroom if you're willing to fiddle (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wl9amq/reached_189_tbs_memory_bandwidth_overclocking_the/">Reddit</a>).</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li><strong><a href="https://www.youtube.com/watch?v=RtDqkpSTK4I">Run Your Own AI Coder on a 6GB GPU (No Subscription)</a></strong> (15 min) — Directly on your "reducing VRAM" interest. Key takeaways: (1) loading a small model on a 6 GB card is the easy part; completing real coding tasks is the bar; (2) the video's value is the honest framing — no phone-home, no monthly billing, but you inherit the small-model ceiling on repository-level work; (3) worth watching before you spend on another cloud coding subscription.</li>
+<li><strong><a href="https://www.youtube.com/watch?v=J4EUvruk6V4">The Chips Are in Boxes: Why "Gigawatts" Tells You Nothing</a></strong> (12 min) — A good skepticism reset for the AI buildout chatter. Key takeaways: (1) power commitments ≠ working compute — chips bought, chips in boxes, infrastructure under construction, and GPUs running workloads are four wildly different things; (2) the bottleneck analysis matters for GPU pricing and availability, which affects your local-lab upgrade timing.</li>
+<li><strong><a href="https://www.youtube.com/watch?v=XpXIKu3oTMk">The Illegal Way China Gets Claude 9x Cheaper</a></strong> (15 min) — Relevant to your API-cost radar. Key takeaways: (1) gray-market resellers on Telegram/Taobao reportedly resell Claude access at up to 9× cheaper than official pricing; (2) the risk profile (data exfiltration, account bans, prompt-injection via reseller layers) makes this a bill you don't want to touch even for eval workloads.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/Yinsongxu/LLM2Jev">Yinsongxu/LLM2Jev</a></strong> (26★) — Adapts local models into JEV-compatible structured decision engines using prefill-only binary inference. The most interesting JEV-adjacent repo today: it lets you keep your existing Llama/Qwen weights and still get the latency win.</li>
+<li><strong><a href="https://github.com/APUS-AI-Lab/fast-browser-use">APUS-AI-Lab/fast-browser-use</a></strong> (11★) — Browser-use skill driven by local LLMs via single-token reflexes; the "zero hallucinations" claim is strong, but browser automation is where it deserves a real eval.</li>
+<li><strong><a href="https://github.com/ghuntley/underclass">ghuntley/underclass</a></strong> (19★) — Local LLM proxy that pools multiple ChatGPT/Codex/Copilot subscriptions behind one OpenAI-compatible endpoint with sticky sessions and quota failover. If you juggle several paid coding seats, this is a clever cost-recovery hack.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/friday-memory/friday">friday-memory/friday</a></strong> (46★) — Persistent cognitive memory layer for AI coding agents (Cursor, Claude, Copilot). Agent memory is your recurring headache; this is a concrete attempt to stop the amnesia without a cloud dependency.</li>
+<li><strong><a href="https://github.com/agentscope-ai-java/agentscope-java">agentscope-ai-java/agentscope-java</a></strong> (108★) — Distributed, production-grade, long-running agents in Java. Relevant if you're building agent services that outlive a single request/response cycle.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong><a href="https://github.com/sudharshan28131/zepto-data-engineering">sudharshan28131/zepto-data-engineering</a></strong> (2★) — Small reference implementation of a Snowflake SQL + dimensional-modeling + Streamlit analytics pipeline. Useful as a skeleton for demos or onboarding.</li>
+</ul>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/ashif8984/snowflake-dbt-airflow-pipeline">ashif8984/snowflake-dbt-airflow-pipeline</a></strong> (1★) — End-to-end ELT example: Snowflake + dbt Core for dimensional modeling and data-quality tests, orchestrated by Airflow. Good starting template if you're standardizing a new project.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/zorrobyte/rimagent">zorrobyte/rimagent</a> (48★) — An LLM that plays RimWorld and rewrites its own playbook between colonies; a fun, self-improving-agent experiment worth a weekend look.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-09-19.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-09-19</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
