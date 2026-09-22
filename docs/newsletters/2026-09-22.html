@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-09-22</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">22 Sep 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">9 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.009</span>
+      </div>
+      <h1>Daily Signal — 2026-09-22</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Jev — TypeSafe's "System One" decision model — is the biggest story in AI today, and it's already running locally.</strong> Jev is a genuinely new category of model: it takes text input but never generates text. Instead it returns structured decisions (every field with a value and a confidence score) in milliseconds, which is why it's being described as "200x faster" — though that's a vendor-flavoured claim, not a benchmark. Simon Willison's write-up (<a href="https://simonwillison.net/2026/Sep/21/jev/">Simon Willison</a>) is the best technical primer, and he sides with Maggie Appleton that "decision models" is a better name than "System One." The momentum is real: within six days of launch, developers bolted Jev onto real-time flight search, Super Mario, and air traffic control (<a href="https://www.youtube.com/watch?v=X4Lqj54sw4I">10 Wild Things You Can Build With Jev</a>). The catch, per Two Minute Papers (<a href="https://www.youtube.com/watch?v=qBBRRsH0rQc">Jev Just Made AI 200x Faster…But There's A Catch</a>): Jev doesn't write paragraphs — it picks from your options. That makes it ideal for agent decision loops, evals, and guardrails, not open-ended writing.</p>
+<p>The best part for you: you don't need the waitlist or a frontier API. Open-source ports are already here — rizzo-flow (<a href="https://github.com/Rizzo-AI-Academy/rizzo-flow">GitHub</a>) is a local take on Jev that makes typed decisions without generating a single token, and a new llama-server endpoint (<a href="https://www.youtube.com/watch?v=bcGO7xre46o">Codacus video</a>) gives you the same "Jev mode" on whatever model is already on your drive — reported to run comfortably on low-VRAM cards. How to make the most of it:</p>
+<ol>
+<li><strong>Try it locally first.</strong> Spin up rizzo-flow or the llama.cpp Jev-mode endpoint before paying for TypeSafe's API — the local path keeps your data on-device and costs nothing.</li>
+<li><strong>Wire Jev into your data stack.</strong> Jevflake (<a href="https://github.com/KranzL/Jevflake">GitHub</a>) lets you ask Jev decision questions about your data from inside Snowflake (dbt package + Terraform module included), and dbt_jev (<a href="https://github.com/smithclay/dbt_jev">GitHub</a>) puts decision gates directly in dbt runs.</li>
+<li><strong>Use it for agent evals.</strong> jevals (<a href="https://github.com/openlayer-ai/jevals">GitHub</a>) turns guardrails into Jev decisions — one request per trace, a fraction of a cent, fast enough to run inside the agent loop.</li>
+</ol>
+<p><strong>Also breaking: Qwen 4 was announced at Apsara Conference</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmxfjs/qwen_4_announced_at_apsara_conference/">Reddit r/LocalLLaMA</a>) — details are still thin, but it signals the Qwen line's next flagship is inbound for open-weight. Even bigger at the frontier: DeepSeek is reportedly training a 2T-parameter model and planning an 8T (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmblx1/deepseek_training_2t_and_plans_8t_model/">Reddit r/LocalLLaMA</a>), and Alibaba plans a 5T–10T parameter model alongside a new chip (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmyh9z/alibaba_plans_ai_model_with_5_trillion_to_10/">Reuters via Reddit</a>). The open-weight arms race is accelerating.</p>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Snowflake 10.34 preview release notes are out — and refreshingly boring.</strong> The release contains no significant features, updates, or enhancements to announce, but it does list the <strong>Cortex Agents Compact API as available in preview</strong> (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/10_34">1</a></sup>). Quiet release notes like this are a good moment to plan upgrades without feature churn risk.</p>
+<p><strong>Snowflake published its agentic enterprise blueprint: "Stop Prompting, Start Employing."</strong> The post lays out a three-step path from pilots to production agentic AI — hire deliberately, prepare the data handbook, manage actively — and argues the gap between prompting and employing is what separates working agent programs from demos (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/stop-prompting-start-employing-agentic-enterprise">Snowflake blog</a>). Worth reading if you're building an internal agent platform and need language to sell it to leadership.</p>
+<p><strong>WRITER + Snowflake: a marketing content supply-chain reference.</strong> A joint post walks through turning Snowflake signals (customer segments, LTV scores, churn signals) into compliant, multi-channel campaigns — removing the manual handoff between data and deployed campaign (<a href="https://medium.com/snowflake/building-a-marketing-content-supply-chain-flywheel-with-writer-snowflake-cb13d76641ad">WRITER &amp; Snowflake on Medium</a>). The architecture pattern — Snowflake as the source of truth, an LLM layer generating, human review gating — is directly reusable for your own content/business apps.</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>GA: dbt artifacts for Slim CI and defer to production in dbt Projects on Snowflake.</strong> This is the headline dbt news of the day: you can now use dbt artifacts natively for Slim CI and defer to production inside dbt Projects on Snowflake (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/new-features-2026">2</a></sup>). For cost and performance, this is exactly what you want — only build and test the models that actually changed, and defer the rest to production state. If you're still running full refreshes on every PR, this closes the loop.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>Cortex Code Desktop shipped two updates worth knowing.</strong> v1.21.5 adds recovery guidance for a missing local dbt executable, clearer skill/plugin install errors, and improved agent-memory guidance. v1.21.3 (from earlier in the window) introduced isolated Snowflake sessions for agent SQL, session search, a thinking-effort control, and made the redesigned dbt workspace standard (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/cortex-code/cortex-code-desktop/release-notes">3</a></sup>). The isolated-session change is the one to test — agent SQL no longer collides with your interactive session state.</p>
+<p><strong>CoCo in action: live-data Streamlit apps with zero SQL.</strong> Snowflake Developers posted two demos of building and deploying a fully functional, live-data Streamlit dashboard from a database you've never seen — CoCo explores the schema, runs correlation analysis, builds custom charts, and deploys the app, all through conversational prompts (<a href="https://www.youtube.com/watch?v=vHBJN5FePmo">demo video</a>). The shorter version (<a href="https://www.youtube.com/watch?v=QGBWJ_6kIG0">second demo</a>) is a 38-second highlight if you're short on time. The pattern — let CoCo handle schema discovery and charting, keep humans on review — is exactly how to apply generative AI to internal analytics safely.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=mqu0SUhUkOg">Opus 5.5 Is Already Causing Chaos — AI Revolution</a></strong> — 15 min. The broad weekly roundup you want to start the day: Anthropic's leaked Opus 5.5 (unverified — flag it as rumour), claims it beats GPT-6 Astra, a viral demo exposed as fake, GPT-6 Astra producing a formally verified math breakthrough, and Gemini accessing systems at three real companies. Covers the safety angle too — new cyber incidents involving Claude and OpenAI agents.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=X4Lqj54sw4I">10 Wild Things You Can Build With Jev — Cloud Codes</a></strong> — 14 min. A compilation-style tour of what developers built with Jev in its first six days: real-time flight search, Super Mario, air traffic control, and more. Perfect companion to the Breaking News story — you see the breadth of the decision-model pattern across totally different domains.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=qBBRRsH0rQc">Jev Just Made AI 200x Faster…But There's A Catch — Two Minute Papers</a></strong> — 5 min. The fastest way to understand what System One models actually are and where the limits are. Short enough to fit anywhere, and it gives you the mental model for judging whether Jev-style decisions belong in your agent stack.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>Qwen 4 announced at Apsara Conference</strong> — Alibaba's next-generation open-weight flagship is official (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmxfjs/qwen_4_announced_at_apsara_conference/">Reddit r/LocalLLaMA</a>). No spec details in the thread yet, but given Qwen 3.8's reception, this is the release to track for local inference and fine-tuning.</p>
+<p><strong>Xiaomi shipped a whole MiMo-V2.6 family.</strong> The releases include MiMo-V2.6-Flash-RL (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmnw89/xiaomimimomimov26flashrl_hugging_face/">Hugging Face</a>), MiMo-V2.6-Pro-RL (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmntwv/xiaomimimomimov26prorl_hugging_face/">Hugging Face</a>), and a 9B distillation into Qwen: MiMo-V2.6-Distill-Qwen-9B (<a href="https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Distill-Qwen-9B">Hugging Face</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmtjqu/mimov26_distilled_themselves_into_qwen_9b/">discussion</a>). Early community comparisons suggest Flash-RL is competitive against other open-weight models at its tier (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmp5h2/mimo_v26flashrl_vs_openweight_models/">comparison thread</a>). A 9B distill that carries RL training is exactly what small-GPU users want.</p>
+<p><strong>Yandex released AliceAI-Foundation-80B-A3B-Base</strong> — a Russian-developed open-weight MoE pitched against Qwen 35B and DeepSeek V4 Flash (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmmnrt/yandexaliceaifoundation80ba3bbase/">Reddit r/LocalLLaMA</a>). 80B total with only 3B active — worth a look if you want a non-Chinese, non-US open-weight option with strong European-language coverage.</p>
+<p><strong>Splash Engine hits native 8-bit: Qwen3.8-27B at 37–55 tok/s on Apple Silicon.</strong> The post also details 256k context scaling and the "Reasoning Cliff" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmbbf9/splash_engine_qwen3827b_in_native_8bit_at_3755/">Reddit r/LocalLLaMA</a>). If you're on a Mac, this is the closest thing to a free upgrade for your local serving stack.</p>
+<p><strong>Supra2-IMG — a 100M text-to-image model claiming SOTA quality.</strong> A tiny open release that fits in a fraction of the VRAM of typical image models (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmftr3/massive_release_supra2img_a_tiny_100m_texttoimage/">Reddit r/LocalLLaMA</a>). Promising for local image generation pipelines on modest hardware.</p>
+<p><strong>Uncensor an LLM without touching weights — inject an 18MB KV-cache bank.</strong> A technique that loads a tiny trained KV-cache bank to alter behaviour and unloads it anytime, leaving weights untouched (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wms904/uncensor_an_llm_without_touching_weights_inject_a/">Reddit r/LocalLLaMA</a>). Interesting for anyone deploying shared models where you want to flip behaviour without a full re-release.</p>
+<p><strong>OpenAI's reported $1.5 trillion valuation is under the microscope.</strong> Tech Unfiltered breaks down the numbers and whether ChatGPT's ecosystem can grow into the price tag (<a href="https://www.youtube.com/watch?v=HRNZ-_9WyZU">Tech Unfiltered</a>). Relevant to your LLM-budget planning — frontier API pricing pressure is only going one direction.</p>
+<p><strong>GPT-6 Astra is showing up in enterprise customer stories.</strong> OpenAI posted a wave of demos: Figma's flight-control moonshot (<a href="https://www.youtube.com/watch?v=rRm3Vnb7UPY">OpenAI</a>), Ramp's one-prompt feature build with self-verification (<a href="https://www.youtube.com/watch?v=p7TjXroM4ak">OpenAI</a>), Notion's staff-engineer cache-reuse audit (<a href="https://www.youtube.com/watch?v=dtNlpZI86Dk">OpenAI</a>), and Box catching a double-counted incentive (<a href="https://www.youtube.com/watch?v=QFxDF30qf_4">OpenAI</a>). The recurring theme: agents that check their own work. That's the capability bar to watch.</p>
+<p><strong>Huawei shelves its global AI chip rollout</strong> as China's domestic demand outstrips supply — a reprieve for AMD and Nvidia's export-market positioning (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmm89l/huawei_shelves_global_ai_chip_rollout_as_chinas/">Reddit r/LocalLLaMA</a>). Keeps Nvidia's high-end cards the default for the foreseeable future.</p>
+<p><strong>The 16GB VRAM reality check is trending.</strong> A thread arguing 16GB (often 12GB) is the realistic ceiling for most people, with 24GB+ out of financial reach for most of the world (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wmb875/16gb_and_in_many_cases_12gb_is_the_max_vram_most/">Reddit r/LocalLLaMA</a>). Good calibration for model selection and quantization choices.</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong><a href="https://www.youtube.com/watch?v=bcGO7xre46o">Can You Run Any LLM in Jev Mode Using llama.cpp? — Codacus</a></strong> (27 min — deep dive, skim the demo). A new llama-server endpoint replicates Jev's "pick from options" behaviour on the model already on your drive:</p>
+<ul>
+<li>Takes your instructions, a schema, and current state; returns every field with a value and a confidence score — same server, same model in memory, one extra endpoint.</li>
+<li>Runs on a 2GB-class card per the description, which makes "decision mode" accessible to low-VRAM setups.</li>
+<li>The practical implication: you get Jev-style decisions without the waitlist, on your own data, with no data leaving your machine.</li>
+</ul>
+<p><strong><a href="https://www.youtube.com/watch?v=-QFHt2vbu5g">Don't Buy an RTX 5090. Devs Are Building AI Rigs From Trash — Devsplainers</a></strong> (8 min — worth it if you're shopping for hardware):</p>
+<ul>
+<li>RTX 5090 prices hit $9,500, pushing builders to retired datacenter GPUs and old mining cards.</li>
+<li>The headline build: 128GB of VRAM for $3,000 using Radeon Pro V620s — four times a 5090's VRAM at a third of the price.</li>
+<li>A CMP 170HX VRAM unlock reportedly powers a 768GB rig.</li>
+<li>The unglamorous parts: passive-card cooling, driver pain, power bills, and noise — read before you commit.</li>
+</ul>
+<p><strong><a href="https://www.youtube.com/watch?v=BaE6UBfNdQk">Finally! New best local AI image editor is here — AI Search</a></strong> (20 min — skim if you do local image work):</p>
+<ul>
+<li>Qwen Image 2.1 review and tutorial, running in ComfyUI as a fully open-source local image generator.</li>
+<li>Workflows, LoRAs (including an anime consistency LoRA), and GGUF quantizations are all available (<a href="https://huggingface.co/Comfy-Org/Qwen-Image-2.1">HF models</a>, <a href="https://huggingface.co/Abiray/Qwen-Image-2.1-GGUF">GGUFs</a>).</li>
+<li>The GGUF angle is the key part for you — quantized image models are becoming practical on consumer GPUs.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/Rizzo-AI-Academy/rizzo-flow">Rizzo-AI-Academy/rizzo-flow</a></strong> (291★) — The open, local take on Jev: typed decisions from an LLM without generating a single token. The obvious starting point for running decision models on your own hardware.</li>
+<li><strong><a href="https://github.com/AbdelStark/awesome-typesafe-jev">AbdelStark/awesome-typesafe-jev</a></strong> (437★) — A source-backed field guide to Jev with SDKs, live demos, agent tools, and independent evaluations. Bookmark this one; it's the canonical reference for the whole ecosystem.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/agent-labs-dev/fastbrowse">agent-labs-dev/fastbrowse</a></strong> (94★) — A browser agent where Jev picks each action from what's on the page, an LLM reads and plans, and every claim cites a quote from the page. The citation guarantee is the interesting part for trustworthy agents.</li>
+<li><strong><a href="https://github.com/openlayer-ai/jevals">openlayer-ai/jevals</a></strong> (56★) — Agent evals and guardrails as Jev decisions: one request per trace, a fraction of a cent, fast enough for the agent loop. Runs locally with Kev or Laya — pairs directly with your eval pipeline.</li>
+<li><strong><a href="https://github.com/ghuntley/preflight">ghuntley/preflight</a></strong> (67★) — A local proxy that scans LLM requests and attachments for secrets before they reach the model. If you're wiring agents into internal data, this is the safety layer you didn't know you needed.</li>
+</ul>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/smithclay/dbt_jev">smithclay/dbt_jev</a></strong> (3★) — Use Jev decisions inside dbt. Early stage, but the idea of decision gates in your modelling pipeline is compelling — think anomaly-triggered logic, not just SQL.</li>
+<li><strong><a href="https://github.com/nachogd99/lego-snowflake-dbt-analytics">nachogd99/lego-snowflake-dbt-analytics</a></strong> (1★) — A Snowflake + dbt pipeline analyzing 27 years of LEGO Star Wars sets, combining a Kaggle dataset with the Rebrickable API. A clean, small reference pattern for your own dbt project structure.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong><a href="https://github.com/KranzL/Jevflake">KranzL/Jevflake</a></strong> (2★) — Ask TypeSafe's Jev decision model questions about your data from inside Snowflake, with a dbt package plus Terraform module. Very early, but it's the exact Jev × Snowflake bridge to watch.</li>
+<li><strong><a href="https://github.com/Ajay-Kumar-Maurya/snowflake-reference-guide">Ajay-Kumar-Maurya/snowflake-reference-guide</a></strong> (1★) — Notes and practice code for Snowflake beginners and intermediate users. Handy if you're onboarding teammates.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <strong><a href="https://github.com/yzfly/awesome-jev-zh">yzfly/awesome-jev-zh</a></strong> — Chinese-curated Jev list: official docs, SDKs, popular apps, agent tools, and independent evaluations with a getting-started guide.</li>
+<li>✅ <strong><a href="https://github.com/andududu/jeview">andududu/jeview</a></strong> — Unofficial local visualizer for Jev: a live view of every call your code makes. Useful for debugging agent loops.</li>
+<li><strong><a href="https://github.com/engrodrigoa/datalabs">engrodrigoa/datalabs</a></strong> — Data observability portfolio project.</li>
+<li><strong><a href="https://github.com/Khethu188/DataTrust">Khethu188/DataTrust</a></strong> — Autonomous data integrity, observability &amp; recovery platform.</li>
+<li><strong><a href="https://github.com/Melvin-Simplon/datadog-observability-certifications">Melvin-Simplon/datadog-observability-certifications</a></strong> — Datadog Learning Center course certificates kept as training proof.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-09-20-weekly.html"><span class="mono dim">Older</span><span>Weekly Signal — 2026-09-20</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
