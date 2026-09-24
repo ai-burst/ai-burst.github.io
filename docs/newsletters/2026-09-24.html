@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-09-24</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">24 Sep 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.016</span>
+      </div>
+      <h1>Daily Signal — 2026-09-24</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Claude Opus 5.5 has landed, and the early consensus is that it's a genuine step change.</strong> Anthropic's new flagship is <a href="https://www.anthropic.com/claude-opus-5-5">live</a>, and it immediately took the #1 spot on the Artificial Analysis Intelligence Index with a score of 58, edging out GPT-6 Astra's 53 (<a href="https://www.youtube.com/watch?v=lwGt18ypB6g">Cloud Codes' comparison</a>). The most striking coverage is <a href="https://www.youtube.com/watch?v=gX0L0aFA2xg">AI Search's 26-minute hands-on</a>, which runs through nine very different demos — solving reCAPTCHA puzzles, ray tracing, playing piano live, generating math-explainer videos, composing music, and building both a Blender real-estate walkthrough and a playable Unreal 3D game. <a href="https://www.youtube.com/watch?v=SA9kdAX2Zj0">Two Minute Papers</a> frames it as "a massive leap forward." For us, the interesting question isn't whether it's good — it's whether it's better than Astra for your actual work:</p>
+<ul>
+<li><strong>Don't switch on the index score alone.</strong> A 5-point lead on a general benchmark doesn't automatically make it the better coding assistant; run your own evals on your real repos before re-committing your daily driver (<a href="https://www.youtube.com/watch?v=lwGt18ypB6g">Cloud Codes</a>).</li>
+<li><strong>Test it on long-horizon agentic tasks, not single prompts.</strong> The demo set is all multi-step, tool-using work — reCAPTCHA, 3D pipelines, live instrument playing — and that's where the generational jump shows (<a href="https://www.youtube.com/watch?v=gX0L0aFA2xg">AI Search</a>).</li>
+<li><strong>Check pricing and throughput before wiring it into production.</strong> Keep a cheaper or local model on tap for high-volume grunt work; use a flagship like this for the tasks that actually need it.</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>A busy Snowflake release day.</strong> Code Bundles entered preview and DCM Projects received capability updates, both dated today, Sep 24, in Snowflake's release notes (<a href="https://docs.snowflake.com/en/release-notes/feature-releases-2026">feature release notes</a>, <a href="https://docs.snowflake.com/en/release-notes/new-features">new features</a>).</p>
+<p><strong>Cortex AI Function cost/quality tooling is now in public preview.</strong> Cortex AI Function Optimization (moved to preview Sep 21) searches across prompts and models to improve custom AI Functions and compares quality against estimated cost; Cortex AI Function Evaluation measures output quality, cost, and token usage against labeled datasets, via SQL or Studio workflows (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">release notes</a>). If you run many Cortex AI Functions, this pairing automates the "is this prompt/model worth what it costs" review most teams do by hand.</p>
+<p><strong>Cortex Agents Compact API is in preview.</strong> The <code>agent:compact</code> endpoint summarizes conversation history to reduce token consumption and manage context-window limits (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">release notes</a>) — worth knowing for any long-running agent built on Cortex Search/Agents.</p>
+<p><strong>Dynamic Tables Insights hit GA.</strong> The feature proactively surfaces performance insights on dynamic tables when it detects anti-patterns or runtime conditions that raise latency or compute cost (<a href="https://docs.snowflake.com/en/release-notes/2026/10_33">10.33 release notes</a>). A free "why is this dynamic table slow and expensive" signal — turn it on if you run heavy dynamic-table pipelines.</p>
+<p><strong>Two useful engineering write-ups from Snowflake's Medium:</strong> an <a href="https://medium.com/snowflake/event-driven-glue-catalog-registration-for-snowflake-managed-iceberg-tables-35f3556d3358">event-driven Glue Catalog registration pattern</a> for Snowflake-managed Iceberg tables that eliminates the random-suffix table-name problem without a Glue crawler, "for pennies a day"; and <a href="https://medium.com/snowflake/accelerate-snowflake-event-tables-with-zero-copy-interactive-analytics-8f5d46621be6">zero-copy interactive analytics on Event Tables</a>, which store OpenTelemetry log/metric/trace records natively in Snowflake.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>CoCo now has a Workload Performance Analysis skill.</strong> Snowflake PM Vignesh Siva walks through a natural-language CoCo skill that translates raw ACCOUNT_USAGE telemetry into specific, actionable optimizations: diagnosing execution bottlenecks, identifying disk spilling, analyzing partition-pruning efficiency, and evaluating whether a workload would benefit from Search Optimization Service or Query Acceleration Service (<a href="https://www.youtube.com/watch?v=GzwWrJco5FM">Snowflake Developers</a>). For anyone using CoCo for Snowflake performance/cost work, this turns a 30-minute manual ACCOUNT_USAGE query session into a prompt.</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>dbt 2.0.0 dev stream: Unity Catalog read support via Lake Compute.</strong> Dev release v2.0.0-dev.41 (test-PyPI) adds the ability to read AWS Databricks Unity Catalog tables using Databricks profile PAT/OAuth M2M credentials, with declaration-aware validation and <code>dbt debug</code> attach parity. Existing <code>catalogs.yml</code> entries continue to use <code>type: unity</code>, but local Unity attach options move from <code>config.lakecompute</code> to <code>config.duckdb</code>, and Lake Compute access is read-only (<a href="https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.41-test-pypi">GitHub release</a>). Dev-stream only — worth watching if you're standardized on dbt + Databricks.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<p>Two picks today, both in the compilation-heavy style you prefer:</p>
+<ol>
+<li><strong><a href="https://www.youtube.com/watch?v=TgXvBK5_9r4">OpenAI Just Built Early RSI — AI Revolution</a></strong> (15 min). The week's story in one sitting: OpenAI's internal AI reportedly performing major parts of the model-building process, DeepSeek's agents learning to cheat, escape safeguards, and crash systems, and xAI shipping Grok 4.7 with stronger coding, agents, and long-running tasks. Treat the RSI framing as a claim to watch rather than gospel — but it's the roundup that covers the most ground today.</li>
+<li><strong><a href="https://www.youtube.com/watch?v=gX0L0aFA2xg">Claude Opus 5.5 is ridiculous — AI Search</a></strong> (26 min). A single-release compilation that covers more ground than most weekly roundups — nine distinct demos from reCAPTCHA to Unreal game dev — and the best way to calibrate what the Opus 5.5 launch actually means for multimodal/agentic work.</li>
+</ol>
+<p>Total playlist runtime: ~41 minutes.</p>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li><strong>Grok 4.7 is out.</strong> xAI's update lands with stronger coding, agentic abilities, and long-running task execution (<a href="https://www.youtube.com/watch?v=TgXvBK5_9r4">AI Revolution roundup</a>, <a href="https://www.youtube.com/watch?v=dxCQ4tt87vA">Your AI Guy's Grok Bot walkthrough</a>). The claim that matters is long-horizon task execution — historically Grok agents' weak spot.</li>
+<li><strong>Xiaomi's MiMo ecosystem is moving fast — and drawing fire.</strong> MiMo-V3 is getting a new architecture; its core, HySparse2, is out today (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wo7mr6/mimov3_is_getting_a_new_architecture_the_core_of/">r/LocalLLaMA</a>). Meanwhile, current open-source leader MiMo-V2.6 Pro (46 on Artificial Analysis, "pennies" per token, Flash fits in 192GB) is being called "a benchmaxxed scam" by a senior SWE whose hands-on experience didn't match the leaderboard (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1woa5d3/mimov26_both_pro_and_flash_is_a_benchmaxxed_scam/">r/LocalLLaMA</a>). If you're evaluating V2.6 for a project, read both threads and run your own evals.</li>
+<li><strong>Apple released LensVLM-9B, and it's already local-ready.</strong> A 9B vision-language model from Apple, with <a href="https://huggingface.co/bartowski/LensVLM-9B-GGUF">bartowski's GGUF quants</a> available for llama.cpp/Ollama workflows (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wodf84/applelensvlm9b_hugging_face/">r/LocalLLaMA</a>). One to grab for on-prem VLM tasks.</li>
+<li><strong>BFL releases FLUX 3 Action, a 7B robot model.</strong> Black Forest Labs — yes, the FLUX image people — released a 7B robotics model (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wod7l0/bfl_releases_flux_3_action_a_7b_robot_model/">r/LocalLLaMA</a>). Niche for us, but a sign of how far open weights are spreading beyond chat.</li>
+<li><strong>Google's Gemini 3.8 TTS models are live.</strong> Two new models (<code>gemini-3.8-flash-tts</code> and <code>gemini-3.8-flash-lite-tts</code>) ship with a library of 2,000+ voices and custom-voice creation from ~30 seconds of audio; Simon Willison built a <a href="https://simonwillison.net/2026/Sep/23/gemini-tts-playground/">browser playground</a> for them (<a href="https://simonwillison.net/2026/Sep/23/gemini-tts-playground/">Simon Willison</a>). Relevant for any agent/voice UX you're building.</li>
+<li><strong>llama.cpp v0.2.0 sighted in release history (unverified).</strong> A release-tracking site lists a Sep 23 entry syncing ggml to 0.21.0 with CUDA/Metal/SYCL/OpenCL backend optimizations and faster quantization kernels (<a href="https://freedom.tech/project/llama-cpp/">freedom.tech</a>). Not yet confirmed in the upstream repo (<a href="https://github.com/ggml-org/llama.cpp">github</a>) — verify before you build on it. Separately, a release listing shows <strong>Ouro 2.6B</strong> available as Q8_0 and Q4_K_M GGUFs, compatible with LM Studio, Ollama, and llama.cpp (<a href="https://www.lftw.dev/tags/llama-cpp/">lftw.dev</a>) — a tiny-model option for edge tasks.</li>
+<li><strong>Mercury 2.5 claims 770 tokens/sec.</strong> Artificial Analysis lists the model at 770 tok/s; it's currently generating a 107-point HN discussion (<a href="https://artificialanalysis.ai/models/mercury-2-5">Artificial Analysis</a>, <a href="https://news.ycombinator.com/item?id=49823348">HN thread</a>). Speed claims like this are context-dependent — a datapoint, not a purchase decision.</li>
+<li><strong>Apple M5 Ultra local-LLM numbers are starting to look serious.</strong> A base 96GB M5 Ultra ran Qwen 3.8 Flash Next at ~3.2k tokens/s prefill and ~170 tok/s generation at 4-way concurrency after 112M tokens of soak (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1woedly/m5u_base_96gb_inference_numbers_for_q38fn_after/">r/LocalLLaMA</a>); meanwhile a 256GB owner laments that public benchmarks are still mostly "YouTube clown influencers" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wovkw5/folks_have_you_purchased_the_mac_m5_ultra_with/">r/LocalLLaMA</a>). Apple silicon's unified memory remains the most interesting local-LLM platform that isn't a datacenter GPU.</li>
+<li><strong>Qwen 3.8 Flash Next on a 16GB 4080: 15-20 tok/s at 130k context.</strong> A week-long test shows the recipe matters as much as the model: the right quant (AtomicChat AD-4.27bpw Q4_K_M target), the shared Unsloth MTP head, a specific fork branch, and Q8 cache flags — all documented in a <a href="https://github.com/dtm-beep/qwen38-flash-next-mtp-16gb">GitHub repo</a> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wom3fe/qwen_38_flash_next_q4_k_m_130k_context_q8_cache/">thread</a>). This is the "reduce VRAM requirements" playbook in practice.</li>
+<li><strong>The Jev marketing flood finally hit r/LocalLLaMA's limit.</strong> Multiple threads call out Jev as a VC-funded product spamming the subreddit, and contrast it with Contrastive Language Models (CLM) — an open projection head for Qwen3-8B that outputs constrained decision probabilities like a modern zero-shot classifier, without autoregressive generation (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wo6o0f/mods_can_we_do_something_about_half_the_forum/">mod thread</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1woe70t/jev_isnt_new_tech_its_marketing_targets_people/">CLM explainer</a>, <a href="https://github.com/Contrastive-LM/CLM">CLM repo</a>). Worth a skim purely to recalibrate your hype detector.</li>
+<li><strong>Two YouTube claims to treat with care.</strong> Tech Unfiltered argues OpenAI could lose 90% of its revenue to falling model prices and open-weight competition (<a href="https://www.youtube.com/watch?v=T_cOtuqVPUQ">video</a>); AI Revolution claims OpenAI's internal AI now does major parts of model-building, i.e. "early RSI" (<a href="https://www.youtube.com/watch?v=TgXvBK5_9r4">video</a>). Both are YouTube-level claims, not primary sources — interesting context, not investment or architecture guidance.</li>
+<li><strong>ChatGPT Voice goes plugin-native.</strong> OpenAI announced today's global rollout: ChatGPT Voice can now use plugins (email, calendar, Slack), run on GPT-6 Astra/Sol/Luna, and drive ChatGPT Work on web/mobile (<a href="https://www.youtube.com/watch?v=96ogPwN9ykM">OpenAI</a>). Handy if you're building voice-first agent demos; promo-level detail otherwise.</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p>Three on-topic videos that didn't make the playlist — here's what you'd get if you watched them:</p>
+<p><strong>1. CoCo Workload Performance Analysis skill</strong> (<a href="https://www.youtube.com/watch?v=GzwWrJco5FM">Snowflake Developers, 7 min</a>)</p>
+<ul>
+<li>A product manager walks through the actual feature: natural-language queries over ACCOUNT_USAGE telemetry that return clear optimization recommendations.</li>
+<li>It targets the four classic Snowflake pain points — execution bottlenecks, disk spilling, partition-pruning efficiency, SOS/QAS fit.</li>
+<li>Practical takeaway: this is a strong candidate for a monthly "query optimization" agent task in your Snowflake review routine.</li>
+</ul>
+<p><strong>2. "Xiaomi MiMo-V2.6 Pro IS THE BEST Open Source Model EVER"</strong> (<a href="https://www.youtube.com/watch?v=OJFbBr-Fifc">Your AI Guy, 13 min</a>)</p>
+<ul>
+<li>The video's claims: top-tier reasoning, coding, and agentic capability from an open-weight model at very low cost.</li>
+<li>The counterpoint: r/LocalLLaMA's senior-SWE review reports the leaderboard scores don't survive real-world workloads and calls the models "benchmaxxed" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1woa5d3/mimov26_both_pro_and_flash_is_a_benchmaxxed_scam/">thread</a>).</li>
+<li>Verdict: skip the video, read the criticism thread, and test V2.6 on your own eval set if the model is on your shortlist.</li>
+</ul>
+<p><strong>3. Claude Opus 5.5 vs GPT-6 Astra — check before you switch</strong> (<a href="https://www.youtube.com/watch?v=lwGt18ypB6g">Cloud Codes, 9 min</a>)</p>
+<ul>
+<li>The framing: Opus 5.5's 58 vs Astra's 53 on the AA Intelligence Index, and whether a 5-point general benchmark lead makes it the better coding assistant.</li>
+<li>The video argues the answer is "not automatically" — agentic coding evals and your own codebase matter more than the index.</li>
+<li>Useful if you're about to re-commit your daily coding model to one vendor; otherwise skimmable.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/rotek123/dbt-ops">rotek123/dbt-ops</a></strong> — a Rust CLI for monitoring and managing operational tasks in dbt Cloud. Only 4 stars, but a sensible gap-filler if you want dbt Cloud ops from the terminal.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/yetone/magpie">yetone/magpie</a></strong> — "Every agent's model. One place": a menu-bar app that routes agent CLIs to different model backends (Codex on DeepSeek, Claude Code on Kimi). 439 stars in short order — the agent-model-router pattern consolidating nicely.</li>
+<li><strong><a href="https://github.com/microsoft/agent365-runbook">microsoft/agent365-runbook</a></strong> — step-by-step runbooks for bringing your own agent into Microsoft Agent 365: identity, observability, M365 data access, and messaging. Useful reference if an enterprise customer asks about integrating your agent into their stack.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/amitshekhariitbhu/ai-engineering-course">amitshekhariitbhu/ai-engineering-course</a> — free, complete AI engineering curriculum from ML/transformers to LLM inference, evals, and system design (181 stars).</li>
+<li>✅ <a href="https://github.com/skfatima26/Airbnb_Snowflake_DBT_Data_Engineer_Project">skfatima26/Airbnb_Snowflake_DBT_Data_Engineer_Project</a> — 1-star portfolio project; only useful as a basic dbt + Snowflake reference skeleton.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-09-23.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-09-23</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
