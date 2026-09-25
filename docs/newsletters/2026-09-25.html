@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-09-25</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">25 Sep 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.015</span>
+      </div>
+      <h1>Daily Signal — 2026-09-25</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>dbt v2 is GA — and the Rust-based core is the story.</strong> dbt Labs made dbt v2 generally available on September 16, and Snowflake has already published a practical migration guide for moving existing Snowflake dbt projects to v2 (<a href="https://medium.com/snowflake/from-dbt-core-v1-to-dbt-v2-on-snowflake-a-practical-migration-guide-4eb137573a1f?source=rss----34b6daafc07---4">dbt v2 migration guide</a>). The guide is worth reading even if you're not on Snowflake: it covers validation, compatibility, and the static-analysis gaps that catch unprepared projects. Meanwhile, dbt's release notes list Core 2.0 as available in beta, with the new Rust-based runtime and split distributions <code>dbt-oss</code> and <code>dbt</code> (<a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">dbt release notes</a>). This is the biggest dbt infrastructure change since the Core v1 era.</p>
+<p>How to make the most of it:</p>
+<ul>
+<li>Use Snowflake's <a href="https://medium.com/snowflake/from-dbt-core-v1-to-dbt-v2-on-snowflake-a-practical-migration-guide-4eb137573a1f?source=rss----34b6daafc07---4">migration guide</a> as a checklist: validate your project before switching, and pay special attention to static-analysis gaps where tooling may not support old patterns yet.</li>
+<li>Test the new split distributions in a sandbox before choosing between <code>dbt-oss</code> and <code>dbt</code> for your team.</li>
+<li>Revisit CI with the newly GA dbt Projects on Snowflake features — Slim CI and defer to production — so you stop rerunning entire pipelines on every push (<a href="https://docs.snowflake.com/en/release-notes/weekly-releases-2026">Snowflake weekly release notes</a>).</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li><strong>Kimi K3 is in private preview on Cortex AI.</strong> Moonshot AI's open-weight model is now available for coding, research, and enterprise applications on Snowflake Cortex AI. For teams already governed by Snowflake, this means another strong open-weight option inside the warehouse instead of a separate API call (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/kimi-k3-cortex-ai">Kimi K3 on Snowflake Cortex AI</a>).</li>
+<li><strong>Cortex AI Function Evaluation is in public preview.</strong> Snowflake added a way to evaluate quality, cost, and token usage of custom AI Functions and Cortex AI calls against labeled datasets (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">Snowflake release notes</a>). For anyone doing serious LLM evals, this gives a built-in harness instead of ad hoc scripts.</li>
+<li><strong>Snowflake CLI v3.28.0 adds a feature store.</strong> The new <code>snow feature</code> command group manages declarative feature-store objects: <code>init</code>, <code>sync</code>, <code>plan</code>, <code>apply</code>, <code>list</code>, <code>describe</code>, <code>online-service</code>, <code>ingest</code>, and <code>query</code>. It's hidden by default, so you'll need to enable it, but it's a useful step toward versioned ML features (<a href="https://github.com/snowflakedb/snowflake-cli/releases/tag/v3.28.0">snowflake-cli v3.28.0</a>).</li>
+<li><strong>Backups beyond Time Travel.</strong> Snowflake's data engineering blog positions Snowflake Backups as an additional layer over Time Travel for protection against data loss. Backup is extra spend, but it's the layer that survives account-level or region-level problems (<a href="https://medium.com/snowflake/protecting-your-snowflake-data-with-backups-51aeac1b7a2d?source=rss----34b6daafc07---4">Snowflake: Protecting Your Snowflake Data with Backups</a>).</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong>dbt Projects on Snowflake: Slim CI and defer to production are GA.</strong> Snowflake's weekly release notes now list these as generally available, including reuse of recent production dbt artifacts to speed development, CI/CD, and recovery from failed runs (<a href="https://docs.snowflake.com/en/release-notes/weekly-releases-2026">Snowflake weekly release notes</a>). If you're paying for warehouse time on full refactors, this is the feature to turn on.</li>
+<li><strong>dbt Labs is pushing "context engineering" in the warehouse.</strong> The new dbt blog post argues analytics teams have always modeled data for BI, but agents need semantic context now — and the path starts with semantic search (<a href="https://www.getdbt.com/blog/context-engineering-in-your-warehouse">dbt blog</a>). This is useful framing for building RAG/agent features on top of your existing dbt models rather than bolting on a separate vector store.</li>
+</ul>
+<h3 id="cortex-code">Cortex Code</h3>
+<ul>
+<li><strong>CoCo Desktop v1.21.3 is out.</strong> Highlights: session isolation for agent SQL, full-text search across past sessions, and the redesigned dbt workspace becoming the standard experience (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">Snowflake release notes</a>). If you use CoCo for dbt lineage and debugging, this makes traceability much better.</li>
+<li><strong>Cortex Agents: Compact API in preview; agent object enhancements GA.</strong> The new <code>agent:compact</code> endpoint summarizes conversation history to reduce token usage in subsequent agent calls, which is useful for long-running agents on Snowflake. Temporary agents, secure agents, and <code>COPY GRANTS</code> support are now GA (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">Snowflake release notes</a>, <a href="https://docs.snowflake.cn/en/release-notes/all-release-notes">Snowflake CN release notes</a>).</li>
+</ul>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ul>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=63nU3-EXf6g">DeepSeek Has RSI Now — AI Revolution</a></strong> · 14:47. A proper "this week in AI" roundup: DeepSeek's RSI-style training loop where agents build the environments used to train the next generation, agents cheating and breaking safeguards, Claude taking over more AI research, Simate's physical RSI robots, and OpenAI's reported GPT-6 Sol and Luna drop. The DeepSeek DSec claim — agents constructing training environments themselves — is the most interesting thing to track this week.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=GeYevz27gyc">GitHub Trending Weekly #50 — Github Awesome</a></strong> · 15:11. A 15-minute compilation of 35 trending open-source projects, including openmuse, open-glean, unreal-agent, laya-mlx, mini-AGI, and flute. This is the fastest way to scan what's actually getting stars in the local-LLM and agent-tooling world. The <a href="https://githubawesome.com/github-trending-weekly-50/">text version</a> gives clickable links if you want to skip the video.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=4_jO1EQSMkY">AI labs may be hiding their biggest breakthroughs — Tech Unfiltered</a></strong> · 13:32. A broad analysis of why OpenAI, Google DeepMind, Anthropic, xAI, and Meta hold capabilities back — safety, competitive pressure, and the sheer compute required to test frontier models. Good context for reading between the lines of model release calendars.</p>
+</li>
+</ul>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>Qwen 3.8 Flash Next on 12GB VRAM: 65 tok/s.</strong> A user built a custom inference engine for this model; the IQ3_XXS quant on an RTX 5070 runs roughly 65 tok/s output and 430 tok/s prompt processing, with 2-bit RCO-GSQ going faster still (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wp7zyb/qwen38flashnext_on_12gb_vram_65_tokens_per_second/">Reddit</a>). That's a direct hit on the "reduce VRAM/memory requirements" goal.</p>
+</li>
+<li>
+<p><strong>Independent benchmark: Flash Next IQ4_XS beats Qwen 27B FP8.</strong> Using vLLM, a reduced eval showed Flash Next IQ4_XS at 83.8% vs 75.0% on MMLU-Pro, with strong GPQA results too (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wpp28m/did_anyone_do_a_full_bench_of_eg_qwen_flash_next/">Reddit</a>). It's a small sample, but it explains why the community is shifting to the Flash variant.</p>
+</li>
+<li>
+<p><strong>ThinkingCap and Swift add "reasoning-token diet" fine-tunes for Qwen 3.8 27B.</strong> A new comparison puts ThinkingCap-Qwen3.8-27B against Swift-Qwen3.8-27B and the base model. Swift's earlier claims were up to -40% reasoning tokens, and the newer series reports -63.4% thinking at 1.95x speed with high accuracy (<a href="https://huggingface.co/bottlecapai/ThinkingCap-Qwen3.8-27B">ThinkingCap on Hugging Face</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wp5vqr/thinkingcap_3827b_vs_swift_3827b_vs_qwen_3827b/">Reddit discussion</a>, <a href="https://huggingface.co/ukisai/Swift-Qwen3.8-27b">Swift on Hugging Face</a>). Both are worth a quantized test.</p>
+</li>
+<li>
+<p><strong>llama.cpp agentic context: raise <code>-cram</code>.</strong> The default 8192MB prompt-cache limit can silently invalidate caching on long agent sessions. Users report 20480 works well with Qwen 27B at 262K context, avoiding full re-processing on every turn (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wp5668/psa_llamacpp_cram_should_be_increased_for_agentic/">Reddit</a>). Big speedup for multi-turn agentic workflows.</p>
+</li>
+<li>
+<p><strong>llama.cpp and Ollama keep shipping performance.</strong> llama.cpp's latest Linux build fuses RMS_NORM and SCALE into one CUDA kernel, and a new Vulkan int8 coopmat1 matmul targets AMD RDNA3/RDNA4 (<a href="https://freedom.tech/project/llama-cpp/">llama.cpp tracker</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wp1vex/vulkan_int8_coopmat1_matmul_implementation_for/">Vulkan commit discussion</a>). Ollama v0.34.4 also updates llama.cpp, MLX, and XGrammar (<a href="https://github.com/ollama/ollama/releases">Ollama releases</a>). Free wins if you run local inference.</p>
+</li>
+<li>
+<p><strong>R9V KV projections for Qwen 3.8 Flash Next.</strong> A community update created DeepSeek-derived KVA projections, giving 1.45-1.85x prefill speedups to 3k+ tokens with a small perplexity cost (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wp2hqk/r9v_update_created_and_adopted_kva_projections/">Reddit</a>). Niche, but exactly the kind of optimization that makes small local setups feel fast.</p>
+</li>
+<li>
+<p><strong>Mac Studio for local models: M5 Ultra 96GB vs M5 Max 128GB.</strong> The practical tradeoff: 1.2TB/s vs 614GB/s bandwidth, but 32GB more memory on the Max. For Qwen 27B and Flash Next, bandwidth matters if the model fits; memory matters for bigger MoE quants (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wp2dmd/mac_studio_m5_ultra_96gb_vs_m5_max_128gb_for/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>High Bandwidth Flash vs HBM.</strong> A former Intel CEO called HBM "lousy," and Asianometry has a full explainer on high-bandwidth flash (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wpprlr/former_intel_ceo_hbm_is_lousy_high_bandwidth/">Reddit</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wphb3w/asianometry_high_bandwidth_flash_what_is_it_good/">Asianometry thread</a>). If flash-backed memory approaches HBM bandwidth at much lower cost, it changes what "VRAM" means for local LLMs.</p>
+</li>
+<li>
+<p><strong>"Best LLM for every budget" tracker.</strong> An Hacker News thread points to a daily-updated site comparing LLMs by budget (<a href="https://news.ycombinator.com/item?id=49830866">HN discussion</a>, <a href="https://bestmodelforyourbudget.terrydjony.com/">tracker</a>). Useful sanity-check when choosing API vs open-weight.</p>
+</li>
+<li>
+<p><strong>FLUX 3 Action open-weights (unverified).</strong> Deep research surfaced a secondary summary that Black Forest Labs released open-weight FLUX 3 Action, a 7B robotics model with weights, code, and fine-tuning recipes (<a href="https://aiweekly.co/alerts/black-forest-labs-open-weights-flux-3-action-a-7b-robotics-model">aiweekly</a>). Flagging as unverified until the primary announcement shows up.</p>
+</li>
+<li>
+<p><strong>Meta Muse system-data report (community claim).</strong> A LocalLLaMA post claims Meta Muse is eager to expose its system data. Treat as a prompt-injection and data-exfiltration reminder for every open-weight assistant connected to tools (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wpbeb7/meta_muse_appears_to_be_excited_to_give_away_its/">Reddit</a>).</p>
+</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li><strong><a href="https://www.youtube.com/watch?v=b9_kJn0zm5U">Your AI Agent Sandbox Is Security Theater</a></strong> · 7:06. Essential context if you run Claude Code, Codex, or Cursor agents with real secrets. Key takeaways:</li>
+<li>Sandboxing protects the laptop but not the secrets inside the box.</li>
+<li>CERT published a Sentry AI bug-fixer flaw on September 16: one fake crash report made the coding agent download and run attacker code, no sandbox escape needed.</li>
+<li>
+<p>The defense layers — user, auto-mode classifier, OS sandbox, containers, microVMs — are only as good as the seams between them.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=8pDdznOa6Qk">What Is dbt in Data Engineering? Fix a Real Bug</a></strong> · 1:17. A short but illuminating demo:</p>
+</li>
+<li>dbt does not guarantee correct numbers: every test passes while the orders fact table reports negative profit because someone set a margin multiplier to -1.</li>
+<li>The fix workflow uses CoCo Desktop to trace the column backward through dbt lineage, read the compiled SQL, find the root cause, fix it, and rerun.</li>
+<li>
+<p>More of a demo than a tutorial, but worth it if you haven't seen CoCo's lineage debugging in action.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=eFBSlgXG3U0">Same AI Model. 40% Cheaper. Here’s How.</a></strong> · 12:16. A single-topic cost dive, but valuable for token-budget tuning:</p>
+</li>
+<li>Claims AI coding assistants can waste up to 40% of token budget on wrapper polling — paying full price to ask "is the test done yet?"</li>
+<li>The issue is often the software wrapper around the model, not the model itself.</li>
+<li>If you run agents against paid APIs, auditing your orchestration loop may matter more than switching to a cheaper model.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li>
+<p><a href="https://github.com/mikehasa/golive-skill">GoLive agent skill</a> — A skill for Codex and Claude Code that plans hosting, database, domain, email, and payments, waits for approval, provisions the stack, and writes a handover file listing everything it created. Great for making agent-built apps production-ready without losing ownership of what was deployed.</p>
+</li>
+<li>
+<p><a href="https://github.com/libingzheren/Jev-Mem">Jev-Mem</a> — "System-One Controlled Agentic Memory." A memory controller for agents, useful if you want fast, controllable memory instead of dumping everything into context.</p>
+</li>
+<li>
+<p><a href="https://github.com/Simreal-AI/Simreal-MLBench">Simreal-MLBench</a> — Externally scored agentic ML research benchmark: 60 tasks with real competition ground truth. Useful for evaluating research agents rather than just coding agents.</p>
+</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li>
+<p><a href="https://huggingface.co/bottlecapai/ThinkingCap-Qwen3.8-27B">ThinkingCap-Qwen3.8-27B</a> — A Qwen 3.8 27B fine-tune aiming to reduce reasoning tokens while preserving accuracy. Benchmark against Swift before deciding which "thinking diet" fits your workloads.</p>
+</li>
+<li>
+<p><a href="https://huggingface.co/ukisai/Swift-Qwen3.8-27b">Swift-Qwen3.8-27B</a> — Reasoning-token reduction fine-tune with early community benchmarks showing big speedups and token savings on a 27B-class model.</p>
+</li>
+</ul>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/MatheussRiibeiro/kabum-serverless-elt-pipeline">kabum-serverless-elt-pipeline</a> — End-to-end serverless ELT with AWS Lambda, S3, Redshift Serverless, dbt on ECS Fargate, and Step Functions. A useful reference architecture for running dbt on a serverless AWS stack.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/hydra-db/open-glean">open-glean</a> — Trending from hydra-db in this week's GitHub roundup; relevant if you're exploring LLM-assisted data extraction or gleaning workflows.</li>
+<li><a href="https://github.com/CopilotKit/openmuse">openmuse</a> — CopilotKit's project in <a href="https://githubawesome.com/github-trending-weekly-50/">GitHub Trending Weekly #50</a>.</li>
+<li><a href="https://github.com/driceroland/Search">Search</a> — Featured in the same weekly trending roundup; see the <a href="https://githubawesome.com/github-trending-weekly-50/">full list</a> for unreal-agent, laya-mlx, mini-AGI, and the other 31 projects.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-09-24.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-09-24</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
