@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-10-03</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">03 Oct 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.009</span>
+      </div>
+      <h1>Daily Signal — 2026-10-03</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>OpenAI DevDay 2026: the roundup view.</strong> OpenAI's DevDay has landed, and by the look of Tech Unfiltered's "everything you missed" recap (<a href="https://www.youtube.com/watch?v=-OoQFrkz0RE">watch</a>), the most interesting news is the <strong>Decisions API</strong> — a way for agents to choose among predefined options for classification, routing, and agent behavior, which has already drawn "did OpenAI just clone Jev?" comparisons. The same roundup reports <strong>GPT-6.1 Sol</strong>, <strong>Dots</strong>, the <strong>Agents API</strong>, <strong>ChatGPT Space</strong>, a wave of ultrafast-inference tooling, and various tools. Caveat: today's sources are the recap videos rather than OpenAI's release notes, so treat specifics as reported-secondhand until official write-ups land.</p>
+<p><strong>Gemini 4 Argon is Google's new frontier flagship.</strong> Per <a href="https://www.youtube.com/watch?v=7b0EJDDmpMQ">Your AI Guy's walkthrough</a>, Argon is positioned as Google's most powerful model yet, built for complex, long-horizon tasks with an output limit of up to <strong>1 million tokens</strong>. The claimed advances land exactly where an agent engineer cares: reasoning, coding, multimodal understanding, enterprise workflows, and cybersecurity. Google says it has already been using Argon internally for software engineering, research, and code optimization.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ul>
+<li>Prototype the Decisions API for routing/triage before you prompt-hack a classifier: constrained choice among predefined options is cheaper and more deterministic than free-text classification, and it slots into agent behavior instead of living in a fragile system prompt.</li>
+<li>Gemini 4 Argon's 1M output budget is a prompt to rethink chunking: pick one long-horizon job you currently split (repo-wide refactor, mass doc generation) and run it as a single Argon pass, then measure whether "just let it finish" beats your orchestrated pipeline.</li>
+<li>On the local side, treat these as target-setting events rather than upgrade triggers — the model that ends up on your hardware is usually the distilled/quantized response released weeks later; the llama.cpp and Qwen3.8-Flash-Next movement in Headlines below is already the leading edge.</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p>The <strong>Snowflake 10.36 preview</strong> went live Oct 1 and was updated Oct 2–3, with rollout scheduled to complete Oct 6 (<a href="https://docs.snowflake.com/en/release-notes/2026/10_36">preview notes</a>) (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">all release notes</a>) (<a href="https://docs.snowflake.com/en/release-notes/new-features-2026">new features 2026</a>). The most visible new option is <code>EXCLUDE_TABLE_TYPES = ('TRANSIENT')</code> on schema-level DMF (data metric function) associations — useful if your DMF sweeps keep tripping over transient tables in dev schemas. The Oct 2 update also added "Observability for Cortex Agents" to the notes, and both the release-overview and all-release-notes pages were refreshed today, signalling active rollout timing (<a href="https://docs.snowflake.com/en/release-notes/overview">overview</a>).</p>
+<p>Separately, Snowflake published <a href="https://medium.com/snowflake/converting-snowflake-native-tables-to-iceberg-part-1-603fdb0fdcd1">Part 1 of "Converting Snowflake Native Tables to Iceberg"</a>, a decision-framework piece covering <em>why</em> you'd convert and the choices to make before executing; Part 2 covers conversion, validation, and cutover. Worth reading ahead of any Iceberg migration conversation this quarter.</p>
+<h3 id="dbt">dbt</h3>
+<p>dbt's release-notes page (<a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">Oct 2 update</a>) shows a quiet-but-useful change: the dbt MCP server now includes <code>search_product_docs</code> and <code>get_product_doc_pages</code> tools, so AI assistants can look up dbt docs in real time instead of hallucinating function signatures. If you run Claude Code or Codex against a dbt repo, this is the kind of tooling that noticeably cuts agent round-trips.</p>
+<p>dbt Labs also shipped a demo worth stealing: <a href="https://www.youtube.com/watch?v=AN68dnWqhmk">Context engineering with dbt</a>. The workflow loads local Claude Code and Codex chat transcripts into Snowflake, chunks/embeds/searches them with the new <a href="https://github.com/dbt-labs/dbt-context-engineering">dbt-context-engineering package</a>, then has dbt Wizard write a skill from what was found (<a href="https://github.com/C00ldudeNoonan/dbt-chat-context-eng">example repo</a>). This is a ready-made template for the "your own coding history as RAG" pattern.</p>
+<p>Cortex Code / CoCo / CoWork: no notable primary-source announcements in the last 24h — the only adjacent signal is the Cortex Agents observability note in 10.36.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=-OoQFrkz0RE">Did OpenAI just clone Jev? Everything you missed from OpenAI DevDay</a> — Tech Unfiltered, 14 min. The broadest single-sitting roundup of DevDay: Decisions API, GPT-6.1 Sol, Dots, Agents API, ChatGPT Space, and the ultrafast-inference push. One watch gets you the whole provider-news picture — exactly the compilation style you asked for.</li>
+<li><a href="https://www.youtube.com/watch?v=7b0EJDDmpMQ">Gemini 4 Argon Is Google's Most Powerful AI Model...</a> — Your AI Guy, 14 min. The main frontier release to benchmark open-weight models against this week; the 1M-token output claim is the specific detail worth remembering for agent and long-context designs.</li>
+<li><a href="https://www.youtube.com/watch?v=AN68dnWqhmk">Context engineering with dbt: chunk, embed and search on Snowflake</a> — dbt Labs, 4 min. A compact, job-relevant demo of turning your own agent transcripts into a searchable Snowflake corpus — directly applicable to how you'd document or "skillify" your own workflows.</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>DeepSeek open-sources DeepGEMM-Ascend.</strong> On Sept 30, DeepSeek <a href="https://www.youtube.com/watch?v=Di_jcfWRzNA">open-sourced DeepGEMM-Ascend</a>, porting its high-performance matrix-multiplication kernels from NVIDIA to Huawei Ascend hardware while keeping the top-level Python API unchanged. <a href="https://www.youtube.com/watch?v=BcPyOEzHYwY">The longer companion video</a> argues NVIDIA's real moat isn't the chip but the software that feeds it numbers — and that a community kernel library is now poking at that moat. Ecosystem evidence: a local-LLM builder is already <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wvt1m4/two_96_gb_ascend_cards_crun_qwen38flashnext/">running Qwen3.8-flash-next on two 96GB Ascend Atlas 300I Duo cards</a> with vLLM work underway. Watch whether Ascend starts appearing as a first-class target in vLLM/Ollama.</p>
+</li>
+<li>
+<p><strong>Dwarfstar: from the creator of Redis.</strong> <a href="https://dwarfstar.sh/">Dwarfstar</a> — "run LLM locally with ds4" — is picking up serious traction on <a href="https://news.ycombinator.com/item?id=49936575">Hacker News (246 points, 66 comments)</a>. Anyone who built Redis tends to optimize for operational simplicity, so it's worth a local install test next to Ollama as a new default runner.</p>
+</li>
+<li>
+<p><strong>llama.cpp keeps shipping.</strong> llama.cpp released pre-releases b11345 and b11346 on Oct 2, with <a href="https://github.com/ggml-org/llama.cpp/releases">b11345 adding q2_k and q3_k quant support</a> — directly relevant to squeezing models into low-VRAM machines. The repo also gained <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wvv6im/new_in_llamacpp_decision_models/">Decision Models</a> and a <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wvqbrz/llama_server_add_v1systemone_api_models_laya/">PR adding a /v1/systemone API</a> for models including laya, julia-1, lev, openjev, and kev. Performance-wise there's a <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wwfyv6/qwen4exp_halve_the_indexer_score_memory_by/">qwen4exp PR that halves indexer score memory</a> and a <a href="https://www.reddit.com/r/LocalLLaMA/comments/1ww1sn4/cuda_fuse_shared_experts_into_mmvq_by_am17an_pull/">CUDA change fusing shared experts into MMVQ</a>. Lots of small-but-real wins.</p>
+</li>
+<li>
+<p><strong>DGX Spark line expands; RTX Spark rumored.</strong> NVIDIA has a <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wvyxzg/new_64gb_dgx_spark_significantly_higher_price_for/">new 64GB DGX Spark</a>, while the original 128GB model now lists at $6,950. Separately, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wvy8v4/rtx_spark_laptops_and_mini_desktops_rumored_to/">RTX Spark laptops and mini desktops (24–128GB variants) are rumored for an Oct 7 launch</a> at $1,800–$2,900 — unverified, but if true that's a more affordable consumer lane for GB10-class local inference.</p>
+</li>
+<li>
+<p><strong>iPhone as a second GPU.</strong> <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wvz1ex/i_made_my_iphone_a_second_gpu_for_my_24_gb/">A tinkerer turned an iPhone into a second GPU for a 24GB MacBook</a>, reporting Qwen3.8 27B prefills 29–44% faster while the phone holds part of the context window. Novel heterogeneous-offload tradeoff — niche, but a useful data point for stretching a modest budget.</p>
+</li>
+<li>
+<p><strong>Strata + Qwen3.8-Flash-Next is the performance story.</strong> Multiple r/LocalLLaMA reports have Strata crushing it on consumer hardware: a <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wvwssq/strata_on_a_power_limited_5090_and_96gb_of/">power-limited 5090 + 96GB DDR5 runs Qwen3.8-Flash-Next at IQ3_S with 150–200 tok/s decode and 5–6k prefill</a>, while <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wwcqas/anyone_sitting_on_a_lot_of_slow_system_memory_and/">slow DDR4 + a 7900XTX stabilizes at 45–70 tok/s</a> versus ~22.5 tok/s on llama.cpp for the same rig. People are also debating the real current choice: <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wvzmt3/heavily_quantized_qwen38flash_vs_q8_qwen3827b/">IQ3_XXS Qwen3.8-Flash vs Q8 Qwen3.8-27B</a>. If you run quantized open-weight models, this is the week's most actionable thread.</p>
+</li>
+<li>
+<p><strong>Microsoft FrogNano-4B-2609.</strong> Microsoft released <a href="https://www.reddit.com/r/LocalLLaMA/comments/1ww40o2/microsoftfrognano4b2609_hugging_face/">FrogNano-4B-2609 on Hugging Face</a>, described as an agentic model for the GPU-poor. 4B-class agentic models are becoming a real category — small enough for local tool-calling loops, and worth tracking against the 27B-class models you'd normally reach for.</p>
+</li>
+<li>
+<p><strong>Qwen3.8-27B-Humanlike-Chat 2.0.</strong> <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wvxl4n/qwen3827bhumanlikechat_20_texts_like_a_human_now/">This fine-tune</a> claims more humanlike text, tool calls, and better instruction following. If you've been chasing "less assistant-y" output from local models, the tool-call improvement is the part worth testing.</p>
+</li>
+<li>
+<p><strong>RTX 5090 export paperwork.</strong> Buying an RTX 5090 at Micro Center reportedly <a href="https://www.reddit.com/r/LocalLLaMA/comments/1ww4hne/buying_rtx_5090_at_micro_center_reportedly_now/">now requires paperwork including a no-export declaration</a>. Export controls are becoming part of local-LLM procurement — expect friction and plan lead times when speccing new hardware.</p>
+</li>
+<li>
+<p><strong>New architectures &amp; evals.</strong> Percepta's <a href="https://www.reddit.com/r/LocalLLaMA/comments/1ww09ab/new_architecture_from_percepta_spotlight/">Spotlight architecture</a> separates intelligence from memory so knowledge and skills can grow without changing weights — a research-y direction worth a skim for the open-weight roadmap. On evals, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wvw2up/axiomiclabs_new_benchmark_tiny_theory_of_mind/">AxiomicLabs' Tiny Theory of Mind benchmark</a> reached the front page of Hugging Face Datasets, and a community <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wvs8va/i_made_my_own_cybersecurity_benchmark_and_ran/">cybersecurity benchmark</a> ran 6 models across 19 tasks (GLM 5.3 helped build several). Both earn a slot on your eval shelf.</p>
+</li>
+<li>
+<p><strong>Self-hosting economics.</strong> A thoughtful essay makes the case that <a href="https://www.reddit.com/r/LocalLLaMA/comments/1ww2jsu/selfhosting_ai_does_not_save_money_and_i_do_it/">self-hosting AI doesn't save money — and does it anyway</a> (full post at <a href="https://www.nijho.lt/post/self-hosting-ai-is-not-cheaper/">nijho.lt</a>). Keep it as the honest framing for any "local is cheaper" budget discussion.</p>
+</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li><strong>China's Alternative to CUDA? Inside DeepSeek's DeepGEMM-Ascend</strong> (<a href="https://www.youtube.com/watch?v=Di_jcfWRzNA">Di_jcfWRzNA</a>, 2.4 min):</li>
+<li>DeepSeek open-sourced DeepGEMM-Ascend on Sept 30, porting high-performance matrix-multiplication kernels to Huawei Ascend 950 with an unchanged Python API.</li>
+<li>The framing: building an AI chip is only half the problem; the software stack that "feeds it numbers" is where CUDA's moat actually lives.</li>
+<li>
+<p>The 9.3-min sibling (<a href="https://www.youtube.com/watch?v=BcPyOEzHYwY">BcPyOEzHYwY</a>) covers the same ground with a doom-y "END of Nvidia?!" frame; the short version gives you the facts with less noise.</p>
+</li>
+<li>
+<p><strong>Figure AI Robots Just Went Full TERMINATOR</strong> (<a href="https://www.youtube.com/watch?v=vPYDwfKXFWo">vPYDwfKXFWo</a>, 13.4 min):</p>
+</li>
+<li>Figure reportedly destroyed most of its Figure 02 fleet by training humanoids to autonomously jump into a 75-ton molten-steel furnace — brutal real-world durability and RL-training data generation.</li>
+<li>The roundup also covers Clone's Torso 4, Boston Dynamics' Atlas upgrades, NASA's deep-space robotics prep, and a new Chinese humanoid architecture.</li>
+<li>Tie-in for you: embodied AI increasingly leans on open-weight models (see Unitree's 6B WLA model in the feed), so these hardware stories inform which model classes you'll be asked to run next.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/dbt-labs/dbt-context-engineering">dbt-labs/dbt-context-engineering</a> — the package behind today's dbt Labs demo: chunk, embed, and search coding-agent transcripts in Snowflake. Fastest path to "my own history as RAG" in your dbt+Snowflake workflow.</li>
+<li><a href="https://github.com/erickyegon/oncology-rwe-nsclc">erickyegon/oncology-rwe-nsclc</a> — end-to-end observational research pipeline: Synthea synthetic EHR → OMOP CDM → NSCLC cohort built in dbt on PostgreSQL → R survival analysis benchmarked against SEER. It even documents a validation-failure case — a great reference for dbt data-quality patterns in regulated domains.</li>
+<li><a href="https://github.com/alberttwong/redis-dbt-adapter-with-project">alberttwong/redis-dbt-adapter-with-project</a> — example dbt project using the Redis dbt adapter on the ADBC driver. Ready starter if you're evaluating Redis as a semantic-cache/feature-store layer beside dbt.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/pk14742952-AD/dsh-host-rsi">pk14742952-AD/dsh-host-rsi</a> — a "DSH host RSI" for local LLMs (currently Qwen3.8 27B) wiring per-use continual self-improvement, counter-reason self-check, critic escalation, and memory retrieval into one loop. Experimental, but a useful map of the self-improvement pattern set before you build your own.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/blendbunjaku/optimaizr">blendbunjaku/optimaizr</a> — a local CLI that finds wasted tokens in Claude Code, Codex, and your own API calls. Practical cost tooling for agent-heavy workflows; it pays for itself in one review session.</li>
+<li><a href="https://github.com/BootLoops-ai/bootloops">BootLoops-ai/bootloops</a> — certified computational tools and "house engines" for exact, high-precision physics and quantitative science, built to be driven by LLM agents (MIT, docs CC BY 4.0). Interesting pattern: give agents deterministic compute instead of letting them hand-roll numerics.</li>
+<li><a href="https://github.com/QingYunA/answer-me-with-html">QingYunA/answer-me-with-html</a> — an agent skill that answers hard questions with a single readable one-page HTML document. A neat eval/UX pattern for "did the agent actually synthesize an answer," plus a fun addition to your prompting toolkit.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li><a href="https://github.com/johnaggrey/Ananse_GNSS_QC">johnaggrey/Ananse_GNSS_QC</a> — QC checks on GNSS data: duration, gaps, cycle slips, multipath warnings.</li>
+<li><a href="https://github.com/aasif2707/shopping-app">aasif2707/shopping-app</a> — containerized .NET e-commerce microservices demo with Ocelot gateway, RabbitMQ, and centralized Serilog/Elasticsearch observability.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-10-02.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-10-02</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
