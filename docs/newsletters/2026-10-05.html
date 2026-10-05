@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-10-05</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">05 Oct 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">6 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.015</span>
+      </div>
+      <h1>Daily Signal — 2026-10-05</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Aleph Alpha's Kolibri is the open-weight release of the day.</strong> Deep research flags Kolibri as the strongest breaking signal: an open-weight, English-German model released under Apache 2.0 with downloadable weights (<sup class="cite"><a href="https://digg.com/tech/jpbv7q3x">2</a></sup>), and the r/LocalLLaMA thread confirms a 78B-class model that can be tried online for free (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wy3y4t/you_can_now_try_aleph_alphas_kolibri_78b_for_free/">Reddit</a>). For anyone building with open weights, this is the day's "pull the weights and see" checkpoint.</p>
+<p>How to make the most of it:</p>
+<ul>
+<li>Before committing bandwidth to a 78B download, run the free hosted demo and stress-test German and English instructions rather than only English eval prompts.</li>
+<li>If it survives that smoke test, benchmark it locally with llama.cpp or vLLM at Q4_K_M, Q8_0, and (if memory allows) unquantized to see where it lands against Qwen3.8 and DeepSeek equivalents on your own workloads.</li>
+<li>Keep the Apache-2.0 license in mind for internal tools and public derivatives; if you need a permissive open-weight model with strong German, this is currently a more attractive candidate than most Asia-centric releases.</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<p>Quiet 24h for the platform vendors: deep research found no fresh Snowflake, Cortex Code, or dbt release-note activity, and the Snowflake all-release-notes index remains the best place to check whether something landed after the brief (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">15</a></sup>). The one genuinely new item is community-side dbt tooling.</p>
+<h3 id="dbt">dbt</h3>
+<p>The new <strong>dbt-warden</strong> repo is a fast, zero-dependency linter that reads <code>manifest.json</code> to enforce tests, docs, naming conventions, and source freshness (<a href="https://github.com/robertogonzalez-dev/dbt-warden">GitHub</a>). It is early (1 star), but the design is right for CI: run it after <code>dbt parse</code>, fail the build on undocumented models or stale sources, and skip the overhead of a full Python linter. If you've been meaning to add a lightweight "docs or it didn't happen" gate to your project, this is worth wiring into a GitHub Action this week.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=8PbcHRw6sJM">GitHub Trending monthly #11 (2026.09)</a> — 14m<br />
+  The month's 33 most-caught developer projects in one compilation, which is exactly the tool-roundup format worth a daily slot. The timecodes point to repos including <code>laya</code>, <code>jev-ultrafast</code>, and <code>m3</code>, so you can jump straight to anything with an LLM local-inference or agent angle.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=pay5glsSWTE">Do Claude and GPT Get Nerfed After Launch? We Have Proof Now</a> — 9m<br />
+  A genuinely useful eval story: benchmark trackers like LiveNerf, BridgeBench's Nerf Bench, and Marginlab are now keeping daily score on Opus 5.5, while Anthropic/OpenAI say pinned model weights never change but the router, safety classifiers, prompts, and harness do. Practical if you've ever suspected a model "felt" worse after launch and want to build your own tracker.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=ZHVNTTKu9fU">The Billion Dollar AI Advantage Is Disappearing</a> — 4m<br />
+  Two Minute Papers makes the open-weight-vs-frontier-moat argument in under four minutes, with Claude Sonnet 5.5 as the anchor point. Short enough to watch between meetings, and it sets up the week's "does open-weight still trail by a year?" conversation.</p>
+</li>
+</ul>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li><strong>llama.cpp is on a patch spree.</strong> Deep research found multiple pre-releases on Oct 4 including b11390, b11391, and b11392, with CUDA-focused fixes (MMQ memory-fault and block-placement patches) (<sup class="cite"><a href="https://github.com/ggml-org/llama.cpp/releases">12</a></sup>). If you're on llama.cpp with CUDA, grab the latest pre-release before benchmarking your Kolibri download.</li>
+<li><strong>Reflection AI is reportedly preparing a US open-weight answer to DeepSeek and Qwen</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wy0jrc/reflection_ai_is_about_to_release_a_us_openweight/">Reddit</a>). Treat this as unverified until weights appear, but it lines up with the broader open-weight release tracker showing heavy activity in early October (<sup class="cite"><a href="https://www.digitalapplied.com/blog/ai-model-releases-october-2026-tracker">3</a></sup>, <sup class="cite"><a href="https://theopenweights.com/news">10</a></sup>).</li>
+<li><strong>Memory will be the bottleneck before GPUs are.</strong> Micron's CEO says memory supply will be much tighter in 2027 and 2028 than in 2026 (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wxma3a/micron_ceo_says_memory_supply_will_be_much/">Reddit</a>). For local-LLM hardware plans, that points to locking in VRAM-heavy purchases sooner rather than later; HBM availability will directly affect next-gen GPU prices and DGX-class boxes.</li>
+<li><strong>One community member's homelab hit the electrical ceiling early:</strong> going from 1x3090 to 20 DGX Sparks turned house fuses into the first bottleneck (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wxgm0h/from_1x3090_to_20_dgx_sparks_my_house_fuses_were/">Reddit</a>). Worth reading before you spec a multi-node rack; power delivery, not GPUs, becomes the constraint at that scale.</li>
+<li><strong>FPGA inference keeps getting cheaper.</strong> A developer is implementing Qwen3.5 architecture in FPGA fabric for 9B/27B INT4 models on eBay mining hardware (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wxken1/qwen35_arch_implementation_in_fpga_fabric_for/">Reddit</a>). Experimental today, but it points toward cheap custom accelerators rather than scarce GPU VRAM.</li>
+<li><strong>Small-scale pretraining still has legs.</strong> A developer trained a 3.87B MoE (1.45B active) from scratch on only 86.5B tokens (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wxiy8y/i_trained_a_387b_moe_145b_active_from_scratch_on/">Reddit</a>), a useful data point for the "how little data can a useful MoE need?" question.</li>
+<li><strong>Decision models are becoming a real category.</strong> Alongside JEV's "decisions instead of generation" pitch, DecisionTune is a 395M Apache-2.0 encoder that picks from options offline in ~10ms on MLX (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wy3c0u/decisiontune_10_a_395m_encoder_that_picks_from/">Reddit</a>), and the community is already benchmarking Clef Q8 vs Jev (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wxloam/benchmarking_decision_models_is_fun_clef_q8_vs_jev/">Reddit</a>). This is the trend to watch if you've been frustrated by full LLM generation latency in agent loops.</li>
+<li><strong>GLM 5.3 Flash got faster for dual-DGX-Spark users.</strong> One report claims a 50%+ performance boost after switching, with usable multi-agent throughput on the same hardware (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1wxrozq/for_dual_dgx_spark_users_glm_53_flash_got_a_50/">Reddit</a>). If you run GLM 5.3 on multi-GPU boxes, re-test before staying on an older DeepSeek snapshot.</li>
+<li><strong>Always-on agents are asking for too much.</strong> OpenAI's Dots, Meta's Muse, and xAI's Grok Bot demand browser logins, app access, and even Full Disk Access (<a href="https://www.youtube.com/watch?v=EbPNAa4uxQQ">Cloud Codes</a>). For anyone building agent workflows: treat permission scopes as part of your security review, not an afterthought.</li>
+<li><strong>Ollama is quiet.</strong> The latest visible release is still v0.35.1 from Sep 29 (<sup class="cite"><a href="https://github.com/ollama/ollama/releases">13</a></sup>); no need to chase an update today.</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li>
+<p><strong>AI Just Exploded: GPT-7 BEL, 99% AGI, Gemini 4 RSI, Alien Mind, JEV</strong> (<a href="https://www.youtube.com/watch?v=dk-hx4_cqpk">AI Revolution</a>, 103m)<br />
+  This is the obvious weekend "this week in AI" roundup, but at 103 minutes it can't fit in a 60-minute daily playlist. Skim the timestamps and description for the leak-tier claims:</p>
+</li>
+<li>
+<p>A leaked OpenAI model named BEL could be the foundation for GPT-7; treat as unverified.</p>
+</li>
+<li>GPT-6 Astra is being tied to a claimed 99% AGI-level benchmark result; treat as marketing-grade unless you see a system card.</li>
+<li>A mysterious Gemini 4 RSI model reportedly outperforms bigger systems; unverified.</li>
+<li>JEV's decision-first approach to AI keeps appearing across both the roundup and the r/LocalLLaMA benchmarks above.</li>
+<li>
+<p><strong>19 Months of ChatGPT Pro....or a Mac Studio?</strong> (<a href="https://www.youtube.com/watch?v=uApG8gMRgoo">Cloud Codes</a>, 14m)<br />
+  A worthwhile cost-modeling exercise if you're deciding between API subscriptions and local hardware:</p>
+</li>
+<li>
+<p>On Sep 29 OpenAI halved what new ChatGPT Pro subscribers get: Codex dropped from 20x to 10x Plus and GPT-6 Pro messages from 200 to 100 per week.</p>
+</li>
+<li>19 months of Pro at $200/month equals $3,799 — the exact price of a Mac Studio with M5 Max, 64GB unified memory, and 614 GB/s bandwidth.</li>
+<li>That's the classic local-vs-subscription threshold: if your usage is mostly reasoning/code and you can wait for local quants, the hardware is a fixed asset rather than a monthly line item.</li>
+<li>
+<p><strong>The $2 Trillion Question: Inside Anthropic's Leaked IPO Filing</strong> (<a href="https://www.youtube.com/watch?v=Z2yLLsO_Inc">Tech Unfiltered</a>, 14m)<br />
+  Leak-tier, but the numbers are the story:</p>
+</li>
+<li>
+<p>Investors reportedly eye a valuation above $2 trillion.</p>
+</li>
+<li>Anthropic generated nearly $4.6B in revenue in 2025 while operating expenses soared on AI infrastructure and compute.</li>
+<li>The "leaked IPO documents" framing means verify before repeating; for provider-pricing strategy the key signal is that Anthropic's cost base makes aggressive API pricing unlikely to last forever.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/chao797Adam/dbt_airbnb_tutorial">chao797Adam/dbt_airbnb_tutorial</a> — a barebones dbt tutorial repo following the classic AirBnB pattern; not deeply informative, but a clean starting skeleton if you're onboarding someone new to dbt.</li>
+</ul>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/khoushickmoorthy2323-dotcom/Day001">khoushickmoorthy2323-dotcom/Day001</a> and <a href="https://github.com/khoushickmoorthy2323-dotcom/Day002">Day002</a> — a "Snowflake Developer" day-by-day learning series. Low signal, but useful if you need a minimal hands-on example set for a workshop rather than a real project.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/lmliheng/Adelie">lmliheng/Adelie</a> — a local-first multi-agent app development platform built on PenguinHarness. With local-LLM agent loops getting more practical, this is worth watching as a prompt-to-app playground that keeps execution on your machine.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/apromisedland/trustworthy-agent-simulation">apromisedland/trustworthy-agent-simulation</a> — auditable LLM multi-agent town simulation built on AgentScope and Mesa, with replay, policy experiments, and a Streamlit UI. If you're designing agent evals, the replay/audit layer is the part I'd steal.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/spfuzzylink/blockorbucket">spfuzzylink/blockorbucket</a>: Go library/CLI/offline storage decision workbench for Kubernetes, observability, and AI data workflows.</li>
+<li><a href="https://github.com/Hxtomi/WeatherRefind-source">Hxtomi/WeatherRefind-source</a>: client-side Minecraft weather particles (rain/snow, three snowflake shapes) — not your day job, but a fun read.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-10-04-weekly.html"><span class="mono dim">Older</span><span>Weekly Signal — 2026-10-04</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
