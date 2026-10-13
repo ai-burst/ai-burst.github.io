@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-10-13</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">13 Oct 2026</span>
+        <span class="badge badge-daily">daily</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.014</span>
+      </div>
+      <h1>Daily Signal — 2026-10-13</h1>
+      <h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<p>The day's most useful verified news is a Snowflake GA wave. No dbt releases landed today; the closest item is a new local-first dbt alternative, <code>det</code>, covered in the Repo Watchlist below.</p>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Semantic Studio is GA</strong> — the headline Snowflake item for anyone building a semantic layer. You can now author, debug, and deploy semantic views entirely in Snowflake Workspaces, with git versioning and CI/CD in the same place, and Snowflake CoCo is baked in as the authoring companion (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/semantic-studio-ga">Snowflake blog</a>). This is the "semantic views as code" workflow maturing: define metrics once, then let downstream BI and agents consume a versioned, reviewable artifact instead of drifting metric definitions.</p>
+<p><strong>Cortex Agent code execution tool is GA</strong> (Oct 5): agents can now execute code during a conversation to run scripts, process data, calculate, and produce visualizations (<a href="https://docs.snowflake.com/en/release-notes/new-features-2026">release notes</a>, <a href="https://docs.snowflake.com/en/release-notes/all-release-notes">all release notes</a>). Practical upside: you can hand an agent a real data task and let it iterate on actual results rather than returning SQL for you to run elsewhere.</p>
+<p><strong>Cortex model availability is moving fast.</strong> OpenAI <strong>GPT-6.1 Sol</strong> is now in <strong>Public Preview</strong> in Cortex AI (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">all release notes</a>), and <strong>Claude Haiku 5.5</strong> is available via the Cortex REST API in Preview (<a href="https://docs.snowflake.com/en/release-notes/new-features">new features</a>). If you have Cortex Search or Cortex Code paths pinned to older models, this is a good excuse to re-benchmark against the newer families.</p>
+<p><strong>Horizon Context entered Preview</strong> on Oct 12 — a smaller release, but worth tracking if you use Snowflake Horizon for governance and want context-aware policy decisions (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-12-horizon-context-preview">release notes</a>).</p>
+<p><strong>Two pattern reads:</strong> Snowflake's agentic-AI-in-manufacturing blog lays out a four-stage pilot-to-production roadmap for governed agentic AI (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/agentic-ai-in-manufacturing-pilot-to-production">Snowflake blog</a>); and a community post shows a reusable Cortex Search pattern for GTM triage — matching free-text customer requests against a structured roadmap/catalog, applicable anywhere you need "free text → structured catalog" matching, not just support tickets (<a href="https://medium.com/snowflake/ai-powered-gtm-triage-smart-suggestions-using-cortex-search-8d518bf4bf03">Medium</a>).</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p>The main CoCo-adjacent news is Semantic Studio GA: CoCo is positioned as the IDE-side companion for authoring semantic views in Workspaces, with git versioning and CI/CD in one place (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/semantic-studio-ga">Snowflake blog</a>). No standalone CoCo/CoWork release notes landed today.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong>China AI ACHIEVED RSI? GLM 5.5, NEW Fable 5.5 Checkpoint, Qwen4, Kimi K3.1, M3.1 Pro...</strong> — Your AI Guy (<a href="https://www.youtube.com/watch?v=MFiSThqRxI8">watch</a>, 13 min). The ideal broad roundup for your open-weight obsession: GLM 5.5, a new Fable 5.5 checkpoint, Qwen4, Kimi K3.1, and M3.1 Pro in one sitting. No transcript available, but the description promises a China-vs-frontier state-of-play that matches today's r/LocalLLaMA mood.</p>
+</li>
+<li>
+<p><strong>Anthropic's New Claude NEXT Leak Exposes a MAJOR Breakthrough</strong> — AI Revolution (<a href="https://www.youtube.com/watch?v=efjJH2rVykc">watch</a>, 14 min). Roundup-style coverage of an unverified Claude NEXT leak (testers claiming a hidden model makes Opus 5.5 look primitive), plus Google's Gemini agent that reportedly chooses between Claude and Gemini models autonomously. Treat the leak claims as rumors; the roundup structure is exactly the "this week in AI" format you want.</p>
+</li>
+<li>
+<p><strong>Your 8GB GPU Can Run a 125B AI Model</strong> — Cloud Codes (<a href="https://www.youtube.com/watch?v=WGbZWYhMSTM">watch</a>, 13 min). The exceptional deep dive for this list because it's squarely about reducing VRAM requirements: the same 8GB card goes from ~4 tok/s on default settings to 17–19 tok/s with enthusiast configs, per the description — a compelling argument that defaults, not hardware, are the bottleneck.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>"Decision models" are the new hotness — in a big way.</strong> Cloud Codes' short reports Microsoft's Decision-1 is ~35× faster than GPT-6 Sol because it never generates a single token; instead it ingests input plus a menu of options in one forward pass. The same short claims TypeSafe raised $870M for its decision model Jev, and that AWS, Cloudflare, OpenAI, and Microsoft all shipped similar architectures within weeks (<a href="https://www.youtube.com/watch?v=4RbGxxREkc8">video</a>). Treat the speedup and funding numbers as vendor-reported, but the ecosystem signal is verifiable: Ollama v0.40.4-rc0 (Oct 12) updates llama.cpp to b11521 with decision-model support (<a href="https://github.com/ollama/ollama/releases">Ollama releases</a>), and llama.cpp's latest pre-release adds vLLM D3 and vLLM decision-2 model support (<a href="https://github.com/ggml-org/llama.cpp/releases">llama.cpp releases</a>). Expect decision-model formats in your favorite open-weight runtimes soon.</p>
+<p><strong>Claude NEXT leak rumors (unverified).</strong> AI Revolution reports testers claim a hidden Anthropic model "makes Opus 5.5 look primitive," with speculation about Opus 5.6 and a Fable 5.5 checkpoint; the same video covers Google's Gemini agent that reportedly picks between Claude and Gemini models for complex autonomous work (<a href="https://www.youtube.com/watch?v=efjJH2rVykc">AI Revolution</a>). Your AI Guy's roundup separately lists a "new Fable 5.5 checkpoint" among rumored Chinese-model updates (<a href="https://www.youtube.com/watch?v=MFiSThqRxI8">Your AI Guy</a>). All leak-tier, no primary source — but it fits the "China got quiet, frontier labs got loud" mood in r/LocalLLaMA (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x4u6vi/its_been_too_quiet_on_the_other_side_of_the/">thread</a>).</p>
+<p><strong>QwenGyre: RL for long-horizon agents.</strong> Qwen released QwenGyre, an RL framework for training AI agents on extremely long, complex tasks (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x41myz/qwen_released_qwengyre_rl_framework_for_training/">r/LocalLLaMA</a>). If you fine-tune open-weight models for agentic workloads, this is the most interesting training-side release of the day.</p>
+<p><strong>MiniCPM-V-4.7 goes GGUF.</strong> OpenBMB shipped official GGUF quantizations for MiniCPM-V-4.7 in two sizes: the 35B-A3B MoE and a tiny 1B vision-language model (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x47taj/openbmbminicpmv473ba3b/">35B-A3B thread</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1x492f9/openbmbminicpmv471b/">1B thread</a>). Both are immediately usable in llama.cpp — the 1B is a strong candidate for edge/on-device vision (GGUFs on Hugging Face, linked in the threads).</p>
+<p><strong>Boole-1.7B: a genuine 1-bit model.</strong> A research release claims Boole-1.7B, a 1-bit Qwen3-1.7B, outperforms Bonsai-1.7B (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x452zj/boole17b_a_1bit_qwen317b_model_that_outperforms/">r/LocalLLaMA</a>). Worth tracking for the "how small can a useful model get" curve, even if it's research-y.</p>
+<p><strong>Anthropic accidentally markets GLM (again).</strong> Anthropic published its distillation-defenses research, and r/LocalLLaMA immediately flagged it as "free publicity for GLM," spawning multiple threads (<a href="https://www.anthropic.com/research/distillation-defenses">Anthropic research</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1x4ii8e/anthropic_is_doing_free_publicity_for_glm_again/">thread 1</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1x4cm73/once_again_anthropic_doing_free_marketing_for/">thread 2</a>).</p>
+<p><strong>OpenAI shares math progress.</strong> OpenAI published a research overview on AI progress in mathematics plus a GitHub repo (<code>github.com/openai/math</code>) (<a href="https://openai.com/index/sharing-ai-progress-in-mathematics/">post</a>, <a href="https://github.com/openai/math">repo</a>). Two Minute Papers has a ~9-minute episode summarizing it (<a href="https://www.youtube.com/watch?v=z_sXLlLVUls">video</a>) — a useful update for reasoning evals even though it's not open-weight news.</p>
+<p><strong>Intel's "Crescent Island" becomes D270.</strong> Intel's value-oriented GPU with up to 480 GB of LPDDR5X and 1.3 PFLOPs of FP8 at 350 W now has a D-series name; the community reaction boils down to "hope the software support is good" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x4g90u/intel_crescent_island_gpu_gets_dseries_name/">thread 1</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1x4n0bq/hope_the_software_support_is_good_but_intel/">thread 2</a>). 480 GB of unified memory at a value price would be huge for big-context local MoE models — if the stack matures.</p>
+<p><strong>GPU market signals: 5080 24GB + old V100s.</strong> A report puts an RTX 5080 24 GB variant in Q1 2027, with board partners still waiting on details (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x41n6l/nvidia_rtx_5080_24gb_reportedly_launching_in_q1/">r/LocalLLaMA</a>); separately, benchmarks show a 9-year-old 4×V100 NVLink board beating M5 Ultra / DGX Spark by up to 230% in some AI workloads (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x4mtzx/nvidias_9yearold_tesla_v100_still_packs_some/">r/LocalLLaMA</a>). Both matter if you're making used-GPU or upgrade decisions.</p>
+<p><strong>Qwen3.8 keeps delivering at the edge of VRAM.</strong> One user runs unsloth/Qwen3.8-27B-UD-IQ4_XS with 262k context, q4_0 KV cache, and vision on just 16 GB VRAM at ~80 t/s and 1500 pp/s (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x4cmfc/running_unslothqwen3827budiq4_xs_262k_q4_0_kv/">thread</a>); another's head-to-head tests put Qwen3.8-27B surprisingly close to frontier models on coding and data-analysis (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x49pmn/qwen3827b_vs_frontier_vs_others/">thread</a>); and an SSD-streaming approach with n+2 lookahead prediction made Qwen Flash Next usable from disk (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x4sit6/">thread</a>). A good week to stress-test your own VRAM budget.</p>
+<p><strong>Small tools worth a tap.</strong> <code>graphsignal-top</code> gives you a live, <code>top</code>-style view of inference GPU kernels ranked by time with readable names (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x421ow/graphsignaltop_a_top_for_inference_gpus_in_the/">thread</a>); LLC, a lightweight Open WebUI alternative, now ships Agents + MCP + RAG + image editing (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x415dd/llc_lightweight_open_webui_alt_now_with/">thread</a>); and BrokenML evaluates whether agents can fix broken ML jobs, with a detailed write-up (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x41pqt/brokenml_can_agents_fix_broken_ml_jobs/">thread</a>, <a href="https://zhebrak.io/posts/brokenml/">write-up</a>).</p>
+<p><strong>Python 3.15 lands.</strong> Simon Willison's "What's new in Python 3.15" tour is out — goodbye Python 3.10, hello 3.15 features (<a href="https://simonwillison.net/2026/Oct/12/python-3-15/">Simon Willison</a>). If you maintain packaging or tooling for LLM/ETL stacks, the supported-version floor just moved.</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<h3 id="windows-vs-linux-for-local-ai-finally-with-numbers">Windows vs Linux for local AI, finally with numbers</h3>
+<p>Cloud Codes' 2:45 short debunks the "Linux is 15–25% faster" folklore: on an RTX 5080 with models fully resident in VRAM, Linux is only ~3–5% faster at token generation (<a href="https://www.youtube.com/watch?v=YWU72TQwgdw">watch</a>). Key takeaways:</p>
+<ul>
+<li>In-VRAM inference: Windows vs Linux is basically a wash (3–5%).</li>
+<li>The famous 10× Windows slowdowns happen when you cross the VRAM boundary — since driver 536.40, Windows silently spills overages into shared system RAM over a 32 GB/s PCIe slot.</li>
+<li>Practical fix: keep context/KV cache inside VRAM on Windows, or expect the spill cliff.</li>
+</ul>
+<h3 id="openai-codex-repositions-code-review">OpenAI Codex repositions code review</h3>
+<p>OpenAI's short official demo frames code review as "the new bottleneck" and shows Codex pulling PRs, review feedback, and private code conversations into one place: find reviews across repos, understand changes and risks, apply team review guidelines, and draft comments without switching tools (<a href="https://www.youtube.com/watch?v=IZXv6a78NDw">watch</a>). Key takeaways:</p>
+<ul>
+<li>Codex is moving from generating code to owning the review workflow.</li>
+<li>Team guidelines as inputs to drafted comments is an interesting guardrail/evals angle.</li>
+<li>GitHub review is GA; GitLab support is only in preview — wait if you're a GitLab shop.</li>
+</ul>
+<h3 id="snowflake-telemetry-dashboard-in-7-minutes">Snowflake telemetry dashboard in ~7 minutes</h3>
+<p>A compact walkthrough of building a predictive-maintenance dashboard from Snowflake-style vehicle telemetry: connect to Snowflake, run SQL queries, create reusable query outputs, then map them into interactive KPI visuals (<a href="https://www.youtube.com/watch?v=Gho_w3z7L_Y">watch</a>). Key takeaways:</p>
+<ul>
+<li>End-to-end telemetry → Snowflake → dashboard pattern in one sitting.</li>
+<li>"Reusable query outputs" is the step most people skip, and it's what makes dashboard iteration cheap.</li>
+<li>Directly applicable to fleet-risk, equipment-health, and system-monitoring projects.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><a href="https://github.com/det-Labs/det">det-Labs/det</a> — A local-first SQL ETL workspace and pipeline orchestrator powered by Apache DataFusion and Arrow, pitched as a zero-cloud-lock-in alternative to dbt and Spark. Only 8 stars, but an interesting architecture if you want dbt-style transformations without a warehouse dependency.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/jagtapakanksha/SNOWFLAKE_and_CORTEX_AI">jagtapakanksha/SNOWFLAKE_and_CORTEX_AI</a> — A comprehensive learning repo covering Snowflake + Cortex AI: core concepts, advanced features, AI functions, real-world use cases, and interview prep. Handy as a reference for onboarding or mentoring.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/vakandi/opencode-rust">vakandi/opencode-rust</a> — The open-source AI coding agent, reimplemented in Rust: CLI, TUI, and HTTP server with no Docker required. A lightweight, local alternative to heavier agent frameworks.</li>
+<li><a href="https://github.com/glmn-ai/vibereceipt">glmn-ai/vibereceipt</a> — Prints a "store receipt" for your AI coding session: token usage, what it would have cost at API prices, and a count of how many times the agent said "You're absolutely right." Works locally with Claude Code, Codex, and OpenCode — a fun, genuinely useful cost-visibility tool.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/morluto/rea">morluto/rea</a> — Reverse engineer anything with agents, from app behavior down to native binaries; 188k stars is a striking signal.</li>
+<li>✅ <a href="https://github.com/onehumanbeing/esp32-iphone-agent">onehumanbeing/esp32-iphone-agent</a> — Let an AI use a real iPhone with a $7 ESP32: AirPlay eyes, USB HID hands, any OpenAI-compatible vision model; no Mac, dev account, or jailbreak.</li>
+<li><a href="https://github.com/IvanciniGT/formacionDatadog">IvanciniGT/formacionDatadog</a> — Datadog observability, monitoring, and best-practice training material.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-10-12.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-10-12</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
