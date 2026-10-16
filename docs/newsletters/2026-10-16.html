@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-10-16</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">16 Oct 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.013</span>
+      </div>
+      <h1>Daily Signal — 2026-10-16</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Open-weight deluge: Muse Spark Open, Nemotron 3.5 Bolt/Super-VL, Ternary Bonsai 2, and a 125B MoE squeezed onto two 16 GB GPUs</strong></p>
+<p>Today's local-model feed is genuinely crowded. The r/LocalLLaMA community is flagging <strong>Muse Spark Open</strong> as "the most capable US open-weight model to date" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6r9pz/introducing_muse_spark_open_the_most_capable_us/">Reddit</a>), with Unsloth already shipping a build (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6rcid/unsloth_muse_spark_open_is_out/">Reddit</a>). NVIDIA dropped two big open-weight families: the <strong>Nemotron 3.5 Bolt 74B-A9B-24GB</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6o31q/nvidianvidianemotron35bolt74ba9b24gb_hugging_face/">Reddit</a>) and the <strong>Nemotron 3.5 Super-VL-120B-A12B</strong> family in base, NVFP4, BF16, and LiLiCorr speculative-decoding variants (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6nl8m/nvidianvidianemotron35supervl120ba12b_model/">Reddit</a>). On the efficiency side, <strong>Ternary Bonsai 2</strong> (2B/4B/9B, based on Qwen 3.5) is out (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6yk1f/ternary_bonsai_2_family_2b_4b_9b_based_on_qwen_35/">Reddit</a>), with the 2B claimed to run in-browser at up to 500 tok/s on an M4 Max via custom WebGPU kernels (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6w658/ternary_bonsai_2_2b_4b_and_9b_just_released_on/">Reddit</a>). And the community's capy-flash project reports running <strong>Qwen3.8-Flash-Next (125B MoE)</strong> in full NVFP4 on two 16 GB consumer GPUs (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6wh1z/capyflash_qwen38flashnext_125b_moe_in_full_nvfp4/">Reddit</a>).</p>
+<p>The tooling catch-up is equally notable: <strong>llama.cpp v0.7.0</strong> shipped Oct 15 with LiLiCorr speculative decoding, MTP support for GLM5-Next, a new host-memory GPU cache for MoE experts, server chat-session refactors, and a fuller web UI models manager (<a href="https://github.com/ggml-org/llama.cpp/releases/">GitHub releases</a>). <strong>Ollama v0.40.5</strong> followed Oct 14 with Nemotron 3.5 support and updated MLX (<a href="https://github.com/ollama/ollama/releases">GitHub releases</a>). A llama.cpp PR adding Nemotron Super 3.5 VL and Bolt 74B support is already up (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6mlby/add_nemotron_super_35_vl_and_nemotron_bolt_74b/">Reddit</a>).</p>
+<p><strong>How to make the most of it:</strong></p>
+<ol>
+<li><strong>Update llama.cpp and Ollama first.</strong> Nemotron support landed in v0.7.0/v0.40.5, and LiLiCorr speculative decoding is exactly the kind of free speedup you want when benchmarking these new MoE models.</li>
+<li><strong>Match the model to your VRAM.</strong> On a single 24 GB GPU, try Nemotron Bolt 74B-A9B; on 2×16 GB, the capy-flash NVFP4 Qwen3.8-Flash-Next setup is the day's most interesting "big model on small hardware" experiment.</li>
+<li><strong>For browser/edge demos, pull Ternary Bonsai 2B.</strong> 500 tok/s in WebGPU makes it a credible local agent front-end, and the Qwen 3.5 base means tool-calling chops are plausible.</li>
+</ol>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Data mirroring is GA.</strong> Snowflake's Postgres-to-analytics data mirroring now replicates inserts, updates, deletes, and schema changes automatically — "no pipelines, no extra infrastructure" (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/data-mirroring-ga-snowflake-postgres">Snowflake blog</a>). For teams running Postgres OLTP next to Snowflake analytics, this removes a whole class of CDC plumbing.</p>
+<p><strong>Sovereign AI push in France.</strong> Snowflake and Orange Business are collaborating on sovereign data and AI capabilities on trusted French infrastructure for regulated industries (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-orange-business-sovereign-ai-france">Snowflake blog</a>). Separately, Snowflake announced intent to partner with Bleu to bring AI Data Cloud capabilities to France's regulated markets on sovereign infrastructure (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-bleu-sovereign-cloud-france">Snowflake blog</a>). If you operate in EU regulated industries, residency and compliance architecture just got more options.</p>
+<p><strong>Private connectivity with Lumen.</strong> Snowflake and Lumen Technologies announced an alliance to privately and securely connect on-premises and edge data to Snowflake for analytics and AI (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-lumen-private-connectivity-ai">Snowflake blog</a>).</p>
+<p><strong>Notebook parameter passing guide.</strong> A new Medium walkthrough covers how to build production notebook pipelines with parameter passing across every workspace type and execution mode, with working code in a GitHub repo (<a href="https://medium.com/snowflake/passing-parameters-between-snowflake-notebooks-a-complete-guide-b95cb5249338?source=rss----34b6daafc07---4">Medium</a>). Useful if you're chaining Snowflake notebooks as orchestrated jobs.</p>
+<p><strong>Agent-era governance and Chicago recap.</strong> A field-notes post argues that once an LLM can run SQL on your behalf, "every gap in your masking policies becomes a gap the agent can walk through" (<a href="https://medium.com/snowflake/governing-data-and-ai-agents-in-snowflake-a-data-engineers-field-notes-0662c602b404?source=rss----34b6daafc07---4">Medium</a>). World Tour Chicago's takeaway: "The Agent Isn't the Product. The Foundation Is" (<a href="https://medium.com/snowflake/snowflake-world-tour-chicago-2026-the-agent-isnt-the-product-the-foundation-is-e2a4cebe27f1?source=rss----34b6daafc07---4">Medium</a>).</p>
+<p><strong>People and release notes.</strong> Snowflake announced Jeff Naughton joined to advance data systems for the "agentic enterprise" (<a href="https://www.snowflake.com/en/news/press-releases/">Snowflake press releases</a>). Release notes were updated Oct 15–16, but nothing in the surfaced entries looked like a standout breaking platform change in this window (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">Snowflake release notes</a>).</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>Semantic Layer YAML spec.</strong> The new Semantic Layer YAML specification is now available on the dbt platform Latest track; dbt release notes were updated Oct 15 with no major breaking headline surfaced (<a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">dbt release notes</a>).</p>
+<p><strong>Open Data Infrastructure in the age of AI agents.</strong> The dbt roundup features George Fraser, Tristan Handy, and a16z's Martin Casado on why companies are building their own AI analysts, why connecting agents straight to SaaS tools falls short, and why keeping your stack open matters (<a href="https://roundup.getdbt.com/p/open-data-infrastructure-in-the-age">dbt roundup</a>).</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong>GitHub Trending Today #54</strong> — <a href="https://www.youtube.com/watch?v=auAbwspHNnU">watch</a> · 15 min. The closest thing to a daily open-source news roundup: 35 trending projects in one sitting, including Scout (an open-source browser agent), freellmapi, desigma, and others. Great for surfacing repos you'd never search for.</p>
+</li>
+<li>
+<p><strong>Why Your AI Plan Runs Out So Fast</strong> — <a href="https://www.youtube.com/watch?v=zoIAblD9DZo">watch</a> · 15 min. A practical token-budgeting video for anyone living in Claude Code, ChatGPT, Codex, Cursor, or Gemini. The headline claim — one <code>/compact</code> on a day-old Claude Code chat ate 14% of a five-hour limit, with most usage going to re-sending chat history — is the kind of thing that changes how you structure agent sessions.</p>
+</li>
+<li>
+<p><strong>Best Local Uncensored AI Models for Your GPU (8GB to 24GB)</strong> — <a href="https://www.youtube.com/watch?v=QLqeaiKcfiY">watch</a> · 23 min. A roundup of quantized/abliterated models with real VRAM math: a 27B ternary quant squeezed to a 5.95 GB file on an 8 GB GPU, zero refusals on test sets where the original refused 95, plus picks for 12/16/24 GB. Good calibration for how far quantization has come.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<h3 id="local-open-weight">Local &amp; open-weight</h3>
+<ul>
+<li>
+<p><strong>Flux.3 Image Klein is out.</strong> A 5.6B open-weights model for text-to-image generation and image editing, with weights now published on Hugging Face (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6s7el/flux3_image_klein_is_now_out/">Reddit announcement</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6t5fc/flux3_image_klein_just_got_weights_published_on/">Reddit weights post</a>). Worth a look if you're evaluating open image models for local pipelines.</p>
+</li>
+<li>
+<p><strong>NVIDIA published an FP4 QAD quant of Qwen3.8-Flash-Next.</strong> The 125B MoE check-in comes in at about 102 GB, which pairs with the community's capy-flash work to make this model feasible on multi-GPU consumer rigs (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6vqft/fp4_qad_quant_of_qwen38flashnext_from_nvidia/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>IBM Granite Switch 4.1 30B/8B.</strong> IBM released a 30B/8B switch-architecture model; the launch blog is on Hugging Face (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6wwx2/ibmgranitegraniteswitch41_30b8b/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>Mistral's Timestral appeared.</strong> A new model page for "Timestral" surfaced, though details are thin so far (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6ouoy/mistralaitimestral/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>ALoDLM 8B: a looped diffusion language model.</strong> Claimed ~3× inference speed versus its Qwen3-8B base, with better benchmark results (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x75bme/alodlm_8b_looped_diffusion_language_model_3x/">Reddit</a>). Diffusion LMs remain an interesting "how will this change inference cost" thread.</p>
+</li>
+<li>
+<p><strong>QUASAR 4-bit QAT checkpoints.</strong> Quantization-aware checkpoints for Qwen3.5, Gemma 4, and Muse Glimmer claim to sit closer to BF16 than Google's and NVIDIA's 4-bit releases, with NVFP4 for vLLM and Q4_0 GGUF for llama.cpp/Ollama/LM Studio (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6u8pi/quasar_4bit_qat_checkpoints_for_qwen35_gemma_4/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>Drama3 in audio.cpp.</strong> Up to 5× faster than real time at full speed, or 2× real-time with less than 8 GB VRAM on an RTX 5090 (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x75uyi/drama3_in_audiocpp_up_to_5_faster_than_real_time/">Reddit</a>). Relevant if you're building local speech features.</p>
+</li>
+<li>
+<p><strong>DeepSeek-V4-Flash on 4× Radeon AI PRO R9700.</strong> A "refused" 4-card config reportedly works with CPU affinity, hitting ~79 tok/s on real cards (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x70e5r/deepseekv4flash0731_on_4x_radeon_ai_pro_r9700/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>£300 Snapdragon mini PC reality check.</strong> A 35W Snapdragon mini PC runs a 35B coder at ~30 tok/s and an 80B model that doesn't even fit in RAM at 17 tok/s (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6stod/what_a_300_35w_snapdragon_mini_pc_can_actually_do/">Reddit</a>). Useful data point for low-power local inference.</p>
+</li>
+<li>
+<p><strong>128GB RTX Spark laptop for $3,832.</strong> The newly announced RTX Spark laptop at HP with 128GB RAM, after a 25% coupon (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6trqq/128gb_rtx_spark_laptop_for_3832/">Reddit</a>).</p>
+</li>
+</ul>
+<h3 id="llm-development-industry">LLM development &amp; industry</h3>
+<ul>
+<li>
+<p><strong>Hybrid Reasoning Agents paper.</strong> Stanford, Together AI, UIUC, and Meta propose models that "think" in hidden internal reasoning and only use text for tool calls or final answers. Reported gains: ~10% higher on math/science/medicine, half the tokens, twice the speed (<a href="https://arxiv.org/abs/2610.18861">paper</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1x7a8i8/new_paper_from_stanford_together_ai_uiuc_and_meta/">discussion</a>). This is worth watching for agent-cost engineering.</p>
+</li>
+<li>
+<p><strong>Anthropic revenue up nearly 50% to $16.8bn.</strong> Anthropic told investors quarterly revenue rose to $16.8bn ahead of a reported IPO (<a href="https://simonwillison.net/2026/Oct/15/anthropic-tells-investors/">Simon Willison / FT</a>). More capital means more frontier-model pressure, which eventually flows down to open-weight releases.</p>
+</li>
+<li>
+<p><strong>Alibaba's BlenderWorld benchmark.</strong> Qwen team released a benchmark measuring how well visual agents can create 3D scenes in Blender from real-world references (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x76d8l/blenderworld_benchmark_from_alibaba/">GitHub via Reddit</a>). A signal that Qwen is investing in agentic 3D skills.</p>
+</li>
+<li>
+<p><strong>Chirp Pong.</strong> Simon Willison built a two-player Pong game where game state is sent between phones via audio chirps — a neat demonstration of local-first networked HTML experiments (<a href="https://simonwillison.net/2026/Oct/15/chirp-pong/">Simon Willison</a>).</p>
+</li>
+<li>
+<p><strong>OpenAI GPT-Live-1.1 voices.</strong> New voices and better accents are rolling out today in ChatGPT, Codex, and dots, with API support coming soon (<a href="https://www.youtube.com/watch?v=GyO8Ao7yKJc">OpenAI video</a>). Minor, but relevant if you're building voice agents on OpenAI's stack.</p>
+</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>"Anthropic Just Killed Git?"</strong> — <a href="https://www.youtube.com/watch?v=BdpkjjEArxs">Cloud Codes</a> · 10 min. A narrow deep dive that's exceptional because it quantifies a real infra stress point:</p>
+<ul>
+<li>Claim: Anthropic's AI coding agents push 30,000+ merges/day with CI executing 25M+ checkouts daily, which would generate 600+ PB of daily network traffic under standard Git.</li>
+<li>Anthropic reportedly abandoned Git for its primary monorepo, building a custom server-side source control system called Scion.</li>
+<li>The broader point: Git's 2005 design assumptions break under AI-agent workload patterns; teams running heavy agent pipelines may need to rethink checkout and merge strategies.</li>
+<li>Treat the specific numbers as video claims, not audited stats.</li>
+</ul>
+<p><strong>"Anthropic's New Claude NEXT Leak Exposes a MAJOR Breakthrough..."</strong> — <a href="https://www.youtube.com/watch?v=7mRJwGsuJ8Q">Your AI Guy</a> · 14 min. Leak-tier speculation, so take it as signal, not fact:</p>
+<ul>
+<li>Unverified claims about Claude NEXT pushing reasoning, coding, and advanced problem-solving.</li>
+<li>Useful mainly as a reminder that the next frontier-model cycle is already being teed up.</li>
+<li>Not worth building anything on; worth skimming to stay oriented on Anthropic's trajectory.</li>
+</ul>
+<p><strong>"LFM2.5: A 24B AI Agent Built for Your Laptop (The Real Math)"</strong> — <a href="https://www.youtube.com/watch?v=OISbyYot3Zo">Cloud Codes</a> · 1 min. Short but dense:</p>
+<ul>
+<li>Liquid AI's LFM2.5-24B-A2B stores 24B parameters but only reads 2.45B per token.</li>
+<li>The MoE hybrid convolution-attention design is aimed at cutting KV cache bloat for agentic tool-use workloads.</li>
+<li>Reported 184 tok/s on local silicon — worth verifying, but the architecture direction is the real story.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/vbmacher/intellij-dbt">vbmacher/intellij-dbt</a> — An IntelliJ IDEA plugin for dbt projects. If you live in a JetBrains IDE, this could make model and test navigation much less painful.</li>
+<li><a href="https://github.com/matheusbuniotto/dbt-factory">matheusbuniotto/dbt-factory</a> — A "software factory" for analytics engineers: dbt agents in worktrees, Definition-of-Done gates, evals, and analyst review. Interesting for teams trying to productize dbt development.</li>
+<li><a href="https://github.com/muhammedshehab1995/End-to-End-DataEngineering-Project-Dbt---Snowflake---Airflow-">muhammedshehab1995/End-to-End-DataEngineering-Project-Dbt---Snowflake---Airflow-</a> — End-to-end pipeline using dbt, Snowflake, and Airflow for ingestion, transformation, and orchestration. A solid reference architecture for the exact stack you work in.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/livingdw67/snowpark-customer-segmentation">livingdw67/snowpark-customer-segmentation</a> — Automated customer segmentation using Snowflake, Snowpark Python, and Scikit-Learn. A good pattern for moving ML workloads into Snowpark.</li>
+<li><a href="https://github.com/LJSnare/Data-Lake-Observability-Framework-v6.3">LJSnare/Data-Lake-Observability-Framework-v6.3</a> — Data lake observability framework. Relevant for the data-observability side of your interests, though it's not Snowflake-specific.</li>
+<li><a href="https://github.com/samstabl203-cloud/aegis-data-observability">samstabl203-cloud/aegis-data-observability</a> — Automated observability, multi-dimensional anomaly detection, and QA for retail pipelines.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/mmm1712/Local_AI_esp32">mmm1712/Local_AI_esp32</a> — A language model trained from scratch, running offline on an ESP32-S3 with a touchscreen chat interface. Extreme edge-case local LLM hardware.</li>
+<li><a href="https://github.com/anisayari/sparky">anisayari/sparky</a> — A 100% local Windows AI assistant: chat, vision, RAG documents, web search, images, voice, code projects, and MCP tools, with a one-line install.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/sitor-ai/frametell">sitor-ai/frametell</a> — Turn ideas into explainer videos with an AI director agent; local-first and model-agnostic. Fun for internal documentation or demo content.</li>
+<li><a href="https://github.com/outcrawlai/scout">outcrawlai/scout</a> — Open-source browser agent by Outcrawl. Already trending at 869 stars; worth evaluating as a self-hostable alternative to hosted browser agents.</li>
+<li><a href="https://github.com/heqiangdiao-wq/AI-Cross-Border-Ecommerce-Agent-Toolkit">heqiangdiao-wq/AI-Cross-Border-Ecommerce-Agent-Toolkit</a> — Cross-border e-commerce ops broken into seven reusable AI agent workflows, with prompts, templates, and real cases.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/machaniG/data-quality-observability">machaniG/data-quality-observability</a> — BigQuery, dbt, and GCP storage data-quality observability setup.</li>
+<li><a href="https://github.com/Morchyee/AntiDBT">Morchyee/AntiDBT</a> — Despite the name, not dbt-related: reverse-engineered Doubao translation functionality for multilingual translation.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-10-14.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-10-14</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
