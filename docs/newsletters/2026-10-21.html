@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-10-21</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">21 Oct 2026</span>
+        <span class="badge badge-daily">daily</span>
+        <span class="mono dim">6 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.009</span>
+      </div>
+      <h1>Daily Signal — 2026-10-21</h1>
+      <h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<p>No single verified breaking story cleared the bar today, but this is the section with actual shipped product changes — so it leads.</p>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li>Snowflake's release notes show the clearest platform updates: <strong>“dbt Projects on Snowflake” improvements</strong> and the <strong>Online Feature Store going GA on Oct 20</strong> (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/new-features-2026">1</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-online-feature-store-ga">3</a></sup>). If you've been holding back on real-time feature engineering, GA status is the green light for production.</li>
+<li>The October Snow Report also flags <strong>CoWork automations as GA</strong> and <strong>Snowpipe Streaming Elastic Channels as GA</strong>, with a live demo of dbt workflows using CoCo coming up (<sup class="cite"><a href="https://x.com/Snowflake/status/2108180820582171099/video/1">4</a></sup>).</li>
+<li><strong>Horizon Context is now in public preview</strong>: 18 metadata connectors, steward permissions, and description propagation to ground AI in business context (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/horizon-context-business-knowledge-ai">Snowflake blog</a>). If you're wiring Cortex or CoCo to governed metadata, this is the feature to test this week.</li>
+<li><strong>Snowflake CLI v3.30.0</strong> shipped with a backward-incompatible change: re-running <code>snow helpers import-snowsql-connections</code> can now save a different connection than an earlier import, and named connections are sourced from <code>connections.&lt;name&gt;</code> alone (<a href="https://github.com/snowflakedb/snowflake-cli/releases/tag/v3.30.0">GitHub</a>). Automate SnowSQL imports in CI? Read the release notes before upgrading.</li>
+<li>The new fraud-detection walkthrough shows the <strong>Online Feature Store + low-latency model serving</strong> story: VALID Systems says it cut deposit losses 7–10% (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/modern-fraud-detection-platform-online-ml">Snowflake blog</a>). There's also a factory-floor field story using the <strong>Cortex Decision Model</strong> to classify defect risk and route MES work orders (<a href="https://medium.com/snowflake/ai-decisions-on-the-factory-floor-df831107e69c?source=rss----34b6daafc07---4">Medium</a>).</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong>dbt State is now free forever</strong> for self-hosted dbt users: monthly allowance, no card required, skip unchanged models (<a href="https://www.getdbt.com/blog/dbt-state-now-available-free-forever">dbt blog</a>). This is a direct CI cost/performance win.</li>
+<li>Snowflake's release notes include dbt Projects on Snowflake updates (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/new-features-2026">1</a></sup>), and the Snow Report is promising a live dbt + CoCo workflow demo (<sup class="cite"><a href="https://x.com/Snowflake/status/2108180820582171099/video/1">4</a></sup>).</li>
+</ul>
+<h3 id="cortex-code">Cortex Code</h3>
+<ul>
+<li><strong>CoWork automations are GA</strong> per the Snow Report (<sup class="cite"><a href="https://x.com/Snowflake/status/2108180820582171099/video/1">4</a></sup>) — the piece that makes Snowflake's AI coding agent feel less like a demo and more like a teammate.</li>
+<li>Snowflake's own post on <strong>evaluating Cortex Agents</strong> is a useful warning: if you deploy agents without an eval framework, you're "burning credits on unmeasured outputs." Native evals, observability, tracing, and monitoring are now available on the Cortex platform (<a href="https://medium.com/snowflake/evaluating-snowflake-cortex-agents-measuring-behavior-not-just-answers-89e600c0c894?source=rss----34b6daafc07---4">Medium</a>).</li>
+</ul>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=iF8-aIDzK84"><strong>Anthropic's New Mysterious Model Shows Signs Of Human Intuition</strong></a> — AI Revolution (14 min)<br />
+  The best one-sitting roundup of the week: a reportedly intuitive secret Claude model, Google preparing Gemini 4 Carbon, OpenAI's next-gen work, DeepSeek V4.1 Flash vs MiniMax M3.1 Flash, and Inception unveiling Mercury 3 at 1,000+ tok/s. Treat the Claude "intuition" claims as unverified, but the competitive landscape summary is a useful pulse check.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=gD40lPTj1SQ"><strong>Qwen 4 Now Needs China's Permission</strong></a> — Devsplainers (12 min)<br />
+  An explainer on China's October 16 export-control draft that could require Beijing's approval before Qwen 4 downloads: models caught at ~2T parameters, 10²⁶ operations of training compute, or a global top-10 rank. Existing public models are reportedly exempt. It's one channel reading the draft, so treat the specifics as unverified — but this is the open-weight story to track.</p>
+</li>
+</ul>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>Chinese hyperscalers stock up on Nvidia.</strong> Reuters reports ByteDance, Alibaba, and Tencent placed over <strong>$35B in Nvidia chip orders</strong>, including around 3M RTX 5500 Pro units at $11.4k each, likely for LLM inference and AI video generation (<a href="https://www.reuters.com/business/retail-consumer/bytedance-alibaba-tencent-place-over-35-billion-worth-nvidia-chip-orders-2026-10-20/">Reuters</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xb9z8e/exclusive_bytedance_alibaba_tencent_place_over_35/">r/LocalLLaMA</a>). The Reddit takeaway feels right: a card that could have been a local-LLM staple is now expressly a hyperscaler commodity.</p>
+</li>
+<li>
+<p><strong>GPU prices are likely heading up.</strong> Samsung has reportedly sold out 100% of its 2027 HBM capacity, with HBM prices expected to jump 200% next year and DRAM seeing double-digit increases (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbfhxp/be_prepared_gpu_price_increase_incoming_samsung/">r/LocalLLaMA</a>). If you've been waiting on a hardware build, this is the nudge to stop waiting.</p>
+</li>
+<li>
+<p><strong>The tiny TTS wave is real.</strong> Kyutai's Pocket TTS now supports voice cloning at just 1.9M parameters (<a href="https://kyutai.org/blog/2026-10-20-pocket-tts-small/">Kyutai</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xauekr/pocket_tts_which_supports_voice_cloning_is_now/">Reddit</a>), while Phonon open-sourced 31M and 40M TTS models designed for edge devices (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xaw2vt/phonon_is_now_opensource_31m_and_40m_tts_models/">Reddit</a>). This is the most enjoyable local-model story of the day.</p>
+</li>
+<li>
+<p><strong>Open-weight release tap is running.</strong> New weights landed across the spectrum: Ornith-1.5-122B, a Qwen finetune (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xatebw/ornithaiornith15122b_qwen_finetune/">Reddit</a>), Agnes-3.0-Qwen (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xaxz80/agnesaiagnes30qwen_qfn_finetune/">Reddit</a>), KRAFTON's Raon-1 mini, a 30B-A4B MoE (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbh0ev/kraftonraon1minipreview_hugging_face/">Reddit</a>), Spark-X2.6-4B in GGUF (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xb0nr9/xhtokensparkx264b_hugging_face/">Reddit</a>), and qev-0.8b, a new tiny decision model (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xazrvd/qev08b_new_sota_tiny_local_decision_model/">Reddit</a>). Mostly finetunes, but the MoE and 0.8B entries are the ones to try on constrained hardware.</p>
+</li>
+<li>
+<p><strong>DeepSeek V4.1 Flash 1017 beats GPT 6 Sol on a cybersecurity eval.</strong> Vals AI's multi-step offensive security benchmark shows the open-weight model ahead, with Sol tested via the Daybreak trusted access program (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xap2aq/vals_ai_found_deepseek_v41_flash_1017_beats_gpt_6/">r/LocalLLaMA</a>). Third-party eval and open-weight-gapped-by-access-program, but notable.</p>
+</li>
+<li>
+<p><strong>Eagle-4 released with speed claims.</strong> The new release is said to be faster than DFlash2 and DSpark, but details are thin (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xb6zds/eagle4_released_faster_than_dflash2_dspark/">r/LocalLLaMA</a>). Put it in the "benchmark hype bucket" until a primary source appears.</p>
+</li>
+<li>
+<p><strong>Local inference engines keep squeezing old hardware.</strong> KFlash benchmarks on Apple Silicon show Kapitsa at ~65 tok/s vs Splash's ~50 on Qwen 3.8 sizes, with MLX MTP also tested (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbdxg3/kflash_benchmarks_of_newly_released_versions_of/">r/LocalLLaMA</a>). More impressively, a plain-C engine called Pantheon/Foundry runs 35B MoE models on a 2014 Tesla K80 at ~21 tok/s (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xaz06x/running_35b_moe_models_on_a_tesla_k80_2014_at_21/">r/LocalLLaMA</a>). And open_rknpu2_lm_infer runs Qwen3.5-4B at ~10 tok/s on an RK3588 NPU without Rockchip's proprietary inference stack (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xb45bq/i_built_an_rk3588_npu_runtime_without_any/">r/LocalLLaMA</a>).</p>
+</li>
+<li>
+<p><strong>Tooling status: llama.cpp and Ollama are quiet, not dead.</strong> llama.cpp shipped pre-releases b11756 and b11755 on Oct 20 (<sup class="cite"><a href="https://github.com/ggml-org/llama.cpp/releases">2</a></sup>). Ollama's latest visible release is v0.40.6 from Oct 16 (<sup class="cite"><a href="https://github.com/ollama/ollama/releases">5</a></sup>). No headline features, but maintainers are moving.</p>
+</li>
+<li>
+<p><strong>eMudhra CA compromise is a supply-chain security event.</strong> The private keys of eight eMudhra intermediate CAs were compromised; they chain to roots trusted by Mozilla, Microsoft, Apple, and Chrome, and any software bundling trusted cert lists needs updates (<a href="https://simonwillison.net/2026/Oct/20/emudhra-certificates/">Simon Willison</a>, <a href="https://emudhra.we-have-a-problem.com">tracker</a>). If you run agents, sandboxed browsers, or custom CA stores, patch them.</p>
+</li>
+<li>
+<p><strong>OpenAI posted a shopping-agent demo.</strong> It shows voice + image input, budget-aware product recommendations, a generated room preview, and post-checkout order changes (<a href="https://www.youtube.com/watch?v=8n-SXxRIrm8">OpenAI video</a>). It's a fictional retailer demo, but a clean reference for what assistant-style APIs should handle end-to-end.</p>
+</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=AKovdUFvThA"><strong>Don't Learn Harness Engineering. Learn This Instead</strong></a> — Cloud Codes  </li>
+<li>Pedrro Domingos is quoted saying "the model swallows the harness," and Musk compared it to Tesla deleting 300K lines of handwritten C++ in FSD v12.  </li>
+<li>The video cites two late-2026 papers claiming agent-harness tuning and refactoring are already being automated (e.g. arXiv 2609.35738).  </li>
+<li>
+<p>The takeaway isn't "don't learn harnesses" — it's "expect the harness layer to commoditize fast." Worth the counter-argument before you bet your career on orchestration as a durable skill.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=sAso4nIL-ao"><strong>OpenCode Breach Explained: Why Hackers Want Your API Keys?</strong></a> — Cloud Codes  </p>
+</li>
+<li>Per the video's account, a breach in a legacy system being decommissioned exposed saved OpenAI/Anthropic API keys for 1.4% of OpenCode Console users, and unauthorized usage followed.  </li>
+<li>OpenCode linked it to a "large scale distillation attack."  </li>
+<li>
+<p>The distillation angle is the useful bit: stolen keys don't just cost money — they can be used to extract model outputs at scale without the attacker paying for API access.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=nkOAvyNgCHs"><strong>Supercharge Your Power BI Architecture with Snowflake Interactive Analytics</strong></a> — Snowflake Developers  </p>
+</li>
+<li>A 57-minute deep dive into sub-second Power BI query performance at high concurrency with Snowflake Interactive Analytics.  </li>
+<li>Key architecture points: DirectQuery connections, Interactive Warehouses, and avoiding imports/extracts without losing data freshness.  </li>
+<li>Skim this before your next dashboard performance review; don't watch the whole thing unless you're tuning Power BI today.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/amrelsawalhi/obelisk"><strong>obelisk</strong></a> — A pluggable, self-hosted data platform and control plane running DuckDB, a Parquet lakehouse, Marimo notebooks, and dbt Studio with zero cloud tax. Great sandbox for local-first dbt development.</li>
+<li><a href="https://github.com/CallumWalterWhite/crucible"><strong>crucible</strong></a> — A local BigQuery API emulator on DuckDB for dbt development and CI. You can run dbt-bigquery and official clients against localhost; Snowflake support is planned. Pre-alpha, but ideal for offline CI.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/pnnnx/local-code-tutor"><strong>local-code-tutor</strong></a> — Fine-tune Qwen2.5-Coder-7B for free with QLoRA on a Kaggle T4, then run a local coding agent on an 8GB Mac via llama.cpp. A practical template for a custom-model workflow.</li>
+<li><a href="https://github.com/MAZHARMIK/python-ai-agent-ollama"><strong>python-ai-agent-ollama</strong></a> — A from-scratch Python agent on Ollama with conversation memory and multi-step tool calling. Read it to understand agent-loop mechanics before reaching for a framework.</li>
+<li><a href="https://github.com/gufo-org/gufo"><strong>Gufo</strong></a> — An MIT-licensed open-source engine for AMD Strix Halo chips; the first blog post covers how it caches hybrid models (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xaojci/how_gufo_caches_a_hybrid_model_first_blog_post/">Reddit</a>). Worth watching if you own Strix Halo hardware.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/Umair/stalemap"><strong>stalemap</strong></a> — Tells your coding agent which dependencies changed after its training cutoff, then writes a short block into AGENTS.md / CLAUDE.md. A clever fix for hallucinated API calls.</li>
+<li><a href="https://github.com/duyongan/dots-agent"><strong>dots-agent</strong></a> — An agent that proactively discovers tasks. The description is thin, but autonomous task discovery is the right direction to keep an eye on.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-10-20.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-10-20</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
