@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-10-22</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">22 Oct 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">9 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.011</span>
+      </div>
+      <h1>Daily Signal — 2026-10-22</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Flint 40B A2.5B — the open-weight release r/LocalLLaMA is rallying around today.</strong></p>
+<p>The clearest story of the day is the Hugging Face drop of <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbqik0/recursivesiflint_40b_a25b_hugging_face/">RecursiveSI/flint (40B A2.5B)</a>, a 40B-parameter MoE with only 2.5B active parameters. The reception is unusually warm: one thread calls it "the Qwen3.8 35B we've all been waiting for" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xc23iq/recursive_flint_the_qwen38_35b_weve_all_been/">discussion</a>), and an appreciation post pairs it with Raon-1-mini 30B A4B as proof of how many solid options now exist (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xc5qac/open_source_llm_appreciation_post/">post</a>). Caveat before you get too excited: no independent evals have surfaced in the last 24h — the "Qwen3.8 35B" framing is a community first impression, not a benchmark.</p>
+<p>Why this is your story: 40B total / 2.5B active is exactly the shape that hits the local sweet spot — small enough active footprint for fast generation on consumer GPUs, large enough total knowledge to be a serious daily driver.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ol>
+<li><strong>Run it on the newest runtimes.</strong> Ollama v0.40.8 arrived as a pre-release with updated llama.cpp and MLX support (<sup class="cite"><a href="https://github.com/ollama/ollama/releases">5</a></sup>), and llama.cpp nightlies b11796/b11795 — plus a vocabulary-loading optimisation in b11793 — are where new MoE support lands first (<sup class="cite"><a href="https://github.com/ggml-org/llama.cpp/releases">12</a></sup>). Test Flint on those builds rather than your stable install.</li>
+<li><strong>Benchmark it against Qwen 3.8 Flash Next at equal quant.</strong> Flash Next is the week's reference point — see Headlines for two very different community reports on its low-quant behaviour. Run Flint through the same eval set before switching drivers.</li>
+<li><strong>Watch the active-parameter arms race.</strong> The week's pattern — Flint A2.5B, Raon-1-mini A4B, a 35B MoE at 20.5 tok/s on an iPhone (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbmsgf/35b_moe_running_at_205_toks_on_an_iphone_without/">thread</a>) — is that efficient activation, not raw size, decides where a model can actually run.</li>
+</ol>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Adaptive Compute is coming for warehouse sizing.</strong> A new four-part Medium series ("Running Snowflake in the Agent Era") opens with a real account of trading four sizing knobs (warehouses XS→XL) for two dials and one shared compute pool that sizes every query (<a href="https://medium.com/snowflake/stop-picking-t-shirt-sizes-what-running-adaptive-compute-taught-me-b2b8f4973cdd">adaptive compute</a>). The author calls "bump it to Large" the most expensive code-review comment on the platform. If you're on a cost-optimisation mandate, this is the Snowflake change to track hardest.</p>
+<p><strong>AIM for migrations.</strong> Snowflake's new AIM application wraps data migration tooling into one guided desktop workflow: convert code, deploy in waves, move data, validate results (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-aim-application-data-migration-tools">blog</a>). One workflow to watch if you have legacy warehouses to consolidate.</p>
+<p><strong>NVIDIA Kumo is open source — and runs on Snowflake ML.</strong> Kumo lets teams train graph neural networks on relational data with GPUs, inside Snowflake (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/nvidia-kumo-graph-ml-snowflake">blog</a>). Relevant if your modelling ever touches relational graphs rather than just tabular features.</p>
+<p><strong>Industrial twin: Vivix + Siemens + NVIDIA.</strong> An executable digital twin for float-glass furnaces aims to cut energy use 3–5% and extend furnace life (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/vivix-executable-digital-twin-float-glass">blog</a>). A concrete sign of where Snowflake is pushing: physics-aware AI on operational data.</p>
+<p><strong>Startup spotlight: Dust.</strong> Dust's co-founder/CTO Stanislas Polu on a multi-model AI platform that helps companies "own their AI" via control over agentic traces (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/startup-spotlight-dust">blog</a>). Worth a skim if you're evaluating agent-observability vendors.</p>
+<p><strong>People and release trains.</strong> Jeff Naughton joined Snowflake to advance data systems for the agentic enterprise (<sup class="cite"><a href="https://www.snowflake.com/en/news/press-releases/">7</a></sup>). Official feature pages continue tracking the 10.36 and 10.38 trains, with no headline product launch in the last 24h (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/new-features-2026">2</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/feature-releases-2026">3</a></sup>).</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>dbt State gets a free tier.</strong> The October 2026 release notes say self-hosted dbt users on dbt State now get a free plan after the trial ends: 1,000 daily active target tables per month at no cost (<sup class="cite"><a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">1</a></sup>). If you've been paying for State on a small-to-mid footprint, re-audit your project against that allowance — and if you'd rather not depend on an allowance at all, the new dbt-hodor repo in Repo Watchlist is a self-hosted alternative.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>CoCo becomes your marketplace research assistant.</strong> A Snowflake Medium post describes agentic marketplace discovery with CoCo: instead of 45 minutes of keyword-guessing through marketplace tiles, you ask for what you need — a geospatial enrichment dataset, a fraud detection model, a weather API — and CoCo finds it (<a href="https://medium.com/snowflake/stop-searching-the-marketplace-let-coco-find-what-you-actually-need-024b5cd5334b">CoCo post</a>). For architecture research it's a small workflow win that compounds daily.</p>
+<p><strong>Long-term Cortex memory via RLHF.</strong> Another Snowflake Medium piece on eliminating agent accuracy loss applies reinforcement learning to enforce agent memory, with code in <a href="https://github.com/haebichan/rlhf_memory">haebichan/rlhf_memory</a> (<a href="https://medium.com/snowflake/eliminate-agent-accuracy-loss-with-long-term-cortex-memory-a2ba85390c5e">post</a>). If you're building agents on Cortex, this is a concrete pattern for improving consistency beyond naive context stuffing.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li><strong>Sam Altman Shocks Everyone With 3 Possible AI Endgames</strong> — <a href="https://www.youtube.com/watch?v=QCtFWOYNASU">AI Revolution</a> (13.9 min). The broadest AI headline roundup of the day, and it sets the week's speculative agenda: Altman reportedly outlined three possible endgames for the superintelligence race, with the description detailing a mega-merge of OpenAI/Google/Anthropic and a recursive-self-improvement winner-take-all, plus SpaceX's claimed $7.6B "Super Intelligence" revenue and a possible Tesla merger. Treat the specifics as unverified — there's no primary source yet — but the strategic questions are worth chewing on.</li>
+<li><strong>GitHub Trending Today #55</strong> — <a href="https://www.youtube.com/watch?v=Ie9AjUvfw_s">Github Awesome</a> (15.1 min). A 35-project open-source compilation in one sitting, exactly the format that surfaces tools your feeds miss. This episode opens with free-my-tv, Obsidian's pele, Perplexity's SPACE, ascii-sharks, DeepInfer, ElyOffice and fx0 — a good rapid-scan for anything relevant to local LLM tooling.</li>
+<li><strong>Anthropic's UBI PLAN?! NEW OpenAI Aurora Models, Fable 5.5 UPGRADE...</strong> — <a href="https://www.youtube.com/watch?v=p4fMO1uPDYc">Your AI Guy</a> (14.3 min). A multi-story weekly roundup covering Anthropic's potential UBI plans, rumoured OpenAI "Aurora" models and the Fable 5.5 upgrade. The UBI and Aurora items are rumour-tier — the value is the speed-run of what's moving this week.</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>Qwen 3.8 Flash Next consolidates as the local benchmark to beat.</strong> Two independent threads reinforce it: one user switched to Flash Next in IQ4_XS and says it feels like the professional-grade models of last year (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbqxh5/ok_fine_qwen_38_flash_next_is_nice/">thread</a>); another reports IQ2 Flash Next beats a 27B at Q8 on subtle, annoying coding bugs (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xc7n0n/i_have_an_answer_qwen_flash_next_iq2_is_better/">thread</a>). At extreme-low quant it still "understands" in ways smaller dense models don't.</p>
+<p><strong>DeepSeek V4.1 Flash keeps redefining "fits on my hardware."</strong> One user runs the 748B V4.1-Flash on a €2k PC (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xburkx/tried_running_748b_deepseekv41flash_on_a_2k_pc/">thread</a>); another gets V4.1-Flash-1017 (Unsloth UD-IQ1_S, single 243 GB file with drafter) running across an RTX 5090 + 5060 Ti with all 107 GiB of experts in RAM as an "expert cache" in the Basalt inference engine (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbqir0/ran_deepseek_v41_flash_1017_on_a_single_rtx_5090/">thread</a>). The pattern: aggressive quant plus RAM/VRAM splitting is turning frontier-class models into desktop apps.</p>
+<p><strong>35B MoE at 20.5 tok/s on an iPhone — without skipping experts.</strong> A new report shows a 35B-class MoE running fully on a phone, all experts present (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbmsgf/35b_moe_running_at_205_toks_on_an_iphone_without/">thread</a>). Mobile local inference is no longer confined to tiny dense models.</p>
+<p><strong>TTS/audio releases keep accelerating.</strong> Kitten-TTS 2 claims open-source SOTA at 1.58-bit, CPU-only, with voice cloning, multilingual support and emotion control (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xc48or/kittentts_2_new_opensource_sota_158_bit_tts/">thread</a>). Also out: IBM Granite Speech 5.0 2B (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbr2yg/ibm_granite_speech_50_2b/">thread</a>) and inclusionAI Ming-3.0-TTS-0.5B (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbq7ze/inclusionaiming30tts05b/">thread</a>) — the voice layer of the local stack is getting crowded in a good way.</p>
+<p><strong>What actually breaks agents on a 4B model.</strong> 50 runs across 10 agent harnesses on Qwen3.5-4B Q4_K_M (M5 MacBook Pro, 64K context, f16 KV): the pass/fail scores mattered less than <em>how</em> things failed (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xc0dc2/what_actually_breaks_agents_on_a_4b_model_notes/">thread</a>). Worth reading before you ship a small-model agent loop.</p>
+<p><strong>Two efficiency ideas worth stealing.</strong> A speculative-decoding scheme keeps a 2-bit copy in VRAM with the exact residual in system RAM as verifier — for models that don't fit your GPU (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xc55z3/2bit_copy_in_vram_exact_residual_in_system_ram_as/">thread</a>). Separately, the TokenGate paper proposes learned token pruning for faster, more memory-efficient prefill (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbkzll/paper_tokengate_adapting_llms_for_fast_and/">paper thread</a>).</p>
+<p><strong>Sam Altman's "AI endgame" comments — flag as rumour.</strong> Multiple channels are running with claims that Altman outlined three possible endings to the superintelligence race, including a merged super-lab and a recursive-self-improvement winner-take-all, plus a possible Tesla merger (<a href="https://www.youtube.com/watch?v=QCtFWOYNASU">AI Revolution</a>, <a href="https://www.youtube.com/watch?v=Z3_uN6ubHek">Tech Unfiltered</a>). No transcript or primary source surfaced in the last 24h — treat every specific as unverified until a primary statement exists.</p>
+<p><strong>Hardware economics: RAM production doubles, 3090s get weird.</strong> Threads note China is doubling RAM production to keep gadget prices from skyrocketing — relevant to anyone spec'ing RAM-heavy local builds (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbrh0s/when_will_we_see_these_changes_china_is_doubling/">thread</a>) — and the earlier "3090 frenzy" warning post suddenly "makes sense" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbr3u1/now_that_3090_frenzy_warning_post_makes_sense/">thread</a>). If you're buying used GPUs for local inference, prices may be about to move.</p>
+<p><strong>OpenAI case study: V7's Context Graph.</strong> OpenAI's official channel highlights V7 Go, which organises company files into a Context Graph for deal screening and insurance underwriting; V7 reports 78% lower costs with accuracy up, with GPT-6 Astra at 89% on the hardest graph-query tests (<a href="https://www.youtube.com/watch?v=20IRGgQwPkc">video</a>). A useful reference for justifying agentic RAG architectures to a CFO.</p>
+<p><strong>Does opencode send your chats to its servers?</strong> A thread asks whether opencode sends chat data to its servers even when using a local model; a Gemini-sourced answer claims it does by default for titles/compaction, and the thread flags the VC-funding dynamic (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbqj0k/does_opencode_send_chatsother_data_to_their/">thread</a>). Unverified — but worth auditing before pointing it at private codebases.</p>
+<p><strong>PHP RCEs are being exploited right now.</strong> Today's PHP 8.x security release fixes two remote code execution holes, with exploits circulating since last night after a leak in the coordinated disclosure process (<a href="https://simonwillison.net/2026/Oct/21/php-security-release/">Simon Willison</a>). Not AI-specific, but if any tooling or vendor in your stack runs PHP, patch today.</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>Local AI Cluster At Home with 5-Device (125B AI model)</strong> — <a href="https://www.youtube.com/watch?v=Kl_CrT6D1Y8">Cloud Codes</a> (2.2 min). A narrow single-story video, but directly on your local-LLM beat:</p>
+<ul>
+<li>A user reports running Qwen3.8-Flash-Next 125B across two PCs, a MacBook and two iPhones at roughly 40 tok/s.</li>
+<li>The mechanism is pipeline parallelism: the model is sliced into contiguous layers, with intermediate tensors crossing USB-C.</li>
+<li>Documented projects confirm mobile co-processing works — it's not just a party trick, though real-world mileage depends on interconnect bandwidth.</li>
+</ul>
+<p><strong>The End of Harness Engineering? (Google's Harness²)</strong> — <a href="https://www.youtube.com/watch?v=W4w-W6WkuqI">Cloud Codes</a> (9.3 min). An exceptional deep dive on agent engineering:</p>
+<ul>
+<li>Harness² automates the "second path" of agent work: instead of hand-tuning prompts and tools, an agent recursively drafts, tests and composes its own harness.</li>
+<li>It evaluates behaviour without an answer key, and the video quantifies what that extra compute costs.</li>
+<li>Headline result cited: GLM-5 gained +11.5 points on WorkBuddy-Bench on frozen weights — no model change, just a better harness.</li>
+</ul>
+<p><strong>The Mystery AI (Space Bunny Alpha) Was MiniMax All Along</strong> — <a href="https://www.youtube.com/watch?v=PaNAb977ZYE">Cloud Codes</a> (1.8 min). An open-weight scene story with a useful forensic trick:</p>
+<ul>
+<li>An anonymous model topped OpenRouter's leaderboards for 10 days; developers guessed the lab within 15 minutes of listing.</li>
+<li>The unmasking technique: tokenizer fingerprinting — unique token counts give away a model family.</li>
+<li>Four weeks later MiniMax confirmed it: Space Bunny Alpha was M3.1 Flash. "Anonymous" model launches don't stay anonymous.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/alaturqua/dbt-hodor">alaturqua/dbt-hodor</a> — Reuses unchanged dbt nodes and rebuilds only when code or upstream data changes. A free, self-hosted alternative to dbt State — pair it with the new free State tier above and you have two cost levers.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/heterodoxin/AbliteratedOutTheBox">heterodoxin/AbliteratedOutTheBox</a> — A llama.cpp fork that abliterates any model live at inference: no fine-tuning, no extra files, no extra VRAM (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xc1e9y/inference_time_abliteration/">discussion</a>). Useful if you want per-session behaviour without maintaining a separate weights file.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/h9-tec/ai-roadmap-2026">h9-tec/ai-roadmap-2026</a> (95★) — A beginner-to-production path through Foundations, LLM Engineering, Agents, Evaluation and Production, with verified free resources and a mini-project per layer. A nice skeleton to point juniors at.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/Shikasar7/CicaTavern">Shikasar7/CicaTavern</a> — Agent-style SillyTavern card player for your own LLM API: high cache-hit rate, compatible with existing character cards and world books, guided card creation.</li>
+<li>✅ <a href="https://github.com/u2jyothibhat/Forward-Deployed-Engineer">u2jyothibhat/Forward-Deployed-Engineer</a> — Code and labs from the book <em>Forward Deployed Engineer</em>: RAG, pipelines, deployment, CI/CD, observability, agents and security, chapter by chapter.</li>
+<li><a href="https://github.com/Bytewave1/dkit">Bytewave1/dkit</a> — Offline toolbox for Discord bot developers (snowflakes, permissions, intents, invite URLs).</li>
+<li><a href="https://github.com/Knowledge-Forge-AI/ephemeral-snowflake-artificer">Knowledge-Forge-AI/ephemeral-snowflake-artificer</a> — Pinned NixOS and macOS Tart image seeds for ephemeral orchestration.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-10-21.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-10-21</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
