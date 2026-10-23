@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-10-23</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">23 Oct 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">9 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.009</span>
+      </div>
+      <h1>Daily Signal — 2026-10-23</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>DeepSeek open-sources DeepInfer — the production engine behind its famously cheap API — and ships V4.1 Flash 1017 in the same week.</strong> This is the open-weight story of the month, and for once we get more than weights: DeepSeek published the actual inference engine (<a href="https://github.com/deepseek-ai/DeepInfer">DeepInfer on GitHub</a>) alongside the new <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017">DeepSeek-V4.1-Flash-1017</a> model. The <a href="https://www.youtube.com/watch?v=1Aqhg0FVm-w">AI Search roundup</a> walks through the model's capabilities, and the <a href="https://www.youtube.com/watch?v=uk4FCT8eGig">Cloud Codes teardown</a> explains what makes the engine special: DeepInfer serves roughly 155 trillion tokens a day, and its economics are dominated by a <strong>100-petabyte SSD prompt cache</strong> that lets it skip ~98% of prompt-reading work. Retrying a long prompt can drop from $0.15 to $0.003 per million tokens off-peak — a 50x difference. Add the news that DeepSeek and MiniMax have <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcoelw/deepseek_and_minimax_clear_chinas_ai_export_rules/">cleared China's new AI export regulations</a> for overseas open-source distribution, and the regulatory risk of building on these weights is materially lower than it was a week ago.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ul>
+<li><strong>Don't plan to self-host DeepInfer.</strong> The engine requires at least 128 datacenter GPUs to run efficiently; an RTX 5090 is completely locked out, and the cache-management software behind the biggest savings never shipped (<a href="https://www.youtube.com/watch?v=uk4FCT8eGig">Cloud Codes breakdown</a>, <a href="https://www.youtube.com/watch?v=mxOsMaj42aI">follow-up</a>). The open-source release is for studying and for datacenter operators, not for your local rig.</li>
+<li><strong>Re-evaluate your local model pick.</strong> Community benchmarks are already questioning whether DeepSeek's cheap flagship is the best local choice: one <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcylhj/qwen_38_flash_next_129_gb_is_better_than_26_bpw/">BenchKit comparison</a> shows Qwen 3.8 Flash Next at 129 GB beating a 2.6-bit DeepSeek V4.1 Flash 1017 (187 GB + Engram) on reasoning tasks. Meanwhile <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xciqnj/capyflash_v071_qwen38flashnext_125b_moe_now_runs/">capy-flash v0.7.1</a> now runs Flash-Next in 64 GB of RAM. Test both before you rebuild anything around the DeepSeek quant.</li>
+<li><strong>Copy the caching lesson, not the infrastructure.</strong> The 50x price drop comes from prompt-state caching at massive scale. Even at a smaller scale, stable system prompts and cache-friendly request patterns are the cheapest inference optimization you have — and DeepSeek keeping its cache-orchestration layer proprietary tells you exactly where they think the moat is.</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Retrieve Cortex Search hit Public Preview on Oct 23</strong> — Snowflake added the <code>CORTEX_SEARCH_RETRIEVE</code> table function, letting SQL queries hit Cortex Search with low latency, including row-wise retrieval via <code>LATERAL</code> joins (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-23-cortex-search-retrieve-preview">release notes</a>). For anyone building RAG inside Snowflake, this closes the loop: vector search is now a first-class SQL operation rather than something you pipe through an external app.</p>
+<p><strong>Snowflake published its Agentic Analytics blueprint</strong> — a <a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/agentic-analytics-data-foundation">blog post</a> on how the platform grounds, runs, and governs AI agents that investigate business questions autonomously. It pairs well with the <a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/public-sector-data-modernization-ai-readiness">public-sector data modernization piece</a> on replacing legacy systems for AI readiness — the recurring theme is governance as the prerequisite for autonomy.</p>
+<p><strong>A better RBAC explorer landed on the Snowflake blog</strong> — <a href="https://medium.com/snowflake/who-has-access-to-this-488ab8175785">"Who Has Access to This?"</a> targets the Friday-4:55pm <code>SHOW GRANTS</code> rabbit hole: four roles deep before you're sure you were ever asked a question. The post walks through a proper RBAC explorer and warns that new AI agents inherit access you may not have intended to share — worth reading before you grant anything to an agent.</p>
+<p><strong>Snowpark Python v1.55.3 released</strong> — <code>DataFrame.to_polars()</code> is no longer experimental and now defaults to <code>transport="parquet"</code> instead of <code>transport="arrow"</code>, plus a fix for <code>DataFrameReader.jdbc</code> timing out on slow external sources by making the source query lazy (<a href="https://github.com/snowflakedb/snowpark-python/releases/tag/v1.55.3">release notes</a>). If you're moving data between Snowpark and Polars, the transport default change is a subtle but real performance and stability shift.</p>
+<p><strong>Quickstart: Online Feature Store serving with Postgres</strong> — the <a href="https://www.youtube.com/watch?v=5wbh8y-YxPI">Snowflake Developers channel</a> published a 1-minute walkthrough plus a <a href="https://www.snowflake.com/en/developers/guides/intro-to-online-feature-store-with-postgres-in-snowflake/">step-by-step lab</a> for building and deploying online feature store serving with Postgres in Snowflake. Also worth a skim: <a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/brilliant-earth-data-democratization-snowflake-posit">Brilliant Earth's data-democratization case study</a> running Posit inside Snowflake for governed self-service analytics.</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>dbt Projects on Snowflake got two meaningful upgrades on Oct 20.</strong> First, <strong>dbt State integration</strong> — Snowflake can now skip models that don't need rebuilding, cutting runtime and warehouse compute. Second, a <strong>dbt Projects home page and templates in Snowsight</strong>, including a dbt-with-Cortex starter that opens Cortex Code directly (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-dbt-projects-on-snowflake-updates">release notes</a>). If you run dbt Cloud or dbt Core against Snowflake, state-based skipping is the cheapest CI/CD optimization on offer this week — no schema changes required.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>The Cortex Agent SDK is in Public Preview</strong> for both Python and TypeScript — it lets you build apps that run Cortex Agents and Cortex Code, stream responses, keep threads, and reconnect to long-running work (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">release notes</a>, <a href="https://docs.snowflake.com/en/release-notes/preview-features">preview features</a>). If you've been scripting against Cortex Code manually, the SDK is the stable surface to build on.</p>
+<p><strong>The definitive CoCo automations write-up dropped</strong> — <a href="https://medium.com/snowflake/your-agent-ran-overnight-here-is-what-it-got-wrong-98a8117e466a">"Your Agent Ran Overnight. Here Is What It Got Wrong."</a> covers scheduling unattended agents inside Snowflake with a few CLI flags (CoCo automations are in public preview), then details the six failure modes that motivated each guardrail. This is the most practical Cortex Code content in the feed — the authors learned the hard way why every guardrail exists.</p>
+<p><strong>Model availability updates in Cortex AI</strong> — Snowflake's release notes add <strong>Claude Haiku 5.5</strong> to the Cortex REST API alongside other model previews this week (<a href="https://docs.snowflake.com/en/release-notes/new-features">new features</a>). If you're cost-tuning Cortex inference, Haiku-class models are worth re-benchmarking.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=1Aqhg0FVm-w"><strong>Deepseek strikes again</strong></a> — AI Search, 27 min. The one-stop roundup for the week's biggest open-weight story: DeepSeek V4.1 Flash 1017, the DeepInfer open-source review, plus a math explainer, an Unreal game demo, and music composition — exactly the multi-story style that earns a playlist slot. Most interesting claim: the video treats the model and engine as a combined release, which reframes DeepSeek's advantage as infrastructure, not just weights.</li>
+<li><a href="https://www.youtube.com/watch?v=M2AQ1j0oxXo"><strong>HUGE GPT-6.5 LEAK! NEW Claude Fable 5.5, Gemini 4 Carbon, MiniMax M3.1 Flash...</strong></a> — Your AI Guy, 15 min. A full rumour-mill roundup in one sitting — GPT-6.5 leak talk, Claude Fable 5.5, Gemini 4 Carbon, and the very real MiniMax M3.1 Flash release. Treat the leak-tier claims as unverified, but the roundup structure means you get the landscape without chasing five separate videos.</li>
+<li><a href="https://www.youtube.com/watch?v=4OLnDc7RI-o"><strong>Anthropic Just Dropped DUET: The First AI That Thinks Ahead on Its Own</strong></a> — AI Revolution, 13 min. Broad coverage of the autonomous-agent race: Anthropic's DUET (Claude Opus 5.5, a virtual computer, 6,000+ tools, working while you're away), OpenAI Dots, and Meta Muse. The channel's claims are unverified against primary sources, but it's the best single-sitting overview of where agentic autonomy is heading — and the privacy/control questions are the right ones to ask.</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>MiniMax-M3.1-Flash is out</strong> — a new open-weight model released directly to <a href="https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash">Hugging Face</a> and <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xd0fgs/minimaxm31flash/">discussed on r/LocalLLaMA</a>. It's the latest in the MiniMax Flash line and one to throw into your local-benchmark rotation alongside Qwen and DeepSeek.</p>
+<p><strong>Qwen4 and Kimi3.1 reportedly appearing on the Arena</strong> — unverified, but the <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcj1wm/qwen4_and_kimi31_on_arena_apperantly/">r/LocalLLaMA thread</a> has the community hyped for Qwen4 Flash. Treat as rumour until official releases land, but the timing — right after MiniMax and DeepSeek shipped — suggests a busy open-weight quarter.</p>
+<p><strong>Open-weight efficiency is beating raw scale</strong> — Meta's 816B Muse Spark Open scores 39 on Artificial Analysis while the 180B Qwen3.8-Flash-Next scores 40, per a <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcthj8/metas_816b_muse_spark_open_scores_39_on/">size-vs-score chart for 11 open models</a>. For local deployments this is the trend to watch: smaller, MoE-heavy models are matching or beating 4-5x larger ones.</p>
+<p><strong>inclusionAI shipped Ling-3.0-flash-Sante</strong> — a second model announcement in one day: <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcljvi/ant_ling_just_announced_a_second_model_today/">124B params with only 5.1B active</a>, available on <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xclfkp/inclusionailing30flashsante_hugging_face/">Hugging Face</a>. The low active-parameter count makes it interesting for CPU and small-GPU inference, and a <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcnsrj/ling30tinyubtree_dflash_draft_for_stock_mainline/">UBTree DFlash draft for Ling-3.0-tiny</a> already claims +61% code speedup in llama.cpp.</p>
+<p><strong>NVIDIA shipped OpenShell</strong> — a <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcs9e2/nvidiaopenshell_safe_private_runtime_for/">safe, private runtime for autonomous AI agents</a>. If agentic workflows are on your roadmap, NVIDIA's answer to "how do agents run untrusted code safely" is a strong reference design.</p>
+<p><strong>Anthropic donated Agent Skills to the Agentic AI Foundation</strong> — following the MCP donation, the <a href="https://simonwillison.net/2026/Oct/22/donating-agent-skills/">Agent Skills standard</a> moves to the Linux Foundation, with Anthropic committing to keeping it open, community-driven, and vendor-neutral (<a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation">primary announcement</a>). If you're building with Claude Code or agents, this reduces the risk of a proprietary lock-in on skills.</p>
+<p><strong>Uber rolled out ChatGPT Work to 30,000+ employees</strong> — after a 1,000-person pilot, Uber's company-wide agentic deployment is <a href="https://openai.com/index/uber-chatgpt-work-rollout/">detailed by OpenAI</a> and <a href="https://www.youtube.com/watch?v=l16Gw7oVLNQ">discussed with Uber CTO Praveen Neppalli Naga</a>. Enterprise agentic platforms are going from pilot to production — useful signal for anyone justifying agent spend at their own company.</p>
+<p><strong>Ollama v0.40.8 / v0.40.9 released</strong> — the latest update brings llama.cpp and MLX improvements, including <a href="https://github.com/ollama/ollama/releases">Nemotron 3.5 support</a>. Combined with NVIDIA's Nemotron-3.5-Embed/Parse/Rerank releases (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xd4mlk/nemotron35embed_parse_and_rerank/">discussion</a>), this is a good week to refresh your local RAG stack.</p>
+<p><strong>Hardware caution: melted 16-pin connectors are back</strong> — a repair shop reported <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xckdep/repair_shop_receives_eight_geforce_rtx_5090_and/">eight RTX 5090/4090 cards with melted connectors in two days</a>. If you're running multi-GPU local inference rigs, check your connector seating and power draw.</p>
+<p><strong>Hugging Face downloads are flaking for some users</strong> — downloads <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xd7ptj/models_disappearing_from_huggingface/">stopping mid-transfer and failing to resume</a> has hit r/LocalLLaMA this week. Not a confirmed platform issue, but worth knowing before you kick off a big quant pull.</p>
+<p><strong>On self-improving AI, the numbers are getting weird</strong> — a <a href="https://www.youtube.com/watch?v=KOVLuSt8u-A">Devsplainers piece</a> sums up the state of recursive self-improvement: Recursive's Flint claims its AI researcher built "nearly every part" of itself, Anthropic says Claude leads 26% of its AI research work, and OpenAI says agents put in 3.1 workdays for every human workday. The 2024 result (agents beat humans 4x at 2 hours, lost 2x at 32 hours) is the right lens: short-horizon gains are real, sustained autonomy is not yet.</p>
+<p><strong>llama.cpp performance work continues</strong> — a <a href="https://github.com/ggml-org/llama.cpp/pull/30971">PR showing how to beat strata decode performance with an R9700</a> and a <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcqb3p/massive_b70_specdecoding_improvement_intel_xmx/">large Intel XMX spec-decoding refactor</a> are both worth watching if you squeeze tokens on consumer or Intel hardware.</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong><a href="https://www.youtube.com/watch?v=k5YL1NmhwFY">Can data agents do real analysis?</a></strong> — dbt Labs, 51 min. Shreya Shankar (incoming CMU professor, DocETL creator) with Tristan Handy on why AI data agents still miss on realistic analytics work:</p>
+<ul>
+<li>Shreya co-authored <strong>Data Agent Bench (DAB)</strong>, which tests whether agents can do junior-data-analyst work — and the honest answer is "not reliably yet."</li>
+<li>The <strong>semantic layer is the missing piece</strong>: agents need agreed definitions before their answers mean anything.</li>
+<li>Evaluation is the bottleneck — you can't trust agent outputs until you can evaluate them, and most teams haven't built that harness.</li>
+</ul>
+<p><strong><a href="https://www.youtube.com/watch?v=uk4FCT8eGig">Why Is DeepSeek So Cheap?</a> / <a href="https://www.youtube.com/watch?v=mxOsMaj42aI">The Secret DeepSeek Didn't Release</a></strong> — Cloud Codes, 16 + 2 min:</p>
+<ul>
+<li>DeepInfer is <strong>not a local engine</strong> — it needs at least 128 datacenter GPUs; an RTX 5090 is locked out entirely.</li>
+<li>The real cost lever is a <strong>100-petabyte SSD cluster caching prompt states for days</strong> — that's how DeepSeek skips ~98% of prompt-reading work.</li>
+<li>The software managing that cache <strong>never shipped</strong> — the open-source engine is real, but the secret sauce stayed behind closed doors.</li>
+</ul>
+<p><strong><a href="https://www.youtube.com/watch?v=yZuOxQ_hKOI">4 Security Failures in One Week</a></strong> — Cloud Codes, 16 min. One of the most actionable videos this week for LLM developers:</p>
+<ul>
+<li>A <strong>poisoned LiteLLM supply-chain backdoor stealing API credentials</strong> — LiteLLM is in nearly every LLM gateway stack; audit your dependency pins immediately.</li>
+<li>Two critical <strong>PHP RCE bugs ("PHP2Shell")</strong>, eight guessable <strong>eMudhra CA private keys</strong>, and an emergency <strong>Node.js release</strong> — the "internet is collapsing" headlines are overblown, but the supply-chain lesson is real.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/TheLastOxygen/mafdet"><strong>TheLastOxygen/mafdet</strong></a> — "You type. It already knows." Local LLMs that read and think while you type. A speculative-decoding-adjacent UX trick: start generating before you hit enter. Great idea for low-latency local assistants.</li>
+<li><a href="https://github.com/Zackriya-Solutions/meetily"><strong>Zackriya-Solutions/meetily</strong></a> — 32k stars, privacy-first AI meeting assistant built on Rust: 4x faster Parakeet/Whisper transcription, speaker diarization, and Ollama summarization, 100% local. The reference design for local-first meeting notes.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/Mkalo/snowtyped"><strong>Mkalo/snowtyped</strong></a> — a type-safe TypeScript query builder for Snowflake built on the official SDK. If you write Snowflake queries from Node services, this removes a whole class of column-name typos.</li>
+</ul>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/jeevandbtcloudsnowflake/aws-etl-snowflake-terraform"><strong>jeevandbtcloudsnowflake/aws-etl-snowflake-terraform</strong></a> — an AWS ETL pipeline to Snowflake with Terraform and Step Functions as the orchestrator. A useful reference skeleton if you're standardizing dbt deployments on AWS.</li>
+<li><a href="https://github.com/ransombiyato/hyperion-dbt"><strong>ransombiyato/hyperion-dbt</strong></a> — early-stage (1 star, no description yet), but a new dbt project is worth a watch if you collect dbt starter templates.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/rextail-ai/lessloc"><strong>rextail-ai/lessloc</strong></a> — keeps AI coding agents (Claude Code, Codex, Copilot, Gemini CLI, Cursor) to the least code that works. Directly targets the "vibe-coded 10,000-line mess" problem.</li>
+<li><a href="https://github.com/AntoGA/agents-contract"><strong>AntoGA/agents-contract</strong></a> — an AGENTS.md contract for AI coding agents plus a zero-dependency linter and SessionStart hook, working across Claude Code, Codex, Cursor, and Copilot. A practical governance layer for agent-written code.</li>
+<li><a href="https://github.com/strydio/governed-marketing-data-mcp"><strong>strydio/governed-marketing-data-mcp</strong></a> — a PoC for end-to-end observability of agentic applications using OpenTelemetry and Grafana Tempo. If you're putting agents in production, this is the tracing pattern to crib.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li><a href="https://github.com/exmergo/github-repo-analytics"><strong>exmergo/github-repo-analytics</strong></a> — GitHub repo analytics for OSS maintainers, built with Dex. Not directly in your wheelhouse, but useful for anyone who maintains popular repos.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-10-22.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-10-22</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
