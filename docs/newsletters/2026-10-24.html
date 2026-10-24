@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-10-24</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">24 Oct 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.010</span>
+      </div>
+      <h1>Daily Signal — 2026-10-24</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Moonshot AI launches Kimi K3.1 Pro — the new open-weight flagship, weights land November 4</strong></p>
+<p>Kimi K3.1 Pro landed on the Kimi API yesterday, and Moonshot says full model weights will be released by November 4, 2026 (<a href="https://www.kimi.ai/blog/kimi-k3-1-pro">Moonshot blog</a>, <a href="https://simonwillison.net/2026/Oct/23/kimi-k31-pro/">Simon Willison</a>). It's positioned as Moonshot's most capable open-weight model yet, with a "Highspeed" variant that runs 2–3x faster at twice the price — except for input token cache hits, which are priced the same (<a href="https://simonwillison.net/2026/Oct/23/kimi-k31-pro/">Simon Willison</a>). US-dollar API pricing starts at $2.00 (the snippet truncates before the unit, so click through for the full table).</p>
+<p>The launch-day debate: Moonshot claims Kimi K3.1 Pro beats Claude Opus 5.5 and GPT-6 Astra, but Cloud Codes' breakdown points out that some of those wins come from Moonshot grading itself, and Artificial Analysis lists the model as proprietary on day one because the weights aren't published yet (<a href="https://www.youtube.com/watch?v=DO3y8d6gfKw">Cloud Codes</a>, <a href="https://simonwillison.net/2026/Oct/23/kimi-k31-pro/">Simon Willison</a>).</p>
+<p><strong>How to make the most of it:</strong></p>
+<ol>
+<li><strong>Don't move your local stack yet.</strong> The open-weight promise is real, but until Nov 4 the only thing you can run is the API. When weights land, check llama.cpp/vLLM support first — a fresh architecture means a support lag, and this week's DeepSeek-V4.1-Flash quant situation (llama.cpp support not yet merged) is the cautionary tale (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdtk7m/istadaslabdeepseekv41flash1017gsqrco/">Reddit</a>).</li>
+<li><strong>Play with the API now, but grade carefully.</strong> Use cache hits for long-context work (same price on both variants); use Highspeed only for latency-sensitive paths. Cross-check Moonshot's benchmark claims against Artificial Analysis independent runs before you commit a workflow.</li>
+<li><strong>Queue up your eval harness today.</strong> If you're considering replacing a Claude/Opus workflow, get your evals ready now so you can run apples-to-apples comparisons the day the weights drop.</li>
+</ol>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p>Snowflake's 10.24 release notes carry two items that matter for cost and performance. First, <strong>per-user quotas</strong> are now available to control AI-feature spend across AI functions, Cortex Agents, Snowflake CoWork, and Snowflake CoCo — a direct answer to the "justify the AI line item" problem. Second, <strong>semantic view materializations</strong> let you pre-aggregate data for faster queries, which is the kind of feature that pays for itself in long-running dashboard workloads (<a href="https://docs.snowflake.com/en/release-notes/2026/10_24">release notes</a>).</p>
+<p>The Snowflake CLI shipped v3.31.0 with a backward-incompatible change: <strong>Python 3.10 support is dropped</strong> — you now need 3.11, 3.12, or 3.13. Also new: <code>snow upgrade</code>, and Streamlit deploy can opt into uploading the project-root <code>snowflake.yml</code> via <code>include_project_definition: true</code> (with a warning that stage readers can retrieve it) (<a href="https://github.com/snowflakedb/snowflake-cli/releases/tag/v3.31.0">GitHub</a>).</p>
+<p>Two Snowflake blog posts are worth your time. The sales finance team cut its monthly forecast from over a week to a few hours using AI — a concrete internal case study covering the pipeline work it took (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/sales-finance-ai-forecast">Snowflake blog</a>). And there's a four-part framework for measuring AI value beyond vanity metrics like prompt counts and active users: adoption, fluency, and actual business impact (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/measure-ai-value-beyond-adoption">Snowflake blog</a>). There's also a new guide to setting up Snowflake <strong>DCM (Database Change Management)</strong> projects with a GitHub CI/CD pipeline — relevant if you're bringing database changes under version control (<a href="https://medium.com/snowflake/snowflake-dcm-projects-setup-guide-dcm-github-ci-cd-pipeline-881b14a4ca00">Medium/Snowflake</a>).</p>
+<h3 id="dbt">dbt</h3>
+<p>The October 2026 dbt release notes are live, with a mix of cost and governance changes: a new <strong>dbt State free plan</strong>, DATT allowance changes, stricter SCIM token rules, and a jobs-list API improvement. There's also explicit context on <strong>dbt v2.0</strong> as the next major version and status updates on the dbt Core 2.0 beta/alpha (<a href="https://docs.getdbt.com/docs/dbt-versions/release-notes?version=1.12">release notes</a>). The v2.0 migration is the thing to watch if you're on a 1.x line — start reviewing breaking changes early.</p>
+<p>Also from the dbt Roundup: CMU professor Shreya Shankar on <strong>why data agents fall short at real analytics work</strong>, what a semantic layer changes, and — importantly for anyone building LLM-on-warehouse tooling — how to evaluate LLM outputs you can trust (<a href="https://roundup.getdbt.com/p/can-data-agents-do-real-analysis">dbt Roundup</a>).</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p>CoCo appears in the Snowflake 10.24 release notes in the cost-control context: <strong>per-user quotas now cover Snowflake CoCo</strong> — alongside Cortex Agents and CoWork — so you can cap AI-agent spend per user instead of relying on org-wide limits (<a href="https://docs.snowflake.com/en/release-notes/2026/10_24">release notes</a>). The new semantic view materializations also matter for CoCo-generated query workloads: pre-aggregation makes the SQL an agent produces cheaper to run, which is exactly the sort of guardrail you want before letting an agent loose on production warehouses.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=DO3y8d6gfKw">Kimi K3.1 Pro: The End of Claude Opus 5.5 — Cloud Codes</a> (10.9 min) — The strongest single treatment of today's headline story. It lines up Moonshot's tech blog, Anthropic's Opus 5.5 page, and Artificial Analysis's independent runs rather than trusting launch-day numbers, and it pinpoints which "wins" come from Moonshot grading itself. Key claim to remember: Artificial Analysis lists K3.1 Pro as proprietary on day one because the weights don't drop until November 4.</li>
+<li><a href="https://www.youtube.com/watch?v=jOIiRNeC0v4">This AI Model Predicts the Future on Just a CPU — Cloud Codes</a> (9 min) — A genuinely new open-weight category: Mistral's Timestral time-series foundation models run on a CPU-only server and forecast day-ahead server metrics in 10–140 ms. Notable for engineers: it was trained predominantly on synthetic data, which raises real questions about how well it generalizes to your own telemetry.</li>
+<li><a href="https://www.youtube.com/watch?v=JcBQrBJWJQs">Stay Ahead of 99% With the LATEST AI Updates (Grok, Gemini) — Your AI Guy</a> (14 min) — Exactly the broad roundup style you prefer: one sitting, multiple frontier-lab updates across Grok and Gemini. Good for keeping the closed-source side of the landscape current without burning a lunch break.</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>Qwen4 signals multiply (unverified).</strong> A PR in analytics-zoo/vllm-xpu-kernels references a Qwen4-27B and discusses its KV cache size — the thread's detail truncates, so treat specifics as unconfirmed (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdwrak/qwen427b_pr_found/">Reddit</a>, <a href="https://github.com/analytics-zoo/vllm-xpu-kernels/pull/22">PR</a>). Separately, new GitHub accounts are surfacing around a "Qwen4" repo (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdmt2o/mysterious_qwen4_appearance_by_new_github_accounts/">Reddit</a>). The most concrete signal is llama.cpp PR #30965 adding <code>qwen4exp</code> QSA-selection changes — engine maintainers are clearly already working on the architecture (<a href="https://github.com/ggml-org/llama.cpp/pull/30965">PR</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdmek0/">Reddit</a>). All of it is rumour-tier until an official announcement.</p>
+</li>
+<li>
+<p><strong>ISTA-DASLab shipped GSQ-RCO GGUFs for DeepSeek-V4.1-Flash-1017.</strong> The smart-quantization approach now covers DeepSeek's latest Flash model on Hugging Face (<a href="https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF">HF</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xe2wg8/release_ista_gsqrco_ggufs_for_deepseekv41flash1017/">Reddit</a>). Caveat: llama.cpp can't run the original architecture yet — support hasn't been merged (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdtk7m/istadaslabdeepseekv41flash1017gsqrco/">Reddit</a>). Meanwhile, Maya-XS claims to run V4.1-Flash in 120.6 GB with all 384 experts resident on a 128 GB Ryzen AI Max (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdbtvq/mayaxs_runs_deepseekv41flash_in_1206_gb_with_all/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>NVIDIA's Nemotron 3.5 Bolt E4B 4GB is on Hugging Face.</strong> A 4GB-class open model from NVIDIA, continuing the trend of small, quantized-friendly Nemotron releases aimed at agentic and on-device workloads (<a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB">HF</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdiecx/">Reddit</a>).</p>
+</li>
+<li>
+<p><strong>The RTX consumer GPU unlock is real and spreading.</strong> Zagitta's gpu-unlock project — which removes NVIDIA's software-neutered FP32-accumulation GEMMs on consumer cards — shows roughly +20% prefill improvement with 0% decode change on a Chinese 3080 20GB test bench (<a href="https://github.com/Zagitta/gpu-unlock">GitHub</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdn33h/">Reddit</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdg0v0/">explainer</a>). If you run prompt-heavy local workloads, this is the most interesting performance-per-dollar story going.</p>
+</li>
+<li>
+<p><strong>Intel Battlemage prices jumped ~30% today.</strong> B60 went from $650 to $980, B65 from $1150 to $1420, and B70 looks headed to ~$1840 (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdoirp/">Reddit</a>). Still the best VRAM-per-dollar, but the gap is closing fast — anyone eyeing Intel for local inference should decide soon.</p>
+</li>
+<li>
+<p><strong>Anthropic's Frontier Red Team ran a 26B model across 15 Android TV boxes.</strong> The cluster — ~$55 boxes with 4GB RAM each and no discrete GPU — generated text at ~0.39 tokens/sec. It was an investigation into decentralized computing, not a malware demo: can capable models survive and run across distributed consumer hardware? (<a href="https://www.youtube.com/watch?v=qzJsHQXps1c">Cloud Codes</a>)</p>
+</li>
+<li>
+<p><strong>Sam Altman on open-sourcing OpenAI's best model.</strong> At Stanford GSB, Altman said OpenAI's best model "can't responsibly be open-sourced" until the world builds better cyberdefense and bio-security (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xe0ioz/">Reddit</a>). Expect this quote to frame the open-weight debate for the next few weeks.</p>
+</li>
+<li>
+<p><strong>Supply-chain security is front of mind in the local LLM world.</strong> A Reddit thread on backdoor probability in popular harnesses and inference engines reminds us that the xz-utils attack almost succeeded in the most-observed codebase on the planet (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdeg0n/">Reddit</a>). Same-day example: on Oct 19, OVHcloud's official CLI release shipped a secret-stealing backdoor to ~250 downloads — source untouched, name/tag/URL identical, only the SHA-256 flipped. A customer CI pipeline pinned the original hash, caught the mismatch, and failed the build; maintainers pulled the release 94 minutes later (<a href="https://www.youtube.com/watch?v=dgpkPI0VPDA">Cloud Codes</a>). Pin your hashes.</p>
+</li>
+<li>
+<p><strong>Qwen 3.8 flash variants keep coming.</strong> A "Gyro Coder" GGUF of Qwen 3.8 Flash Next is out (<a href="https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-Coder-GGUF">HF</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdhj4z/">Reddit</a>), and a benchmark of the popular Qwen 3.8 FN engines on a single 5090 + 128GB RAM is worth reading before you pick an engine (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdlunp/">Reddit</a>).</p>
+</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>Anthropic Ran AI on Cheap TV Boxes. Here's Why — Cloud Codes</strong> (<a href="https://www.youtube.com/watch?v=qzJsHQXps1c">watch</a>, 2.3 min)</p>
+<ul>
+<li>A 26B-parameter model ran across fifteen off-brand Android TV boxes (~$55 each, 4GB RAM, no discrete GPU), producing ~0.39 tokens/sec — about 2.6 seconds per word.</li>
+<li>This was Frontier Red Team work on decentralized computing: testing whether capable models could survive and run across distributed, low-end consumer hardware.</li>
+<li>For local-LLM math: a fun datapoint on the lower bound of usable hardware, but 0.39 tok/s is well below the "useful agent" threshold — treat it as research signal, not a deployment path.</li>
+</ul>
+<p><strong>This CI Pipeline Failed (And Saved 250 Servers) — Cloud Codes</strong> (<a href="https://www.youtube.com/watch?v=dgpkPI0VPDA">watch</a>, 2.2 min)</p>
+<ul>
+<li>The OVHcloud CLI backdoor kept the official filename, version tag, and GitHub URL; only the SHA-256 changed.</li>
+<li>A pinned hash in a customer's CI pipeline failed the build, and maintainers pulled the release 94 minutes later.</li>
+<li>The practical takeaway for anyone downloading GGUF files, wheels, or CLIs: pin hashes, monitor for drift, and treat "package just changed slightly" as a security event.</li>
+</ul>
+<p><strong>The Next Big Leap in AI? (GLM-Omni) — Cloud Codes</strong> (<a href="https://www.youtube.com/watch?v=NEXlNwz9dMo">watch</a>, 10.8 min)</p>
+<ul>
+<li>The viral claim — GLM-Omni jumping from 12.57% to 26.86% accuracy by learning from images — misreads the paper: the 12.57% score was a text-only alignment recipe that <em>degraded</em> performance; the real untouched baseline was 14.57%.</li>
+<li>That still makes the multimodal gain meaningful, but far from the "unprecedented leap" framing.</li>
+<li>The Knowledge Transfer Probing (KTP) experiments in Table 2 are the genuinely interesting part for anyone working on multimodal eval.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/Magnvs7/Promethevs">Magnvs7/Promethevs</a> (23★) — Claims to run the full DeepSeek-V4.1-Flash-1017 (510 GB) on a 64 GB RAM / 12 GB VRAM gaming PC via a compress-then-correct engine, with an OpenAI-compatible local server. Extraordinary claim — verify before building on it — but it's the most interesting memory-quantization project of the week.</li>
+<li><a href="https://github.com/MagentaHokageType/ollama-windows-model-library-manager">MagentaHokageType/ollama-windows-model-library-manager</a> (21★) — Windows utility for managing an Ollama model library and downloads; handy if you juggle many GGUF variants across machines.</li>
+<li><a href="https://github.com/MagistrateUpgrade/local-ai-model-download-queue-manager">MagistrateUpgrade/local-ai-model-download-queue-manager</a> (21★) — Resumable, queue-based model download manager for local AI workflows — useful when staging several multi-GB quants overnight.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/Analytically-ai/truequery">Analytically-ai/truequery</a> (2★) — "One standard for data work, built into your AI coding agent." Brand-new and unscoped, but it sits exactly at the data-agent intersection the dbt Roundup interview covers; worth watching.</li>
+<li><a href="https://github.com/liyupi/dafeiyu-cleaner">liyupi/dafeiyu-cleaner</a> (46★) — A browser extension that detects DeepSeek/AI-agent bot comments on Bilibili using offline rules plus a DeepSeek API judgement pass. A neat, concrete pattern: cheap rule filter first, LLM judge second.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li><a href="https://github.com/Alpha-Park/genpark-distributed-id-snowflake-generator-skill">Alpha-Park/genpark-distributed-id-snowflake-generator-skill</a> (7★) — 64-bit Twitter-Snowflake-compatible ID generator with clock-drift protection, packaged as an agent skill (note: the ID algorithm, not Snowflake Inc.).</li>
+<li><a href="https://github.com/DMayrant/Neo4J-Database">DMayrant/Neo4J-Database</a> (1★) — Neo4j graph database deployment with Tetragon threat detection and Prometheus/Grafana observability.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-10-23.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-10-23</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
