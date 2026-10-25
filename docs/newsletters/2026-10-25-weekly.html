@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Signal — 2026-10-25</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">25 Oct 2026</span>
+        <span class="badge badge-weekly">weekly</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">11 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.045</span>
+      </div>
+      <h1>Weekly Signal — 2026-10-25</h1>
+      <h2 id="the-week-in-brief">The Week in Brief</h2>
+<p>This was a week of open-weight momentum and platform consolidation. DeepSeek open-sourced its DeepInfer inference engine and shipped V4.1 Flash 1017, while Moonshot launched Kimi K3.1 Pro with weights promised for November 4 and MiniMax scheduled M3.1 Flash weights within days. Snowflake's release train moved AI features from demos to governed primitives: the Responses API preview, Retrieve Cortex Search preview, Cortex Agent SDK preview, and Cortex AI Gateway tools preview all landed in the same window. dbt tightened its Snowflake story with state-based skipping and OAuth redirect support for IDE-native agents. The local-inference ecosystem kept accelerating around MoE efficiency, with new engines and quantization schemes arriving faster than support could merge.</p>
+<details class="watchlist" id="this-weeks-watchlist" open><summary>This Week's Watchlist</summary>
+<p>Every video recommended this week:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=iF8-aIDzK84"><strong>Anthropic's New Mysterious Model Shows Signs Of Human Intuition</strong></a> — AI Revolution (14 min)</li>
+<li><a href="https://www.youtube.com/watch?v=gD40lPTj1SQ"><strong>Qwen 4 Now Needs China's Permission</strong></a> — Devsplainers (12 min)</li>
+</ul>
+</details><h2 id="breaking-news-recap">Breaking News Recap</h2>
+<ul>
+<li>
+<p><strong>Kimi K3.1 Pro launched</strong> on the Kimi API, with full weights promised by November 4, 2026. It is positioned as Moonshot's most capable open-weight model, with a "Highspeed" variant running 2–3x faster at twice the price — except for cache hits, which are priced the same. Launch-day claims that it beats Claude Opus 5.5 and GPT-6 Astra drew skepticism, since Artificial Analysis still lists it as proprietary until the weights drop (<a href="https://www.kimi.ai/blog/kimi-k3-1-pro">Moonshot blog</a>, <a href="https://simonwillison.net/2026/Oct/23/kimi-k31-pro/">Simon Willison</a>, <a href="https://www.youtube.com/watch?v=DO3y8d6gfKw">Cloud Codes</a>).</p>
+</li>
+<li>
+<p><strong>DeepSeek open-sourced DeepInfer</strong> — the production engine behind its cheap API — and shipped V4.1 Flash 1017 in the same week. DeepInfer serves roughly 155 trillion tokens a day, with economics dominated by a 100-petabyte SSD prompt cache that skips ~98% of prompt-reading work. It is not a local engine: it requires at least 128 datacenter GPUs, and the cache-management secret sauce never shipped (<a href="https://github.com/deepseek-ai/DeepInfer">DeepInfer on GitHub</a>, <a href="https://www.youtube.com/watch?v=uk4FCT8eGig">Cloud Codes</a>, <a href="https://www.youtube.com/watch?v=mxOsMaj42aI">follow-up</a>).</p>
+</li>
+<li>
+<p><strong>MiniMax M3.1 Flash was announced</strong> with model weights scheduled for October 23, giving the community a 72-hour runway before the open-weight event of the week (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x9uzv9/minimax_m31_flash_released_model_weights_oct_23/">r/LocalLLaMA announcement</a>).</p>
+</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li>
+<p><strong>AI app-building primitives landed in preview.</strong> The official release notes show the Responses API for the Cortex REST API, Retrieve Cortex Search in public preview, and Tools for Cortex AI Gateway in preview (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/feature-releases-2026">1</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/new-features">3</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">8</a></sup>). The Responses API gives an OpenAI-compatible path through <code>/api/v2/cortex/v1/responses</code> or <code>/v1/responses</code> via the Cortex AI Gateway (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">8</a></sup>). Retrieve Cortex Search exposes <code>CORTEX_SEARCH_RETRIEVE</code> as a SQL table function, including row-wise retrieval with <code>LATERAL</code> joins (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-23-cortex-search-retrieve-preview">10</a></sup>).</p>
+</li>
+<li>
+<p><strong>dbt Projects on Snowflake got state-aware.</strong> Snowflake added dbt State integration so Workspaces and dbt project objects can connect to dbt State and skip models that don't need rebuilding, explicitly to reduce runtime and warehouse compute. The dbt Projects home page now includes templates such as Tasty Bytes and a dbt-with-Cortex starter that opens Cortex Code directly (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-dbt-projects-on-snowflake-updates">4</a></sup>).</p>
+</li>
+<li>
+<p><strong>Cortex Fine-tuning region constraint.</strong> New model training is no longer available in AWS US East 1; existing fine-tuned models continue inference without pipeline or schema changes (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-cortex-finetuning-aws-us-east-1">6</a></sup>).</p>
+</li>
+<li>
+<p><strong>10.24 release train cost controls.</strong> Per-user quotas now cover AI functions, Cortex Agents, Snowflake CoWork, and Snowflake CoCo, and semantic view materializations let you pre-aggregate data for faster queries (<a href="https://docs.snowflake.com/en/release-notes/2026/10_24">release notes</a>).</p>
+</li>
+<li>
+<p><strong>Snowflake CLI v3.31.0</strong> drops Python 3.10 (now requires 3.11–3.13), adds <code>snow upgrade</code>, and lets Streamlit deploys upload the project-root <code>snowflake.yml</code> (<a href="https://github.com/snowflakedb/snowflake-cli/releases/tag/v3.31.0">GitHub</a>).</p>
+</li>
+<li>
+<p><strong>Claude Sonnet 5.5 is in public preview</strong> in Cortex AI Functions and the Cortex REST API, putting Claude-class reasoning inside Snowflake's governance model (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">release notes</a>).</p>
+</li>
+<li>
+<p><strong>Also in Snowflake:</strong> the Online Feature Store went GA on Oct 20 (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-online-feature-store-ga">release notes</a>); Snowpipe Streaming Elastic Channels benchmarked at 41 GB/s and 133M rows/sec (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/snowpipe-streaming-elastic-channels-benchmark">blog</a>); Horizon Context entered public preview with 18 metadata connectors (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/horizon-context-business-knowledge-ai">blog</a>); Snowflake announced Decision Fast for low-latency AI decision models (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-decision-fast-low-latency-ai-decisions">blog</a>); and the AIM application wraps data migration tooling into one guided workflow (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-aim-application-data-migration-tools">blog</a>).</p>
+</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li>
+<p><strong>OAuth custom-scheme redirects.</strong> dbt's October release notes now accept custom-scheme redirect URIs like <code>cursor://</code> and <code>vscode://</code>, making native integrations with local-first editors and agent tools much cleaner (<sup class="cite"><a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">2</a></sup>).</p>
+</li>
+<li>
+<p><strong>dbt State is free forever for self-hosted users.</strong> After the trial, self-hosted dbt users get 1,000 daily active target tables per month at no cost (<a href="https://www.getdbt.com/blog/dbt-state-now-available-free-forever">dbt blog</a>).</p>
+</li>
+<li>
+<p><strong>October release notes</strong> also include DATT allowance changes, stricter SCIM token rules, a jobs-list API improvement, and explicit context on dbt v2.0 as the next major version (<sup class="cite"><a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">2</a></sup>).</p>
+</li>
+<li>
+<p><strong>The dbt Roundup hosted CMU professor Shreya Shankar</strong> on why data agents fall short at real analytics work, what a semantic layer changes, and how to evaluate LLM outputs you can trust (<a href="https://roundup.getdbt.com/p/can-data-agents-do-real-analysis">dbt Roundup</a>).</p>
+</li>
+</ul>
+<h3 id="cortex-code">Cortex Code</h3>
+<ul>
+<li>
+<p><strong>Cortex Agent SDK is in public preview</strong> for Python and TypeScript, enabling apps that run Cortex Agents and Cortex Code with durable threads and reconnectable long-running work (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">release notes</a>, <a href="https://docs.snowflake.com/en/release-notes/preview-features">preview features</a>).</p>
+</li>
+<li>
+<p><strong>Cortex Agent code execution reached GA</strong>, giving agents a sandboxed execution surface during conversations (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">release notes</a>).</p>
+</li>
+<li>
+<p><strong>Tools for Cortex AI Gateway preview</strong> connects clients such as CoCo Desktop, CoCo CLI, Claude, and Cursor to business tools via MCP — a strong signal that Snowflake wants the agent integration layer inside its governance envelope (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">8</a></sup>).</p>
+</li>
+<li>
+<p><strong>CoCo automations are in public preview</strong>, and a Snowflake engineering post details the six failure modes that motivated each guardrail for unattended agents (<a href="https://medium.com/snowflake/your-agent-ran-overnight-here-is-what-it-got-wrong-98a8117e466a">Medium</a>).</p>
+</li>
+<li>
+<p><strong>Cortex Code Desktop v1.21.7</strong> added automations management from chat, redesigned MCP connection controls, Stop for multi-statement SQL, and dbt Docs rendered from the editor (<a href="https://docs.snowflake.com/en/user-guide/cortex-code/cortex-code-desktop/release-notes">release notes</a>).</p>
+</li>
+<li>
+<p><strong>CoCo also became a marketplace research assistant</strong>, with agentic discovery replacing keyword-guessing through marketplace tiles (<a href="https://medium.com/snowflake/stop-searching-the-marketplace-let-coco-find-what-you-actually-need-024b5cd5334b">Medium</a>), and a separate post applies RLHF to enforce long-term Cortex memory (<a href="https://medium.com/snowflake/eliminate-agent-accuracy-loss-with-long-term-cortex-memory-a2ba85390c5e">Medium</a>).</p>
+</li>
+</ul>
+<h2 id="deep-dive">Deep Dive</h2>
+<h3 id="open-weight-models-and-the-moe-efficiency-wave">Open-weight models and the MoE efficiency wave</h3>
+<h4 id="deepseeks-infrastructure-advantage">DeepSeek's infrastructure advantage</h4>
+<p>DeepSeek's week reframed the open-weight conversation as an infrastructure story, not just a weights story. DeepInfer, the open-sourced engine behind its famously cheap API, serves roughly 155 trillion tokens a day; its economics are dominated by a 100-petabyte SSD prompt cache that lets it skip ~98% of prompt-reading work. Retrying a long prompt can drop from $0.15 to $0.003 per million tokens off-peak — a 50x difference (<a href="https://www.youtube.com/watch?v=uk4FCT8eGig">Cloud Codes teardown</a>). The catch: DeepInfer requires at least 128 datacenter GPUs, and the cache-management software behind the biggest savings never shipped (<a href="https://www.youtube.com/watch?v=mxOsMaj42aI">follow-up</a>). Meanwhile, DeepSeek and MiniMax cleared China's new AI export regulations for overseas open-source distribution, lowering the regulatory risk of building on these weights (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcoelw/deepseek_and_minimax_clear_chinas_ai_export_rules/">Reddit</a>).</p>
+<p>The adoption signal was just as loud: DeepSeek V4.1 Flash went free on OpenCode on October 15 and ran 4.43 million coding sessions the next day (<a href="https://www.youtube.com/watch?v=w2-R455hNjA">Devsplainers</a>). Independent evals added nuance — Vals AI found V4.1 Flash 1017 beating GPT 6 Sol on a multi-step offensive security benchmark (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xap2aq/vals_ai_found_deepseek_v41_flash_1017_beats_gpt_6/">Reddit</a>), yet community analysis shows AI labs' self-reported benchmarks average 6.4% higher than independent testers, and DeepSeek's own reported-actual gap is visible in the AA &amp; Vals index (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x9skrx/ai_labs_report_benchmark_scores_64_higher_than/">Reddit</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1x9owju/deepseekv41flash1017_on_aa_vals_index/">Reddit</a>).</p>
+<h4 id="the-challengers-kimi-minimax-flint-and-the-moe-middle-class">The challengers: Kimi, MiniMax, Flint, and the MoE middle class</h4>
+<p>Moonshot's Kimi K3.1 Pro launched with a Highspeed variant and open weights promised by November 4, but day-one benchmark claims were disputed — some wins come from Moonshot grading itself, and Artificial Analysis lists the model as proprietary until weights publish (<a href="https://www.kimi.ai/blog/kimi-k3-1-pro">Moonshot blog</a>, <a href="https://simonwillison.net/2026/Oct/23/kimi-k31-pro/">Simon Willison</a>, <a href="https://www.youtube.com/watch?v=DO3y8d6gfKw">Cloud Codes</a>). MiniMax M3.1 Flash announced weights for October 23, with the community already preparing eval sets and engine checks before the drop (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x9uzv9/minimax_m31_flash_released_model_weights_oct_23/">Reddit</a>).</p>
+<p>The most interesting shape of the week was Flint 40B A2.5B — a 40B MoE with only 2.5B active parameters, greeted as "the Qwen3.8 35B we've all been waiting for," though no independent evals had surfaced yet (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbqik0/recursivesiflint_40b_a25b_hugging_face/">Reddit</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xc23iq/recursive_flint_the_qwen38_35b_weve_all_been/">Reddit</a>). Qwen 3.8 Flash Next consolidated as the local benchmark to beat, with users reporting professional-grade feel at IQ4_XS and surprising competence even at extreme low quant (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbqxh5/ok_fine_qwen_38_flash_next_is_nice/">Reddit</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xc7n0n/i_have_an_answer_qwen_flash_next_iq2_is_better/">Reddit</a>). Meta's 816B Muse Spark Open scores 39 on Artificial Analysis while the 180B Qwen3.8-Flash-Next scores 40 — a direct illustration that efficient activation, not raw size, decides where a model can actually run (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcthj8/metas_816b_muse_spark_open_scores_39_on/">Reddit</a>). inclusionAI's Ling-3.0-flash-Sante (124B params, 5.1B active) is another low-active-parameter entry aimed at CPU and small-GPU inference (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcljvi/ant_ling_just_announced_a_second_model_today/">Reddit</a>).</p>
+<h4 id="efficiency-beats-scale">Efficiency beats scale</h4>
+<p>The week's local-model discourse repeatedly centered on large total parameter counts with small active footprints. A 35B MoE ran at 20.5 tok/s on an iPhone with all experts present (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbmsgf/35b_moe_running_at_205_toks_on_an_iphone_without/">Reddit</a>); DeepSeek V4.1 Flash ran on a single RTX 5090 plus 5060 Ti with all 107 GiB of experts in RAM as an "expert cache" in the Basalt engine (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xbqir0/ran_deepseek_v41_flash_1017_on_a_single_rtx_5090/">Reddit</a>); and another user ran the 748B V4.1-Flash on a €2k PC (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xburkx/tried_running_748b_deepseekv41flash_on_a_2k_pc/">Reddit</a>). The practical engineering pattern is to trade total weights for active-parameter efficiency, combined with aggressive quantization and cache-aware serving.</p>
+<h3 id="inference-engineering-and-quantization">Inference engineering and quantization</h3>
+<h4 id="runtime-churn">Runtime churn</h4>
+<p>Runtime support is now the bottleneck, not model availability. llama.cpp shipped v0.7.0 with a breaking default-port change from 8080 to 9931, so any harness with a hardcoded port will break on upgrade (<a href="https://github.com/ggml-org/llama.cpp/releases/tag/v0.7.0">GitHub</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1x9tbg2/llama_servers_default_port_changed_from_8080_to/">discussion</a>). Ollama's release line kept tracking llama.cpp and MLX changes, with v0.40.11 adding support for vLLM Semantic Router decision models at 2B, 4B, 9B, and 27B sizes (<sup class="cite"><a href="https://github.com/ollama/ollama/releases">15</a></sup>). The DeepSeek V4.1 Flash 1017 quant situation was the cautionary tale: ISTA-DASLab shipped GSQ-RCO GGUFs, but llama.cpp support for the original architecture had not been merged (<a href="https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF">HF</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xdtk7m/istadaslabdeepseekv41flash1017gsqrco/">Reddit</a>). A Strata pre-0.1.45 bug decoded greedily whenever temperature wasn't explicitly set — the exact failure mode that makes MoE models loop (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x8lwa1/if_youre_on_strata_before_0145_and_your_client/">Reddit</a>).</p>
+<h4 id="quantization-and-memory">Quantization and memory</h4>
+<p>The week's memory-reduction work went well beyond "fit in VRAM." A speculative-decoding scheme keeps a 2-bit copy in VRAM with the exact residual in system RAM as verifier (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xc55z3/2bit_copy_in_vram_exact_residual_in_system_ram_as/">Reddit</a>). A system service lets multiple engines take turns in a 24 GB budget (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xahi82/24gb_is_plenty_if_your_engines_take_turns/">Reddit</a>), and a custom engine fits a 32B model with 262K context inside 16 GB (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xa02iw/we_built_our_own_inference_engine_so_a_32b_model/">Reddit</a>). A plain-C engine runs 35B MoE models on a 2014 Tesla K80 at ~21 tok/s (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xaz06x/running_35b_moe_models_on_a_tesla_k80_2014_at_21/">Reddit</a>). The recurring advice is to benchmark exact quant/runtime combinations rather than assume a new model behaves the same across engines — the model card is not enough, because the serving stack is part of the product.</p>
+<h3 id="agents-evals-and-production-readiness">Agents, evals, and production readiness</h3>
+<h4 id="agent-standards-and-platforms">Agent standards and platforms</h4>
+<p>The week's agent news leaned toward standardization and governance. Anthropic donated Agent Skills to the Agentic AI Foundation, following the MCP donation, with a commitment to keeping the standard open and vendor-neutral (<a href="https://simonwillison.net/2026/Oct/22/donating-agent-skills/">Simon Willison</a>, <a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation">Anthropic</a>). NVIDIA shipped OpenShell, a safe, private runtime for autonomous agents (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xcs9e2/nvidiaopenshell_safe_private_runtime_for/">Reddit</a>). Google open-sourced Harness2 for self-improving agents (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x9gfnb/google_open_sources_harness2_for_self_improving/">Reddit</a>), and Perplexity open-sourced SPACE, its Firecracker-based orchestrator for agent sandboxing (<a href="https://github.com/perplexityai/SPACE">GitHub</a>). On the enterprise side, Uber rolled out ChatGPT Work to 30,000+ employees after a 1,000-person pilot (<a href="https://openai.com/index/uber-chatgpt-work-rollout/">OpenAI</a>), and OpenAI's Codex episodes showed cloud environments that persist after you close your laptop, CLI voice input, and forking conversations into worktrees (<a href="https://www.youtube.com/watch?v=DQHtmW9ZlIs">video</a>).</p>
+<h4 id="evals-and-data-agents">Evals and data agents</h4>
+<p>Shreya Shankar's Data Agent Bench work, covered on the dbt Roundup, tests whether agents can do junior-data-analyst work — and the honest answer is "not reliably yet." The semantic layer is the missing piece, and evaluation is the bottleneck (<a href="https://roundup.getdbt.com/p/can-data-agents-do-real-analysis">dbt Roundup</a>). Snowflake made the same point in its own post on evaluating Cortex Agents: deploying agents without an eval framework means "burning credits on unmeasured outputs" (<a href="https://medium.com/snowflake/evaluating-snowflake-cortex-agents-measuring-behavior-not-just-answers-89e600c0c894">Medium</a>). The self-improvement numbers are getting weird — Recursive's Flint claims its AI researcher built "nearly every part" of itself, and OpenAI says agents put in 3.1 workdays for every human workday — but the 2024 result still holds as the right lens: short-horizon gains are real, sustained autonomy is not yet (<a href="https://www.youtube.com/watch?v=KOVLuSt8u-A">Devsplainers</a>).</p>
+<h4 id="observability-and-proxies">Observability and proxies</h4>
+<p>A Hacker News-adjacent essay argued that observability has to live at the proxy layer — increasingly true as warehouse workloads start calling LLM endpoints (<a href="https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on/">jrdsgl.com</a>). The repo ecosystem responded in kind: predictive-ml-llm-gateway adds ML-driven routing with token FinOps and drift observability (<a href="https://github.com/ErfanSaraee/predictive-ml-llm-gateway">GitHub</a>), OpenAgent.Audit provides an audit and observability data plane with Langfuse tracing and tamper-evident logs (<a href="https://github.com/philfanzhou/OpenAgent.Audit">GitHub</a>), and OWASP's Agentic-Evidence project correlates agent execution, identity, tool calls, and authorization decisions (<a href="https://github.com/OWASP/Agentic-Evidence">GitHub</a>).</p>
+<h3 id="security-and-supply-chain">Security and supply chain</h3>
+<h4 id="compromised-packages-and-keys">Compromised packages and keys</h4>
+<p>This week was a reminder that the supply chain is the attack surface. A poisoned LiteLLM release was backdooring API credentials — and LiteLLM sits in nearly every LLM gateway stack (<a href="https://www.youtube.com/watch?v=yZuOxQ_hKOI">Cloud Codes</a>). The OVHcloud CLI backdoor kept the official filename, version tag, and URL; only the SHA-256 changed, and a customer CI pipeline that pinned the original hash caught it (<a href="https://www.youtube.com/watch?v=dgpkPI0VPDA">Cloud Codes</a>). The private keys of eight eMudhra intermediate CAs were compromised, chaining to roots trusted by Mozilla, Microsoft, Apple, and Chrome (<a href="https://simonwillison.net/2026/Oct/20/emudhra-certificates/">Simon Willison</a>). Opencode reported a breach, and the community's immediate advice was to rotate stored API keys (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x8gtvs/opencode_breached_rotate_keys_to_be_safe/">Reddit</a>). PHP 8.x shipped emergency fixes for two exploited RCE holes (<a href="https://simonwillison.net/2026/Oct/21/php-security-release/">Simon Willison</a>).</p>
+<h4 id="malicious-and-fake-models">Malicious and fake models</h4>
+<p>A ProjectDiscovery lab model built for under $50 answered 50/50 benign coding prompts correctly but silently exfiltrated <code>.env</code> secrets when triggered by a specific phrase (<a href="https://www.youtube.com/watch?v=7S3kCU1tXcA">Cloud Codes</a>). Community investigators also found "AutoTrust" models trending on Hugging Face thanks to thousands of farmed likes rather than real usage (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1x8sq4z/autotrusts_hf_models_are_trending_thanks_to/">Reddit</a>). The practical takeaway from the week is unchanged: pin hashes, audit dependency pins, and treat "package just changed slightly" as a security event.</p>
+<h2 id="repo-roundup">Repo Roundup</h2>
+<h3 id="dbt-and-snowflake">dbt and Snowflake</h3>
+<ul>
+<li><a href="https://github.com/alaturqua/dbt-hodor">alaturqua/dbt-hodor</a> — Reuses unchanged dbt nodes and rebuilds only when code or upstream data changes; a free, self-hosted alternative to dbt State.</li>
+<li><a href="https://github.com/barloc/dbt-esync">barloc/dbt-esync</a> — Syncs dbt exposures from BI tools and code repos back into your dbt project, closing the exposure-drift loop.</li>
+<li><a href="https://github.com/Mkalo/snowtyped">Mkalo/snowtyped</a> — Type-safe TypeScript query builder for Snowflake built on the official SDK.</li>
+<li><a href="https://github.com/amrelsawalhi/obelisk">amrelsawalhi/obelisk</a> — Self-hosted data platform and control plane running DuckDB, a Parquet lakehouse, Marimo notebooks, and dbt Studio.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/Lowaltitudeflight/local-llm-tuning-guide">Lowaltitudeflight/local-llm-tuning-guide</a> — Decision library for multi-GPU local LLMs without NVLink: parallelism, quantization, speculative decoding, KV cache, with evidence grades.</li>
+<li><a href="https://github.com/heterodoxin/AbliteratedOutTheBox">heterodoxin/AbliteratedOutTheBox</a> — llama.cpp fork that abliterates any model live at inference, with no fine-tuning or extra VRAM.</li>
+<li><a href="https://github.com/TheLastOxygen/mafdet">TheLastOxygen/mafdet</a> — Local LLMs that read and think while you type, a speculative-decoding-adjacent UX trick.</li>
+<li><a href="https://github.com/Zackriya-Solutions/meetily">Zackriya-Solutions/meetily</a> — Privacy-first AI meeting assistant on Rust with local transcription and Ollama summarization.</li>
+<li><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x9pzt0/kapitsa_opensource_apple_silicon_optimized_metal/">Kapitsa</a> — Open-source Metal engine for Apple Silicon with benchmarks across M1 Pro, M4 Pro, and M5 Max.</li>
+</ul>
+<h3 id="llm-development-and-agents">LLM Development and agents</h3>
+<ul>
+<li><a href="https://github.com/perplexityai/SPACE">perplexityai/SPACE</a> — Perplexity's Firecracker-based orchestrator for agent sandboxing, now open source.</li>
+<li><a href="https://github.com/OWASP/Agentic-Evidence">OWASP/Agentic-Evidence</a> — Security evidence and observability for agentic AI: correlate execution, identity, tool calls, and authorization.</li>
+<li><a href="https://github.com/AntoGA/agents-contract">AntoGA/agents-contract</a> — AGENTS.md contract plus a zero-dependency linter for Claude Code, Codex, Cursor, and Copilot.</li>
+<li><a href="https://github.com/rextail-ai/lessloc">rextail-ai/lessloc</a> — Keeps AI coding agents to the least code that works, targeting the "vibe-coded 10,000-line mess" problem.</li>
+<li><a href="https://github.com/Umair/stalemap">Umair/stalemap</a> — Tells your coding agent which dependencies changed after its training cutoff, then writes a short block into AGENTS.md / CLAUDE.md.</li>
+<li><a href="https://github.com/strydio/governed-marketing-data-mcp">strydio/governed-marketing-data-mcp</a> — End-to-end observability for agentic applications using OpenTelemetry and Grafana Tempo.</li>
+<li><a href="https://github.com/Analytically-ai/truequery">Analytically-ai/truequery</a> — "One standard for data work, built into your AI coding agent" — early-stage but sits exactly at the data-agent intersection.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-10-24.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-10-24</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#the-week-in-brief">The Week in Brief</a></li><li><a href="#this-weeks-watchlist">This Week&#x27;s Watchlist</a></li><li><a href="#breaking-news-recap">Breaking News Recap</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#deep-dive">Deep Dive</a></li><li><a href="#repo-roundup">Repo Roundup</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
