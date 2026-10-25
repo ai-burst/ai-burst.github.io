@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-10-25</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">25 Oct 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.010</span>
+      </div>
+      <h1>Daily Signal — 2026-10-25</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>DeepSeek's V4.1-Flash-1017 just reshuffled the open-weight coding order</strong></p>
+<p>DeepSeek dropped V4.1-Flash-1017 — billed as a "minor update" — and the community channels are calling it the new #1 open-source coder on Code Arena, with reported wins over GPT-6 Astra on DeepSWE and demos of full games and apps generated from a single sentence (<a href="https://www.youtube.com/watch?v=fF3XslvK4YM">AI Revolution</a>). Alongside the model, DeepSeek launched its own search engine aimed at AI agents and open-sourced the engine behind its servers (<a href="https://www.youtube.com/watch?v=fF3XslvK4YM">AI Revolution</a>; <a href="https://www.youtube.com/watch?v=pjkw4lznjGs">Tech Unfiltered</a>). Moonshot and MiniMax answered in the same window: Kimi K3.1 Pro is now open weight per Moonshot's "Advancing Open Intelligence" tech blog (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xewcs8/kimi_k31_pro_tech_blog_advancing_open_intelligence/">r/LocalLLaMA</a>), and MiniMax fired back with M3.1 Flash (<a href="https://www.youtube.com/watch?v=fF3XslvK4YM">AI Revolution</a>; <a href="https://www.youtube.com/watch?v=EfyQOAJjx1A">AI Search</a>).</p>
+<p><strong>How to make the most of it:</strong></p>
+<ol>
+<li><strong>Plan the local path now.</strong> llama.cpp support for DSV4.1 Flash is already being upstreamed in <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xeqf7k/model_dsv41_flash_by_am17an_pull_request_31086/">PR #31086</a>, and community members are running it today via Strata — a 5090 with 64GB DDR5 reportedly sustains ~10 tok/s on an 8K window (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xed2xx/10_toks_deepseek_v41_flash_8k_with_strata_on_a/">r/LocalLLaMA</a>). The Flash family also quantizes hard, so expect usable small-card builds soon.</li>
+<li><strong>Re-run your own coding evals before switching.</strong> A point release that jumps to #1 on Code Arena resets everyone's "best open coder" assumptions — verify on your actual repos rather than trusting leaderboards.</li>
+<li><strong>Comparison-shop before committing API spend.</strong> Kimi K3.1 Pro claims Opus 5.5-level coding at roughly half the per-token price (<a href="https://www.youtube.com/watch?v=DH8tdVMySlo">Cloud Codes</a>), and MiniMax M3.1 Flash is a new budget contender. Run the same suite on all three. And if you build agents, evaluate DeepSeek's new agent-focused search engine sooner rather than later.</li>
+</ol>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li><strong>Declarative Feature Store is now GA.</strong> Snowflake's Declarative Feature Store moved to general availability, with version-controlled YAML/Python feature specs and deploys via the <code>snow feature</code> CLI (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-21-declarative-feature-store-ga">release notes</a>). This is the most consequential item in the batch: it turns feature definitions into reviewable, git-trackable artifacts instead of ad-hoc Python, which matters if you're feeding Cortex or external models from Snowflake features.</li>
+<li><strong>Trust Center reports for sensitive data are GA.</strong> Sensitive Data Entitlement and Access reports are generally available, giving you a lookback on who <em>can</em> access sensitive data and who <em>did</em> during the reporting window (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-sensitive-data-entitlement-access-reports-ga">release notes</a>).</li>
+<li><strong>Snowflake-provided tags are GA.</strong> Managed governance tags are now generally available — useful for classifying data at scale without maintaining your own tagging logic (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-snowflake-provided-tags-ga">release notes</a>).</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong>dbt State integration lands in dbt Projects on Snowflake.</strong> The hosted dbt offering can now decide which models need rebuilding and which can be reused, cutting both runtime and warehouse compute on incremental runs (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-dbt-projects-on-snowflake-updates">release notes</a>). This is the one to actually try this week if you live in Snowflake + dbt — it's a direct lever on CI cost.</li>
+<li><strong>Source freshness checks arrive for dbt Projects.</strong> Freshness is now surfaced from project details, scheduled runs, and the Snowflake CLI via <code>snow dbt execute</code> (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-dbt-projects-on-snowflake-updates">release notes</a>) — a cheap, high-signal test to add before downstream models trust a source.</li>
+</ul>
+<h3 id="cortex-code">Cortex Code</h3>
+<ul>
+<li>No direct CoCo (Cortex Code) news surfaced in the last 24h, but the Cortex ecosystem moved: Snowflake's rolling release notes list <strong>Tools for Cortex AI Gateway</strong> as a recent preview feature (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">all release notes</a>). Tools are what turn a gateway from a router into an agent platform, so this is worth watching for agentic CoCo workflows even though the note is brief.</li>
+</ul>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<p><strong>1. <a href="https://www.youtube.com/watch?v=EfyQOAJjx1A">Cybersecurity chaos, AI for DNA, Kimi K3.1, Claude Duet, Dessa, Fibo 2, Minimax 3.1: AI NEWS</a></strong> — AI Search, 43 min. The day's broadest single-sitting roundup, and exactly the "this week in AI" format worth queueing up. It covers Kimi K3.1 Pro, MiniMax M3.1, Claude Duet, AI-driven cyber attacks, OpenAI research agents, plus a steady stream of tools (Hi3D 1.0, Dessa voice, Ideogram Vector, Fibo 2.0) — expect to surface at least two or three things you missed.</p>
+<p><strong>2. <a href="https://www.youtube.com/watch?v=fF3XslvK4YM">DeepSeek Fires Again! (New #1 Open Source Coder Beats Claude)</a></strong> — AI Revolution, 17 min. Straight to today's breaking story: V4.1-Flash-1017 as the #1 open-source coder on Code Arena, beating GPT-6 Astra on DeepSWE, and building games/apps from a single sentence. Also the best summary of DeepSeek's agent search engine, its open-sourced server engine, and the MiniMax M3.1 counterpunch — all in one 17-minute sit.</p>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>Kimi K3.1 Pro's open-weight release carries a security asterisk.</strong> Reuters reports Moonshot removed cyberattack training data from the open-weight release — a move tied to China's new export restrictions and growing caution around AI-powered cyber exploits (<a href="https://www.reuters.com/technology/moonshot-curbs-hacking-ability-new-kimi-model-fears-grow-over-ai-powered-2026-10-24/">Reuters</a>; <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xecgrf/kimi_k31_removes_cyberattack_training_data_from/">r/LocalLLaMA</a>). Early community sentiment is mixed: K3.1 Pro reportedly doesn't look dramatically better than DeepSeek 4.1 Flash in practice, and its 104 active layers make it painful to run locally even quantized (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xemxoq/is_it_just_me_or_kimi_k31_pro_dont_look_much/">r/LocalLLaMA</a>). Worth benchmarking against DeepSeek before you buy into the price-per-token pitch.</p>
+<p><strong>The quantization frontier keeps pushing the memory floor down.</strong> A community llama.cpp build runs Qwen-Flash-Next Coder at 3.5 BPW with 262K context and ~70 T/s on an <strong>8GB GPU</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xebdzl/8_gb_gpu_262k_context_35_bpw_qwenflashnext_coder/">r/LocalLLaMA</a>). Meanwhile, the Lean-QwenFlash project runs the 125B Qwen3.8-Flash-Next at ~20 tok/s on just 16GB VRAM + 8GB RAM by offloading directly to NVMe (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xev6bo/leanqwenflash_qwen38flashnext_125b_running_at_20/">r/LocalLLaMA</a>), and Strata/Basalt claims 250 tok/s generation and 5,600 tok/s prompt processing with Qwen3.8 Flash Next IQ3_S on 16GB VRAM + 55GB RAM (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xesda1/benchmark_stratabasalt_runs_qwen38_flash_next_iq3/">r/LocalLLaMA</a>). All community-reported, but the trend is unmistakable: 125B-class models are becoming laptop-adjacent.</p>
+<p><strong>Apple Silicon keeps getting better at local inference.</strong> ANEMLL Forge 0.2.1 brings Qwen3.8-27B to the M6 Mac Mini's Neural Engine with up to 192K context on 32GB systems: INT8 KV cache halves memory, and decode runs 35–62 tok/s on JSON, 18–32 on code, 10–17 on prose (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xejv61/m6_mac_mini_owners_32gb_now_you_can_run_qwen3827b/">r/LocalLLaMA</a>). If you're on Apple silicon, this is the first credible ANE path to a 27B-class model with real context.</p>
+<p><strong>Meta is experimenting with byte-level models that skip tokenizers.</strong> Small models trained on raw bytes start out worse than token-based counterparts, but the paper predicts they end up better (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xe88ja/meta_trained_small_ai_models_to_read_raw_bytes/">r/LocalLLaMA</a>). Tokenizer-free models would be a quiet revolution for local LLMs — smaller vocab tables, no tokenization edge cases, better multilingual performance.</p>
+<p><strong>A consumer-GPU unlock tool claims up to 2× prefill speedup on RTX 30/40.</strong> Inspired by the CMP170HX mining-card trick, the tool reportedly doubles compute on RTX 30 and RTX 40 cards for LLM workloads — and prices are already surging (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xelhpj/cmp170hx_inspiration_unlocks_30x40x_also_up_to_2x/">r/LocalLLaMA</a>). Hardware-adjacent, but if you're running local inference on a 3090/4090, this could be the cheapest speedup available.</p>
+<p><strong>KLD cannot rank quantized models, and the GSQ-RCO 2-bit DeepSeek claims deserve skepticism.</strong> r/LocalLLaMA pushes back on treating KLD as a holy metric: it measures distribution divergence from the base model, not quality (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xeim3m/kld_is_misunderstood/">r/LocalLLaMA</a>). The trigger: ISTA's GSQ-RCO 2-bit DeepSeek-V4.1-Flash reportedly scores identically to the base model — a result that's too clean until independently reproduced (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xes5x0/too_good_to_be_true_istas_gsqrco_2bit/">r/LocalLLaMA</a>).</p>
+<p><strong>OpenAI and Anthropic both refused to help with a smart-TV reverse-engineering agent.</strong> The REA ("Reverse Engineer Anything") project was blocked by Claude a day after launch, fueling the "time for the pebbles to own the weights" argument for local models (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xer30z/openai_and_anthropic_blocked_the_reverse/">r/LocalLLaMA</a>). Community members are already asking for small local models that won't refuse RE work (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xeipmm/small_model_good_for_reverse_engineering_that_can/">r/LocalLLaMA</a>) — a reminder that provider guardrails keep pulling capability-sensitive workloads toward open weights.</p>
+<p><strong>Small language models: GPT-X3-150M takes #1 on the Open SLM Leaderboard.</strong> The 150M-parameter model dethroned HuggingFace's SmolLM2-135M using a GDN2/GQA hybrid (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xerxtr/gptx3150m_takes_1_on_the_open_slm_leaderboard/">r/LocalLLaMA</a>). Marginal for daily work, but worth watching if you build tiny on-device assistants.</p>
+<p><strong>Roundup channels are buzzing about Gemini 4 Carbon and Claude Duet.</strong> Your AI Guy frames Gemini 4 Carbon as potentially "Opus 5.5-level," and AI Search covers Claude Duet as a news item (<a href="https://www.youtube.com/watch?v=2Nmeb04xEy0">Your AI Guy</a>; <a href="https://www.youtube.com/watch?v=EfyQOAJjx1A">AI Search</a>). These come from video roundups, not official announcements — treat as unverified buzz until Anthropic or Google confirms.</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>1. <a href="https://www.youtube.com/watch?v=zPh_FtDbNzs">The Fast Local Coding AI We Waited For? (Flint)</a></strong> — Cloud Codes, 9.8 min. Dissected because local coding speed claims deserve scrutiny and this one gets it:</p>
+<ul>
+<li>Flint is Recursive's open-weight coding model, built from scratch in four months, claiming 125+ tok/s on an M4 Pro MacBook Pro.</li>
+<li>Cloud Codes checks the math against Apple's memory-bus specs — it checks out — then digs into the architecture behind the speed (the usual local-coding tradeoffs apply).</li>
+<li>Community counterpoint: KRAFTON's <a href="https://huggingface.co/KRAFTON/Raon-1-mini-preview-gguf">Raon-1-mini-preview-gguf</a> is already being hyped as "hundreds of times better" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xehs52/raon_is_better_than_flint/">r/LocalLLaMA</a>). Benchmark both before adopting either.</li>
+</ul>
+<p><strong>2. <a href="https://www.youtube.com/watch?v=DH8tdVMySlo">Should You Switch from Opus 5.5 to Kimi K3.1 Pro?</a></strong> — Cloud Codes, 2.1 min. A 2-minute reality check on vendor marketing:</p>
+<ul>
+<li>Atomic Agent ran both models through the same real-world coding benchmark: a buggy Python package with five planted bugs, missing features, and 32 hidden evaluation tests across three runs.</li>
+<li>Both models passed every hidden test — 100% — so the switch argument becomes economic (Kimi at roughly half Opus 5.5's per-token price), not capability-based.</li>
+<li>The methodology is concrete, but it's one benchmark; treat the "half the price" claim as Moonshot's number until you test your own workloads.</li>
+</ul>
+<p><strong>3. <a href="https://www.youtube.com/watch?v=d2ShJhqjqcM">GitHub Trending Weekly #55</a></strong> — Github Awesome, 15.25 min. A 35-project OSS roundup that would've made the playlist but for the 60-minute cap:</p>
+<ul>
+<li>This week's leading entries include <a href="https://github.com/t4t5/owly">owly</a>, <a href="https://github.com/ai-job-search-dev/ai-job-search">ai-job-search</a>, <a href="https://github.com/oxc-project/tsrs">tsrs</a>, and new-term-radar — plus dev-null.sh, laya, reylo, openterminal, and onkey further down the list.</li>
+<li>The <a href="https://githubawesome.com/github-trending-weekly-55/">text version</a> is faster than the video if you just want the links and one-line descriptions.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/Tarekbenm/pau-fc-football-performance-intelligence">pau-fc-football-performance-intelligence</a> — End-to-end football analytics built on Python, PostgreSQL, dbt Core, Power BI, and GitHub Actions. A clean reference for dbt-Core-without-a-warehouse, especially the GitHub Actions orchestration and test patterns.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/alphaparkinc/genpark-distributed-id-snowflake-generator-skill">genpark-distributed-id-snowflake-generator-skill</a> — 64-bit, Snowflake-compatible distributed ID generator with clock-backwards drift protection. Yes, it's the Twitter-snowflake pattern, not the data warehouse — but it's a solid drop-in for ingestion pipelines that need ordered, collision-free keys.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://huggingface.co/KRAFTON/Raon-1-mini-preview-gguf">KRAFTON/Raon-1-mini-preview-gguf</a> — KRAFTON's local coding-model preview in GGUF. The "better than Flint" claim is hyperbolic, but it's a new open-weight coding option worth a benchmark run (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xehs52/raon_is_better_than_flint/">r/LocalLLaMA</a>).</li>
+<li><a href="https://www.reddit.com/r/LocalLLaMA/comments/1xe8x9c/abliteratedoutthebox_strata_announcement/">AbliteratedOutTheBox (Strata branch)</a> — Inference-time abliteration engine, now ported to Strata as a llama.cpp fork. Gives you abliterated-model behavior without fine-tuning or massive VRAM — directly relevant for local RE/security work.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/Mattlo0546/Agentcomplete">Agentcomplete</a> — Ghost-text autocomplete and clarifying questions for Codex prompts, grounded in a pgvector knowledge base built with Gemini, Tiger Data, and Snowflake. Interesting pattern for making agent UIs feel less like a blank text box.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/ai-job-search-dev/ai-job-search">ai-job-search</a> — AI-powered job-search tooling, featured in GitHub Trending Weekly #55.</li>
+<li><a href="https://github.com/t4t5/owly">owly</a> — Lead entry in this week's GitHub Trending roundup.</li>
+<li><a href="https://github.com/oxc-project/tsrs">tsrs</a> — New project from the oxc tooling family, in this week's trending list.</li>
+<li><a href="https://github.com/lnetto/elastic-ingest-splunk-forwarders">elastic-ingest-splunk-forwarders</a> — Elasticsearch plugin that ingests Splunk universal/heavy forwarder data over HTTP, including on Elastic Cloud.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-10-24.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-10-24</span></a><a class="pager-link pager-next" href="2026-10-25-weekly.html"><span class="mono dim">Newer</span><span>Weekly Signal — 2026-10-25</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
