@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-01</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">01 Nov 2026</span>
+        <span class="badge badge-daily">daily</span>
+        <span class="mono dim">5 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.009</span>
+      </div>
+      <h1>Daily Signal — 2026-11-01</h1>
+      <h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p>Snowflake’s release-note index shows <strong>Cortex Training (Preview)</strong> dated Oct 30, 2026 (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/new-features">3</a></sup>). That’s the only primary-source Snowflake item in the last 24 hours, and it’s a signal that Snowflake keeps pulling AI model lifecycle work (training/fine-tuning) into Cortex. From an engineering perspective, watch for how it integrates with Cortex Code and dbt pipelines — if custom models can be trained on governed Snowflake data without export, that changes the “enterprise LLM” planning conversation. No dbt release notes or dedicated Cortex Code updates appeared in the window.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today’s Watchlist</summary>
+<ol>
+<li>
+<p><a href="https://www.youtube.com/watch?v=IGICYFyP_EI">AI finally sleeps, Gemini 4 Carbon, ETH cracked, energy-based models, Anthropic IPO: AI NEWS</a> — AI Search · 54 min<br />
+   The broadest roundup of the day, covering multiple model releases and research stories in one sitting — exactly the kind of video to start with. The uploader highlights OpenAI math breakthroughs, Mistral Large 4, Haiku 5.5, Iris 3B, Gemini 4 Carbon, and an Anthropic IPO item; treat the specifics as second-hand until you click through to the linked papers or posts.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=lvDkQEUssK4">Sam Altman Thinks Your Local AI Is a Waste</a> — Cloud Codes · 2 min<br />
+   A short, timely counterpoint: Altman calls local AI “quite terrible” and argues DRAM in personal computers is “used 5% of the time,” while OpenAI simultaneously ships gpt-oss-20b, an open-weight model designed to fit into 16GB of home-PC memory. It’s the day’s best local-inference talking point in under three minutes.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=A_EUKs9gfpk">Brain Cells Made This AI 5x Faster. Or Did They?</a> — Cloud Codes · 2 min<br />
+   A quick debunk of TBC’s “mischief 1” biological-computing video model. According to TBC’s own press release, the neurons stay in the lab; the API actually runs Wan 2.2 (an open-weight video model) plus a small software adapter. Useful for keeping the open-weight model discourse honest.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<p>No single verified “big bang” story from primary sources today — no confirmed frontier-model launch or acquisition — but the open-weight and LLM-ops front has plenty of signal.</p>
+<p><strong>Betelgeuse is making quantised MoEs viable on sub-$1,000 hardware.</strong> Two LocalLLaMA threads report running Qwen 3.8 Flash Next at 22 tok/s sustained (spiking to 48 tok/s) on an RTX 3060 12GB + 16GB DDR4 RAM with 100% bit-exact output (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xk8s6z/betelgeuse_running_qwen_38_flash_next_at_22_toks/">thread</a>), and IQ4_XS at 24 tok/s on dual-channel DDR4 with 0 dropped experts and byte-exact output (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xkh2ns/betelgeuse_running_qwen_38_flash_next_iq4_xs_at/">thread</a>). This is the “reduce VRAM/memory requirements” story in action: memory-bound MoE inference is moving from exotic to commodity.</p>
+<p><strong>Multi-model agent workflow beats a frontier model on a coding benchmark.</strong> Memdoor’s team-solve workflow uses five Qwen3.8-27B instances and claims a win over Fable 5 on LiveCodeBench Hard (<a href="https://github.com/guregodevo/memdoor/tree/main/examples/workflows/team-solve">GitHub</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xkxt7a/memdoor_a_team_of_5_qwen3827b_models_beats_fable/">discussion</a>). The pattern — multiple smaller open-weight models collaborating — is worth copying if you’re building agentic coding loops on local models.</p>
+<p><strong>Qwen 3.8 Flash Next: strong coder, uneven researcher.</strong> One user reports QFN handles coding and OSS-repo tasks well but “gets lost in its own maze” on general research (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xkjrdl/please_tell_me_qwen38flashnext_can_be_made_to_be/">thread</a>); another praises Qwen 3.8 27B’s chat/character style compared to cloud assistants (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xkngat/1_for_qwen_27bs_characterchat_style/">thread</a>). Both are anecdotes, but they align with the emerging split between strong coding and more brittle open-ended reasoning in this generation.</p>
+<p><strong>NVIDIA released Nemotron 3.5 Bolt E4B, a 4GB post-trained Gemma 4 E4B.</strong> The LocalLLaMA post says Bolt E4B builds on Gemma 4 E4B with Nemotron post-training, targeting voice/device assistants, interactive characters, and robotic/IoT interfaces on RTX, Jetson, RTX Spark, and DGX Spark, with claims of ~40% higher average quality and up to ~80% fewer output tokens vs peers (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xkcdlz/nvidia_nemotron_35_bolt_e4b_4gb_posttrained_gemma/">Reddit</a>). For edge local inference, this is a small-model release to add to the comparison list.</p>
+<p><strong>Groot 280B-A16B and 19B-A3B appeared on Hugging Face.</strong> The GrootTeam publishes Groot-280B-A16B-261023 as “best model under 500b params,” plus smaller variants like Groot-19B-A3B-261023 (<a href="https://huggingface.co/GrootTeam/Groot-280B-A16B-261023">HF 280B</a>, <a href="https://huggingface.co/GrootTeam/Groot-19B-A3B-261023">HF 19B</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xkge1s/im_groot/">discussion</a>). Keep the benchmark claims in the “vendor marketing” bucket until reproduced.</p>
+<p><strong>ChatGPT’s HTML previews had an account-takeover bug.</strong> Parameter Labs describes an exploit against ChatGPT’s artifacts-style “HTML previews” (<a href="https://www.parameter.ai/labs/we-found-a-gap-at-openai">Parameter Labs</a>, <a href="https://simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts/">Simon Willison</a>). The lesson for LLM tool builders: AI-generated interactive HTML inherits classic web-app attack surface (XSS, DOM clobbering), and sandboxing previews is a security control, not a nice-to-have.</p>
+<p><strong>datasette-llm 0.1a9.</strong> The plugin now picks up the default model from Simon Willison’s LLM tool, making Datasette Agent easier to point at local or hosted models (<a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a9">release</a>, <a href="https://simonwillison.net/2026/Oct/31/datasette-llm/">Willison</a>). Small, but useful for anyone wiring local LLMs into data exploration workflows.</p>
+<p><strong>Bio/domain-model data is becoming a training-data commodity.</strong> FineDNA bills itself as the largest dataset to teach any LLM DNA via midtraining/SFT/RL (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xkwvwg/finedna_the_largest_dataset_to_teach_any_llm_dna/">Reddit</a>), and a separate post claims a tiny 109M-parameter model outperforms models up to 72B on image-text alignment using 42x less training data (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xkzony/new_research_a_tiny_109mparameter_model/">Reddit</a>). Both are worth a skim if you care about efficiency and domain adaptation, but neither has enough primary-source detail in the material to act on yet.</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>Best Budget GPU for Local AI Right Now</strong> — <a href="https://www.youtube.com/watch?v=ln_TXcPTde0">Cloud Codes</a>, 20 min. It didn’t make the playlist because it’s a deep-dive buyer’s guide, but for anyone building a local rig it’s the most actionable hardware piece of the day.</p>
+<ul>
+<li>Marketplace data suggests budget cards like RTX 3060/4060 got cheaper while only 16GB+ VRAM cards (e.g. RTX 5090) spiked past $5,000.</li>
+<li>The $500-$1,000 buying zone remains viable; the video audits RTX 3060, 4060, 5060 Ti, RX 7800 XT, Arc Pro B60, and used RTX 3090 community benchmarks.</li>
+<li>If you’re going local mainly for LLMs, VRAM capacity is what’s pricing up — choose your bandwidth target before picking a card.</li>
+</ul>
+<p><strong>China Just Built a FREE Claude Opus 5.5 Rival!</strong> — <a href="https://www.youtube.com/watch?v=9SzLb_f4n_k">Your AI Guy</a>, 14 min.</p>
+<ul>
+<li>The video claims Kimi K3.1 Pro is a serious competitor to Claude Opus 5.5 and part of a wave of powerful, affordable Chinese models.</li>
+<li>There’s no direct benchmark link in the description, so file this under <strong>unverified</strong> until independent evals land.</li>
+<li>If true, it reinforces the pattern of frontier-competitive capabilities arriving in cheaper / open-weight tiers.</li>
+</ul>
+<p><strong>GPT and Claude Agents Just Started an AI Civilization War</strong> — <a href="https://www.youtube.com/watch?v=l1L9sezAcxc">AI Revolution</a>, 13 min.</p>
+<ul>
+<li>GPT won 12 of 16 agent-vs-agent battles against Claude; the swarms developed rival strategies, picked leaders, and studied game source code for an edge.</li>
+<li>A separate 50-GPT-agent “civilization” experiment produced endless bureaucracy rather than thriving.</li>
+<li>Gemini 4 agents beat Minecraft after 605 deaths — a useful data point for agent persistence and exploration debates.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/chouaibmouidis-py/DBT_project">chouaibmouidis-py/DBT_project</a></strong> — a minimal “dbt for Analytics &amp; Engineering” repo; handy as a quick starter layout reference, though it’s early-stage.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong><a href="https://github.com/thunter/snowstate">thunter/snowstate</a></strong> — a Terraform/OpenTofu state backend that stores state in Snowflake. If your infrastructure record and data platform are converging, this is a neat pattern to keep an eye on.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/Nightdalefaun/resocket-mod-llm-chatter">Nightdalefaun/resocket-mod-llm-chatter</a></strong> — multi-provider local/cloud LLM chat integration for JainaCore 3.3.5a with semantic caching. Niche, but a good example of wiring local LLMs into an existing app with a cache layer.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/wanghao-SunSky/cs329z-chinese">wanghao-SunSky/cs329z-chinese</a></strong> — Stanford CS329Z Engineering AI Agents course notes in Chinese: 19 lectures, 4 practicals, covering LLM, RAG, tool calling, memory, multi-agent, evals, and safety. Great structured refresher and useful for non-native-English teammates.</li>
+<li><strong><a href="https://github.com/aa1143/NamiAgent">aa1143/NamiAgent</a></strong> — a zero-foundation AI Agent tutorial that doubles as a runnable local agent: file read/write, command execution, MCP, long-term memory, and a web UI, starting from a 100-line loop and building toward Claude Code/Codex-style agents.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li><a href="https://github.com/RestraintJounin/Datadog-Desktop-2026">RestraintJounin/Datadog-Desktop-2026</a> — a 1-star repo promising “Datadog 2026 | No License Limits”; looks like a cracked-tool or ad repo and is worth ignoring.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-10-31.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-10-31</span></a><a class="pager-link pager-next" href="2026-11-01-weekly.html"><span class="mono dim">Newer</span><span>Weekly Signal — 2026-11-01</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today’s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
