@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-02</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">02 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">7 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.012</span>
+      </div>
+      <h1>Daily Signal — 2026-11-02</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Snowflake Cortex Training hits preview — governed fine-tuning for open-weight models lands inside the warehouse</strong></p>
+<p>Snowflake's October 30 release notes (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">1</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/10_40">5</a></sup>) quietly dropped one of the more consequential additions to the platform this quarter: <strong>Cortex Training is now in preview</strong>. It's a serverless service for customizing open-weight LLMs, and the key architectural detail is that Snowflake takes on the GPU work — forward/backward passes, optimizer steps, and generation — while your training data stays inside Snowflake. For anyone who has been stitching together GPU VMs, weight checkpoints, and governed data pipelines, this collapses the custom-model workflow into the platform that already holds your data.</p>
+<p>Why this matters for you: it's the first time Snowflake is offering a first-party path from governed warehouse data to a fine-tuned open-weight model, which is a direct threat to the "export data → fine-tune on an external GPU cloud → serve via a vendor API" pattern. It also signals where Snowflake's open-weight strategy is heading — customization of open models, not just prompt-serving them.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ul>
+<li><strong>Pilot small and narrow.</strong> Preview features change fast. Pick a compact open-weight model and a high-signal dataset where your RAG/prompt baseline is measurably failing, and validate quality uplift before committing to larger training runs.</li>
+<li><strong>Lean into the governance angle.</strong> Because training data never leaves Snowflake, you can pair fine-tuning with existing masking, row-level security, and access controls — a strong story if your org is sensitive about data leaving the platform for model work.</li>
+<li><strong>Treat it as an evaluation workflow, not just a training button.</strong> Since Snowflake handles generation during training, you can set up eval loops that compare base vs. fine-tuned model outputs on the same governed tables, which is exactly the kind of evidence you'll want before rolling a custom model into production.</li>
+</ul>
+<p>Elsewhere in your stack: no dbt releases and no Cortex Code / CoCo / CoWork news landed in the last 24 hours — the open-weight action below is where the day's density is.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p>**<a href="https://www.youtube.com/watch?v=yjj4Jwcmt68">GitHub Trending monthly #12 (2026.10)** — Github Awesome — 15 min</a><br />
+   The closest thing to a one-sitting "state of open source" digest: 35 projects that caught developer attention in October, all in one compilation. It surfaced DeepInfer from deepseek-ai and clean-up tools like cleanyourtv, making it a useful scanner for repo ideas before you start digging through GitHub yourself. The format is exactly the broad roundup that works for a daily skim.</p>
+</li>
+<li>
+<p>**<a href="https://www.youtube.com/watch?v=-Dcrzjg3yRw">HUGE GPT-6.2 BEL LEAK?! Opus 6 &amp; Gemini 4 Carbon First Look!** — Your AI Guy — 14.7 min</a><br />
+   A single-serving tour of the frontier-model rumor mill: OpenAI's reported GPT-6.2 BEL, Anthropic's Opus 6, Google's Gemini 4 Carbon, and a mention of Claude Fable 5.5. Everything here is leak-tier and <strong>unverified</strong>, so treat it as narrative context rather than fact — but it's a compact way to track where the provider landscape is heading and what might be coming to APIs you build on.</p>
+</li>
+<li>
+<p>**<a href="https://www.youtube.com/watch?v=w48AF0xgWQY">Build This Local AI Kit Before the Internet Goes Down** — Devsplainers — 12.6 min</a><br />
+   An opinionated, one-pick-per-job offline AI kit: Qwen 3.8 27B for chat and coding (plus an uncensored copy for when stock refuses), ComfyUI with FLUX 3 Klein for images, and the whole thing organized onto a single 250GB drive for a 24GB laptop. It's a concrete shopping list for a genuinely local setup, and it doubles as a snapshot of what the current open-weight stack looks like when you're forced offline.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>Big open-weight models are getting practical on old consumer GPUs.</strong> One r/LocalLLaMA user reports running DeepSeek-V4.1-Flash-1017 at 35 tok/s decode and Qwen3.8-Flash-Next at 130 tok/s on a single RTX 3090Ti with 128GB system RAM — a reminder that MoE architectures plus large DRAM have shifted what "consumer hardware" can serve (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xlec67/getting_incredible_results_with_a_single_rtx/">thread</a>). This is exactly the "reducing VRAM/memory requirements" trend to keep an eye on.</p>
+</li>
+<li>
+<p><strong>Speed tricks are multiplying for models that don't fit in VRAM.</strong> A new llama.cpp patch set called tandem.cpp claims Qwen3.8-Flash-Next at 97 tok/s on a single 4090 + 64GB RAM — roughly 3.3× stock llama.cpp — by keeping hot experts on the GPU and letting the CPU handle the rest, for any MoE model (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xldent/tandemcpp_qwen38flashnext_at_97_toks_on_a_single/">thread</a>). Separately, users report that disabling multi-token prediction (MTP) can improve throughput 20–30% when the model is much larger than VRAM (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xlsd4v/if_you_are_using_big_model_compared_to_ram_try/">thread</a>). And if you want the extreme version, AirLLM streams layers through memory to run 400B+ models on a 4GB laptop — useful to know the technique exists, even if speed is the trade-off (<a href="https://www.youtube.com/watch?v=tqpar1iyxiU">video</a>).</p>
+</li>
+<li>
+<p><strong>A cluster of new open-weight releases landed overnight.</strong> JetBrains put out Mellum2.1-12B-A2.5B-Thinking-MTP, a 12B MoE thinking model with ~2.5B active parameters and multi-token prediction (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xln8f2/jetbrainsmellum2112ba25bthinkingmtp_hugging_face/">discussion</a>). SenseNova released SenseNova-Loop-9B-Preview (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xlw9v4/sensenovasensenovaloop9bpreview_hugging_face/">discussion</a>), and a tiny 4B model called GLB-3D-Coder can generate 3D assets for Godot and other game engines (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xlh0zw/glb3dcoder_a_tiny_4b_coding_model_that_creates_3d/">discussion</a>). Worth watching the 12B-class thinking MoE tier in particular — that's the sweet spot for local agent workloads.</p>
+</li>
+<li>
+<p><strong>The community is pushing back on tok/s culture with quality evals.</strong> A popular thread compares local quants against Claude on 9 real bugs, finding the gap narrower than raw benchmark scores suggest (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xlwpqv/not_another_toks_post_local_quants_vs_claude_on_9/">thread</a>). Another proposes a community-driven private-benchmark movement for tracking quality across quantizations, rather than endless speed posts (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xlusil/proposal_a_community_revolution_for_private/">thread</a>). If you're choosing models for internal tooling, these are the discussions worth mining.</p>
+</li>
+<li>
+<p><strong>LFM3 Omni 2B runs in the browser, and it's impressive.</strong> Liquid AI's 2B omni model is being shown off on WebGPU, including an in-browser local AI avatar demo ("Ava") — the "runs on a normal computer" bar keeps dropping (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xlk2kb/lfm3_omni_2b_is_incredible/">LFM3 thread</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xl9577/meet_ava_inbrowser_local_ai_avatar_with_lfm3omni/">Ava thread</a>).</p>
+</li>
+<li>
+<p><strong>Google sent Gemma 4 into space.</strong> Per AI Revolution, Google put Gemma 4 on an orbiting TPU and it answered back, under a project called Suncatcher aimed at solar-powered, laser-linked satellite data centers — with heat, radiation, and launch costs as the stated challenges, and Nvidia already having chips in orbit. Unverified reporting from a YouTube analysis channel, but the "AI in orbit" angle is worth a skim for the hardware trajectory (<a href="https://www.youtube.com/watch?v=uDXHEheA9-A">video</a>).</p>
+</li>
+<li>
+<p><strong>China's AI market is being framed as a bubble warning.</strong> Tech Unfiltered argues China's AI industry — massive investment, intense competition, rising costs, weak profitability — may be a leading indicator for the global AI correction (<a href="https://www.youtube.com/watch?v=okQLL6UDu24">video</a>). Treat it as macro context, not investment advice.</p>
+</li>
+<li>
+<p><strong>Practical Python note from Simon Willison:</strong> if you're on Python 3.15 and hitting confusing dependency errors, delete the <code>uv.lock</code> file first — locked versions from <code>uv run</code> invocations can cause mysterious breakage in library projects (<a href="https://simonwillison.net/2026/Nov/1/delete-uv-lock-first/">source</a>).</p>
+</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li>**<a href="https://www.youtube.com/watch?v=MMTPiO_0vxI">Your AI Coding Agent Is Slowly Rotting Your Code** — Cloud Codes</a></li>
+<li>SlopCodeBench evaluates models on evolving, multi-checkpoint projects rather than isolated one-off snippets — and the results are sobering: Claude Opus 5.5 at medium reasoning implemented the requested feature on 145/196 checkpoints but kept the overall application strictly working on only 28.</li>
+<li>The takeaway for your agent workflows: verify whole-repo health (build, tests, type checks) after every agent merge, not just the feature test the agent claims to pass.</li>
+<li>
+<p>This is the kind of eval to track when you're choosing coding-agent models or reasoning-effort settings.</p>
+</li>
+<li>
+<p>**<a href="https://www.youtube.com/watch?v=Esl7LrMr19g">The 2 Bit DeepSeek Everyone Downloaded Isn't Lossless** — Cloud Codes</a></p>
+</li>
+<li>ISTA-DASLab's 2-bit GGUF of DeepSeek-V4.1-Flash-1017 (IQ2_XXS, ~249GB) went viral with 2M+ downloads and a claimed perfect 100.00 on AIME 2025 — but Unsloth's retest couldn't reproduce it.</li>
+<li>Under multi-sample testing (16 answers per question across all 30 questions), the 2-bit build scored 95.21 against the unquantized baseline — a big gap hidden by single-pass evaluation.</li>
+<li>
+<p>Lesson: for quantization claims, insist on multi-sample evals at temperature. Viral "perfect score" quants deserve exactly this kind of skepticism.</p>
+</li>
+<li>
+<p>**<a href="https://www.youtube.com/watch?v=YVB2L0LYZ-0">DeepSeek's God of All Harnesses** — Cloud Codes</a></p>
+</li>
+<li>DeepSeek's Super-Agent (dsh-superagent) is an autonomous agent framework that watches team chats, test failures, and GitHub issues, writes fixes in the background, and opens PRs without ever being @-mentioned.</li>
+<li>The video digs into the harder question: how does it decide when to act unprompted, and how the router works — the part headlines skip.</li>
+<li>Context worth holding: the claim "more than doubles developer efficiency" needs to be weighed against the single-developer bottleneck of juggling only 3–5 concurrent AI coding sessions before human attention caps out.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li>**<a href="https://github.com/modelflare-ai/AnyModelBot">modelflare-ai/AnyModelBot** (1,272★)</a> — An open-source, local-first alternative to Grok Bot / OpenAI dots / Claude Duet, letting you run AI bots on GPT, Claude, Gemini, Grok, DeepSeek, Kimi, GLM and 70+ models through one key, with reach into WeChat and Feishu. Interesting if you want a self-hosted bot layer that isn't tied to one provider.</li>
+<li>**<a href="https://github.com/Balanov/uncut">Balanov/uncut** (528★)</a> — A "lossless" headless coding-agent harness: one 7MB static binary, four tools, plain stdin/stdout, no silent cuts. The "no silent cuts" property is the standout for anyone who's watched an agent quietly drop context or actions.</li>
+<li>**<a href="https://github.com/noah-thing/open-cursor">noah-thing/open-cursor** (23★)</a> — An open-source Cursor alternative that runs on your own API key, your Claude Code/Codex plan, or local models. Early-stage, but a useful escape hatch if editor-AI vendor lock-in is on your radar.</li>
+</ul>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li>**<a href="https://github.com/atgreen/cl-jdbc">atgreen/cl-jdbc** (3★)</a> — A native Common Lisp JDBC bridge covering Snowflake, Trino, Postgres, SQL Server, and more, plus a cl-dbi driver. Niche — you'd only care if you live in Lisp — but it's the only Snowflake-adjacent repo in today's batch.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/FareedKhan-dev/ontology-driven-observability">FareedKhan-dev/ontology-driven-observability</a> — Netflix's ontology-driven observability design, rebuilt on 1.9B rows of real operations data and tested claim-by-claim; directly relevant to data observability.</li>
+<li><a href="https://github.com/dizzi1222/dbtui.nvim">dizzi1222/dbtui.nvim</a> — A project-aware PostgreSQL and MongoDB TUI launcher for Neovim. Despite the name, this is <strong>not</strong> dbt-related — it's a database-tools launcher.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-01-weekly.html"><span class="mono dim">Older</span><span>Weekly Signal — 2026-11-01</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
