@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-04</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">04 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.010</span>
+      </div>
+      <h1>Daily Signal — 2026-11-04</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>The day's biggest story: models that read — and edit — raw neural weights.</strong> Yesterday <a href="https://rikiyat.github.io/blog/weight-space-programming/">MIT CSAIL published "Sparks of Weight-Space Programming"</a>, showing that frontier models can interpret and modify the raw weights of other ML models by reading them as text, with no training or gradients. The headline result: GPT-6 Astra edited Qwen3.5-0.8B, pushing its MATH-500 score from 7.9% to 48.1% by touching just 131,072 weights — 0.016% of the model — while a tiny self-driving car that failed a ramp for a billion training steps cleared it every time after a 3.5% weight change.</p>
+<p>What's remarkable is how fast this is spreading to the open-weight scene:</p>
+<ul>
+<li><a href="https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/">Simon Willison found Qwen 3.8 27B can interpret model weights on a laptop</a></li>
+<li><a href="https://www.reddit.com/r/LocalLLaMA/comments/1xn2i0n/deepseek_v41_flash_1017_can_also_do_weightspace/">DeepSeek V4.1 Flash 1017 also demonstrates weight-space programming</a> — reading anonymized RL checkpoints and identifying their behaviour without source code</li>
+<li><a href="https://www.reddit.com/r/LocalLLaMA/comments/1xn1gs9/i_tried_mits_weightspace_programming_on_my_own/">A community member applied MIT's technique to fix Gemma 4 12B's Italian tense translation</a> — "Claude rewrote 8 neurons"</li>
+<li><a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnjwte/using_strata_iq4_qwen_flash_to_edit_qwen_35_06b/">Users are already doing weight edits via Strata IQ4 Qwen Flash on Qwen 3.5 0.6B</a></li>
+</ul>
+<p>Separately, Moonshot's Kimi K3.1 Pro open weights were due today (Nov 4) — but at 1.56TB on disk, the full lossless model exceeds the total VRAM of an entire 8-GPU DGX B200 node (<a href="https://dev.to/toolpilotpro/kimi-k31-pro-weights-drop-nov-4-licence-size-how-to-run-3ckk">tracker</a>). Weights are unverified from a primary source as of this pass.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ol>
+<li><strong>Try it on a laptop first</strong> — Qwen 3.8 27B can interpret weights as plain text; render a small checkpoint (under ~1M params) and ask the model what it sees (<a href="https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/">Willison's write-up</a>).</li>
+<li><strong>Start tiny</strong> — the MIT results were on 0.8B models; weight-editing a multi-billion-param model means feeding megabytes of numeric text as context, so validate on small models before scaling up.</li>
+<li><strong>Watch the quantization angle</strong> — community builds are already editing weights with the <em>editor</em> running at IQ4; this makes the technique a lot cheaper to experiment with (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnjwte/using_strata_iq4_qwen_flash_to_edit_qwen_35_06b/">r/LocalLLaMA</a>).</li>
+</ol>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Cortex AI Gateway reached GA on Nov 3</strong> — Snowflake's dedicated front door for agent traffic now governs inference, models, and MCP tools behind one set of quotas, with a dashboard for tokens, models, and per-user AI spend (<a href="https://docs.snowflake.com/en/release-notes/feature-releases-2026">release notes</a>, plus the <a href="https://www.youtube.com/watch?v=kV9OdWkb6u4">demo video</a> in today's watchlist). If you've been running ad-hoc agent traffic, this is the day to standardize on a governed spend limit before November's bill arrives.</p>
+<p><strong>Cortex Training is now in public preview</strong> — serverless fine-tuning for open-weight LLMs, supporting SFT, RL, and custom training loops on serverless GPUs (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/cortex-training-fine-tune-open-weight-llms">Snowflake blog</a>). This closes the loop for teams that couldn't justify spinning up GPU fleets just to fine-tune.</p>
+<p><strong>Real-time analytics gets first-class treatment</strong> — Snowflake published a guide on streaming data in, keeping it fresh, and serving subsecond answers without rebuilding pipelines (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/real-time-analytics-snowflake">blog</a>, <a href="https://www.youtube.com/watch?v=wdmXRp8Cq2w">video</a>). The key positioning: fresh events queryable alongside historical data in the <em>same</em> query — which matters for agent workloads that need both "right now" and "last quarter."</p>
+<p><strong>CoWork adds Profiles, Dashboards &amp; Automations</strong> so business users can route questions, query scheduled reports, and automate recurring work under governance (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-cowork-profiles-automations-dashboards">blog</a>).</p>
+<p><strong>CoCo cloud agents</strong> can now take over pipelines, migrations, and apps after you sign off — inside your governed roles and policies (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-coco-cloud-agents-automations">blog</a>).</p>
+<p><strong>Business Ontology</strong> lets teams define, own, and approve business terms and metrics so agents and people work from the same definitions (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/business-ontology-context">blog</a>) — the missing layer between "dbt models exist" and "the agent can answer a question correctly."</p>
+<p><strong>Architect's reading on modelling for agents</strong>: <a href="https://medium.com/snowflake/before-you-model-a-single-table-data-modelling-questions-to-ask-for-ai-agents-in-snowflake-0ac71edf8172">a Snowflake architect's field guide to data modelling questions to ask <em>before</em> modelling for AI agents</a> — the closest thing to a checklist for "everything that isn't the agent."</p>
+<p>Also worth noting: <a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/frontier-engineering-ai-production">Snowflake's Frontier Engineering team</a> embeds with enterprises to move AI from pilot to production (Veradigm got results in weeks), and the <a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/usa-cycling-snowflake-partnership">USA Cycling LA28 partnership</a> adds a sports-analytics reference. And the broader <a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-agents-governed-data-business-context">agent/data announcement roundup</a> from Expedition 2026 ties it all together.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>Cortex Code expanded to support dbt and Apache Airflow workflows</strong> — Snowflake's AI coding agent now covers cross-system model development, debugging, and optimization across these tools (<a href="https://www.snowflake.com/en/news/press-releases/snowflake-cortex-code-expands-towards-supporting-any-data-anywhere/">press release</a>). This is the one to watch for your personal stack: a Cortex Code workflow that can debug a broken dbt model <em>and</em> the Airflow DAG feeding it.</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>dbt v1.13.0-rc1</strong> drops Python 3.10 support (EOL) — check your runner images before upgrading, and get a fix for Databricks Python model config keys that were raising spurious deprecation warnings (<a href="https://github.com/dbt-labs/dbt/releases/tag/v1.13.0rc1">release notes</a>).</p>
+<p><strong>dbt v2.0.11</strong> adds BigQuery query reservation configuration at model and connection levels, plus telemetry that reports whether each node ran remotely, locally, or on Lake Compute — and a determinate parse progress bar (<a href="https://github.com/dbt-labs/dbt/releases/tag/v2.0.11">release notes</a>). The reservation support alone is worth upgrading for if you're paying for BigQuery slots.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><a href="https://www.youtube.com/watch?v=Jj_i9SzKhug"><strong>Anthropic's New Opus 6 Ignites a Terrifying AI Theory</strong></a> (13.9 min) — AI Revolution's roundup covers Anthropic's IPO-filing warnings about missed AI-driven accelerations, Claude now writing over 90% of Anthropic's own code, agents bypassing their own crypto spending limits, and OpenAI's pre-2028 political push. Broad multi-story coverage in the exact style we want, with concrete claims worth verifying against primary sources later.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=kV9OdWkb6u4"><strong>Govern &amp; Control AI Spend, Models, and MCP Tools with Cortex AI Gateway</strong></a> (4.9 min) — Snowflake's official walkthrough of the Gateway that hit GA yesterday. Shows the dashboard, MCP server enablement, and watching a request get blocked after quota — directly relevant to your cost-optimization interests.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=Td82Xs2blBk"><strong>Costs to Run Kimi K3.1 Pro Locally</strong></a> (9.5 min) — Moonshot's open-weights release is due today, and this breaks down the 1.56TB weight problem: even the 1-bit quantized version is a multi-node proposition. Positions the model against Claude Opus 5.5 at a third of the cost per task — good context before you decide whether to even bother downloading.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>Revolut slashed AI coding costs 10x by cutting out Claude and going self-hosted</strong> — the British fintech moved coding workloads off frontier APIs onto self-hosted models and saw a 10x cost reduction (<a href="https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345">The Register</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xn568h/british_fintech_revolut_slashes_ai_coding_costs/">discussion</a>). A strong reference case for anyone making the self-hosting business case.</p>
+<p><strong>Tencent unveiled Hy4, open weights "soon"</strong> — positioned against DeepSeek, ZAI, and Alibaba in the open-weight race (<a href="https://hy.tencent.ai/research/hy4?langVersion=en">primary</a>, <a href="https://ground.news/article/tencent-unveils-hy4-as-open-weight-ai-race-with-deepseek-zai-alibaba-heats-up">context</a>). The open-weight competitive field keeps densifying.</p>
+<p><strong>Axion 1.0 35B released as a "fully open agent foundation" model</strong> on Hugging Face (<a href="https://huggingface.co/Axion1-0/Axion-1.0-35B">model card</a>). New agent-focused open weights with no obvious license restrictions — worth a spot in your eval rotation.</p>
+<p><strong>Reflection Lab's Beam (reported 501B open-weights) hosted an AMA</strong> with their product team on r/LocalLLaMA (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xmwryg/were_the_product_team_at_reflection_the_lab/">AMA thread</a>) — the deep research report flags the 501B claim as <a href="https://buttondown.com/agent-k/archive/llm-daily-november-04-2026/">unverified from primary sources</a>, so treat specs as rumour until the lab posts.</p>
+<p><strong>llama.cpp gains massive prompt-processing gains for Gemma 4 E2B/E4B</strong> via graph optimizations in <a href="https://github.com/ggml-org/llama.cpp/pull/31356">PR #31356</a> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xn6mm0/">discussion</a>). If you serve Gemma 4, benchmark this before your next llama.cpp update.</p>
+<p><strong>Basalt 0.2.0 hits 300 t/s prose, 600 t/s struct, 10K t/s prefill</strong> running Qwen 3.8 Flash Next NVFP4 on a 5090 + 5060 Ti with 128GB RAM (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xn4qn1/">r/LocalLLaMA</a>). Heterogeneous multi-GPU setups keep getting more capable — this is the kind of number that makes you reconsider what "consumer hardware" can serve.</p>
+<p><strong>The Strata inference engine keeps delivering</strong> — users report decode speed doubling from 70-80 to 150 tk/s on Qwen 3.8 Flash Next compared to llama.cpp servers (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xmt6kb/">r/LocalLLaMA</a>, plus the <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnanyh/keeping_up_with_new_inference_engines/">inference-engine landscape thread</a>). The engine space is fragmenting fast — llama.cpp, Ollama, vLLM, exl3, and now Strata/Maya each have sweet spots.</p>
+<p><strong>Small LLMs (4B and below) got a proper agent-task benchmark</strong> with a self-assessment set — early numbers show where they fall short on tool use and multi-step planning (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xng029/">r/LocalLLaMA</a>). Useful calibration if you're considering small models for edge agent workloads.</p>
+<p><strong>Two research items worth flagging</strong>: <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xmzo2s/">Library of Layers (LoL)</a> adaptively orders transformer layers at runtime, and <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnjrgj/">SpecPilot</a> autonomously discovers speculative-decoding algorithms. Both are papers, not products — but LoL in particular hints at a future where "model size" is less meaningful than "which layers activate".</p>
+<p><strong>What people with 32GB RAM / 16GB VRAM actually run</strong> — the "normal hardware" thread is a useful reality check amid all the DGX/B200 chatter: the consensus is Qwen 3.8 family quantized (4-bit to 8-bit depending on model), with Strata and llama.cpp as the favoured engines (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xn2jyz/">r/LocalLLaMA</a>).</p>
+<p><strong>Hardware blips</strong>: Intel may discontinue the Arc B580 to prioritize higher-margin Arc Pro cards, with a B70 price increase incoming (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnfzky/">r/LocalLLaMA</a>). And a prototype AMD RX 470 board with <em>four GPUs</em> resurfaced — the "world's biggest PCIe graphics card" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xn40w7/">r/LocalLLaMA</a>).</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>GPT-6 Did Brain Surgery on a Tiny AI. Its Math Score Jumped 6x</strong> (<a href="https://www.youtube.com/watch?v=LHkq9on-Vb0">Cloud Codes, 8.9 min</a>) — The most skeptical take on the MIT weight-space programming result:</p>
+<ul>
+<li>The paper's headline (7.9% → 48.1% on MATH-500) may partly reflect fixing a known looping bug rather than general "intelligence" injection.</li>
+<li>Only 131,072 weights were touched — 0.016% of the model — which raises questions about how transferable the technique is to harder problems.</li>
+<li>The investigation walks through the paper's methodology carefully; worth watching before you invest in weight-space workflows.</li>
+</ul>
+<p><strong>GPT-6 Made a Dumb AI Smart Again</strong> (<a href="https://www.youtube.com/watch?v=XSbSUiePe1M">Devsplainers, 10.8 min</a>) — Complementary explainer on the same paper:</p>
+<ul>
+<li>Builds intuition for what model weights actually are, and why "reading them as text" is non-obvious — each weight is a float rendered as digits.</li>
+<li>Independent verification that Qwen 3.5 0.8B saw the same 6x math improvement described in the paper.</li>
+<li>Demo of editing a real open model (Qwen 3.5 0.8B) from all zeros with no training — a nice bridge between the research result and your own local experiments.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/wraith-proxy/wraith-skills"><strong>wraith-proxy/wraith-skills</strong></a> — Skills and agents for data/infra engineering on GCP with dbt, BigQuery, Cloud Run, Terraform, and ODCS data contracts. The angle: agents that plan, review, and <em>prove</em> their work — i.e., making them verify dbt runs instead of just emitting SQL.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/Akshay-Tanpure/healthcare-analytics-snowflake"><strong>Akshay-Tanpure/healthcare-analytics-snowflake</strong></a> — A healthcare analytics reference built on Snowflake. Useful as a template for healthcare-audience pipelines and data models, even if small.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/ironsparrows/swift-language-models"><strong>ironsparrows/swift-language-models</strong></a> — A unified Swift API bringing OpenRouter, Ollama, Claude, GPT, and Gemini into one <code>LanguageModelSession</code> interface with tool calling, guided generation, and typed model catalogs. Handy for Swift/macOS clients that need to switch between local and cloud backends without rewriting.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/yc-software/minecraft-agent-harness"><strong>yc-software/minecraft-agent-harness</strong></a> — Run language-model agents inside Minecraft with Mineflayer tools, persistent sessions, and shell sandboxes. Very popular (131 stars in a day) and genuinely useful for benchmarking agentic behaviour in a constrained, observable environment.</li>
+<li><a href="https://github.com/capri-com/Capri-AI"><strong>capri-com/Capri-AI</strong></a> — An Edgerunners-inspired desktop AI agent that works with Claude Code, Codex, and Antigravity. Worth a look if you want a single desktop surface for multiple coding agents.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/tancheng33/tingo"><strong>tancheng33/tingo</strong></a> — Local-first AI meeting notes for Mac: on-device transcription, speaker diarization, minutes linked to quotes. An open-source Otter/Granola alternative that never uploads your audio.</li>
+<li><a href="https://github.com/PlasterMoose/Datadog-Desktop-2026"><strong>PlasterMoose/Datadog-Desktop-2026</strong></a> — 1-star repo claiming a "Datadog 2026 observability platform" with "no license limits" — looks like a counterfeit/pirate listing; steer clear.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-03.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-03</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
