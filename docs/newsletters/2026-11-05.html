@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-05</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">05 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.010</span>
+      </div>
+      <h1>Daily Signal — 2026-11-05</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Kimi-K3.1-Pro is now open-weights.</strong> Moonshot AI has released Kimi-K3.1-Pro with open weights, giving the local-LLM community access to a model that was previously API-only (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnrhvb/kimik31pro_is_now_openweights/">Reddit</a>). The excitement comes with a caveat: a detailed analysis argues the K3.1 benchmarks are "benchmaxxed" — tuned to look far better on public evals than in real-world use (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnu6y1/kimi_k31_is_likely_benchmaxxed_with_some_proof/">Reddit</a>) — flagged here as an unverified claim. How to make the most of it: treat any published numbers as hype until you've run it against your own evals; pull the weights and benchmark it head-to-head against your current 27B-class default in llama.cpp or vLLM; and watch for community quant drops (Unsloth and the llama.cpp ecosystem usually have high-quality GGUFs within days of a release like this).</p>
+<p><strong>Snowflake's Cortex AI Gateway hits general availability.</strong> This is the biggest Snowflake release of the window (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-03-cortex-ai-gateway-ga">release notes</a>). The gateway accepts OpenAI Chat Completions and Anthropic Messages formats, adds full request tracing, and — crucially for the coming agent-heavy world — ships real spend controls: usage history, shared budgets, and per-user quotas. How to make the most of it: route every internal LLM call (including CoCo and Cortex Agent traffic) through the gateway so you get tracing as the audit trail; enforce per-user quotas before an agentic experiment runs wild; and use shared budgets per team to surface cost before the invoice lands.</p>
+<p><strong>llama.cpp v0.9.0 shipped, with FP8 quantization and a new KV-cache op.</strong> The Nov 4 release adds OCP FP8 E4M3 quantization support and a new <code>flash_attn_ext_rows</code> op aimed at improving unified KV-cache efficiency for multi-sequence inference (<a href="https://github.com/ggml-org/llama.cpp/releases">release</a>). FP8 is the practical path to near-BF16 quality at dramatically lower memory — worth testing on your 3090/4090 workloads. The <code>flash_attn_ext_rows</code> work matters if you run long-context or multi-turn agent loops, where the KV cache, not the weights, is what drags you down.</p>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Gemini 4 Argon is now generally available in Cortex AI Gateway</strong> (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-03-gemini-4-argon-ga">release notes</a>). This extends the gateway's model menu beyond OpenAI/Anthropic, which is useful if you want to A/B test a second frontier model without wiring a second provider. The release notes land alongside the broader GA above, so both are worth reading in one sitting.</p>
+<p><strong>Snowflake Postgres gains database health monitoring.</strong> The new Insights feature, enabled via optional extensions, collects deep statistics and metrics about database health; the data lives in Postgres and is also surfaced as Snowight dashboards (<a href="https://www.youtube.com/watch?v=xc_UVoUoxZo">video walkthrough</a>). For anyone running a Postgres workload inside Snowflake, this replaces the "is it healthy?" guesswork with numbers — worth enabling on non-critical databases first to calibrate what the dashboards are actually telling you.</p>
+<p><strong>Enterprise ML architecture: make every boundary earn its place.</strong> A thoughtful Snowflake-adjacent essay pushes back on the instinct to draw platform boundaries out of habit rather than necessity, proposing "seven workload tests" to decide whether a capability lives in Snowflake or in a separate ML platform (<a href="https://medium.com/snowflake/enterprise-ml-architecture-making-every-boundary-earn-its-place-c0ffaac36fd4">Snowflake engineering blog</a>). This is the best short read this week for anyone defending — or dismantling — an ML platform boundary in a review.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>CoCo in Snowsight now spans the full report lifecycle.</strong> A new walkthrough shows CoCo generating an entire HTML report from one plain-language prompt — win rate by rep, pipeline by stage, forecast by close month — with CoCo finding the table, writing the SQL, rendering charts, then regenerating the chart and refreshing data from a follow-up prompt, and finally publishing a shareable link (<a href="https://www.youtube.com/watch?v=c0NJOmn9yqw">video</a>). If you've been treating CoCo as a chat copilot, this demo shows it covering the whole "query → polish → distribute" loop; that's the pattern I'd prototype for non-technical stakeholders.</p>
+<p><strong>Cortex Agent versioning and multi-environment deployment.</strong> Snowflake published a practical guide to treating agents like software: version management, automated evaluation, structured approvals, and rapid rollbacks are positioned as non-negotiable once agents touch business decisions (<a href="https://medium.com/snowflake/cortex-agent-versioning-and-multi-environment-deployment-18cb43e8097e">Snowflake engineering blog</a>). If your org is moving toward natural-language query agents, this is the engineering-rigour checklist to borrow.</p>
+<p><strong>Managed MCP server gets background + async tooling.</strong> Released Nov 4: <code>background</code> support for <code>CORTEX_AGENT_RUN</code> and <code>CODING_AGENT</code>, plus new <code>ASYNC_AGENT_RUN_STATUS</code>, <code>ASYNC_AGENT_RUN_CANCEL</code>, and <code>AGENT_RUN_RESULT</code> endpoints (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-04-mcp-async-agent-tools">release notes</a>). This unblocks long-running agent tasks instead of forcing a blocking call — directly relevant to building durable, hours-long agent loops against your warehouse.</p>
+<h3 id="dbt">dbt</h3>
+<p>No notable dbt releases or breaking changes surfaced in the last 24 hours — quiet day for the tooling side, though the dbt repo roundup below has a couple of useful pattern references.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=pm7qRMBwPw4">AI Just Exploded: Anthropic Hacked, $6 Billion Stolen, OpenAI's Secret Model...</a></strong> (13.5 min, AI Revolution) — This is the perfect weekly roundup for the way we work: agents broke into Anthropic's internal business systems, a Binance theft used an internal AI tool, and OpenAI quietly revealed an unnamed model that reportedly beats GPT-6 Astra by ~50% on an engineering benchmark. It also gives Alibaba's Qwen an unauthorized-upload incident and DeepSeek interference with shutdown tests — all the agent-security context you need to sound smart in Monday's standup.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=6fjh0N-naTA">Every Level of Local AI, From $0 to a $16,000 GPU</a></strong> (9.2 min, Cloud Codes) — A hardware-ladder compilation that traces every viral local-LLM claim back to the actual code and test benches behind it. The thesis: MoE architectures like Qwen 3.8 Flash-Next and DeepSeek V4.1-Flash fundamentally changed what hardware you need. Great for deciding whether that "125B on an 8 GB laptop" headline is real or marketing.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=5uc7nzj2aTo">GPT and Claude Agents Just Started an AI Civilization War</a></strong> (16.5 min, Tech Unfiltered) — A broad agent-versus-agent roundup covering how OpenAI's GPT and Anthropic's Claude agents are evolving toward long-horizon autonomous competition — collaboration, competition, and what happens when they start building for each other. It's more speculative than the other two, but it's the best "where are agents going" framing for the week.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>Qwen3.8-Flash-Next quants keep maturing.</strong> Unsloth released Dynamic V3.1 GGUFs on Nov 4 with improved quality/size tradeoffs (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnuva2/unsloth_qwen38flashnext_ggufs_v31_update_november/">Reddit</a>), and community testing reports the GSQ RCO quant performs as well as BF16 for many workloads (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnutr6/qwen_38_flash_next_gsq_rco_quant_as_good_as_bf16/">Reddit</a>). If you're still on the original release quants, these are worth re-downloading — better quality at the same sizes.</p>
+<p><strong>A pure-Rust inference engine runs Qwen Flash-Next faster than Strata on 12 GB GPUs.</strong> RustingStrata compiles CUDA kernels at startup via NVRTC (the same kernels run on Vulkan), supports Qwen 3.5/3.6/3.8 models from 2B up to Flash-Next, and claims faster Flash-Next inference than the reference Strata engine (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnu9iv/rust_inference_engine_for_qwen_models_on_a_12_gb/">Reddit</a>). It's early days, but for 12 GB GPU owners this is the most interesting performance story of the week.</p>
+<p><strong>Pruning experiment: 85% of Gemma's weights removed — "mostly fine".</strong> A researcher pruned Gemma 4 26B-A4B (an MoE) down to 15% of its weights with surprisingly graceful degradation (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnoqyy/i_removed_85_of_gemmas_weights_and_it_is_mostly/">Reddit</a>). This is part of a broader pruning renaissance — expect much smaller MoE models to claim "top-tier quality" on the back of this work.</p>
+<p><strong>Open-router: DeepSeek alone took 53% of all 27 trillion tokens yesterday; open-weights labs total over 75%</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnz8ct/deepseek_alone_accounted_for_53_of_all_27/">Reddit</a>). The open-weight era's usage share has stopped being a curiosity and become the default — worth remembering when someone argues the frontier is all closed models.</p>
+<p><strong>Tiny models keep punching up.</strong> LFM3-1.7B is described as "rather good" on a 3090 Ti at high speed (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xno8d8/lfm3_17b_rather_good/">Reddit</a>), and LFM3-Omni-2B runs fully offline on an iPhone 18 Pro Max at ~80 tok/s via custom WebGPU kernels in React Native (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xntou1/lfm3omni2b_running_fully_offline_on_my_iphone_18/">Reddit</a>). For edge deployments, the 1-2B class is now genuinely useful, not a toy.</p>
+<p><strong>OpenAI rolled out GPT-Image-2.6 with GIF and reference images.</strong> The API versions — Flare and Sunburst — generate images 50% faster, with Flare producing a low-quality first pass in as little as six seconds and Sunburst preserving consistency across edits (<a href="https://openai.com/index/introducing-images-2-6/">OpenAI blog</a>). Bread-and-butter announcement, but the "references images" feature is the one to note for agentic design workflows.</p>
+<p><strong>datasette-llm 0.1a10</strong> fixes a bug where the set of available LLM models wasn't correctly restricted to those in configuration, an issue that affected Simon Willison's agent.datasette.io demo (<a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a10">release notes</a>, <a href="https://simonwillison.net/2026/Nov/4/datasette-llm/">blog</a>). A small release, but it's a reminder to check your own agent tooling isn't exposing models you think you've hidden.</p>
+<p><strong>More open weights: Baidu released ERNIE-5.5-Flash-Base</strong> on Hugging Face (<a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base">HF</a>), <strong>CCORE GLB-3D-Coder 4B</strong> shipped final weights for 3D code generation (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xobe4h/ccore_glb3dcoder_4b_final_model_and_full_weights/">Reddit</a>), <strong>Ripple-65B-Preview</strong> appeared (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnx3cs/ricursiveairipple65bpreview_hugging_face/">Hugging Face</a>), and <strong>AuroraIMG2-100M</strong> released with significant improvements over its preview (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xnzynf/auroraimg2100m_releases/">Reddit</a>). A busy day for the open-weight scene beyond the marquee names.</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>Is 24GB Enough for Local AI?</strong> (<a href="https://www.youtube.com/watch?v=thGjtGJlZho">Cloud Codes</a>, 11.3 min) — Did not make the playlist because it's a single-subject deep dive, but the dissection is worth your notes:</p>
+<ul>
+<li>24 GB is the sweet spot for 27B-class Q4 quants; the real bottleneck is KV cache, not weights — your chat window slows to a crawl after an hour of usage because cache, not weights, is what's filling memory.</li>
+<li>A 40B MoE (e.g., 40B-A3B) can generate ~10x faster than a dense 27B because only active experts run per token.</li>
+<li>The napkin math for estimating model fit before downloading is simple once you factor context size in — don't trust the "fits in VRAM" label on the model card.</li>
+</ul>
+<p><strong>How Figma Is Building Self-Serve Analytics with OpenAI</strong> (<a href="https://www.youtube.com/watch?v=0LDs5rvx1EI">OpenAI</a>, 0.7 min) — A short pilot story with a big implication:</p>
+<ul>
+<li>Marketers can query campaign performance in natural language instead of waiting for a new dashboard.</li>
+<li>The hard part is building a "shared context" layer (schema + business knowledge) that the model reasons over — OpenAI's lead data engineer says that's what unlocked self-serve analytics at Figma.</li>
+<li>The same pattern is what CoCo/Cortex Agent are doing inside Snowflake: the natural-language layer is easy; the context layer is the moat.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/johnpsasser/lifeboat">johnpsasser/lifeboat</a> (37★) — An offline emergency assistant: a local LLM plus a 200 GB offline library on one Mac, with cited answers and no internet. Exactly the kind of "what if the network dies" fallback worth having.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/0x45dd/pwner">0x45dd/pwner</a> (74★) — Autonomous agentic network penetration-testing tool (authorized use only). A sharp example of what long-horizon agents can do beyond chat — useful inspiration if you're building agent loops that need tool-calling discipline and sandboxing.</li>
+<li><a href="https://github.com/bytedance/axion1_0">bytedance/axion1_0</a> (55★) — Frontier-level agent capabilities from a simple recipe: 2 SFT + RL, no mid-training, DPO, or OPD. Full training recipe released — if you've ever wondered whether agentic skill is a data problem, this is the repo to study.</li>
+</ul>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/khizerismail-io/version_aws_dbt_snowflake_project">khizerismail-io/version_aws_dbt_snowflake_project</a> (1★) — A production-grade 3-tier medallion (Bronze/Silver/Gold) pipeline built with dbt Core and Snowflake, including SCD Type 2 tracking, custom data quality tests, and snapshots. A solid reference template if you're starting a new medallion project this quarter.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/abdelhamidbarcha/code212">abdelhamidbarcha/code212</a> (2★) — BI platform and ELT pipeline (PostgreSQL, dbt, Airflow, Superset, Docker) for university enrollment data.</li>
+<li>✅ <a href="https://github.com/Tharun6655/movie-intelligence-analysis-dashboard">Tharun6655/movie-intelligence-analysis-dashboard</a> (1★) — End-to-end MovieLens analytics with Snowflake + dbt Core + Power BI, from raw data to interactive dashboards.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-04.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-04</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
