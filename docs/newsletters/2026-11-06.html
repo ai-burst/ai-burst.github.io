@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-06</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">06 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">7 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.010</span>
+      </div>
+      <h1>Daily Signal — 2026-11-06</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>OpenAI's autonomous exploit pipeline and GPT-6 Cyber dominate the day.</strong> OpenAI revealed on November 4 that an autonomous AI cyber pipeline found <strong>948 distinct ways for an unprivileged user to take root control of the Linux kernel</strong> in a single run — though, per upstream kernel trackers, only <strong>61 of those patches have actually landed so far</strong> (<a href="https://www.youtube.com/watch?v=d2N4rDNzMRc">Cloud Codes</a>). In parallel, OpenAI formally introduced <strong>GPT-6 Cyber</strong>, with Mozilla as a reference customer: the team used it to uncover previously unknown high-severity vulnerabilities in Firefox and ship fixes to millions of users (<a href="https://openai.com/index/introducing-gpt-6-cyber/">OpenAI</a>, <a href="https://www.youtube.com/watch?v=pXRZyOxbDL4">Mozilla case study video</a>).</p>
+<p>Meanwhile, <strong>Sam Altman declared "the RSI era has begun,"</strong> claiming OpenAI's agents now log three workdays for every one day its researchers put in, and that AI is "mostly smarter than top scientists" — while mathematicians publicly question OpenAI's Navier-Stokes proof and sentiment online turns against him (<a href="https://www.youtube.com/watch?v=YE2hf9WjUME">AI Revolution</a>). Treat the RSI claims as company messaging rather than established fact; the exploit-pipeline numbers are independently checkable against kernel trackers.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ul>
+<li>If you're on Snowflake, the Expedition launch (below) means <strong>CoCo agents and MCP servers are now the default integration surface</strong> — worth a weekend spike to see what works for your stack (<a href="https://medium.com/snowflake/inside-snowflake-expedition-launch-summary-of-new-features-announced-5b049379fd2b">Expedition summary</a>).</li>
+<li><strong>Watch your kernel patch cadence:</strong> since only ~6% of OpenAI's 948 findings have landed upstream, distros and your fleet are still exposed to whatever the other 887 were. Prioritize patching any CVE that references the OpenAI pipeline.</li>
+<li>For local-LLM users: the <strong>llama.cpp v0.9.0 FP8 file type</strong> landed this week, so re-quantize your biggest models and measure the VRAM delta before committing to new hardware (<a href="https://quantized.uk/changelog/">quantized.uk</a>).</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Expedition 2026, day one, is a big one.</strong> Snowflake positioned itself as "a unified engine for autonomous AI agents, real-time streaming applications, and conversational business intelligence" — the headline additions are a native <strong>Business Ontology</strong>, a <strong>sub-15-second real-time streaming architecture</strong>, and a <strong>conversational BI tool</strong> meant to replace legacy dashboards (<a href="https://medium.com/snowflake/inside-snowflake-expedition-launch-summary-of-new-features-announced-5b049379fd2b">Expedition summary</a>). The philosophy: AI is only as useful as the enterprise context grounding it — so the ontology layer is the piece to learn first.</p>
+<p><strong>Best practices for Semantic Views</strong> are now documented with evaluation data. The article runs a 20-question test suite across architectures on Tasty Bytes and covers scoping, naming, sizing, and security for the governed semantic layer — practically a checklist for your next modeling review (<a href="https://medium.com/snowflake/best-practices-for-scoping-and-organising-snowflake-semantic-views-6e2e2758b538">Semantic Views best practices</a>).</p>
+<p><strong>Backups for Snowflake Storage for Apache Iceberg tables hit GA</strong> (Nov 4) — a substantial data-protection feature if you've parked Iceberg tables in Snowflake-managed storage (<a href="https://docs.snowflake.com/en/release-notes/new-features-2026">release notes</a>). Also in the same window: <strong>HTML reports (Preview)</strong> and, notably, <strong>background runs plus extra supplementary tools for agents in the Snowflake-managed MCP server</strong> (<a href="https://docs.snowflake.com/en/release-notes/2026/10_39">release notes 10_39</a>, <a href="https://docs.snowflake.com/en/release-notes/2026/10_40">10_40</a>).</p>
+<p><strong>Aimed at migrations:</strong> the Snowflake AIM application now moves a SQL Server environment to Snowflake with AI agents doing extraction through validation; SSIS packages convert to <strong>dbt</strong> with AI analysis of conversion issues (<a href="https://www.youtube.com/watch?v=dzPbSSgNkHA">Snowflake AIM demo</a>). If you have a legacy warehouse looming, this is the workflow to test.</p>
+<p>Also worth a skim: <strong>choosing how ML models move to production</strong> on Snowflake — code, model, or hybrid promotion — a decision framework shaped by data access, training cost, and CI/CD readiness (<a href="https://medium.com/snowflake/choosing-how-ml-models-move-to-production-on-snowflake-code-model-or-hybrid-promotion-aca2ae322bb6">ML model promotion</a>). And for agent work in life sciences, the <strong>Gene Ontology OLS4 MCP server</strong> integration shows how ontologies give agents a grounded context layer (<a href="https://medium.com/snowflake/using-life-science-ontologies-from-a-snowflake-ai-agent-gene-ontology-and-the-ols4-mcp-c04fd5edc4ab">Ontologies + Snowflake AI agent</a>).</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>Two release threads to track.</strong> dbt Core <strong>2.0.11</strong> (Nov 3) adds <strong>BigQuery query reservation configuration at model and connection levels</strong> — the most concrete feature update of the week (<a href="https://github.com/dbt-labs/dbt/releases">dbt releases</a>). A day later, <strong>dbt Core 1.13.0-rc1</strong> shipped (Nov 4), so expect a stable 1.13 fairly soon (<a href="https://github.com/dbt-labs/dbt/releases">dbt releases</a>). The patch release <strong>v1.11.17</strong> also fixes a <code>dbt deps</code> git credential issue on newer libcurl — annoying for teams using git packages (<a href="https://github.com/dbt-labs/dbt/releases/tag/v1.11.17">v1.11.17</a>).</p>
+<p><strong>On the methodology side:</strong> dbt published an assessment framework for <strong>organizational AI readiness</strong>, structured around six dimensions to find where your data foundation limits AI adoption (<a href="https://www.getdbt.com/blog/how-to-assess-your-ai-readiness">dbt blog</a>). It's marketing-adjacent but the six-dimension rubric is a genuinely useful conversation starter for platform reviews.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>CoCo is expanding outside the IDE.</strong> <strong>Snowflake CoCo for Microsoft Excel and Google Sheets</strong> brings governed, agentic workbook building on live Snowflake data, with role-based security — the spreadsheet crowd gets CoCo without leaving their sheets (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-coco-microsoft-excel-google-sheets">Snowflake blog</a>). Meanwhile <strong>CoCo Desktop v1.25.0</strong> landed Nov 5; the changelog doesn't spell out what changed yet (<a href="https://docs.snowflake.com/en/release-notes/new-features">release notes</a>). Check the full release notes before upgrading if you rely on pinned desktop versions.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li><strong>Sam Altman JUST Said The RSI Era Has Begun... As Everyone Turns On Him</strong> — <a href="https://www.youtube.com/watch?v=YE2hf9WjUME">AI Revolution</a> (15 min). The week's broadest roundup: Altman's RSI claims, the 948-exploit Linux pipeline, the Navier-Stokes controversy, and the internet turning on OpenAI — all in one sitting.</li>
+<li><strong>Self-Hosted AI vs Claude Code: When It Pays Off</strong> — <a href="https://www.youtube.com/watch?v=twLKVQ8iUJQ">Devsplainers</a> (11 min). A concrete cost model (renting per token vs. dedicated GPU server vs. buying) for open-weight coding models like GLM 5.3, using a 2,000-engineer bank as the case study. Directly answers the "when does local beat Claude Code?" question.</li>
+<li><strong>They Removed Quarter of an AI's Brain. Here's What Happened...</strong> — <a href="https://www.youtube.com/watch?v=QghhTnK3mzg">Cloud Codes</a> (13 min). A skeptical test of LaCo layer pruning on Qwen3-8B: cutting 6–10 of 36 layers with zero retraining crushed MMLU from 76.9% to 31.3% and factual accuracy to 25% — essential context before you believe the "free shrink" hype.</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li><strong>Open-weight releases keep coming: Xing4.0 29B-A4B and Ripple-65B-Preview</strong> both joined the released-model list on Nov 6 (<a href="https://quantized.uk/changelog/">quantized.uk</a>). Treat these as preliminary; benchmark numbers aren't out yet.</li>
+<li><strong>llama.cpp tagged v0.9.0 with FP8 file-type support</strong> — a meaningful quantization-focused update for local inference, directly relevant to VRAM-constrained setups (<a href="https://quantized.uk/changelog/">quantized.uk</a>). Ollama churned through 0.40.14 → 0.40.15 with no major launch (<a href="https://localmodelwatch.tsuchitsuchi.com/en/engines-en/">localmodelwatch</a>, <a href="https://releasebot.io/updates/ollama">releasebot</a>); vLLM has no new releases in the window (<a href="https://quantized.uk/changelog/">quantized.uk</a>).</li>
+<li><strong>TIGER-AI-Lab released WebsiteBench</strong>, a benchmark asking whether AI agents can rebuild websites through browser exploration — relevant if you build agent-orchestrated front-end work (<a href="https://github.com/TIGER-AI-Lab/WebsiteBench">GitHub</a>).</li>
+<li><strong>Paul Ford's "The Web Is More Than Enough"</strong> argues the browser remains extraordinarily powerful software whose access cost keeps falling — good context for anyone betting on agent-vs-web-app UX (<a href="https://simonwillison.net/2026/Nov/5/paul-ford/">Simon Willison</a>).</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>OpenAI Just Found 1,000+ Ways to Hack Your Linux</strong> — <a href="https://www.youtube.com/watch?v=d2N4rDNzMRc">Cloud Codes</a></p>
+<ul>
+<li>Headlines claimed AI "found and patched" ~1,000 vulnerabilities in one run; reality: only <strong>61 of 948 patches have landed</strong> in the official kernel so far.</li>
+<li>The pipeline narrows down 40 million lines of C, bypassing modern hardware defenses — the technique is the story, not just the count.</li>
+<li>For ops folks: the gap between "found" and "fixed" is a patch-management window you should treat as a security incident.</li>
+</ul>
+<p><strong>Migrate Your Data Warehouse to Snowflake with Snowflake AIM</strong> — <a href="https://www.youtube.com/watch?v=dzPbSSgNkHA">Snowflake Developers</a></p>
+<ul>
+<li>AIM's agents handle extraction (connecting to source, extracting DDL, flagging objects with no direct Snowflake equivalent).</li>
+<li><strong>SSIS packages convert to dbt</strong> with AI-generated conversion analysis and exportable issues.</li>
+<li>Validation is built into the pipeline, so migration QA is less manual — worth watching before your next legacy migration kickoff.</li>
+</ul>
+<p><strong>The Future of AI Is Absolutely Incredible (Spencer Huang)</strong> — <a href="https://www.youtube.com/watch?v=XgC1QTs6A2U">Two Minute Papers</a></p>
+<ul>
+<li>46-minute deep dive; too long for the playlist but the section on where agentic tooling is heading (per Huang) is the payoff.</li>
+<li>Skim the transcript for the specific claims about model capability growth; treat the "incredible" framing with the usual Two Minute Papers optimism.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/Nbill27/muse-opencode">Nbill27/muse-opencode</a></strong> (⭐15) — A local, OpenAI-compatible HTTP relay that drives your own muse.ai web chat through a real Chromium tab via Chrome DevTools Protocol. Educational, but interesting as a pattern for wiring arbitrary web chat UIs into OpenAI-compatible clients.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/TIGER-AI-Lab/WebsiteBench">TIGER-AI-Lab/WebsiteBench</a></strong> (⭐77) — A new benchmark for whether AI agents can rebuild websites through browser exploration. Useful for evaluating your own agent's web-navigation skill set before you trust it with end-to-end tasks.</li>
+<li><strong><a href="https://github.com/laaielichter/Gulliver">laaielichter/Gulliver</a></strong> (⭐1) — MCP server + CLI giving AI agents a "dress rehearsal" for SQL: cost preflight, scale lint with auto-fix, rehearse on 1% → 10% of data, predict 100%, run only within budget. Supports DuckDB, Postgres, BigQuery, Snowflake — local-first and MIT. Tiny star count, but this addresses a real pain for agent-generated SQL hitting production warehouses.</li>
+</ul>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/blbin/dbs-dbt-starter">blbin/dbs-dbt-starter</a></strong> (⭐1) — dbt Core + ClickHouse starter template. Handy if you're experimenting with ClickHouse as a cheap analytics engine alongside your Snowflake stack.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <strong><a href="https://github.com/yucezerey/turkish-anti-ai-skill">yucezerey/turkish-anti-ai-skill</a></strong> (⭐186) — Agent skill + humanizer that cleans AI slop and translationese from Turkish text; a nice pattern for language-specific output quality control.</li>
+<li><strong><a href="https://github.com/Tropicaldrescoop/discord-id-osint-checker">Tropicaldrescoop/discord-id-osint-checker</a></strong> (⭐143) — Free OSINT app for Discord IDs; shows creation date and copied identity. Not work-related, but useful for security investigations.</li>
+<li>✅ <strong><a href="https://github.com/kamilsoszka/fabric-data-quality-observability-platform">kamilsoszka/fabric-data-quality-observability-platform</a></strong> (⭐1) — Microsoft Fabric data quality platform with PySpark validation, quarantine, monitoring, SLA, negative tests, and Dev-to-Test deployment. Relevant as a reference model if you're building observability for non-Snowflake paths.</li>
+<li>✅ <strong><a href="https://github.com/shashwatbikramsingh/StreamForge">shashwatbikramsingh/StreamForge</a></strong> (⭐1) — Real-time data engineering platform built on Python, Kafka, PostgreSQL with fault tolerance and observability; useful reference architecture for streaming workloads.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-05.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-05</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
