@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-09</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">09 Nov 2026</span>
+        <span class="badge badge-daily">daily</span>
+        <span class="mono dim">7 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.011</span>
+      </div>
+      <h1>Daily Signal — 2026-11-09</h1>
+      <h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>Cortex Code Desktop v1.25.0</strong> is the biggest item in the stack this morning (<sup class="cite"><a href="https://docs.snowflake.com/en/user-guide/cortex-code/cortex-code-desktop/release-notes">1</a></sup>) — a November 2026 release that's squarely aimed at the dbt developer experience. The headline feature is <strong>anchored dbt lineage</strong>: lineage now stays attached to the project in a persistent, drift-resistant way, which is exactly what you want when you're debugging a broken model chain three levels deep. It also ships a <strong>faster dbt Action Bar</strong>, a <strong>single timeout for dbt runs</strong> (one knob instead of hunting through settings after an unexplained silent failure), app-menu status updates, and a batch of Windows update fixes. Worth upgrading today — the dbt timeout unification alone removes a classic "why did that run die" headache.</p>
+<p>Nearby in the Cortex orbit, Snowflake's release notes show <strong>Google Gemini 4 Argon</strong> hitting GA on Nov 3 (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-03-gemini-4-argon-ga">8</a></sup>) and <strong>Cortex AI Gateway</strong> adding inference, observability, and cost management GA (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-16-cortex-ai-gateway-regions">7</a></sup>). If you route external API calls through Cortex for your agent harnesses, the gateway cost-observability pieces are worth a deeper skim — they give you per-model spend visibility without building your own metering.</p>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li><strong>IPADDRESS data type GA</strong> landed in Release 10.40 (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">2</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/new-features-2026">4</a></sup>). First-class IPv4/IPv6 handling for network and security analytics — no more string-parsing hacks for egress-cost or access-log analysis.</li>
+<li><strong>Snowflake CLI v3.33.0</strong> is out (<a href="https://github.com/snowflakedb/snowflake-cli/releases/tag/v3.33.0">release notes</a>) — a routine version bump, but the steady release cadence is itself a signal for CI/CD pipelines pinning versions.</li>
+<li><strong>Snowflake Expedition badges are available on demand</strong> (<a href="https://medium.com/snowflake/missed-out-on-badges-from-snowflake-expedition-9fc8d4292e95?source=rss----34b6daafc07---4">Medium</a>) — if you missed the hands-on labs, recordings are now live; build along in a free trial, pass the auto-grader, and earn the badge for your profile.</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<p>No standalone dbt release note surfaced in the last 24 hours — the dbt news today is embedded in Cortex Code's lineage improvements above. The most interesting dbt-adjacent signal is a brand-new repo in the watchlist below: a <strong>dbt v2 → DuckDB → SQL Server</strong> adapter that's worth tracking if you manage a hybrid warehouse stack.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=zHZPb7wdQuk">GitHub Trending Weekly #58: rune, nsh, openjutsu, Henge, mygo-music, vork, devvm, satmux, airpointer</a></strong> (15 min) — The broadest roundup of the day: 35 trending open-source projects in one sitting, exactly the compilation format that suits a morning scan. You'll surface projects like openjutsu, Henge, and swarm-cursors that your focused feeds will never show you.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=QM3lE1eKppE">Anthropic's New Model 4 Beats Opus 5.5 (ASI in 2 Years)</a></strong> (15 min) — AI Revolution-style analysis pulling together hidden-model claims, METR's benchmark-acceleration data, and Anthropic's self-improvement loop. It's speculative at the edges, but the METR acceleration stat (nearly 2x) is the kind of strategic signal worth having on the record.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=rKdkGp519sU">I Found the Best MacBook for Local AI (And It's Cheap)</a></strong> (17 min) — A practical ladder through every MacBook tier with real tokens-per-second numbers (44 t/s on a 32GB Air for one free model, a crawl at 8 t/s for another). Directly useful if you're sizing a local-AI laptop and want the dense-vs-MoE memory tradeoff explained with concrete benchmarks.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>Kimi K3.1-Pro-Coder quantized from 1.77 TB to 775 GB (-56%)</strong> — a user packed the 2.8T-parameter model down hard and still measured <strong>36.8 TPS (batch) / 10.8 TPS on a single Blackwell</strong>, with 96.7% on both AIME 2025 and LiveCodeBench (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xr777l/kimik31procoder_28t_177_tb_775_gb_56_368_tps/">Reddit</a>). That kind of compression-to-spec ratio is the direction of travel for serious local serving — frontier coding capability at a quarter of the memory envelope.</p>
+</li>
+<li>
+<p><strong>Intel Arc Pro B70 32GB ($1,299) vs RTX 5090 ($6,500+) on Qwen3.8-27B</strong> — roughly <strong>half the generation speed and a third of the prefill speed for a fifth of the price</strong>, after best-case setup (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xr78s5/intel_arc_pro_b70_32gb_1299_vs_nvidia_rtx_5090/">Reddit</a>). For budget 27B-class inference, the Arc card is suddenly a very sane engineering trade when throughput isn't the bottleneck.</p>
+</li>
+<li>
+<p><strong>Tencent releases DSpine speculative decoding for Qwen3.8-27B</strong> — a new HF checkpoint applying sparse-draft speculative decoding (<a href="https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16">Hugging Face</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xr2aaa/tencentqwen3827bdspineb16_hugging_face/">discussion</a>). If you're serving this model family, a free throughput bump without quality loss is worth a benchmark run.</p>
+</li>
+<li>
+<p><strong>Nous Research Arete-27B GGUF quants are out</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xrarta/nous_research_arete27b_gguf_quants/">Reddit</a>) — freshly published GGUF quantization for Arete-27B, ready for llama.cpp/Ollama setups. Nice companion to the DSpine story for squeezing 27B-class models onto consumer hardware.</p>
+</li>
+<li>
+<p><strong>RTX 5060 Ti 16GB cards are being bought en masse for AI</strong> — a GameGPU report notes the 16GB memory tier is the new budget-AI sweet spot, confirmed by a LocalLLaMA thread where the top comment is "oh look, that's us" (<a href="https://en.gamegpu.com/news/zhelezo/polzovateli-nachali-massovo-skupat-videokarty-rtx-5060-ti-16gb-radi-ii">GameGPU</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xr01bj/users_have_started_buying_rtx_5060_ti_16gb/">Reddit</a>). The demand curve is telling: 16GB is the minimum people want, and the price is right.</p>
+</li>
+<li>
+<p><strong>Next-Concept Modeling: fast, parallel coarse-to-fine text generation</strong> — a new paper proposing coarse-to-fine parallel generation that Reddit is calling a potential rewrite of autoregressive decoding (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xr6krp/nextconcept_modeling_fast_parallel_coarsetofine/">Reddit</a>). Treat the "changes everything" hype with salt, but parallel-style decoding is the frontier for latency reduction.</p>
+</li>
+<li>
+<p><strong>Simon Willison: hide your slop PR descriptions behind <code>&lt;details&gt;&lt;summary&gt;</code></strong> — a genuinely practical tip for the Claude Code/Codex workflow: agents write PR descriptions that are <em>too</em> good, so collapse the boilerplate to keep the review surface clean (<a href="https://simonwillison.net/2026/Nov/9/details-summary/">Simon Willison</a>). Short read, immediately applicable to your agent-generated PR review loop.</p>
+</li>
+<li>
+<p><strong>A single neuron makes Qwen-3.5-4B confidently wrong but writes interesting poetry</strong> — interpretability dissection of neuron L11 N8147 shows it triggers snarky confident errors while also driving surprisingly good verse (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xrkomn/l11_n8147_is_a_neuron_that_will_make_qwen354b_get/">Reddit</a>). A nice reminder that model quality is a tapestry of individual circuit quirks.</p>
+</li>
+<li>
+<p><strong>What are people finding local models actually useful for?</strong> — a running community thread; top use cases include local-first DeepSeek v4.1 Flash 1017 via BRRR for private code completion (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xr4iv0/what_are_people_finding_local_models_actually/">Reddit</a>). Good source of real production patterns rather than benchmark talk.</p>
+</li>
+<li>
+<p><strong>Rumor: Moonshot Kimi roadmap</strong> (unverified) — leaked roadmap claims K3 Flash EOY 2026 (replacing K2.8, competing with DeepSeek V4.1 Flash), Kimi 3.5 in early 2027, and a <strong>5.4T-parameter K4 in Q3 2027</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xr2t4c/rumor_moonshot_kimi_roadmap/">Reddit</a>). Someone's internal slides, treat as directional only.</p>
+</li>
+<li>
+<p><strong>Runtime roundup: llama.cpp b12211, no new Ollama/vLLM/ExLlamaV3 releases</strong> — a changelog tracker shows llama.cpp bumped to b12211 on Nov 9, with no new model architecture reaching llama.cpp over the weekend, and Ollama still on v0.40.15 (Nov 3) (<a href="https://quantized.uk/changelog/">changelog tracker</a>, <a href="https://github.com/ollama/ollama/releases">Ollama releases</a>). Quiet window for the runtime stack.</p>
+</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li><strong><a href="https://www.youtube.com/watch?v=DPYqo9RLrMw">Claude Shrank Qwen 27B to 8GB... But It Runs 3x Slower</a></strong> (2 min) — <em>CompressionBench results: Claude Code compressed Qwen3.8 27B into an 8 GiB weight budget (~2.5 bits/weight), beating the best human public quant (ISTA-DASLab's GSQ-RCO GGUF) — but at 3x the latency.</em> Key takeaways:</li>
+<li>Agent-driven quantization can beat specialist human pipelines on size, but the speed penalty is brutal — viable for storage-constrained, latency-tolerant deployments.</li>
+<li>
+<p>The benchmark (6 agents, one H200, 8 hours, strict budgets) is a clever template for reproducible compression evals on your own models.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=Vc_dcGD-Gl0">Inkling 2 "Small" Beat GPT-6 Astra... But Needs 330 GB of RAM</a></strong> (2 min) — <em>Thinking Machines' Inkling 2 Small, a 594B-param MoE, beat OpenAI's GPT-6 Astra by 7 points on DesignArena's website-generation leaderboard, promised Apache 2.0 — but is unusable without a server rack.</em> Key takeaways:</p>
+</li>
+<li>"Open weights" is increasingly decoupled from "runnable at home" when MoE models blow past the 100GB+ working set; 330GB RAM puts this out of reach of even serious prosumer rigs.</li>
+<li>
+<p>Watch how the license plays out — a genuinely free Apache 2.0 frontier-adjacent MoE would reset the local-model conversation eventually, even if hardware costs catch up slowly.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=dVu9BpZsXUA">Claude Sonnet 6 LEAK, Anthropic's SECRET Fable 6...</a></strong> (14 min) — <em>Rumor roundup claiming Claude Sonnet 6 could deliver a major leap in coding and agentic capability, plus a mysterious "Fable 6" project.</em> Key takeaways:</p>
+</li>
+<li>Entirely unverified — no primary source in the description, so treat every claim as speculation until Anthropic says something.</li>
+<li>The "capability leap" framing is useful as a bet-sizing exercise: if a Sonnet-class model does land with a big agentic jump, what would you reprioritize?</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/oluies/dbt2-duckdb-mssql">oluies/dbt2-duckdb-mssql</a></strong> — dbt v2 writing to SQL Server through DuckDB's mssql extension. Only 1 star and brand new, but the pattern (dbt → DuckDB as a universal translation layer → SQL Server) is an interesting escape hatch for mixed warehouse estates.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong><a href="https://github.com/0Mariam-Salem0/Global-Weather-Intelligence">0Mariam-Salem0/Global-Weather-Intelligence</a></strong> — end-to-end weather data pipeline: Python → Kafka → Spark Structured Streaming → Snowflake → Power BI/Tableau/Looker. A clean reference architecture if you're sketching a streaming-to-Snowflake ingestion pattern.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/NVIDIA/nsight-perf-sdk-for-ai">NVIDIA/nsight-perf-sdk-for-ai</a></strong> (74★) — always-on, low-overhead GPU/CUDA performance tracing SDK for AI workloads, with C++ client APIs, CLI tools, and Perfetto export. Directly useful when you're tuning llama.cpp/vLLM serving and want to know where the memory bandwidth actually goes.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/RapidSailorFreeze/studsmith">RapidSailorFreeze/studsmith</a></strong> (95★) — a free Roblox Studio agent that plans, writes Luau, shows a diff, and playtests its own changes. Niche domain, but a great example of a closed feedback loop: the agent verifies its own output before you ever see it.</li>
+<li><strong><a href="https://github.com/Abdul-Rehman7826/ai-manus">Abdul-Rehman7826/ai-manus</a></strong> (55★) — a general-purpose AI agent system that runs tools and operations inside a sandbox. Worth a look if you're building your own agent harness and want a minimal sandboxing reference.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <strong><a href="https://github.com/arcodash/arcodash">arcodash/arcodash</a></strong> — open-source BI with data observability built in; relevant to any data engineer who's tired of bolting monitoring onto a BI layer separately.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-08-weekly.html"><span class="mono dim">Older</span><span>Weekly Signal — 2026-11-08</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
