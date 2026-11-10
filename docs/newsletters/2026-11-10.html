@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-10</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">10 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">9 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.015</span>
+      </div>
+      <h1>Daily Signal — 2026-11-10</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Anthropic releases Fable 5.2 and Mythos 5.2</strong></p>
+<p>Anthropic has shipped Fable 5.2 and Mythos 5.2, with Fable 5.2 currently ranked first on Artificial Analysis (<a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">Anthropic announcement</a>, <a href="https://github.com/simonw/llm-anthropic/releases/tag/0.31">llm-anthropic 0.31 release notes</a>). Anthropic says the model "solved two open problems in the physics of black holes" — take that with the usual marketing salt — but the release is clearly a step change for coding and agentic work. Three things matter more than the hype:</p>
+<ul>
+<li><strong>Prompt for code ownership explicitly.</strong> Fable 5.2 responds closely to what the prompt says about who owns the code. When the prompt is silent or frames the codebase as someone else's, the model tends to bolt onto existing structure, even repeating existing code; if you want a refactor, say so (<a href="https://simonwillison.net/2026/Nov/10/prompting-claude-fable-52/">Simon Willison's prompting notes</a>).</li>
+<li><strong>Capabilities may have been capped in training, not just at inference.</strong> The LocalLLaMA community reports Fable 5.2 has guardrails against "AI acceleration" and that its capabilities were deliberately limited during training (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xsjfwo/fable_52_not_only_has_guardrails_against_ai/">Reddit discussion</a>). Run your own evals before trusting benchmark numbers.</li>
+<li><strong>Update your tooling.</strong> llm-anthropic 0.31 adds support for both models in the <code>llm</code> CLI (<a href="https://github.com/simonw/llm-anthropic/releases/tag/0.31">release notes</a>).</li>
+</ul>
+<p><strong>Meta launches Muse Ember, its smallest and most efficient model</strong></p>
+<p>Meta AI introduced Muse Ember, positioned squarely in the Claude Haiku / GPT Luna category: "our smallest and most efficient model designed for complex reasoning execution and the work agents repeat all day: tool calls, coding subtasks, routing, extraction, and long document parsing" (<a href="https://research.meta.ai/blog/muse-ember">Meta research blog</a>, <a href="https://simonwillison.net/2026/Nov/10/muse-ember/">Simon Willison</a>). For agent builders this is a direct cost-per-token play. The catch for open-weight fans: the community is calling out that Meta promised to open-source Muse Spark 1.2 yet keeps shipping closed models like Muse Ember (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xs0qmx/muse_ember_zuck_promised_to_open_source_muse/">Reddit</a>). Practical moves: benchmark it against Haiku-class models on your actual agent loop (tool-call accuracy, routing, extraction) rather than long-form reasoning, and verify the license before building anything on it.</p>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<p>The deep-research sweep found no verified major launches in llama.cpp, Ollama, vLLM, dbt, or open-weight models in the last 24 hours (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">1</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/user-guide/cortex-code/cortex-code-desktop/release-notes">2</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-05-coco-desktop-v1-25-0">12</a></sup>); the verified product news is concentrated in Snowflake and Cortex Code.</p>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li><strong>Cortex AI Gateway is now GA.</strong> Snowflake's gateway for inference, observability, and cost management went generally available, with governed access, request tracing, and spend attribution (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-03-cortex-ai-gateway-ga">release notes</a>). If you're routing LLM calls through Snowflake — or planning to — this is the control plane for who calls what and what it costs. Worth wiring up before the next invoice surprise.</li>
+<li><strong>Snowflake CLI v3.33.0 ships breaking changes.</strong> Unquoted <code>snowflake.yml</code> values for role, warehouse, schema, database, and v1 package names must now be single identifiers; names containing dots, spaces, or hyphens must be quoted. There's also a new <code>snow streamlit status</code> command (<a href="https://github.com/snowflakedb/snowflake-cli/releases/tag/v3.33.0">GitHub release</a>). If you have unquoted multi-part identifiers in configs, CI will start failing — fix before you upgrade.</li>
+<li><strong>Snowflake's internal audit team cut fieldwork by 50% with AI</strong>, saving thousands of hours a year (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-internal-audit">Snowflake blog</a>). A useful internal case study for how a Snowflake-native AI rollout actually lands inside a company.</li>
+<li><strong>Who is actually using your Snowflake MCP server?</strong> Snowflake doesn't log which MCP server a query came through, but it does store the OAuth security integration name for every MCP client. Give each MCP server its own integration, then join query history to login history with one query (<a href="https://medium.com/snowflake/who-is-actually-using-your-snowflake-mcp-server-683a6cb543d7">Medium/Snowflake</a>). The kind of practical observability tip that pays for itself.</li>
+<li><strong>Sanctions targeting on Snowflake</strong> — a demo worth watching for the data-engineering patterns: US/UK/EU sanctions lists refreshed daily, joined on IMO numbers rather than vessel names so aliases still get caught, with point-in-time governance (<a href="https://www.youtube.com/watch?v=wHO76grVR5k">Snowflake Developers video</a>). Entity resolution and data trust in one 11-minute walkthrough.</li>
+<li><strong>HTML reports preview</strong> appeared in Snowflake release notes — minor, but worth tracking if you generate report artifacts (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-04-html-reports-preview">preview notes</a>).</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong>Careem cut metric onboarding from 1–2 weeks to 1 day</strong> using dbt and AI agents. Niyazulla Khan, data platform engineering manager, explains how a small team replaced a homegrown platform (Optimus, 5,000+ pipelines) with dbt and reclaimed capacity for new requests (<a href="https://www.youtube.com/watch?v=OCGVV_r9Rmk">dbt Labs video</a>).</li>
+<li><strong>Careem generates ~95% of its data pipelines with AI and dbt.</strong> Akash Srivastava describes the two safety layers that make it work: context and validation. dbt gives agents lineage, tests, descriptions, and data contracts out of the box (<a href="https://www.youtube.com/watch?v=eszZTWbwJ48">dbt Labs video</a>). This is the strongest concrete argument yet for dbt as the substrate for AI-generated pipelines.</li>
+<li><strong>dbt Labs on AI maturity:</strong> "Autonomy is an outcome of AI maturity. Build the trusted data, governance, and context that let AI and agents act with control" (<a href="https://www.getdbt.com/blog/ai-maturity-trusted-data-to-trusted-ai-agents">dbt blog</a>). The framing: don't give agents autonomy until the data layer is trustworthy.</li>
+</ul>
+<h3 id="cortex-code">Cortex Code</h3>
+<ul>
+<li><strong>CoCo Desktop v1.25.0 is out</strong>, with anchored dbt lineage, a faster dbt Action Bar, a unified dbt execution timeout, menu status updates, and Windows update fixes (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-05-coco-desktop-v1-25-0">release notes</a>). If you use CoCo for dbt work, anchored lineage and the unified timeout are the two upgrades to verify first.</li>
+</ul>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li><strong><a href="https://www.youtube.com/watch?v=uZbIvIyxaoA">Run a DeepSeek 284B on Laptop (No GPU)</a></strong> — Cloud Codes, ~15 min. Viral headlines claim a 284B DeepSeek model runs on a 64 GB laptop at 10–14 tok/s. This investigates llama-modchip on an AMD Ryzen 9 9955HX and breaks down the memory-bandwidth math, the extreme quantization, and the catch. The key number: at full 16-bit precision the model is ~570 GB on disk — something has to give, and the video shows exactly what.</li>
+<li><strong><a href="https://www.youtube.com/watch?v=xVJoOdlF7-E">Claude Just Shrank Qwen 6x. Then Something Weird Happened</a></strong> — Cloud Codes, ~10 min. CompressionBench (submitted Nov 4 by Beidi Chen's group) put six frontier coding agents on an 8-hour H200 clock: compress full models into strict memory limits, write custom inference code, pass hidden eval gates. In the headline 8 GiB test, Claude Sonnet 5.5 squeezed a 27B-parameter model down 6x. The most direct look yet at AI-driven quantization replacing human specialists.</li>
+<li><strong><a href="https://www.youtube.com/watch?v=RmRfRhLABaU">Anthropic Agent Memory Explained: Architecture, Dreams &amp; CLAUDE.md</a></strong> — Cloud Codes, ~9 min. Anthropic's Nov 6 research ("The components of agent memory") tested Claude on long-horizon tasks like Pokémon Red and database problem-solving. The counterintuitive finding: an agent that hoarded 413 files performed worse than one that remembered less. Directly useful for anyone stuffing hundreds of rules into CLAUDE.md and wondering why the agent ignores them.</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li><strong>Qwen 4 preview rumors are circulating (unverified).</strong> Your AI Guy's "first look" claims Alibaba's Qwen 4 lineup includes Qwen 4 Max and a Qwen 4 27B with advanced reasoning and coding improvements (<a href="https://www.youtube.com/watch?v=4TffVLSPYjg">video</a>). Treat as rumor until Alibaba confirms — but given Qwen 3.8's momentum, the 27B variant is the one to watch for local hardware.</li>
+<li><strong>Meituan released LongCat-2.5</strong>, a 1.6T multimodal model (<a href="https://huggingface.co/meituan-longcat/LongCat-2.5">Hugging Face</a> via <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xrsptp/meituanlongcatlongcat25_hugging_face/">Reddit</a>). Another sign that the biggest open-weight releases increasingly come out of Chinese labs.</li>
+<li><strong>Comet 60B (A12B) GGUFs with MTP head</strong> are out from Multiverse Computing — an active-12B MoE that should run on consumer hardware with the multi-token prediction head intact (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xsbc2r/multiverse_computings_comet_60b_a12b_ggufs_with/">Reddit</a>).</li>
+<li><strong>Same prompt, wildly different speeds:</strong> DeepSeek V4.1 Flash at 94 tok/s vs Qwen 3.8 Flash Next at 350 tok/s on the same hardware (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xs7ffm/same_prompt_deepseek_v41_flash_vs_qwen_38_fn_94/">Reddit</a>). Worth checking whether your inference stack is leaving 3x on the table.</li>
+<li><strong>llama.cpp PR #31185 adds external PLE file loading</strong> — a <code>--shard</code> argument for loading a model from multiple shard locations, e.g. PLE (engram) files from a separate GGUF, with conversion support for Gemma4, Qwen3.8Next, and GLM5.3Flash (<a href="https://github.com/ggml-org/llama.cpp/pull/31185">GitHub PR</a> via <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xsgpby/feat_external_ple_file_loading_by_pwilkin_pull/">Reddit</a>).</li>
+<li><strong>Mixed-vendor GPU inference gets a boost:</strong> a CUDA+ROCm dual-backend approach runs LLM inference across a Strix Halo iGPU and RTX 5090 simultaneously, up to 48% faster (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xsaurn/cudarocm_dualbackends_llm_inference_for/">Reddit</a>). llama.cpp's Vulkan backend was previously the only option and had prefill limitations.</li>
+<li><strong>Weight-space programming is becoming a thing.</strong> A "Laya" decision model edits LLM weights directly with no training, and another project reports editing Qwen3.5 into a top decision model (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xski9d/decision_model_to_edit_llm_weight_directly_no/">Reddit</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xruwlf/weightspace_programming_editing_qwen35_into_a_top/">Reddit</a>). Early days, but the neuron-steering/weight-editing thread is one of the most interesting research directions in the feed.</li>
+<li><strong>OpenAI case study: Kuken Industries</strong> uses the OpenAI API to search 70 years of engineering drawings in minutes, built with Recursive (<a href="https://www.youtube.com/watch?v=FNTz0CdqL6g">OpenAI video</a>). A clean example of retrieval over legacy document corpora.</li>
+<li><strong>Is ArtificialAnalysis biased against open-weight models?</strong> A LocalLLaMA thread argues benchmark methodology keeps disadvantaging open-weight models as they approach frontier performance (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xs5pkl/is_artificialanalysis_biased_against_open_weight/">Reddit</a>). Worth reading before you quote leaderboard gaps in a vendor bake-off.</li>
+<li><strong>Another reminder why local matters:</strong> a LocalLLaMA user reports being threatened with a ban for merely red-teaming a model (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xs3y17/got_another_good_reminder_why_local_matters_today/">Reddit</a>). If safety research can get you banned from hosted platforms, local weights are the only ungoverned playground.</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li><strong><a href="https://www.youtube.com/watch?v=4TffVLSPYjg">QWEN 4 Preview IS INSANE! First Look at Qwen 4 Max &amp; 27B</a></strong> — Your AI Guy, ~14 min. Skim rather than watch:</li>
+<li>Claims Alibaba's Qwen 4 lineup includes Qwen 4 Max and Qwen 4 27B with advanced reasoning and coding improvements. Unverified — no official announcement in the material.</li>
+<li>The 27B size class is the one that matters for local hardware if the claims hold.</li>
+<li><strong><a href="https://www.youtube.com/watch?v=FkXOF_acQJQ">MaxxBench Explained: Why AI Coding Models Fail on Modified Tasks</a></strong> — Cloud Codes, ~2 min.</li>
+<li>On DeepSWE, frontier coding models were a "dead heat" near 74% — Claude Opus 5.5, GPT-6 Astra, DeepSeek V4.1 Flash, and Gemini 3.8 Flash looked interchangeable.</li>
+<li>MaxxBench took 89 of those tasks and made slight requirement edits (median +17 lines of code); the dead heat shattered into a 23-point spread.</li>
+<li>Implication: leaderboard parity is partly training-data contamination, not capability parity. Re-run your own evals on modified tasks.</li>
+<li><strong><a href="https://www.youtube.com/watch?v=B4fcyjdhDhE">llama.cpp MoE Cache Slower Than No Cache? Here's the Fix</a></strong> — Cloud Codes, ~1 min.</li>
+<li>On an 11 GB RTX 2080 Ti running a large MoE model, enabling a small GPU expert cache collapsed generation from 42.11 tok/s to 23.5 tok/s.</li>
+<li>Cause: a small VRAM cache holds only a tiny fraction of experts; every cache miss idles the GPU while weights stream in.</li>
+<li>Takeaway: on 8–11 GB cards, expert caching can be a net loss — benchmark before enabling.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/jammaru/sakutto">sakutto</a></strong> (175★) — browser extension for on-device translation with a local LLM (PLaMo). Private, free, no server. The kind of tool that makes local LLMs genuinely useful day-to-day.</li>
+<li><strong><a href="https://github.com/san-digital/tokspur">tokspur</a></strong> — run a 177B model on a 128 GB M5 Max: local Qwen3.8 Flash-Next inference with a 65,536-token context, Tokspur's own Metal engine with native MTP, and an OpenAI-compatible API. Apache 2.0. The MTP-native Metal engine is the interesting part.</li>
+<li><strong><a href="https://github.com/LakoMoor/portcode">portcode</a></strong> — open-source terminal agent for reverse engineering and Rust ports on local/self-hosted LLMs. "Port anything to Rust, with proof."</li>
+<li><strong><a href="https://github.com/CREATORS-INDUSTRIES/llm">CREATORS-INDUSTRIES/llm</a></strong> — toolkit for building Node.js apps on local LLMs.</li>
+</ul>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/kodexlabsio/konstruct">konstruct</a></strong> — column-level lineage for dbt, SQL, Airflow, and Dagster: formulas composed to sources, lineage checked against data, business definitions, and PR review. Ships a CLI, Python API, MCP server, and GitHub Action. The kind of tool that makes AI-generated dbt reviewable.</li>
+<li><strong><a href="https://github.com/hariom2311/snowflake-dbt-airflow">snowflake-dbt-airflow</a></strong> — a starter template wiring the three together.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/Dodaios/ste80-humanizer">ste80-humanizer</a></strong> (240★) — agent skill that removes AI tells and rewrites text 80% of the way to ASD-STE100 (Simplified Technical English). Andrej Karpathy shared the method. Useful if you ship AI-generated docs and want them to stop sounding like AI.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong><a href="https://github.com/JeremyL691/DriftWatch-Tower">DriftWatch-Tower</a></strong> — self-hosted event data quality monitoring with Kafka Streams, PostgreSQL, durable replay, and a live dashboard. Data observability without a SaaS dependency.</li>
+<li><strong><a href="https://github.com/nakodax/nkx-data-protection">nkx-data-protection</a></strong> — AES-256-GCM-encrypted data pipelines for sharing warehouse data with vendors and partners: filter rows, protect columns, revoke access any time.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/GUntilB/Anima-Prompt-Generator">Anima-Prompt-Generator</a> — ComfyUI nodes that turn a short idea into a checked Danbooru-tag prompt for the Anima model using a local LLM.</li>
+<li>✅ <a href="https://github.com/imenbkr/data_observability">data_observability</a> — data observability repo (no description yet, 0 stars).</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-09.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-09</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
