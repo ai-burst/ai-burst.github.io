@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-11</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">11 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.011</span>
+      </div>
+      <h1>Daily Signal — 2026-11-11</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Claude Fable 5.2 is here, and it's claiming the top spot.</strong> Anthropic's new model — part of the "Fable &amp; Mythos 5.2" release (<a href="https://www.anthropic.com/claude-fable-and-mythos-5-2">announcement</a>, linked from <a href="https://www.youtube.com/watch?v=S7lpCyZSdJQ">AI Search's review</a>) — has beaten Claude Opus 5.5 and ranked <strong>first on the Artificial Analysis Intelligence Index</strong>, per AI Revolution's roundup (<a href="https://www.youtube.com/watch?v=AsLMxRjV9QQ">video</a>). The headline numbers are the agentic ones: a reported team of 1,000 agents formalized Fermat's proof in ~30 hours, with other tests showing major gains in coding, physics understanding, and robot control (<a href="https://www.youtube.com/watch?v=AsLMxRjV9QQ">AI Revolution</a>; <a href="https://www.youtube.com/watch?v=S7lpCyZSdJQ">AI Search</a>). Two grains of salt from the reporting: Anthropic is also publicly limiting its own AI research abilities, and while token prices dropped, agent-heavy usage could produce <em>higher</em> absolute bills (<a href="https://www.youtube.com/watch?v=AsLMxRjV9QQ">AI Revolution</a>).</p>
+<p>Also circulating, <strong>unverified</strong>: Your AI Guy reports leaks of a new Claude family / stealth model that could outperform Opus 5.5 (<a href="https://www.youtube.com/watch?v=rMORJY57NEA">video</a>). Treat as rumor until Anthropic confirms — but it suggests the release cadence isn't slowing.</p>
+<p>How to make the most of it:</p>
+<ol>
+<li><strong>Re-run your evals before migrating agent workloads.</strong> Leaderboard wins and Fermat-proof demos won't tell you how Fable 5.2 handles <em>your</em> codebase, SQL, or structured extraction. Benchmark it against your current default (Opus 5.5, GPT-6, or a local model) on your own eval set.</li>
+<li><strong>Audit token spend, not just token price.</strong> Lower per-token prices can hide higher totals if the model loops more in agentic harnesses — wire up spend tracking before switching.</li>
+<li><strong>Check your Claude plan tier before the IPO.</strong> Anthropic's S-1 reportedly frames hitting your Claude limit as "a seamless bridge" to paying more; with $ANT trading expected Nov 19, plan structure may shift (<a href="https://www.youtube.com/watch?v=VR6AXz-qT4I">Devsplainers</a>).</li>
+</ol>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li><strong>Hybrid Tables got dramatically faster, automatically.</strong> Snowflake says Hybrid Tables now deliver up to <strong>8x higher throughput and 3x lower latency, on by default</strong> — a free win if you run transactional workloads next to analytics (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/hybrid-tables-faster-automatically">blog</a>).</li>
+<li><strong>Native asyncio in the Python connector (5.0.0).</strong> Built on Universal Core, the same package you already install now has an awaitable API — no more thread-pool workarounds for event-loop services (<a href="https://medium.com/snowflake/native-asyncio-comes-to-the-snowflake-python-connector-5941385ac80e?source=rss----34b6daafc07---4">Medium</a>).</li>
+<li><strong>Stop moving data before you need to.</strong> Henrik Nielsen argues open formats + in-place governance let AI work start before transformation is complete — directly relevant to cost optimization (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/hidden-cost-of-moving-data">blog</a>).</li>
+<li><strong>AI Functions expanded.</strong> Anthropic Claude 5.5 and OpenAI GPT-6 model variants hit GA in Snowflake AI Functions on Nov 6 (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-06-claude-5-5-openai-gpt-6-ga">1</a></sup>); <code>AI_EXTRACT</code>/<code>AI_PARSE_DOCUMENT</code> gained <code>FL_FILTER_PAGES</code> to process only relevant pages (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-10-fl-filter-pages">9</a></sup>); and AI_EXTRACT reported a <strong>12.8% relative accuracy improvement</strong> with support for documents up to 1,000 pages at no price change (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-02-ai-extract">5</a></sup>).</li>
+<li><strong>Iceberg catalog health.</strong> A Snowflake-published piece compares five open-source Iceberg catalogs on functionality and OSS project health — useful when picking a catalog/governance layer for an open lakehouse (<a href="https://medium.com/snowflake/is-your-iceberg-catalog-healthy-939dc7817154?source=rss----34b6daafc07---4">Medium</a>).</li>
+<li><strong>Support transcripts → trusted AI agents.</strong> A new walkthrough covers turning years of enterprise troubleshooting history into agent knowledge architecture with Snowflake (<a href="https://medium.com/snowflake/from-support-transcripts-to-trusted-ai-agents-building-a-knowledge-architecture-with-snowflake-4569fe0ebd5a?source=rss----34b6daafc07---4">Medium</a>).</li>
+<li><strong>Hands-on lab series.</strong> Snowflake Developers posted a four-part lab on real-time continuous data pipelines on Apache Iceberg with AI-assisted tools — fundamentals, common enterprise challenges, and "bypassing complex engineering overhead" (<a href="https://www.youtube.com/watch?v=wd6vnNXf2Q0">part 1</a>, <a href="https://www.youtube.com/watch?v=wFNJ9omYNEE">part 2</a>, <a href="https://www.youtube.com/watch?v=V_4yM9PDNko">part 3</a>, <a href="https://www.youtube.com/watch?v=Kv6jKb1J4cs">part 4</a>).</li>
+<li>Minor: the Expedition 2026 sales-leader recap covers scaling AI in revenue orgs — skim only if you own GTM data (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/expedition-ai-sales-leaders-recap">blog</a>).</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong>The AI-maturity argument.</strong> dbt's blog maps the path from trusted data to trusted AI and agents: autonomy is an <em>outcome</em> of AI maturity, built on governance, context, and control (<a href="https://www.getdbt.com/blog/ai-maturity-trusted-data-to-trusted-ai-agents">blog</a>).</li>
+<li><strong>Token-expiration controls.</strong> November release notes add expirations for personal access and service tokens: 7, 14, 30, 90, or 365 days — a genuine security win for shared dbt Cloud instances (<sup class="cite"><a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">13</a></sup>).</li>
+<li><strong>dbt-core v1.11.17</strong> ships a Git credential-helper fix for <code>dbt deps</code>, improving compatibility with newer libcurl behavior (<sup class="cite"><a href="https://github.com/dbt-labs/dbt/releases">14</a></sup>).</li>
+<li><strong>New dev release v2.0.0-dev.44-test-pypi</strong> adds Lake Compute reads of AWS Databricks Unity Catalog tables (PAT/OAuth M2M credentials), declaration-aware validation, and <code>dbt debug</code> attach parity — with a breaking config move: existing local Unity attach options must go from <code>config.lakecompute</code> to <code>config.duckdb</code> (<a href="https://github.com/dbt-labs/dbt/releases/tag/v2.0.0-dev.44-test-pypi">GitHub</a>).</li>
+<li><strong>Careem generates ~95% of its data pipelines with AI on dbt.</strong> Akash Srivastava's team explains the two safety layers — context and validation — that make AI-generated pipelines safe; lineage, tests, descriptions, and data contracts are what dbt gives agents out of the box (<a href="https://www.youtube.com/watch?v=uwI2ZnlVAyY">video</a>).</li>
+</ul>
+<h3 id="cortex-code">Cortex Code</h3>
+<ul>
+<li><strong>Managed MCP server went asynchronous.</strong> Snowflake's managed MCP server now supports background execution for <code>CORTEX_AGENT_RUN</code> and <code>CODING_AGENT</code>, plus additional supplementary tools for agents — a meaningful upgrade for CoCo/agent workflows (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-04-mcp-async-agent-tools">8</a></sup>).</li>
+<li><strong>CoCo skill recommendations</strong> appeared in release notes on Nov 9 (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-09-coco-skill-recommendations">15</a></sup>) — worth checking what they surface for your workspace.</li>
+</ul>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li><strong><a href="https://www.youtube.com/watch?v=AsLMxRjV9QQ">Anthropic's New Fable 5.2 Crushes Opus 5.5 and Ranks FIRST Worldwide</a></strong> — AI Revolution, ~16 min. The day's biggest story in one sitting: benchmarks, the 1,000-agent Fermat proof, coding/physics/robot gains, and the pricing fine print. The "lower token prices hide potentially higher bills" bit alone is worth the watch for anyone running agent workloads.</li>
+<li><strong><a href="https://www.youtube.com/watch?v=OG1Jd2hFhLA">Don't Turn On llama.cpp's New 2x Setting Until You Watch this</a></strong> — Cloud Codes, ~8 min. The most actionable local-LLM item today: PR #30966 (release b12191, merged Nov 7) adds <code>--moe-cache-cpu-share</code> and <code>moe-cache-tune.py</code> for MoE models on 8/11/16 GB VRAM. Instead of idling the GPU on an expert cache miss, the CPU pre-fetches experts over PCIe — ideal for Qwen/GLM-class MoE on small cards.</li>
+<li><strong><a href="https://www.youtube.com/watch?v=S7lpCyZSdJQ">Claude Fable 5.2 is a freak</a></strong> — AI Search, ~33 min. A long capability sweep rather than a talking-head review: Claude Code, animation, live piano, full song production, real-estate VR, an Unreal video game, physics, and cancer-ID demos. Judge for yourself whether the demos hold up — especially the coding and agentic ones.</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li><strong>MiniMax H3-Image is out — an open-weight image model built on H3.</strong> Weights are on Hugging Face (<a href="https://huggingface.co/MiniMaxAI/MiniMax-H3-Image">HF</a>; <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xsp3xt/minimaxaiminimaxh3image_hugging_face/">discussion</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xso1ie/minimax_h3image_released_an_openweight_image/">release thread</a>). For the local/open-weight crowd, this is the release to try this week: an open image-generation model that could enable controllable image workflows without cloud APIs. Watch for quantized/GGUF versions soon.</li>
+<li><strong>Apple is building a Mac app to make running local AI models easy</strong> — spotted on r/LocalLLaMA, still <strong>unverified</strong> without a primary source (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xszbe7/apple_has_new_mac_app_coming_to_make_running/">Reddit</a>). If Apple ships a polished first-party runner for Apple Silicon, it changes the default recommendation for Mac-based local setups, where unified memory is already a sweet spot for 30–70B quantized models.</li>
+<li><strong>Gemini 4 Carbon is now available to everyone</strong> — and llm-gemini 0.36 already supports it. Simon Willison notes the model launched two weeks ago for "a subset of cyber defenders" and is now general (<a href="https://simonwillison.net/2026/Nov/10/llm-gemini/">Simon Willison</a>). If you use the <code>llm</code> CLI with Gemini, upgrading gets you Carbon out of the box.</li>
+<li><strong>Microsoft Research backdoored an AI agent by editing fewer than 10 dormant neurons.</strong> The work shows how surgical weight edits — not prompt injection — can implant behavior in agents (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xt82mz/microsoft_research_backdoored_an_ai_agent_by/">Reddit</a>). For anyone running third-party fine-tunes or open weights, it's another argument for provenance and validation of downloaded models.</li>
+<li><strong>NVIDIA reportedly cancels the RTX 5080 24GB and brings back the 16GB model over GDDR7 costs</strong> — <strong>unverified</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtdwps/nvidia_reportedly_cancels_geforce_rtx_5080_24gb/">Reddit</a>). If true, the consumer VRAM ceiling stays lower than hoped, making used 3090/4090/5090s more attractive for local LLMs.</li>
+<li><strong>llama.cpp is adding an FP8 KV-cache.</strong> A PR making the rounds adds FP8 KV-cache support, which should cut VRAM for long-context local inference (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xt9o3t/llamacpp_add_fp8_kvcache/">Reddit</a>). Pair it with today's MoE CPU-cache watchlist item — KV-cache compression is the next lever for squeezing context onto small cards.</li>
+<li><strong>Baidu says Ernie 5.5 Flash arrives in two weeks</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xted8w/ernie_55_flash_will_be_released_in_two_weeks/">Reddit</a>), and an <strong>unverified</strong> qwen4-max-preview appeared on qwencloud (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtckm8/qwen4maxpreview_on_qwencloud/">Reddit</a>). The open-weight scene keeps accelerating at the flash-class tier — expect more 20–30B MoE comparisons soon.</li>
+<li><strong>Anthropic filed for its IPO: $ANT, 825M shares at $70–78, trading expected Nov 19.</strong> A Devsplainers S-1 read covers the ~$104B accumulated loss, the ~$33B revenue, and exactly what the filing says about Claude Pro/Max/Ultra subscribers (<a href="https://www.youtube.com/watch?v=VR6AXz-qT4I">video</a>). If you're a heavy Claude API user, pricing and plan structure may shift after listing.</li>
+<li><strong>Deleting weights in LLM post-training works surprisingly well.</strong> A paper making the rounds claims weight deletion can be an effective post-training strategy (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xswmb7/the_surprising_effectiveness_of_deleting_weights/">Reddit</a>). If it generalizes, it's a cheap compression lever beyond quantization and pruning — worth reading before dismissing.</li>
+<li><strong>XeMaya: an Intel Arc inference engine to run DeepSeek V4.1 and GLM 5.3.</strong> A dev post describes a XeStrata fork that targets the newest MoE models on Intel Arc via SYCL/Level Zero — relevant if you're on Intel hardware and mainstream llama.cpp support lags (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xt2mjk/xemaya_an_intel_arc_inference_engine_to_run/">Reddit</a>).</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>1. OpenAI DevDay 2026: the agent-stack talks</strong> — the most useful ideas without the full watch time:</p>
+<ul>
+<li><em>What Comes After Loops?</em> traces the evolution from simple agent loops to collaborating agents and the design/model advances behind the shift — the closest thing to a strategic roadmap for agent architecture (<a href="https://www.youtube.com/watch?v=nAubbmlhPfI">video</a>).</li>
+<li><em>Coding Agents That Don't Quit</em> documents a 1,000+ hour Codex run: choose recurring tasks, improve feedback, manage token budgets, and know when engineers should step in (<a href="https://www.youtube.com/watch?v=U1IVZy9FhVQ">video</a>).</li>
+<li><em>Codex Security</em> shows scanning large codebases, catching PR issues, and verifying fixes with OpenAI's cyber models + open CLI/SDK — with harness-as-a-service via the Agents API as the infra companion (<a href="https://www.youtube.com/watch?v=gUQN7juxvVI">security</a>, <a href="https://www.youtube.com/watch?v=b7l_Dhe1h8M">harness</a>).</li>
+<li><em>GPT-Live</em> sessions cover voice-agent design: delegation, latency, interruptions, custom voices, and changing requests (<a href="https://www.youtube.com/watch?v=jDxKzlGLCas">build</a>, <a href="https://www.youtube.com/watch?v=5YXlrzC_RYE">Q&amp;A</a>).</li>
+</ul>
+<p><strong>2. Anthropic's S-1, read for Claude subscribers</strong> (<a href="https://www.youtube.com/watch?v=VR6AXz-qT4I">video</a>):</p>
+<ul>
+<li>825M shares at $70–78, ticker $ANT, trading expected November 19.</li>
+<li>The filing discloses a ~$104B accumulated loss against ~$33B revenue — and where that revenue comes from matters for future pricing.</li>
+<li>The "hitting your Claude limit is a seamless bridge to paying more" framing is a direct warning to audit your plan tier before the listing.</li>
+</ul>
+<p><strong>3. Local-LLM shorts roundup:</strong></p>
+<ul>
+<li><strong>125B on 8GB VRAM:</strong> Valve's Steam Machine ran Qwen 3.8 Flash-Next (125B) at 18 tok/s on stock SteamOS via Strata's 3-tier memory architecture + sparse MoE — a striking demo of how far CPU/offload inference has come (<a href="https://www.youtube.com/watch?v=eelsfUee7Vs">video</a>).</li>
+<li><strong>BLA vs REA:</strong> a new open-source tool claims to inflate AI reverse-engineering teardown cost from $0.20 to $212.82; worth knowing what the defense costs developers and users (<a href="https://www.youtube.com/watch?v=bAXn_v2OZ-Y">video</a>).</li>
+<li><strong>Skeptical watch:</strong> <em>"Is This the End of LLMs?"</em> sensationalizes a Stanford memory-efficiency paper; the underlying research is worth reading, the title is not (<a href="https://www.youtube.com/watch?v=e1Laerxyn5E">video</a>).</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/pktq/lasik">pktq/lasik</a></strong> (96★) — Static de-blinding CLI + MCP server that undoes BLA (Blind LLM Agents) hardening so coding agents and REA can read real code again, without executing the target. If you experiment with AI reverse-engineering or run agents on hardened codebases, this is the counter-tool to the BLA arms race.</li>
+<li><strong><a href="https://github.com/cneuralnetwork/sutra">cneuralnetwork/sutra</a></strong> (8★) — Open-source terminal coding agent with 24 providers (OpenAI, Anthropic, Gemini, DeepSeek, OpenRouter, Groq) <em>plus</em> local models via Ollama and LM Studio, with OS sandbox, approvals, cost tracking, and "verified results." A single CLI to swap between cloud and local backends.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/bookleme/bookleme">bookleme/bookleme</a></strong> (108★) — Compiles a book into an Agent Skill with a dual-engine + plugin architecture and per-character fidelity verification. Useful for turning reference docs and manuals into reusable agent knowledge.</li>
+<li><strong><a href="https://github.com/brunozilio/superfik">brunozilio/superfik</a></strong> (9★) — A local-first, self-hostable canvas for coordinating AI coding agents. Early stage, but the "canvas for multiple agents" pattern is exactly what teams hitting single-agent limits will need.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><em>(none this issue — see Trending Repos for the data-observability candidate.)</em></li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/Adijah6838/datasentinel-pro">Adijah6838/datasentinel-pro</a> — enterprise data observability and quality intelligence platform; zero stars yet, but the category matches your data-observability interests.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-10.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-10</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
