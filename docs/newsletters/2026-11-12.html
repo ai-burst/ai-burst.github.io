@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-12</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">12 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">9 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.013</span>
+      </div>
+      <h1>Daily Signal — 2026-11-12</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Snowflake turned Expedition 2026 into a platform launch for governed agentic AI.</strong> According to CI Now's coverage, Snowflake introduced Business Ontology, Cortex AI Gateway, and new capabilities in Snowflake CoCo and CoWork. The release emphasizes policy-controlled agent execution across clouds, frameworks, and providers, with Cortex AI Gateway positioned as the control plane for model/tool/action access (<sup class="cite"><a href="https://cionow.in/snowflake-powers-the-agentic-enterprise-giving-every-ai-agent-the-business-context-controls-and-autonomy-to-move-from-pilot-to-production/">6</a></sup>). Snowflake's own CFO-focused recap also highlights AI-driven close and forecasting, audit, tax, and AI cost governance (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-sales-transformation-expedition">Snowflake blog</a>).</p>
+<p>How to make the most of it:</p>
+<ul>
+<li>Start with Business Ontology: define canonical business terms and definitions before wiring agents, so every agent shares the same context.</li>
+<li>Use Cortex AI Gateway as the central policy control plane for models, tools, and actions rather than scattering permissions per agent.</li>
+<li>Pilot CoCo and CoWork in a governed sandbox to test autonomy with guardrails before promoting them to production workloads.</li>
+</ul>
+<p><strong>Runway open-weighted a 27B robot-control model.</strong> Praxis-1 was released under Apache 2.0 with inference and fine-tuning code (<sup class="cite"><a href="https://aiweekly.co/alerts/runway-open-sources-praxis-1-a-27b-robot-model-apache-20">2</a></sup>, <sup class="cite"><a href="https://www.tokenpost.com/news/technology/54995">12</a></sup>, <sup class="cite"><a href="https://timesof.ai/2026/11/runway-praxis-1-open-weights-robot-model-robolab">15</a></sup>). For local/open-weight watchers, this is the most significant model drop in the last 24 hours.</p>
+<p>How to make the most of it:</p>
+<ul>
+<li>If you work in robotics or simulation, pull Praxis-1 as a reference policy — Apache 2.0 means you can adapt it commercially.</li>
+<li>Watch for community quantization ports to llama.cpp/vLLM in the coming days if you want to run it on consumer GPUs.</li>
+<li>Don't judge it on LLM benchmarks; it's a control model, so evaluate it on task success in your own environment.</li>
+</ul>
+<hr />
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<p>The rest of today's Snowflake/dbt/Cortex Code news, beyond the Expedition 2026 platform launch above:</p>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Workday and Snowflake are now doing zero-copy bidirectional integration.</strong> A technical walkthrough from Snowflake Developers shows how Workday Data Cloud connects to Snowflake using Apache Iceberg: you can access Snowflake tables inside Workday Prism without ETL, query Workday's curated people/finance data directly in Snowflake, and join data across both platforms in real time (<a href="https://www.youtube.com/watch?v=ZtJqTgB5buY">video</a>). A related webinar covers governance and live use cases for analytics (<a href="https://www.youtube.com/watch?v=T04nIee21GE">video</a>), and a demo builds workforce dashboards with Python drivers and natural language queries via Snowflake Coco (<a href="https://www.youtube.com/watch?v=H-77pPfTwzg">video</a>). This matters for HR/finance analytics and for avoiding data duplication when Snowflake sits next to Workday.</p>
+<p><strong>Snowflake is making a cost argument against moving data.</strong> Henrik Nielsen's blog post argues that moving data adds cost and risk, and that open formats plus in-place governance let AI start before data transformation is complete (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/hidden-cost-of-moving-data">blog</a>).</p>
+<p><strong>A demo shows why "same table, different revenue" happens.</strong> In "Same Table, Different Revenue," Apache Ossie and Snowflake read the same orders table and return different, defensible revenue numbers — a 12,350 difference — because one counts only completed orders. It's a good reminder to encode metric definitions in your semantic layer, not in each tool (<a href="https://medium.com/snowflake/same-table-different-revenue-apache-ossie-and-snowflake-to-the-rescue-a26e5c99f5c5?source=rss----34b6daafc07---4">Medium</a>).</p>
+<p><strong>Address validation in Snowflake is more than string formatting.</strong> A Medium walkthrough shows how to validate and standardize US addresses in SQL: formatting rules can make strings look alike, but they can't tell you whether an address is a real delivery point (<a href="https://medium.com/snowflake/clean-looking-addresses-still-fail-delivery-here-is-how-to-catch-them-in-snowflake-32cd51d5f4c4?source=rss----34b6daafc07---4">Medium</a>).</p>
+<p><strong>Shipping a Cortex Agent taught one team that agents are code too.</strong> A finance-domain Cortex Agent took a week to build, but getting it safely from sandbox to production through Azure DevOps took longer. The write-up is a practical look at CI/CD, governance, and release discipline for Snowflake agents (<a href="https://medium.com/snowflake/agents-are-code-too-what-i-learned-shipping-a-cortex-agent-through-azure-devops-fab3adae29e8?source=rss----34b6daafc07---4">Medium</a>).</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>dbt Core 1.12.7 is out.</strong> It extends RunResult with the <code>state_decision_id</code> attribute and fixes a source-freshness edge case: when batch metadata freshness computation fails, dbt now falls back to per-source freshness checks instead of skipping every selected source — important now that <code>skip_nodes_if_on_run_start_fails</code> defaults to <code>True</code> (<a href="https://github.com/dbt-labs/dbt/releases/tag/v1.12.7">release notes</a>).</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>The freshest primary source is the Cortex Code Desktop release notes.</strong> No single breaking change stood out in the deep-research pass, but if you use Cortex Code Desktop, scan the release notes before your next update (<a href="https://docs.snowflake.com/en/user-guide/cortex-code/cortex-code-desktop/release-notes">docs</a>).</p>
+<hr />
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=LA_TF71FUhU">Google Just Gives the World Its Most Powerful AI Model Ever: Carbon</a></strong> (14:32) — AI Revolution. This is the day's best broad AI roundup: Google opening Gemini 4 Carbon to wider access, agent teams working overnight, lower costs on work benchmarks, Signal encryption verification, Anthropic's Claude office tools, and MiniMax's open-weights H3 Image. The most interesting claim is that agent teams "tackle complex coding" and "beat rivals on work benchmarks at lower costs" — a direct challenge to the frontier-model pricing narrative.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=Er0740eVIEw">New top local AI image editor is here!</a></strong> (20:28) — AI Search. MiniMax's H3 Image is an open-weight image model with fast 4K generation, and this video walks through ComfyUI workflows. It's the practical counterpart to the MiniMax mention in the AI Revolution roundup: models are downloadable from Hugging Face, and both text-to-image and edit workflows are already templated.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=lTlpn7QyP_g">They Gave AI Full Control of a Smartphone (What Could Go Wrong?)</a></strong> (2:05) — Cloud Codes. A short, on-topic look at agent safety: smartphone-controlling agents can see, navigate, and tap "Pay" or "Transfer" in under 70ms, and Anthropic's own computer-use docs warn that malicious on-screen text can hijack the model. The open-source Pinky project is presented as moving the safety boundary — worth 2 minutes for anyone building GUI agents.</p>
+</li>
+</ol>
+<hr />
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>WSJ: Nvidia is preparing to oust CEO Jensen Huang.</strong> A WSJ report shared on r/LocalLLaMA claims the board is moving against Huang amid broader questions about Nvidia's China exposure; the story is unverified and should be treated cautiously (<a href="https://www.wsj.com/business/nvidia-is-preparing-to-oust-nvidia-ceo-jensen-huang-30f421ad">WSJ</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtvsi7/nvidia_is_preparing_to_oust_nvidia_ceo_jensen/">discussion</a>). This matters because Nvidia's GPU roadmap and pricing directly affect local/hobbyist inference economics.</p>
+<p><strong>Microsoft files patent for training AI on idle consumer GPUs.</strong> Insider Gaming reports Microsoft's patent application describes breaking training into small tasks and sending them to opted-in devices, with credits as reward; Reddit commenters immediately question whether credits would cover electricity and whether home latency is workable (<a href="https://insider-gaming.com/microsoft-ai-use-your-gpu/">Insider Gaming</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtowe4/microsoft_files_a_patent_application_to_train_ai/">discussion</a>). If it ever shipped, it would turn consumer GPUs into a distributed training pool — a big deal for the local hardware scene.</p>
+<p><strong>Ollama's release train updated llama.cpp and added vLLM Semantic Router decision-model support.</strong> Per the deep-research pass, recent Ollama releases bump llama.cpp and add support tied to vLLM Semantic Router decision models (<sup class="cite"><a href="https://github.com/ollama/ollama/releases">1</a></sup>). If you serve local models, this is a small but useful reason to pull the latest Ollama.</p>
+<p><strong>Unsloth released Dynamic V3.1 GGUFs for Qwen3.8-27B, DeepSeek-V4.1-Flash-1017, and Qwen3.8-Flash-Next.</strong> The GGUFs are now available and benchmarked in r/LocalLLaMA threads (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtmcoe/unsloth_dynamic_v31_released_for_qwen3827b/">release thread</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtlyhe/new_qwen3827b_unsloth_dynamic_v31_ggufs/">GGUF thread</a>). For local users this is an immediate upgrade path if you run any of those three models.</p>
+<p><strong>Open-source MACaQ claims to beat Unsloth GGUFs.</strong> A new model-agnostic quantization method from Huawei CSL, MACaQ, is published with GGUFs for Qwen3.6-35B-A3B and claims state-of-the-art KL-divergence reduction (<a href="https://github.com/huawei-csl/MACaQ">repo</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xto0fa/opensource_method_macaq_beats_unsloth_ggufs/">Reddit</a>). A related KQuant technique reports 3.7× better quants for Qwen Flash Next 180B, Qwen 27B/35B/9B in MLX (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xu9onk/kquant_new_quantization_technique_37_better/">Reddit</a>). This is exactly the kind of VRAM-reduction news worth benchmarking yourself before switching.</p>
+<p><strong>NVIDIA released Alpamayo 2 Edge for open-source self-driving, per a community post.</strong> A post on r/LocalLLaMA from an Embedl employee says NVIDIA's Alpamayo 2 Edge is out today; no primary source is included in the RSS item, so treat as unverified (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtmeif/open_source_self_driving_is_here/">Reddit</a>). If real, it's a major open-weight robotics/autonomy release to track.</p>
+<p><strong>A community local world model runs on RTX 3060/4060-class hardware.</strong> The creator is releasing a model that turns images into interactive videos you control in real time, with a Hugging Face link, claiming it works on RTX 3060, 4060 and above (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtpc2v/im_releasing_a_local_world_model_ive_been/">Reddit</a>). Worth a test if you have a 12GB+ card.</p>
+<p><strong>A CMP 170HX mining card was voltage-glitched into a working A100-80G.</strong> Kate's write-up (shared on r/LocalLLaMA) describes using voltage fault injection to bypass fuse locks on an 8GB CMP 170HX, enabling roughly 80GB of HBM and 120–126 SMs; the modded card reportedly hits 85.9 TFLOP/s FP16, ~1.18× faster than a retail A100 (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xu1dkz/someone_voltageglitched_a_cmp_170hx_mining_card/">Reddit</a>). It's not a weekend project, but it's a fascinating data point for cheap local inference hardware.</p>
+<p><strong>An alleged RTX 5090 with 96GB appeared for sale in China.</strong> A r/LocalLLaMA post shows an alleged GeForce RTX 5090 with 96GB listed for sale; unverified, but if real it would be a major local-inference card (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xucffq/alleged_geforce_rtx_5090_with_96gb_listed_for/">Reddit</a>).</p>
+<p><strong>Gemma4-31B latent-space steering: caring and contempt share three neurons.</strong> A r/LocalLLaMA post demonstrates steering recipes for Gemma4-31B, including export to a GGUF steering vector for llama.cpp (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xu4n7b/gemma431b_latent_space_discovery_caring_and/">Reddit</a>). Useful if you want to modify model behavior without fine-tuning.</p>
+<p><strong>Gemini Decisions API joins the decision-model category.</strong> Simon Willison notes Google's Gemini Decision 1 API is almost identical to Jev, supporting yes/no, choice, and rubric-scoring questions (<a href="https://simonwillison.net/2026/Nov/11/gemini-decisions-api/">Simon Willison</a>). If you're building evaluation or routing pipelines, this is a new option to compare against OpenAI's Decisions API.</p>
+<p><strong>AWS released an official emulator for local testing.</strong> aws-emulator, written in Rust by a large agent swarm, lets you run tests against a local clone of AWS services without provisioning paid API keys; Simon Willison highlights 29,684 commits in the first three weeks (<a href="https://github.com/aws/aws-emulator">GitHub</a>, <a href="https://simonwillison.net/2026/Nov/11/aws-emulator/">Simon Willison</a>). This could change how data engineers do local dbt/Snowflake-adjacent testing.</p>
+<p><strong>Anthropic's IPO roadshow is public.</strong> Simon Willison notes the roadshow video contains previously unreleased details about how Anthropic trains and serves Claude across AWS Trainium, Google TPUs, NVIDIA GPUs, and AMD GPUs (<a href="https://simonwillison.net/2026/Nov/11/anthropic-ipo-roadshow/">Simon Willison</a>). Worth watching for compute strategy, even if you don't follow IPO news.</p>
+<p><strong>llm 0.37.2 fixes two security advisories.</strong> Simon Willison released a patch for GHSA-v9h7-jj4g-f862 and GHSA-r639-rr7r-x72w, related to LLM's extension mechanism (<a href="https://github.com/simonw/llm/releases/tag/0.37.2">release notes</a>, <a href="https://simonwillison.net/2026/Nov/11/llm/">Simon Willison</a>). If you use Simon Willison's <code>llm</code> CLI, upgrade.</p>
+<p><strong>US and China "may" collaborate on AI.</strong> Reuters reports Bessent says the US and China should "stay clear-eyed" about AI cooperation and competition; r/LocalLLaMA responds skeptically (<a href="https://www.reuters.com/world/china/us-china-should-stay-clear-eyed-ai-cooperation-competition-bessent-says-2026-11-11/">Reuters</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtqsuu/us_and_china_may_collaborate_on_ai_the_jokes/">discussion</a>). Any regulatory shift could affect open-weight exports and local model availability.</p>
+<p><strong>DeepSeek V4.1 Flash 1017 exl3 2.9bpw benchmarks are out.</strong> A user with a 6×3090 128GB machine shared APEX 2025 results for the 2.9bpw quant (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtyxl9/deepseek_v41_flash_1017_exl3_29bpw_apex_2025/">Reddit</a>). Useful if you run exl3 and want to know whether the newest Flash checkpoint is worth the download.</p>
+<p><strong>Two small open-weight releases worth noting.</strong> KRAFTON's Raon-1-nano is a dense language model with 1.5B effective parameters, now on Hugging Face (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtmbkn/kraftonraon1nano_hugging_face/">Reddit</a>); Inflect v3 is a lightweight local TTS in 34M parameters under Apache 2.0 (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xtzwxf/i_released_inflect_v3_lightweight_local_tts_in/">Reddit</a>). Both are low-VRAM-friendly additions to the local ecosystem.</p>
+<hr />
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>DeepMind's AI Just Did The Impossible</strong> (<a href="https://www.youtube.com/watch?v=gPNiuyYirfw">Two Minute Papers</a>) — A 5-minute explainer on DeepMind's AlphaProof Code and formal verification of Signal 4.</p>
+<ul>
+<li>AlphaProof Code is positioned as an AI system that can formally verify code, not just generate it.</li>
+<li>The linked Signal 4 PDF suggests applied formal verification of real-world cryptographic/encryption code.</li>
+<li>Good background if you're thinking about LLM agents that can prove properties of their own patches.</li>
+</ul>
+<p><strong>More Compute Won't Make AI Faster. Google Just Showed Why (TPU 8)</strong> (<a href="https://www.youtube.com/watch?v=QB8vldjK5Ws">Cloud Codes</a>) — A 12-minute deep dive into Google's TPU 8i inference chip.</p>
+<ul>
+<li>TPU 8i intentionally trades raw FP4 compute (10.1 vs 12.6 PFLOPs) for ~1/3 faster memory bandwidth (8,601 vs 6,528 GB/s).</li>
+<li>The video traces a single generated token through the chip to explain three bottlenecks limiting model speed.</li>
+<li>Useful mental model for anyone choosing between compute-heavy and memory-bound hardware for local inference.</li>
+</ul>
+<p><strong>Anthropic has just DROPPED A NUKE! (Fable 5.2)</strong> (<a href="https://www.youtube.com/watch?v=klTls-5HfIM">Your AI Guy</a>) — Hype-driven coverage of Anthropic's Fable 5.2.</p>
+<ul>
+<li>Claims Fable 5.2 "raises serious questions" about coding, reasoning, and the frontier competition.</li>
+<li>No primary source is linked in the description; Simon Willison only mentions using Fable 5.2 credits, so treat benchmark claims as unverified (<a href="https://simonwillison.net/2026/Nov/11/tools-tags/">Simon Willison</a>).</li>
+<li>Skim only if you want the hype temperature check, not the substance.</li>
+</ul>
+<hr />
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/huawei-csl/MACaQ">huawei-csl/MACaQ</a> — SOTA model-agnostic quantization for GGUF and local inference, covering text, image, video, and audio models across llama.cpp, vLLM, Diffusers, and PyTorch. I'd use it to shrink models further before committing to new hardware.</li>
+<li><a href="https://github.com/TinkeringDao/satori">TinkeringDao/satori</a> — Offline-first Android voice recorder with live transcription and local-LLM note synthesis; an interesting small-scale local LLM product pattern.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/agentes-chat/agentes-chat">agentes-chat/agentes-chat</a> — Self-hosted Slack alternative where human and AI agents collaborate in channels/DMs, with MCP tools, agent computers/browsers, routines, memory, and approvals. I'd use this as a sandbox for testing multi-agent workflows with Claude/Codex/Gemini.</li>
+<li><a href="https://github.com/jeremiebergel/context-manager-intelligence">jeremiebergel/context-manager-intelligence</a> — Cache-aware, zero-LLM context engine and local proxy for coding agents, promising lossless ~20ms context management. Useful for cutting API costs on Claude/ChatGPT/Codex.</li>
+</ul>
+<hr />
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/ddalq/hermes_plugin_datadog_llmobs">ddalq/hermes_plugin_datadog_llmobs</a> — Datadog Agent Observability plugin for Hermes Agent.</li>
+<li>✅ <a href="https://github.com/Kishan08info/data-observability-monitoring">Kishan08info/data-observability-monitoring</a> — Data observability/monitoring repo (no description yet).</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-11.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-11</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
