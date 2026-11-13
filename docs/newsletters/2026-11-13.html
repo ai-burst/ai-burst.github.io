@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-13</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">13 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.016</span>
+      </div>
+      <h1>Daily Signal — 2026-11-13</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Jensen Huang resigns as Nvidia CEO — and the local-AI world is scrambling to understand what it means</strong></p>
+<p>The day's biggest story isn't a model release: Nvidia CEO Jensen Huang resigned on November 11, with CFO Colette Kress named interim CEO while the board searches for a successor (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xudeev/nvidias_jensen_huang_resigns_as_ceo_colette_kress/">resignation thread</a>). The reported trigger is Huang admitting to an affair with a businesswoman whom US spy agencies reportedly believe passed information to Beijing — though follow-up reporting stresses US intelligence "isn't sure" she actually spied, only that she was a risk (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xuwf9w/us_intel_isnt_sure_if_businesswoman_spied_on/">US intel thread</a>, <a href="https://www.youtube.com/watch?v=LDPLVz73dgg">Devsplainers</a>). Treat the espionage specifics as unverified.</p>
+<p>Why this hits close to home: Nvidia's GPU strategy determines what local models you can run and what they cost. The <a href="https://www.youtube.com/watch?v=LDPLVz73dgg">Devsplainers breakdown</a> reads Nvidia's filings and argues GPU prices won't drop — memory costs plus roughly $279B of supply commitments keep a pricing floor under new hardware — even as the used market softens. A100 prices are already down 20–30% as sellers race to unload inventory before Rubin/Blackwell flood the market (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xuxbeb/a100_prices_down_2030_since_my_post_about_them/">A100 thread</a>).</p>
+<p>The open-weight community reads the resignation as a strategic turning point. One popular r/LocalLLaMA theory holds that Huang was "too pro LocalAI," threatening hosted labs that are about to IPO — clearly speculation, but it's the frame people are using (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xujb7c/jensen_huangs_mistake_was_being_too_pro_localai/">theory thread</a>). Nvidia employees have started a "Bring Back THE Boss" petition (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xuxxmb/bring_back_the_boss_nvidia_employees_petition_for/">petition thread</a>), and Hugging Face's CEO has vowed to keep fighting for open source AI in the new regime (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xut4o7/hugging_face_ceo_vows_to_keep_fighting_for_open/">HF thread</a>).</p>
+<p><strong>How to make the most of it:</strong></p>
+<ul>
+<li>If you're shopping used datacenter GPUs, this is a buyer's window — but the weekly eBay $/GB tracking thread suggests waiting for the panic to bottom out (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xur9ud/used_datacenterworkstation_gpu_prices_on_ebay/">GPU pricing thread</a>).</li>
+<li>Start archiving your favourite open weights now; the "what are you archiving?" thread has concrete model lists for a worst-case scenario (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xuthme/if_open_weights_dry_up_what_are_you_archiving/">archiving thread</a>).</li>
+<li>Watch Nvidia's interim leadership for signals: if data-center compute becomes the sole focus, expect consumer VRAM to stay tight and local inference to lean even harder on quantization and MoE flash models.</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<p>A busy platform day underneath the Nvidia noise.</p>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li><strong>Cortex AI Gateway hit GA</strong> — Snowflake's Cortex AI Gateway reached general availability for inference, observability, and cost management, appearing in release notes dated Nov 3 (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-12-dcr">3</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-16-cortex-ai-gateway-regions">10</a></sup>). Practically: a single governed gateway in front of LLM calls gives you usage-based cost controls and observability across models — exactly what you want if you're being asked to run frontier <em>and</em> open-weight models behind one API.</li>
+<li><strong>Inkling 2 Small is now in Cortex Training</strong> — Thinking Machines Lab's open-weight agentic model is available in Snowflake Cortex Training for batch and streaming inference on governed data (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/inkling-2-small-snowflake-cortex-training">Snowflake blog</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xuqplg/thinkingmachinesinkling2small_is_released/">release thread</a>). Worth evaluating if you want an agentic open-weight model without managing your own GPU fleet.</li>
+<li><strong>Snowpark Python v1.57.0</strong> — adds <code>Session.semantic_view()</code> (private preview) to query semantic views as DataFrames with dimensions, metrics, and facts, plus an experimental <code>Session.debug</code> toggle for per-session troubleshooting (<a href="https://github.com/snowflakedb/snowpark-python/releases/tag/v1.57.0">release</a>).</li>
+<li><strong>Temporary role grants entered preview</strong> — admins can now grant roles to users for a limited time, a Nov 10 release-note item (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-10-temporary-role-grants-preview">6</a></sup>). Useful for break-glass access and short-lived entitlements without permanent privilege creep.</li>
+<li><strong>Agentic Enterprise Security</strong> — Snowflake's blog frames how it and its ecosystem partners govern AI agents, protect data, and respond to threats across seven pillars (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/securing-agentic-enterprise">blog</a>). Worth reading alongside the OpenAI cyber keynote below.</li>
+<li><strong>Operational Ontology on Snowflake</strong> — a reference architecture for agents that reason over operational state, simulate decisions, execute governed actions, and verify real-world outcomes; the packing-station-PB-04 scenario is a concrete pattern for agentic operations (<a href="https://medium.com/snowflake/operational-ontology-on-snowflake-from-business-meaning-to-governed-ai-action-6f3ef270d3f2">Medium</a>).</li>
+<li><strong>Streamlit's Floor, React's Ceiling</strong> — a pragmatic pattern for keeping Streamlit simplicity in Snowflake while moving interactions that a rerun can't handle (cross-filtering, drag-select across quarters) to the front end (<a href="https://medium.com/snowflake/streamlits-floor-react-s-ceiling-inside-snowflake-c78f90e39dc8">Medium</a>).</li>
+<li><strong>Expedition 2026 customer stories</strong> — Disney, Canva, Northern Trust, Stripe, and EY on putting AI to work, from marketing ROI to finance and tax (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/expedition-ai-customer-stories">blog</a>).</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong>dbt State integration in dbt Projects on Snowflake</strong> — the release track notes call out dbt State, which skips unnecessary models and reduces runtime and warehouse compute (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-dbt-projects-on-snowflake-updates">8</a></sup>). This is the kind of change that shows up directly in your warehouse bill — worth testing against your slowest dbt run.</li>
+</ul>
+<h3 id="cortex-code">Cortex Code</h3>
+<ul>
+<li><strong>CoCo Desktop v1.25.4 shipped</strong> — highlights include browser tools tied to chat, artifacts in the Files preview, a Project Action Bar as the sole dbt view, and signed Windows updates (<sup class="cite"><a href="https://docs.snowflake.cn/en/user-guide/cortex-code/cortex-code-desktop/release-notes">4</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-10-coco-desktop-v1-25-4">14</a></sup>). The consolidation of dbt workflows into a single action bar is the interesting signal — CoCo is becoming the one surface for your dbt work.</li>
+</ul>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=HPCayerH1Jw">It's Happening... SUPERHUMAN AI Is Almost Here! (Everything Changes)</a> — AI Revolution, 13:43. The broad weekly roundup in exactly the compilation style you want: Anthropic-driven forecasts pulling superhuman AI into 2027, Claude Fable 5.2 producing a 4K short film, Google's Gemini Decision 1, and Grok Bot autonomously finding work. One sitting, everything covered.</li>
+<li><a href="https://www.youtube.com/watch?v=LDPLVz73dgg">Jensen Huang Is Gone. What Happens to Your AI Now?</a> — Devsplainers, 8:49. The only video on today's biggest story that reads the actual Nvidia filings; it connects the resignation to GPU prices, cheap Chinese models, and your ChatGPT/Claude plan. Claims the board accepted the resignation Nov 11 and that supply commitments keep GPU prices high.</li>
+<li><a href="https://www.youtube.com/watch?v=r2KBVvh_8Do">Is 12GB of VRAM Enough for Local AI Now?</a> — Cloud Codes, 15:52. A reality check on the viral "Qwen 3.8 27B at 200K+ context on a 12GB card" claims: you can have roughly 96K context at ~10 tok/s by spilling weights into system RAM, or ~64 tok/s with less context — but not both. Worth 16 minutes before you buy a GPU upgrade.</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li><strong>Ernie 5.5 Flash Preview lands at 280B total / 14B active</strong> — early reports say it "hits strongly" for such a low active-parameter count (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xune1i/new_model_ernie_55_flash_preview_hits_strongly_at/">thread</a>). MoE flash models are increasingly the sweet spot for local inference.</li>
+<li><strong>Qwen 3.8 Flash Next scores 29 on Artificial Analysis</strong> — slotting between GPT-6 Luna Max (28) and Claude Haiku 5.5 High (30), and much closer to the max variant (34) than to the 27B (20) (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xuxzfs/artificial_analysis_updated_qwen_38_flash_next/">thread</a>). Community reports say the 4B-active class now handles complex multi-instruction prompts without the looping that plagued earlier small models (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xugw1p/qwen38flash_shows_us_a_glimpse_of_whats_possible/">thread</a>).</li>
+<li><strong>Edge0-145B: open-source on-device 145B</strong> — another entry in the "big model, edge hardware" category, though details are thin so far (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xuuq0b/edge0145b_opensource_ondevice_ai_with_145b/">thread</a>).</li>
+<li><strong>llama.cpp heads to 1.0.0</strong> — ggerganov's PR #32190 bumps the version to 1.0.0, a milestone for the local inference stack (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xv3cyt/llamacpp_bump_version_to_100_by_ggerganov_pull/">thread</a>). Meanwhile, a dedicated Vulkan Flash Attention prefill kernel for Intel Arc/Xe landed in master, promising major prefill acceleration on ARL-H and Xe2/Xe3 (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xumdj4/intel_arc_vulkan_prefill_got_a_dedicated_fa/">thread</a>).</li>
+<li><strong>Ollama v0.40.16 and v0.40.17-rc0</strong> — latest stable plus a pre-release, including a llama.cpp bump and Vulkan integrated-GPU mmap work (<sup class="cite"><a href="https://github.com/ollama/ollama/releases">13</a></sup>).</li>
+<li><strong>Gemini 4 Hydrogen is the new cheapest Gemini 4</strong> — but Simon Willison notes the pricing is "really confusing," barely below the much bigger Carbon and Argon siblings (<a href="https://simonwillison.net/2026/Nov/12/llm-gemini/">llm-gemini 0.37</a>). If you build on Gemini APIs, check whether Hydrogen actually saves you money before switching.</li>
+<li><strong>Used GPU market is moving fast</strong> — A100 prices down 20–30% as sellers flee before Rubin/Blackwell (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xuxbeb/a100_prices_down_2030_since_my_post_about_them/">thread</a>); the weekly eBay $/GB of VRAM tracker is live (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xur9ud/used_datacenterworkstation_gpu_prices_on_ebay/">thread</a>); and a voltage-glitching hacker unlocked a $2,500 8GB CMP170HX mining card into a full 120-SM, 80GB A100-class part by blowing onboard fuses (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xuijih/cmp170hx_now_fully_unlockabke_and_more_full_120/">thread</a>).</li>
+<li><strong>DeepSeek-V4.1-Flash on eight 2018 V100s</strong> — one r/LocalLLaMA user reports near-NVFP4 quality, 524K context, 100+ tok/s decode, and ~160 tok/s across two concurrent chats, 100% local (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xus81t/lawyer_with_too_many_gpus_part_5_deepseekv41flash/">thread</a>). Old hardware remains very viable.</li>
+<li><strong>Gemma 4 E2B runs on an 8GB RAM netbook</strong> — small-model progress keeps pushing the hardware floor down (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xutkqv/gemma_4_e2b_on_a_8gb_ram_netbook/">thread</a>).</li>
+<li><strong>inferencekit</strong> — a new open-source plugin that uses coding agents to optimize any model on any hardware (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xut6z0/inferencekit_opensource_plugin_to_optimize_any/">thread</a>). One to watch for local-LLM tooling.</li>
+<li><strong>DeepMind's AlphaProof Code</strong> — formal verification applied to code generation, covered by Two Minute Papers and backed by a DeepMind blog and paper (<a href="https://deepmind.google/blog/introducing-alphaproof-code/">blog</a>, <a href="https://deepmind.google/documents/36/Formal_Verification_of_Signal_4.pdf">paper</a>). Relevant if you care about provably correct agent-generated code.</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>AI-Ready Data Ingestion with Snowflake</strong> (Snowflake Developers, 75:41) — <a href="https://www.youtube.com/watch?v=bup3H1glLAc">link</a></p>
+<ul>
+<li>Core argument: choose an ingestion strategy by source system, not by feature list — batch, CDC, streaming, and zero-copy each win somewhere and fail somewhere else.</li>
+<li>Data Platform Architects Andrija Marcic and Dan Hunt walk decisions for the systems you actually run: files in cloud storage, operational databases, SaaS apps, Kafka, open lakehouse, SAP.</li>
+<li>If you're about to re-architect ingestion, this decision framework beats feature-by-feature tutorials; save the full 75 minutes for when you have a specific source in mind.</li>
+</ul>
+<p><strong>Nvidia Is In Very Serious Trouble</strong> (Tech Unfiltered, 13:41) — <a href="https://www.youtube.com/watch?v=LdgNr0D9YYU">link</a></p>
+<ul>
+<li>Thesis: Nvidia's dominance has cracks — rising competition from custom AI chips, hyperscaler pressure, and changing market dynamics.</li>
+<li>Useful as a counter-narrative to the Devsplainers filings read on the Jensen exit, but heavy on speculation and light on new facts.</li>
+<li>No transcript, so the description is the substance: a competitive-landscape roundup, not a data-driven analysis.</li>
+</ul>
+<p><strong>Cyber at the Frontier</strong> (OpenAI, 34:37) — <a href="https://www.youtube.com/watch?v=YmxpxJZvm4M">link</a></p>
+<ul>
+<li>OpenAI's live keynote on its latest cyber announcements — the security side of agentic AI.</li>
+<li>Pairs naturally with today's Snowflake "Agentic Enterprise Security" post: governing agents, protecting data, and responding to threats are now the shared conversation.</li>
+<li>Skim the announcement highlights rather than the full keynote; the follow-on security-community discussion will matter more than the demo.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/MotleyAI/semantic-layer-bench">MotleyAI/semantic-layer-bench</a> — a semantic-layer expressivity benchmark pitting SLayer, Cube, and dbt MetricFlow on one shared OSSIE model over TPC-H, with blind business questions. If you're choosing or defending a metrics layer, this is a ready-made eval.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/Preet192002/Airbnb_Snowflake_Dbt_Project">Preet192002/Airbnb_Snowflake_Dbt_Project</a> — an end-to-end pipeline using Snowflake, dbt, and AWS S3; a clean reference for the classic ELT + modeling shape, though clearly a learning/portfolio project at 1 star.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/theRizwan/community-claude-code">theRizwan/community-claude-code</a> — a local proxy that connects Claude Code and other coding agents to any OpenAI-compatible provider, with streaming, tool use, fallbacks, and rate limiting. This is the piece that lets you run your agent harness against Ollama/vLLM-hosted local weights when the API bill gets scary.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/rjcuff/Woolly">rjcuff/Woolly</a> — one local, private memory for all your AI tools via MCP; works with Claude, Cursor, Ollama, and any MCP app. The "single memory across tools" pattern is a useful primitive for agent state.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/vinayshetty777/Walmart_DBT_DATABRICKS">vinayshetty777/Walmart_DBT_DATABRICKS</a> — dbt modeling project (no description; Databricks rather than Snowflake, but dbt patterns transfer).</li>
+<li><a href="https://github.com/architonixlabs/DBTracker">architonixlabs/DBTracker</a> — database tracker tooling; no description yet.</li>
+<li><a href="https://github.com/datafocal/datafocal">datafocal/datafocal</a> — AI-first observability: logs indexed at the edge, stored in your object storage, queryable by people and agents.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-12.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-12</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
