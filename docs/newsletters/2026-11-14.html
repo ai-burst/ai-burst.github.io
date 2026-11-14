@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-14</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">14 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">7 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.011</span>
+      </div>
+      <h1>Daily Signal — 2026-11-14</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>llama.cpp v1.0 is here</strong> — the engine that practically defined local LLM serving just cut its first stable major release. Announced on r/LocalLLaMA by Hugging Face's Merve, v1.0 is the first long-term-stable checkpoint after years of fast-moving pre-1.0 evolution (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xv8t2e/llamacpp_v10_is_here/">Reddit</a>). For anyone running Ollama/llama-server under the hood or embedding llama.cpp in tooling, this is the milestone to pin your builds to.</p>
+<p>How to make the most of it:</p>
+<ul>
+<li>If you embed llama.cpp, treat v1.0 as your reproducibility anchor — record the exact version in your serving configs and stop chasing nightly churn.</li>
+<li>Use the bump as an excuse to re-validate your GGUF files and flags; quantization layouts have shifted repeatedly, and a major-version release is the right moment to confirm your local model zoo still behaves.</li>
+<li>Expect downstream wrappers (Ollama, LM Studio, etc.) to track this release over the coming weeks — test on a staging machine before upgrading production inference.</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<p>The deep-research pass found Snowflake to be the only topic with clearly verified, primary-source updates in this window; nothing substantial surfaced for dbt (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">report</a>).</p>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Cortex AI Transcribe got a quiet accuracy upgrade.</strong> On Nov 13, Snowflake improved transcription accuracy across multiple languages with automatic gains and no query changes required (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-13-ai-transcribe-accuracy-improvements">12</a></sup>). Practical takeaway: re-run any transcription pipelines that depend on Cortex AI and re-baseline your eval set — you may get better output for the same credits.</p>
+<p><strong>Document extraction now supports page-level filtering.</strong> AI_EXTRACT and AI_PARSE_DOCUMENT gained <code>FL_FILTER_PAGES</code> on Nov 10, letting you target specific pages instead of chewing through whole files — a real cost-saver for large PDFs and multi-section contracts (<sup class="cite"><a href="https://docs.snowflake.com/en/en/release-notes/new-features">1</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">6</a></sup>).</p>
+<p><strong>Snowflake was named a Leader in the inaugural Gartner Data Lakehouse Platforms Magic Quadrant</strong> — institutional validation for the lakehouse/modern-stack direction most Snowflake shops are already heading (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/gartner-magic-quadrant-data-lakehouse-platforms">blog</a>).</p>
+<p><strong>Semantic layers got a heavyweight discussion.</strong> In the latest <em>Behind the Cape</em>, AtScale CTO Dave Mariani and Snowflake Data Superhero Keith Belanger talk about connecting Power BI and Excel directly to Snowflake Semantic Views — no data replication, no semantic model rebuilds, with governance staying in Snowflake (<a href="https://www.youtube.com/watch?v=hCPvqOPvquc">video</a>). Worth a skim if you're tired of BI teams rebuilding metrics in a second tool.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p><strong>Anthropic Claude 5.5 and OpenAI GPT-6 are now generally available inside Snowflake</strong> (GA since Nov 6) — the biggest provider-model expansion in the platform in recent memory, and directly relevant to CoCo/Cortex workflows that want frontier models without leaving Snowflake's governance envelope (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-06-claude-5-5-openai-gpt-6-ga">5</a></sup>).</p>
+<p><strong>Cortex AI Gateway went GA on Nov 3</strong>, adding a governed inference endpoint plus request tracing and spend attribution (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-03-cortex-ai-gateway-ga">13</a></sup>). For cost optimisation, this is the feature to wire into your dashboards — per-request spend visibility is exactly what you need to stop surprise model bills.</p>
+<p><strong>CoWork previewed geospatial maps on Nov 10</strong>, extending conversational analytics to location data inside Snowflake's AI assistant (<sup class="cite"><a href="https://docs.snowflake.com/en/en/release-notes/new-features">1</a></sup>).</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<p><strong>Run a 1 Trillion Parameter Model on Mac (Apple Harbor)</strong> — <a href="https://www.youtube.com/watch?v=UMURoYoezE8">watch</a>
+A leaked Apple app (in private preview under Claris) promises to chain Macs over Thunderbolt 5, pool unified memory, and run open-weight LLMs with no command line. The video also surfaces reports that OpenAI bought tens of thousands of Macs for computer-use agent training and that Anthropic rents Mac minis through AWS — so the "Mac cluster" idea is suddenly both consumer and enterprise relevant. The channel asks the right skeptical question: does pooling memory across Thunderbolt actually behave like one bigger machine?</p>
+<p><strong>What If You Ran Local AI on a Google TPU Instead of a GPU?</strong> — <a href="https://www.youtube.com/watch?v=SsSdc1jpAT4">watch</a>
+SemiAnalysis benchmarks put Google's Ironwood TPU at 9,364 tokens/sec per chip running Qwen 3.5 397B, beating NVIDIA's B200 on cost per million tokens ($0.181 vs $0.222) — while a 32 GB RTX 5090 can't even load the model. The "300-seat bus vs sports car" framing makes the memory-bandwidth trade-off concrete. Relevant any time you're deciding whether to size up GPU VRAM or rethink the whole architecture.</p>
+<p><strong>Is China Actually Winning The AI Race?</strong> — <a href="https://www.youtube.com/watch?v=wOKNNiR83-8">watch</a>
+A broad news-roundup style video covering DeepSeek, open-weight model momentum, AI robotics, and chip advantages — more geopolitical framing than deep technical analysis, but directly relevant because the open-weight scene is shaped by export controls and who gets to run what. Good context for why Qwen/DeepSeek releases matter beyond benchmarks.</p>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>DeepSeek flash max is the first model to clear 1% on the SWE-sweep bug-finding benchmark</strong> — a brutally hard signal for agentic bug hunting, and a milestone for real-world agent evaluation rather than leaderboard chasing (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvcgxq/deepseek_flash_max_is_the_first_model_to_reach_1/">Reddit</a>).</p>
+<p><strong>Perplexity released Decider v1.3 (26B) and Decider Flash v1.3 (5B)</strong>, Apache-2.0 classification/decision models — the sort of cheap router/classifier stages you drop in front of bigger agent pipelines (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xv7fku/perplexity_releases_decider_v13_26b_and_decider/">Reddit</a>).</p>
+<p><strong>Baidu released ERNIE 5.5 Flash Base</strong>, an open-weight checkpoint in the ERNIE line (<a href="https://ernie.baidu.com/release/ernie-5-5-flash-base">primary</a>, <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvuclv/ernie_55_flash_base_ernie/">discussion</a>).</p>
+<p><strong>Qwen3.5-9B was demonstrated running on a PS4's GPU, offline</strong>, using its own MTP head for speculative decoding (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvbn2m/qwen359b_running_on_a_ps4s_gpu_offline_using_its/">Reddit</a>) — a fun proof point for how far quantized open weights can go on commodity hardware.</p>
+<p><strong>Quantization research had a busy day.</strong> Nace quants claim up to 2× better KL divergence for Qwen 9B/27B/35B and Flash Next using weight-space programming (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvh4ag/weight_space_programming_for_quantization_nace/">Reddit</a>), while a community "Hessian refinement" of MACaQ applied to existing GGUFs reports 13.23% less KL divergence than Unsloth's Qwen3.8-27B quant, with a 4% LiveCodeBench gain on a single 5090 (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvqqa/i_noticed_the_2_hessian_refinement_of_macaq_can/">Reddit</a>).</p>
+<p><strong>Early benchmarks pit DeepSeek v4.1 Flash against Qwen 3.8 Flash Next</strong> while the community waits for Qwen 4 (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvhzq9/deepseek_v41_flash_vs_qwen_38_flash_next/">Reddit</a>).</p>
+<p><strong>NVIDIA supply-chain stories (both flagged unverified/reported).</strong> A report claims former NVIDIA CEO Jensen Huang financed AI startups to absorb excess GPU silicon rather than cutting prices — if true, it shatters the shortage narrative (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvsb5f/instead_of_lowering_gpu_prices_former_nvidia_ceo/">Reddit</a>). Separately, NVIDIA reportedly confirmed privately it could track chips to fight smuggling, even as it questioned feasibility publicly (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvcbbh/nvidia_privately_confirmed_it_could_track_chips/">Reddit</a>).</p>
+<p><strong>CXMT is nearly tripling RAM production from 2025 to 2028</strong>, which could meaningfully change memory pricing for high-context local inference builds (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvam8o/cxmt_almost_tripling_ram_production_from_2025_to/">Reddit</a>).</p>
+<p><strong>Open audio models had a wave of releases:</strong> Tontaube V1.1 (long-form TTS with zero-shot voice cloning; 4-bit runs near real-time on a desktop CPU, ~4 GB VRAM) (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvdmzb/tontaube_v11_openweights_tts_with_voice_cloning/">Reddit</a>), KittenML kitten-tts-2-mini (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvw34k/kittenmlkittentts2mini_hugging_face_texttospeech/">Reddit</a>), and Salesforce's SOV-Transcribe-1 transcription model (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvst4u/salesforcesovereignintelligencesovtranscribe1/">Reddit</a>).</p>
+<p><strong>SenseTime released SenseNova-Loop-9B-Preview</strong>, an interesting agent-loop architecture at a highly local-friendly 9B scale (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvysss/sensenovasensenovaloop9bpreview_hugging_face/">Reddit</a>).</p>
+<p><strong>A developer built custom Strix Halo kernels for the top-51 LLMs using AMD Loom</strong>, pointing at new ways to optimize memory-bandwidth-bound local models (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvcmm0/i_built_speedy_strix_halo_kernels_for_the_top51/">Reddit</a>).</p>
+<p><strong>e-means claims 10× faster k-means at equal loss</strong> — worth a look if you cluster embeddings during evals (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvbith/emeans_10x_faster_kmeans_at_equal_loss/">Reddit</a>).</p>
+<p><strong>Two agent-research papers:</strong> "Read Less, Solve More" explores token-efficient sparse reading of external content for AI agents (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvuit5/paper_read_less_solve_more_tokenefficient_sparse/">Reddit</a>), and another asks whether open-weight LLMs can predict weight-edit effects without running the model, tested from 9B–30B (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xvxyhj/can_openweight_llms_can_predict_the_effects_of/">Reddit</a>).</p>
+<p><strong>Simon Willison shipped datasette-cluster-map 0.19</strong>, which now depends on the new datasette-leaflet 0.3 to send proper referrer headers to OpenStreetMap tiles (<a href="https://simonwillison.net/2026/Nov/13/datasette-cluster-map/">cluster-map</a>, <a href="https://simonwillison.net/2026/Nov/13/datasette-leaflet/">leaflet</a>).</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>Someone Deleted 85% of an AI Model — It Still Works</strong> (Cloud Codes, 2 min) — <a href="https://www.youtube.com/watch?v=Zjn8xg9FjEI">watch</a></p>
+<ul>
+<li>A developer shrunk Gemma 4 26B to 3.81B parameters / 2.75 GB, and it still agreed with the full model 91.7% of the time on a classification task.</li>
+<li>The catch: 26B is a Mixture-of-Experts model with 3.8B active params per token, so the "lobotomy" roughly preserved the always-active expert path — a clean lesson in MoE resilience.</li>
+<li>It ties directly into the Hessian/quant stories above: structure, not raw size, is doing much of the work.</li>
+</ul>
+<p><strong>How Mozilla uses GPT-6 Cyber to find and fix Firefox vulnerabilities</strong> (OpenAI, 20 min) — <a href="https://www.youtube.com/watch?v=PkAmyub12K8">watch</a></p>
+<ul>
+<li>Mozilla combines security engineering with AI agents to triage investigations, test and verify vulnerabilities, find related bug patterns, and help engineers write fixes.</li>
+<li>The standout claim: GPT-6 Cyber revealed that some known bugs were more serious than initially understood, re-prioritizing what got fixed first.</li>
+<li>It's a vendor customer story, but a genuinely useful case study for agentic eval/verification workflows — skim for the workflow patterns, not the marketing.</li>
+</ul>
+<p><strong>Behind the Cape: Dave Mariani on Snowflake Semantic Views, Power BI &amp; the Future of Analytics</strong> (Snowflake Developers, 27 min) — <a href="https://www.youtube.com/watch?v=hCPvqOPvquc">watch</a></p>
+<ul>
+<li>The core pitch: connect Power BI and Excel directly to Snowflake Semantic Views without replicating data or rebuilding semantic models.</li>
+<li>Governance stays in Snowflake, which matters if you're consolidating BI tooling on a governed lakehouse.</li>
+<li>AtScale's framing of "semantic layers in the age of AI" is the conceptual takeaway — metrics as context for LLM-driven analytics.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/dataregulator3/snowflake-cowork-agents-monitor">dataregulator3/snowflake-cowork-agents-monitor</a> — Streamlit-in-Snowflake app that monitors usage and cost of Cortex Agents in CoWork: credits, requests, conversations and users per agent, with automatic agent discovery. Directly useful for the cost governance you'll need as CoWork adoption grows.</li>
+<li><a href="https://github.com/satishkumarai/snowflake-ai-gateway-tools-demo">satishkumarai/snowflake-ai-gateway-tools-demo</a> — Demo tooling around the Cortex AI Gateway that just went GA; handy reference for wiring request tracing and spend attribution.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/yasakani-dev/yasakani">yasakani-dev/yasakani</a> — A local LLM engine for Windows built around one NVIDIA RTX 5090 and Qwen3.8-27B. If you're running a modern single-GPU rig, this is the kind of project that surfaces the interesting VRAM and kernel trade-offs.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/anpawo/claude-code-datadog">anpawo/claude-code-datadog</a> — Routes Claude Code sessions into Datadog LLM Observability through an OpenTelemetry collector. Cheap eval/cost telemetry for agent workflows, and a good template for OTel-based agent tracing.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li><a href="https://github.com/WinnerBrokerBarrow/ai--manus">WinnerBrokerBarrow/ai--manus</a> — General-purpose "AI Manus" agent system; 266 stars.</li>
+<li><a href="https://github.com/ClampOverlord46/ai--manus">ClampOverlord46/ai--manus</a> — Identical repo to the above, same star count; likely a mirror — treat with caution.</li>
+<li><a href="https://github.com/avalanchegnatbeat95/ai--manus">avalanchegnatbeat95/ai--manus</a> — Third identical "AI Manus" fork with the same metadata; smells like duplicate/spam uploads rather than a genuine new project.</li>
+<li><a href="https://github.com/uidebrahhowie/uidebrahhowie-notes">uidebrahhowie/uidebrahhowie-notes</a> — Personal notes repo (Data Engineering · React · Observability).</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-13.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-13</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
