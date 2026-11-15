@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-15</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">15 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">9 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.020</span>
+      </div>
+      <h1>Daily Signal — 2026-11-15</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Google's Gemini 4 line expands: Hydrogen ("everyday AI") + Carbon land, and OpenAI launches ChatGPT Wallet.</strong> Today's coverage is dominated by a major model-release day. Per AI Revolution's roundup, <strong>Gemini 4 Hydrogen</strong> is Google's new everyday model, claiming wins over Claude Sonnet 5.5 and OpenAI's GPT-6.1 Terra on key coding and agent benchmarks while costing "roughly a third of Sonnet per task at top settings," building entire 3D games from one prompt, and pairing with Gemini 4 Carbon to finish coding jobs 19% faster (<a href="https://www.youtube.com/watch?v=ua8OVSw2wYU">AI Revolution video</a>). AI Search's marathon roundup devotes a long segment to a Gemini 4 Carbon review plus Hydrogen, alongside an unusually large tool dump (<a href="https://www.youtube.com/watch?v=woWo80dPkVk">AI Search video</a>). Skeptic's note: my sources here are launch-coverage videos, not a primary model card or Google release notes, so treat every benchmark as an unverified vendor claim until you can reproduce it on your own evals.</p>
+<p>The same wave also brought <strong>OpenAI's ChatGPT Wallet</strong> — letting AI agents make purchases with user approval — a <strong>Microsoft tease of new MAI models for Ignite</strong>, and Amazon counter-moves, all per the same coverage (<a href="https://www.youtube.com/watch?v=ua8OVSw2wYU">AI Revolution video</a>). Separately, the "Gemini 4 Krypton" speculation circulating in other channels is explicitly speculative ("may be preparing to take AI to an entirely new level") — treat it as unverified rumour, not news (<a href="https://www.youtube.com/watch?v=-oNkL3sk68c">Your AI Guy video</a>).</p>
+<p><strong>How to make the most of it:</strong></p>
+<ol>
+<li><strong>Re-run your own eval set before switching anything.</strong> "Cost per task at top settings" hides reasoning-token assumptions. Get the API/model card, run your 20–50 task golden set, and measure tokens and dollars per task for Hydrogen vs Claude Sonnet 5.5 vs GPT-6.1 rather than trusting headline ratios.</li>
+<li><strong>Watch for the local/quantized ripple.</strong> "Everyday" frontier-tier models are usually the first to get GGUF ports and llama.cpp/Ollama support. If Hydrogen is as good as claimed, expect the open-weight scene to have a capable new option within weeks — track HF for GGUF uploads before committing.</li>
+<li><strong>Start defining agent spend rails now.</strong> ChatGPT Wallet formalises agents spending money. If your org runs agents (Cortex Code, Claude Code, homegrown), design approval-gated payments today — and note Snowflake already offers Claude 5.5 / GPT-6 inside the governed platform if you want frontier models without leaving Snowflake's guardrails (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-06-claude-5-5-openai-gpt-6-ga">3</a></sup>).</li>
+</ol>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p>The one genuinely fresh Snowflake item in the last 24 hours: <strong>AI_TRANSCRIBE accuracy improvements</strong> landed on Nov. 13 and are automatic — Snowflake says accuracy improves across multiple languages including English and French (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-13-ai-transcribe-accuracy-improvements">15</a></sup>). Practical follow-up: no action needed, but any transcripts you rely on for analytics or support insights are worth regenerating on a sample set to confirm the uplift on your own domain vocabulary.</p>
+<p>Two slightly older items are worth surfacing because they're directly relevant to cost and model governance. First, <strong>Cortex AI Gateway reached GA on Nov. 3</strong>, bringing inference, observability, and cost management for AI endpoints into Snowflake's control plane (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/about">1</a></sup>) — this is the piece to adopt if you want per-endpoint cost caps before agent workloads scale. Second, <strong>Anthropic Claude 5.5 and OpenAI GPT-6 became generally available in Snowflake on Nov. 6</strong> (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-06-claude-5-5-openai-gpt-6-ga">3</a></sup>), meaning you can now call frontier models via Cortex with data-residency guardrails intact. Google's <strong>Gemini 4 Argon also went GA in Snowflake on Nov. 3</strong> (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-03-gemini-4-argon-ga">11</a></sup>) — useful context given today's Hydrogen/Carbon launch noise.</p>
+<h3 id="dbt">dbt</h3>
+<p>Nothing dbt-specific landed in the last 24 hours. The most recent Snowflake–dbt integration note remains <strong>"dbt Projects on Snowflake updates" from Oct. 20</strong> (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-20-dbt-projects-on-snowflake-updates">8</a></sup>), so if you run dbt against Snowflake that's still the changelog to watch for project-level behaviour changes. The more interesting dbt-adjacent release today is a community tool — the <strong>dbt-nav VS Code extension</strong> (hover over <code>ref()</code>s to see lineage) — which I've dissected in Repo Watchlist below.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p>No fresh CoCo (Cortex Code) news in the 24h window, but the release-trace shows <strong>CoCo Desktop v1.25.0 shipped on Nov. 5</strong> (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-05-coco-desktop-v1-25-0">10</a></sup>). If you run CoCo, that's the version to be on — pair it with the Cortex AI Gateway GA above to get visibility into what your coding agents are actually spending.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ul>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=woWo80dPkVk">Gemini 4 Carbon, Alpha Genome 2, realtime voices, new TTS, ACE Music, Seedream 5.5: AI NEWS</a></strong> — AI Search, 45m. The day's broadest one-sitting roundup and the best match for your "compilation video" preference: a Gemini 4 Carbon review, Gemini Hydrogen, the small-model release <strong>Haru 4B</strong>, new TTS, and a stream of 3D/video tools (Budget3D, Reshoot 4D, SplatAnything, Open-H3-Regenerate-2K). The timestamped rundown flags a 12:39 "most important part" segment on Carbon — worth skipping to if you're short on time. Caveat: the Seedream 5.5 segment is sponsored, so treat that portion as advertising.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=ua8OVSw2wYU">Google Just Dropped HYDROGEN: The New King of Everyday AI</a></strong> — AI Revolution, 13m. The tightest headline-news sweep of the day: Hydrogen beating Sonnet 5.5 and GPT-6.1 Terra on coding/agent benchmarks at ~1/3 the cost per task, Hydrogen+Carbon finishing coding jobs 19% faster, plus ChatGPT Wallet, Microsoft's MAI tease, and Amazon's response. All figures are coverage-claim level — useful as a map of the launch day, not as a vendor benchmark you should quote in a report.</p>
+</li>
+</ul>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>EU pushes a near-trillion-parameter open model.</strong> The EU's "EUROPA" open AI model initiative is aiming for nearly 1 trillion parameters (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xwr917/europa_the_eus_open_ai_model_is_aiming_for_nearly/">r/LocalLLaMA</a>). If it ships, it would be by far the largest open-weights effort outside a Big Tech lab and the first serious sovereign alternative at frontier scale — a direct pressure test on the "open models can't catch the frontier" narrative. Today it's a stated target, not a release; expect a long runway.</p>
+<p><strong>US tightens the AI-compute noose on Chinese firms.</strong> Commerce moved to finalize a rule blocking Chinese AI firms from renting Nvidia GPUs abroad, and the House passed the Remote Access Security Act to limit adversaries' remote access to critical technology (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xwmnkw/rasa_will_cause_total_chaos_to_open_llms_and/">r/LocalLLaMA</a>, <a href="https://explainx.ai/blog/commerce-final-rule-chinese-ai-firms-remote-nvidia-chips-the-information-2026">analysis</a>). Since the open-weight world leans heavily on China-trained model lineages (DeepSeek, Qwen), restricting their access to latest Nvidia silicon could slow that pipeline or push it onto alternative hardware. The rule is "moving to finalize" — not yet final — so treat the exact scope as unverified until it hits the Federal Register.</p>
+<p><strong>Frontier hype check: "models haven't actually become much smarter."</strong> A widely-read r/LocalLLaMA hot take argues LLMs have become far more useful without a proportional gain in raw intelligence — most of the apparent gains came from harnesses, retrieval, prompts, and tooling (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xwegdi/hot_take_frontier_models_havent_actually_become/">discussion</a>). It's a healthy counterweight to today's launch-benchmark inflation, and it matches the pattern of "old model in a better wrapper" that roundup videos rarely interrogate.</p>
+<p><strong>Quantization: Qwen3 at ~2.7 bits per weight via Leech lattices.</strong> An open-source Rust + CUDA implementation quantizes Qwen3 4B/8B/14B to ~2.7 bpw and beats IQ2_S quality at the same size, though it loses on speed (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xwerbo/qwen3_4b_8b_14b_at_27_bits_per_weight_with_leech/">r/LocalLLaMA</a>). For squeezing models into small VRAM, quality-per-bit is the frontier — the speed cost means this targets memory-bound workloads (large-context, low-QPS), not throughput-heavy serving.</p>
+<p><strong>Big MoEs on tiny cards keep improving.</strong> Two updates on the "too-big-for-VRAM" front. <strong>tandem.cpp</strong> (a llama.cpp patch set) now runs DeepSeek-V4.1-Flash at IQ2_XS — 139 GiB of experts — on a 64 GB PC with a 16 GB GPU, and adds AMD ROCm support, keeping hot experts on the GPU and letting the CPU absorb the rest (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xwan2j/update_tandemcpp_deepseekv41_on_a_64_gb_pc_with_a/">r/LocalLLaMA</a>). Separately, a community benchmark shows <strong>RustingStrata beating llama.cpp</strong> on the same Flint 40B Q5_K_XL model on an RTX 3060 12GB: 64.6 vs 48.6 tok/s (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xw5nzn/rustingstrata_runs_flint_40b_on_a_12_gb_card_64/">r/LocalLLaMA</a>). If you run MoEs on small cards, both are worth benchmarking on your own prompts.</p>
+<p><strong>Open-weight releases roundup.</strong> <strong>LFM2.5-24B-A2B</strong> with Hermes got genuine community love as the best speed/capability balance on commodity hardware — explicitly not a coding model, but strong at task execution (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xwgiow/lfm2524ba2b_hermes_is_awesome/">thread</a>, <a href="https://huggingface.co/LiquidAI/LFM2.5-24B-A2B-GGUF">GGUF on HF</a>). Also fresh on HF: <strong>Agnes-2.5-Pro-Theta</strong> (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xwu5jt/agnesaiagnes25protheta_huggingface/">r/LocalLLaMA</a>) and a coming <strong>801-30B-A3B-Base</strong> from the recursive-self-improvement research crowd (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xwt3ri/paper_no_second_run_does_rsi_stop_at_frontier/">paper thread</a>).</p>
+<p><strong>tiny-voca: a 4.5M-parameter TTS that runs 70x realtime on CPU.</strong> Fully open code, weights, dataset, and it runs in the browser with nothing sent to a server (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xw7zrg/tinyvoca_a_fully_open_45mparameter_tts_code/">r/LocalLLaMA</a>). For agent builders, a fully-open, edge-runnable voice model is a genuinely useful building block for voice output without cloud round-trips.</p>
+<p><strong>ARC 1.0: a 0.6B router for cloud-vs-local agent decisions.</strong> Apache-2.0 decision model that routes AI agents across cloud and local models (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xw29ic/arc_10_a_decision_model_for_routing_ai_agents/">r/LocalLLaMA</a>). This is the cost lever for hybrid stacks: a cheap classifier deciding which model class serves each request could cut agent-fleet spend substantially.</p>
+<p><strong>Hardware: Microsoft patents idle gaming GPUs for training; AMD "Siren Halo" rumours.</strong> A Microsoft patent describes turning idle gaming GPUs into paid AI training hardware (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xwe9i5/microsoft_patent_describes_turning_idle_gaming/">r/LocalLLaMA</a>) — patents ≠ product, but it signals real interest in distributed consumer-GPU training economics. Separately, a leaked/rumoured AMD <strong>Siren Halo</strong> would bring dedicated on-package GDDR7 VRAM, following Intel's Razor Lake-AX (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xw7edn/after_medusa_halo_we_get_siren_halo/">r/LocalLLaMA</a>) — unverified, but the direction of travel (fatter memory for local models) is what LLM hobbyists want.</p>
+<p><strong>Datasette grows an OpenAI-compatible LLM port.</strong> <code>datasette-llm</code> 0.1a11 adds support for OpenAI-compatible endpoints, so Datasette can use any server speaking that pseudo-standard — including local llama.cpp-style endpoints — as its LLM backend (<a href="https://simonwillison.net/2026/Nov/14/datasette-llm/">Simon Willison</a>). That's a handy bridge between data exploration and your local model stack; the long-dormant <code>datasette-vega</code> charting plugin also got a refresh (<a href="https://simonwillison.net/2026/Nov/14/datasette-vega/">Simon Willison</a>).</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li><strong><a href="https://www.youtube.com/watch?v=PZQWdlTi9B0">Is this how Local AI reaches Frontier Capabilities?</a></strong> — Codacus, 20m. A single-topic deep dive, so it stays off the playlist, but it's the most substantive local-LLM take of the day:</li>
+<li>Builds a "team of expert models" on an RTX 3060 12GB with a Qwen 4B planner — "mixture of specialists" applied to real jobs, not benchmarks.</li>
+<li>In-context claims: a 15B DNA model (Carbon-X) scores within a point of GPT-6.1 Sol and runs on a 12GB card; TeleOCR reads documents better than Gemini 3 Pro; VibeThinker beats it at contest math.</li>
+<li>
+<p>Practical takeaway: the local-vs-frontier gap is closing fastest in narrow verticals — expect more specialist-model ensembles on consumer hardware before we get a single small generalist that matches the frontier.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=NmyiuukiLA4">7 Neurons Can Turn Any AI Agent Into a Sleeper Backdoor</a></strong> — Cloud Codes, 2m. Short but high-signal:</p>
+</li>
+<li>Microsoft Research (Nov 10): rewriting fewer than 10 rarely-firing neurons — with zero retraining — turns an open-weight agent into a sleeper that passes normal tests, then runs attacker code on a trigger (the example: the clock passing midnight into 2027), using whatever terminal/network access you granted.</li>
+<li>The description claims the same technique was demonstrated against Claude Code with Opus 4.5 (it cuts off mid-sentence — verify against the MSR paper before quoting).</li>
+<li>
+<p>Why it matters: "open weights are auditable" is no longer a complete defense. If you self-host open-weight agents, pin and hash your weights, and treat every new HF download as a supply-chain event.</p>
+</li>
+<li>
+<p><strong><a href="https://www.youtube.com/watch?v=gStfIKkYJOU">Colibri + GLM-5.2 Explained: Streaming a 744B MoE Model From SSD</a></strong> — Cloud Codes, 2m. A compact mental model for MoE memory:</p>
+</li>
+<li>GLM-5.2 is 744B params / 429GB, yet Colibri runs it on a 25GB laptop at 1 token every 10–20s by loading only the 40B active experts and paging the rest from SSD.</li>
+<li>Good reminder that "param count" and "active params" diverge wildly in MoE — the active 40B is roughly the size of a large local model.</li>
+<li>Reality check: SSD streaming is demo-grade, not agent-grade, at that decode speed — a peek at where VRAM-free inference could go, not a production recommendation.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong><a href="https://github.com/AAAloui/dbt-nav">AAAloui/dbt-nav</a></strong> — VS Code extension that shows upstream/downstream lineage when you hover over a dbt <code>ref()</code>. Tiny, early, but exactly the quality-of-life tool for untangling a 200-model DAG during modelling reviews.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong><a href="https://github.com/sandeep-dataeng/cloud-data-warehouse-airflow-snowflake">sandeep-dataeng/cloud-data-warehouse-airflow-snowflake</a></strong> — compact Airflow + Snowflake cloud-DW pipeline reference. Useful skeleton if you're standing up an orchestrator-driven Snowflake stack and want a canonical example to crib from.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/Outpostkrewhirl86/Capri-AI">Outpostkrewhirl86/Capri-AI</a></strong> — local-first desktop AI agent with a cyberpunk HUD; controls files, apps, terminal and browser, powered by Claude Code, Codex, Antigravity or any backend. 345 stars. Caveat: the account looks auto-generated and the star count is suspicious — audit the code before installing a "personal Jarvis" that reads your files.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/Xxhikax/Zephyro">Xxhikax/Zephyro</a></strong> — personal AI assistant with a multi-layer LLM router and action guardrail, plus a Dagster + dbt telemetry pipeline and an evaluation of its reasoning router. The router-plus-telemetry pattern is exactly the architecture to copy for production agents: route cheap/local vs cloud, log every decision, evaluate the router.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/Whassom-nathan/energy-intelligent-ai-chatbot">Whassom-nathan/energy-intelligent-ai-chatbot</a> — energy data platform with anomaly detection, data observability, and a local Llama 3.2 chatbot.</li>
+<li>✅ <a href="https://github.com/Jwrede/grafana-rangeguard">Jwrede/grafana-rangeguard</a> — reverse proxy enforcing time-range limits on Grafana/Prometheus/Loki queries; a nice cost-safety layer for big dashboards.</li>
+<li>✅ <a href="https://github.com/Topkiflare74/ai--manus2.0">Topkiflare74/ai--manus2.0</a> (+ three identical copies) — general-purpose AI agent sandbox. Identical repos at 663–678 stars under auto-generated accounts smell like a star-farming campaign — treat as suspicious until proven otherwise.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-14.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-14</span></a><a class="pager-link pager-next" href="2026-11-15-weekly.html"><span class="mono dim">Newer</span><span>Weekly Signal — 2026-11-15</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
