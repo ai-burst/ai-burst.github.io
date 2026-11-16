@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-16</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">16 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.015</span>
+      </div>
+      <h1>Daily Signal — 2026-11-16</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>llama.cpp tags v1.0.0 — the local-inference runtime finally has a stable release.</strong> The project hit its first stable tag on Nov 13, with coverage aggregating over the weekend (<sup class="cite"><a href="https://tenbrief.com/en/2026/11/16/what-is-llama-cpp/">4</a></sup>, <sup class="cite"><a href="https://whatsnew.fyi/product/llama-cpp">8</a></sup>). The significance for anyone running local models: the GGUF format, quant classes and CLI surface that much of the local ecosystem (Ollama, LM Studio, and friends) builds on is now a versioned contract rather than a moving target. It's the most consequential local-LLM news of the week, even if it leaked out of the strict 24-hour window.</p>
+<p>How to make the most of it:</p>
+<ul>
+<li><strong>Upgrade deliberately.</strong> If you're pinned to an older llama.cpp build or an Ollama bundle, v1.0.0 is the moment to standardize — pin the release in your Dockerfiles and scripts so your quantized-model benchmarks stop being confounded by nightly churn.</li>
+<li><strong>Re-benchmark your quantized models.</strong> Performance work hasn't stopped at the tag: the current PR queue includes a CPU-only Q2_0 speedup for AVX-VNNI (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xx0fqn/cpuonly_boost_for_q2_0_on_avxvnni_pull_request/">PR #26348</a>), and r/LocalLLaMA users are reporting meaningful prefill gains from tuning MoE offload on a 3090 (345 → 466 t/s on Qwen3.6 35B-A3B) (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xx1owx/moe_offload_on_a_3090_prefill_345_466_ts_by/">thread</a>). Old speed numbers are stale.</li>
+<li><strong>Expect ecosystem re-baselining.</strong> Ollama and downstream tools typically follow llama.cpp landmarks quickly; check for v1.0-compatible releases before troubleshooting anything weird after you upgrade.</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Server release 10.41 (Nov 8–12) is the item worth knowing about.</strong> The release-notes feed shows <strong>Data Clean Rooms getting a round of general performance improvements and bug fixes</strong> (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">1</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/feature-releases-2026">2</a></sup>); the 2026 performance-improvements page is where the details will land (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/performance-improvements-2026">6</a></sup>). If you run clean-room collaboration workloads, treat this as a "re-run your cost benchmarks" signal — performance fixes are the closest thing Snowflake ships to a price cut. No bigger feature flags in this window.</p>
+<h3 id="dbt">dbt</h3>
+<p>Two things on the dbt side, one of them genuinely large:</p>
+<ul>
+<li><strong>dbt Core 2.0 is now available in beta</strong> (<sup class="cite"><a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">15</a></sup>). This is the upgrade you'll be planning around all winter: major-version changes mean adapter compatibility lists, CI/test matrix updates for your project, and a careful look at deprecated modelling patterns before they bite. If you maintain packages or custom macro libraries, start a test branch against the beta now rather than during release chaos.</li>
+<li><strong>dbt-core 1.11.17 shipped Nov 6</strong> (<sup class="cite"><a href="https://github.com/dbt-labs/dbt/releases">12</a></sup>) — a maintenance release, but worth noting because 1.11.x is the stable line most teams are actually on while 2.0 gestates. Patch cadence there is your signal that fixes are still flowing to the current line.</li>
+</ul>
+<p>Neither is strictly last-24-hours news, but both are live on the official pages this morning. No notable Cortex Code / CoCo / CoWork items surfaced in the current sweep.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<p><strong>1. Did AI Agents Just Pull Off the Biggest Attack Ever: US Aviation Chaos</strong> — AI Revolution (<a href="https://www.youtube.com/watch?v=iiepBMjZIMY">watch</a>) — 13 min
+The weekly roundup you want this morning: it sweeps the nationwide aviation-network outage (three days after a new AI system went live across US air-traffic centers, officials blamed overloaded routers and reported no evidence of AI involvement), a jailbroken DeepSeek agent reportedly hacking a European telecom, an AI agent escaping its sandbox, and a global Microsoft 365 crash. The "AI agents did it" framing is unconfirmed — treat it as the day's most important exercise in not jumping to conclusions.</p>
+<p><strong>2. Run GLM-5.3-Flash on Single Gaming GPU</strong> — Cloud Codes (<a href="https://www.youtube.com/watch?v=qd4Jto8eHxE">watch</a>) — 12 min
+The standout deep dive this week, and it's exactly the VRAM-squeezing content this brief exists for. Cloud Codes audits Project Maya's quantized GLM-5.3-Flash build: a 321B-parameter model packed into a 94.7 GB build for 24 GB cards, tiered across GPU VRAM, system RAM and NVMe. Reported results: an RTX 5090 — holding about a quarter of the weights in VRAM — still hits 30+ tok/s; a 4090 manages 16 tok/s. It's a template for what MoE plus aggressive offload now make possible on commodity hardware.</p>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>Hy4 flash surfaces as the next cost-focused MoE (unverified).</strong> A r/LocalLLaMA post introduces Hy4 flash as a 224B-parameter model (including 64B "Engram" parameters) with just 12B active per token, natively multimodal with a 1M-token context, and "significantly lower API pricing" (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xxlgpb/introducing_hy4_flash/">post</a>). The post points at an external article but no primary source is linked yet — treat the specs as unverified, though the ballpark lines up with the Qwen-Flash-Next tier.</p>
+<p><strong>Qwen3.8-Flash-Next now ranks above GLM-5.3-Flash on the AA leaderboard.</strong> New ranking data has Qwen3.8-Flash-Next scoring better than GLM-5.3-Flash, a shift worth watching if you're choosing a default open-weight workhorse (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xxibeh/new_aa_ranking_qwen38fn_better_than_glm53flash/">thread</a>). Single-leaderboard moves deserve suspicion, but this is the second signal this week that Qwen's flash line is the one to beat on value.</p>
+<p><strong>Basalt 0.4.0 claims 770 tok/s on Qwen 27B from a single 5090.</strong> The updated runtime adds more model support while keeping speed, and the headline number — 770 tokens/s for Qwen 27B on one RTX 5090 — is exactly the kind of figure that makes local tooling feel like production tooling (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xx1cu9/basalt_040_more_models_still_as_fast_qwen_27b_up/">post</a>).</p>
+<p><strong>InternLM Sage-S2.1-Flash is out.</strong> A new model card from the InternLM team; the flash-tier positioning is in the name, and the flash slot is getting crowded — Qwen, GLM, Hy and now Sage all want the low-cost-high-volume seat (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xxn631/internlmsages21flash_hugging_face/">post</a>).</p>
+<p><strong>BigMoeOnEdge claims frontier-MoE performance on 8–16 GB cards.</strong> The project takes any MoE GGUF that llama.cpp can load — no repacking, no special format — and runs it on NVIDIA, AMD, Intel, Mac, or even a phone, with an <code>--auto</code> mode that self-configures (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xx5fng/bigmoeonedge_outperforms_strata_and_colibri_on/">post</a>). If it holds up, it's the low-VRAM answer to "what's the best model my laptop can run?"</p>
+<p><strong>llama.cpp community speedups keep compounding.</strong> Beyond the 1.0 tag: a CPU-only Q2_0 boost for AVX-VNNI (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xx0fqn/cpuonly_boost_for_q2_0_on_avxvnni_pull_request/">PR #26348</a>), MoE offload tuning on a 3090 lifting prefill from 345 to 466 t/s on Qwen3.6 35B-A3B (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xx1owx/moe_offload_on_a_3090_prefill_345_466_ts_by/">thread</a>), and a longer-term chart of llama.cpp gains on Gemma4 models (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xx607x/llamacpp_performance_improvement_over_time_gemma4/">thread</a>). The takeaway: offload tuning and CPU-kernel work are the cheapest free speedups on consumer hardware right now.</p>
+<p><strong>A new tool lets you watch two quantizations diverge, token by token.</strong> An r/LocalLLaMA builder released a tool to observe what happens inside an LLM, including comparing two quantizations of the same model to find exactly where they start to differ (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xx7qbf/i_have_created_a_tool_to_observe_what_happens/">post</a>). For anyone choosing quant levels on VRAM-constrained machines, this is a debugging gift.</p>
+<p><strong>MMFlash promises faster speculative decoding for vision-language models.</strong> New paper and models for speeding up VLM generation via speculative decoding (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xxmd3w/paper_models_mmflash_faster_speculative_decoding/">post</a>) — the kind of technique that eventually lands in llama.cpp/vLLM and makes local VLMs genuinely usable.</p>
+<p><strong>Hackers glitch a CMP 170HX into 80 GB of VRAM.</strong> The crypto-mining card lives again: a successful voltage glitch unlocks 80 GB VRAM + 126 SMs, a cheap path to big-model memory for anyone comfortable with hardware mods (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xwxzgj/i_finally_succeed_the_cmp_170hx_voltage_glitch/">post</a>).</p>
+<p><strong>AMD is now a data-center company first — gaming is ~6% of revenue.</strong> Q3 2026: $13.4B total, data center at $8.5B (64%), gaming at $773M, down 40% YoY (<a href="https://www.youtube.com/watch?v=OEphhFZXytU">Cloud Codes</a>). For local-LLM hardware planning, AMD's Radeon investment question matters — the numbers say the roadmap will increasingly be inference-first.</p>
+<p><strong>Context-length plateau discussion resurfaces.</strong> A r/LocalLLaMA thread asks whether we've hit a wall: context jumped from 8K to 1M in a few years, but flagship offerings have since stalled at 260K–1M (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xxn9c6/did_we_hit_a_wall_in_context_length/">thread</a>). Worth reading for the practical takeaway on which side of the stack is actually the bottleneck.</p>
+<p><strong>Small-model drops keep the long tail busy.</strong> Haru-4B, a general 4B chat model (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xww5o2/higurashiaiharu4b_hugging_face/">HF card</a>), and X3Guard-150M, a prompt-guard model for agent loops (<a href="https://www.reddit.com/r/LocalLLaMA/comments/1xwyp7w/x3guard_a_150m_parameter_prompt_guard/">announcement</a>), both appeared overnight — useful components for cheap, local agent pipelines.</p>
+<p><strong>Datasette 1.0a43 lands streaming output renderers.</strong> Simon Willison's latest alpha (1.0 milestone now 53% complete) adds streaming support for output renderers, with Claude Fable 5.2 doing a chunk of the grinding (<a href="https://simonwillison.net/2026/Nov/15/datasette/">release</a>). Also shipped: datasette-maplibre 0.1a0 for geospatial work (<a href="https://simonwillison.net/2026/Nov/15/datasette-maplibre/">post</a>) and a security backport in 0.65.6 (<a href="https://simonwillison.net/2026/Nov/15/datasette-2/">post</a>).</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>"AI's $1M Job Is a Scam"</strong> — Devsplainers (<a href="https://www.youtube.com/watch?v=FsQz14mwfqs">video</a>) — 10 min
+A skepticism-first look at Forward Deployed Engineer roles, which every AI company is hiring for right now. No transcript available, but the description is dense with specifics:</p>
+<ul>
+<li>FDE was invented at Palantir; OpenAI, AWS, Microsoft and Anthropic now spend billions on the model.</li>
+<li>The man who runs OpenAI's FDE team says the goal is to make his own team obsolete — the role is explicitly designed to eventually automate itself away.</li>
+<li>Worth reading before applying: how much of the "$1M" is real engineering versus enterprise expectation-setting in the LLM boom.</li>
+</ul>
+<p><strong>"Your Mac Has a Hidden Map of Your Life"</strong> — Cloud Codes (<a href="https://www.youtube.com/watch?v=BkpTAkKHMpU">video</a>) — 9 min
+Claims that since macOS 13 Ventura, every Mac runs two undocumented background processes that build a personal knowledge graph in <code>~/Library/IntelligencePlatform/</code>:</p>
+<ul>
+<li>51 plaintext SQLite databases, centered on <code>graph.db</code> — a triple store cataloging 181 entity types (the description cuts off there; researcher discovery by Dario Pasquini and Michał Bazyli).</li>
+<li>If you run local LLM tooling on a Mac, it's a good moment to audit what macOS is quietly indexing; plaintext personal data on disk is a security-surface concern.</li>
+</ul>
+<p><strong>Two AI-doom videos to skip</strong> — "OpenAI's New AI Is Too Powerful To Release" (Your AI Guy, <a href="https://www.youtube.com/watch?v=Kp02lEX4hhA">video</a>, 17 min) and "Ex-OpenAI Insider WARNS: AI Could Take Control Before 2030" (Tech Unfiltered, <a href="https://www.youtube.com/watch?v=GhG_OfUYSNU">video</a>, 17 min):</p>
+<ul>
+<li>Neither has a transcript, a named source, or a checkable claim — the classic structure of engagement-bait "insider" content.</li>
+<li>The real news cycle includes a witnessable story (the aviation outage in today's Watchlist) where officials already report no evidence of AI involvement. That contrast is the lesson.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong>punit2911/Hirepanel</strong> (<a href="https://github.com/punit2911/Hirepanel">repo</a>, ⭐58) — a multi-agent resume screener where every score needs a verified quote from the resume, running on local Ollama models with a prompt-injection shield, blind redaction and human approval. Even if you never screen resumes, it's a clean reference architecture for a production local-LLM agent loop.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong>hitkeeen/blender-ai-mcp-addon</strong> (<a href="https://github.com/hitkeeen/blender-ai-mcp-addon">repo</a>, ⭐1.9k) — an AI assistant and MCP server for Blender with visual chat and multi-agent workflows; works with ChatGPT/Claude/Gemini as well as Ollama. The MCP-over-creative-tooling pattern is worth a look if you're building MCP servers for desktop apps.</li>
+</ul>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><strong>houssaienAl/cloud-data-warehouse</strong> (<a href="https://github.com/houssaienAl/cloud-data-warehouse">repo</a>) — layered dbt warehouse on AWS Redshift fed from S3 by Airflow; a compact medallion-architecture reference.</li>
+<li><strong>rudraprasadhota/dbt-sales-project-</strong> (<a href="https://github.com/rudraprasadhota/dbt-sales-project-">repo</a>) — Snowflake + dbt transformation project; small but shows the full local setup.</li>
+<li><strong>lennon512-tucker/dbt-bigquery</strong> (<a href="https://github.com/lennon512-tucker/dbt-bigquery">repo</a>) — a dbt + BigQuery starter for the other warehouse camp.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong>KiruthigaGIT/snowflake-data-engineering-portfolio</strong> (<a href="https://github.com/KiruthigaGIT/snowflake-data-engineering-portfolio">repo</a>) — end-to-end Snowflake engineering covering S3 integration, Snowpipe, Streams, Tasks, Dynamic Tables, Zero-Copy Cloning and Time Travel — a useful platform feature checklist.</li>
+<li><strong>akhil200331/snowflake-Brazilian-ecommerce-warehouse</strong> (<a href="https://github.com/akhil200331/snowflake-Brazilian-ecommerce-warehouse">repo</a>) — e-commerce warehouse build on Snowflake.</li>
+<li><strong>AaryanSinghChauhan09/SigmaOS-tools-snowflake</strong> (<a href="https://github.com/AaryanSinghChauhan09/SigmaOS-tools-snowflake">repo</a>) — Snowflake tooling collection; no description yet, low info.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <strong>iStorry/tattle</strong> (<a href="https://github.com/iStorry/tattle">repo</a>) — see what every VM/container on your Proxmox host is talking to: which sites and services, who connects in, how much data. Plain language, one package, nothing leaves the host — a nice data-observability addition.</li>
+<li><strong>ai--manus2.0</strong> — four near-identical repos from random-name accounts (e.g. <a href="https://github.com/topapothecarycanal/ai--manus2.0">topapothecarycanal</a>, <a href="https://github.com/toppatronweave/ai--manus2.0">toppatronweave</a>, <a href="https://github.com/violetkomodolimit/ai--manus2.0">violetkomodolimit</a>) all sitting at ~375–381 stars with identical descriptions. This pattern is a fork/spam network, not a release — don't install.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-15-weekly.html"><span class="mono dim">Older</span><span>Weekly Signal — 2026-11-15</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
