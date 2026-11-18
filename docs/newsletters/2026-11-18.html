@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-18</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">18 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">6 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.014</span>
+      </div>
+      <h1>Daily Signal — 2026-11-18</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>OpenAI shipped a new model pair: GPT-6.2 Astra and GPT-6.2 Sol.</strong> Astra is the new frontier model; Sol is the efficient, everyday-work model. Both are available in the API as <code>gpt-6.2-astra</code> and <code>gpt-6.2-sol</code> (<a href="https://openai.com/index/introducing-gpt-6-2-astra-sol/">OpenAI announcement</a>, <a href="https://simonwillison.net/2026/Nov/17/gpt62-astra-and-sol/">Simon Willison summary</a>). The key pitch is work-per-token: OpenAI says both models deliver better results on demanding tasks with fewer output tokens, which means more within usage limits and lower cost at scale (<a href="https://www.youtube.com/watch?v=C1zYX5jwqq4">official model video</a>). Astra is aimed at complex professional artifacts — slides, spreadsheets, documents — while Sol is positioned as the efficient workhorse for everyday work. A Codex demo even shows Astra reconstructing a room from two video frames and turning it into an interactive Blender set (<a href="https://www.youtube.com/watch?v=tKoDPOrLMX0">demo video</a>). This is an API/frontier-model story, not an open-weight release, but the cost-per-output-token angle matters for anyone building agent pipelines.</p>
+<p>Practical ways to use it:</p>
+<ul>
+<li>Start an eval on <code>gpt-6.2-sol</code> for your high-volume summarisation, classification, and agent sub-calls. If quality holds, it should be cheaper per completed task.</li>
+<li>Reserve <code>gpt-6.2-astra</code> for the hardest document/spreadsheet generation and complex agentic work — that is its stated target.</li>
+<li>Upgrade your local tooling; Simon Willison shipped LLM 0.38 with support for the new model names (<a href="https://simonwillison.net/2026/Nov/17/gpt62-astra-and-sol/">source</a>).</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Spark Monitoring UI reached General Availability.</strong> Snowflake’s release notes say it is for monitoring and troubleshooting Snowpark Connect for Spark batch jobs and sessions directly in Snowsight (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-18-spark-monitoring-ui-ga">release note</a>, <a href="https://docs.snowflake.com/en/release-notes/new-features">new-features index</a>). If you run Spark workloads against Snowflake, this is the first place to look when jobs stall.</p>
+<p><strong>Cortex AI Function Optimization went GA on Nov 16.</strong> It automatically searches across prompts and models, compares quality against estimated cost, and recommends more cost-efficient AI function implementations (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-16-ai-function-optimization-ga">release note</a>). That is a direct lever for tuning Snowflake Cortex spend rather than doing the prompt/model search by hand.</p>
+<p>Two practical Snowflake + AI-agent posts also landed on the official channel: an <strong>agent factory</strong> experiment that migrated PostgreSQL views and functions to Snowflake with parallel AI translators, scripted checks, and an independent AI reviewer (<a href="https://medium.com/snowflake/building-an-agent-factory-for-data-migrations-a-small-test-with-snowflake-9d4622c8f2c7?source=rss----34b6daafc07---4">Snowflake blog</a>); and a <strong>Claude Code + Snowflake research environment</strong> where SQL and an MCP server give agents access to versioned data in Snowflake (<a href="https://medium.com/snowflake/ai-research-environment-with-claude-code-and-snowflake-74f8a8a99fcb?source=rss----34b6daafc07---4">Snowflake blog</a>). Both are good templates if you are building code-gen agents on Snowflake.</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>dbt’s November 2026 update is release-grade.</strong> dbt v2 is now GA across major warehouses; local unit tests are in alpha; batch testing can cut runtime and warehouse queries materially; there is a free dbt State plan; Wizard Desktop is in public beta; and dbt Charts now work in Claude and ChatGPT (<a href="https://www.getdbt.com/blog/whats-new-in-dbt-november-2026">dbt blog</a>). For modelling and testing workflows, the local unit tests and batch-testing improvements are worth trialling this week.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p>No fresh Cortex Code/CoCo release landed in the last 24 hours. The closest CoWork item remains the earlier deep-research/web feature from Oct 30 (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-10-30-snowflake-cowork-deep-research-web">release note</a>). The Snowflake “agent factory” post above uses Claude Code rather than CoCo, but the parallel-agent plus independent-reviewer pattern maps directly to how you would orchestrate CoCo for migration work.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<p>Playlist runs ~31 minutes.</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=aOS2gClexUw">OpenAI Just Lost Control of Its AI Agents... They're Running Wild! — AI Revolution</a> (13 min) — The broad agent-safety roundup in today’s batch: a California lawsuit over OpenAI agents, Gemini 4 agents, and Anthropic’s Claude Mythos in one sitting. Caveat: no primary sources are linked in the material, so treat specific numbers like “80 escapes” or “700 Hugging Face attacks” as unverified; it is a useful survey of the agent-safety narrative, not an authoritative record.</li>
+<li><a href="https://www.youtube.com/watch?v=lu2OavvHe4Q">Run 400B+ AI Models on a 4GB Laptop AirLLM — Cloud Codes</a> (9.5 min) — An exceptional deep dive for local-LLM people. AirLLM genuinely streams 70B/405B-class models through a few GB of VRAM, but the real cost is disk speed, hours, and hundreds of GB of SSD space. The video’s key claim: before attempting a 405B model, do the SSD read-speed division first.</li>
+<li><a href="https://www.youtube.com/watch?v=4W8U9YZoIkU">Your Local AI Is Now a Year Behind ChatGPT and Claude — Devsplainers</a> (8.5 min) — A reality check on the open-weight gap. The video argues local models are now 9–12 months behind frontier models, that Qwen 4 Max launched API-only and barely beats Claude Haiku, and that Qwen 4 27B may not close the gap. It also covers the Artificial Analysis index methodology change, which is worth understanding before trusting local-vs-frontier comparisons.</li>
+</ul>
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li><strong>Open-source Trainium inference engine appears.</strong> TrnRT, an inference engine for AWS Trainium, is open-sourced and currently serves GLM-5.3 Flash (FP8) on a trn2.48xlarge, with two instances per box behind a cache-aware router and 3.57M TPM on SemiAnalysis’s AgentX benchmark (<a href="https://github.com/RunanywhereAI/trnrt">GitHub</a>). This is a signal that cheap open-weight serving on custom AWS silicon is becoming a practical option.</li>
+<li><strong>Simon Willison explores external sandboxes for coding agents.</strong> He worked with Prime Radiant on safer ways to sandbox code executed by agents, specifically to reduce the damage a mistake or prompt injection could cause when running local models (<a href="https://simonwillison.net/2026/Nov/17/external-sandboxes-for-coding-agents/">post</a>). If you run local LLMs in agentic loops, this is the threat model to study.</li>
+<li><strong>llama.cpp news for the local/quantization crowd.</strong> A November recap points to llama.cpp v1.0.0 with FP8 KV-cache support, CUDA OCP FP8 support, and additional model support including Kimi-K3.1 (<a href="https://localmodelwatch.tsuchitsuchi.com/en/2026/11/17/llamacpp-v100-released/">recap</a>); v0.9.0 brought OCP FP8 E4M3 quantization support (<a href="https://localmodelwatch.tsuchitsuchi.com/en/2026/11/17/llama-cpp-v0-9-0-released/">recap</a>). FP8 is the trend to track for faster local inference with lower VRAM.</li>
+<li><strong>“Not Everything Needs an LLM.”</strong> PostHog’s decision-model essay argues that deterministic decision models often beat LLMs at a fraction of the cost — a useful lens when designing pipelines that should route around model calls (<a href="https://newsletter.posthog.com/p/decision-models">article</a>, <a href="https://news.ycombinator.com/item?id=50535740">HN discussion</a>).</li>
+<li><strong>Datasette Lite was rewritten around service workers + Pyodide.</strong> Simon Willison’s browser-based Datasette now runs almost indistinguishably from the server-side app, using a carefully crafted URL against <code>lite.datasette.io</code> (<a href="https://simonwillison.net/2026/Nov/17/datasette-lite/">post</a>). It is a nice reference architecture for in-browser data tooling.</li>
+</ul>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li><strong>Real-time Pipelines with Snowflake &amp; AWS</strong> (<a href="https://www.youtube.com/watch?v=f23Ejo2bU30">video</a>) — A 320-seat live ticket-sale pipeline: Kinesis feeds two Firehose streams, a fast path lands in a Snowflake Hybrid Table via Snowpipe Streaming, and a batch path goes through S3/Snowpipe into Dynamic Tables, with a Streamlit dashboard showing live metrics. The hybrid-table + Snowpipe Streaming + dynamic-tables combo is the modern low-latency Snowflake pattern to copy.</li>
+<li><strong>GPT-6.2 Astra and GPT-6.2 Sol — Models built for the real world</strong> (<a href="https://www.youtube.com/watch?v=C1zYX5jwqq4">video</a>) — The official two-minute positioning video. The key takeaway beyond the release notes is the efficiency pitch: fewer output tokens per completed task, which is the lever for usage limits and scale economics.</li>
+<li><strong>Introducing ChatGPT for Sales</strong> (<a href="https://openai.com/index/introducing-chatgpt-for-sales/">announcement</a>, <a href="https://www.youtube.com/watch?v=pmOJIq7Ah00">video</a>) — OpenAI released a Sales plugin and 30+ partner plugins that bring CRM context into ChatGPT for call prep, tailored proposals, and follow-up. Skim for the partner-plugin pattern: it shows how OpenAI is productising “bring your context to the model” for vertical workflows.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/JuliusBrussee/caveman">JuliusBrussee/caveman</a> — 121k stars and an intentionally memorable pitch: “why use many token when few token do trick.” It is a skill + local proxy for coding agents that produces shorter answers and smaller tool output while keeping every original response recoverable. If agent context windows or token costs hurt, this is a drop-in efficiency layer.</li>
+<li><a href="https://github.com/nimrodfisher/data-factory">nimrodfisher/data-factory</a> — An open-source AI data team: five agents covering data engineering, analytics, data science, and BI, with “every number verified” and a Claude Code plugin. Even at 3 stars, it is a useful starting point for building data-agent workflows.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/replit/datacat">replit/datacat</a> — Self-hosted observability for metrics, logs, traces, dashboards, and alerts, storing data in PostgreSQL or ClickHouse and accepting OpenTelemetry data.</li>
+<li><a href="https://github.com/kitakitaaura/nukemichi">kitakitaaura/nukemichi</a> — CORS-free HTTP and raw TCP from a web page through Tor. Note: the “Snowflake” here is Tor’s anti-censorship transport, not Snowflake the data cloud.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-17.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-17</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
