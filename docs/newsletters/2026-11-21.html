@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-21</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">21 Nov 2026</span>
+        <span class="badge badge-daily">daily</span>
+        <span class="mono dim">5 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.012</span>
+      </div>
+      <h1>Daily Signal — 2026-11-21</h1>
+      <h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p>Snowflake's release notes surfaced a few small but genuinely useful updates in the last day. The most interesting is the new <code>AI_FUNCTION_OPTIMIZATION</code> experiment type: you can evaluate multiple model candidates on the same dataset and metric, then compare output quality and estimated cost in one workflow (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">1</a></sup>). That is a practical eval-driven model-selection pattern, and it removes some guesswork when deciding between Cortex functions or external model calls.</p>
+<p>There's also an <code>AI_EXTRACT</code> accuracy improvement in preview as of Nov 20 (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/new-features">2</a></sup>). If you use <code>AI_EXTRACT</code> for structured document extraction, this is a good moment to re-run your golden test set before trusting it in production. And <code>AI_COMPLETE</code> now supports Snowflake Decision as a preview (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/about">9</a></sup>), which expands the set of decision-style workflows you can call through the same LLM-style API without leaving Snowflake.</p>
+<p>On the pipeline side, a new Snowflake/AWS walkthrough shows a real-time Kinesis-to-Snowflake Iceberg pipeline built with the Snowpipe Streaming High-Performance SDK (<a href="https://medium.com/snowflake/build-a-real-time-kinesis-to-snowflake-iceberg-pipeline-with-snowpipe-streaming-high-performance-dd44dc9b7ce5">Snowflake + AWS walkthrough</a>). If you're on AWS and standardizing on Iceberg rather than classic Snowflake-managed storage, this is a solid reference architecture.</p>
+<p>Finally, the "Data Superhero" community piece is worth a skim for the career/visibility angle: what the program offers, and what teaching in public does for your own confidence (<a href="https://medium.com/snowflake/the-cape-fits-what-being-a-snowflake-data-superhero-offers-and-teaches-8f719a1e302c">Snowflake community blog</a>). Not a feature change, but useful context if you're thinking about building a public data/engineering profile.</p>
+<h3 id="dbt">dbt</h3>
+<p>dbt's November 2026 product update makes batch testing GA. According to dbt, v2 now combines <code>unique</code> and <code>not_null</code> tests into one query per test type, with internal benchmarks showing 40% lower runtime and 65% fewer warehouse queries (<a href="https://courses.getdbt.com/blog/whats-new-in-dbt-november-2026">dbt November 2026 update</a>). If your test suite is running hundreds of tiny queries, this is a meaningful cost lever — and worth re-checking after you upgrade.</p>
+<p>Two smaller dbt updates round out the morning. The Model timing table can now be filtered by Resource details, which helps you track down slow resources inside long-running models (<a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">dbt release notes</a>). And single-tenant dbt users get Cost Insights coverage for unit tests when filtering by Test resource type (<a href="https://docs.getdbt.com/docs/dbt-versions/dbt-platform-release-notes-gen">dbt platform release notes</a>).</p>
+<p><strong>Cortex Code:</strong> no direct CoCo updates in today's material; the <code>AI_COMPLETE</code> Snowflake Decision preview above is the closest adjacent signal.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><a href="https://www.youtube.com/watch?v=VlnaPWa-kVg">Every Way to Get 64GB VRAM for Local AI (Ranked by Speed &amp; Price)</a> — 22 min. This is my one deep-dive exception today because it directly answers the VRAM/memory question that dominates local-LLM hardware decisions. The description makes three concrete, decision-relevant claims: AMD Strix Halo mini PCs default to roughly 50% of system RAM as GPU memory (so a 64GB box starts with 32GB usable), Apple Silicon caps usable GPU allocation at 66–75% unless you apply a workaround that resets every reboot, and dual GPUs deliver the full 64GB but bring standard multi-GPU complexity.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=mLFpUPoAsnA">What's Going On With GPT 6.2?</a> — 12 min. This is the closest thing to a broad AI news roundup in today's uploads: the description frames GPT-6.2 as a rollout full of questions and controversy, with a growing competitive landscape as the backdrop. Good for catching up on what people are arguing about, rather than for settled facts.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>llama.cpp pre-release b12606.</strong> A new llama.cpp pre-release landed on Nov 21, 2026, and it removes the old gating and fallback logic for the fused lightning indexer — meaning the indexer is now always used (<a href="https://github.com/ggml-org/llama.cpp/releases">llama.cpp releases</a>). This is an internal runtime change rather than a user-facing feature, but if you self-build llama.cpp, it's worth testing your current model set before switching.</p>
+<p><strong>Riemann Hypothesis claims are impossible to ignore — treat as unverified.</strong> Levent Alpöge has published a remark saying that, working with Claude, he has discovered a proof of the Riemann Hypothesis, that the method extends to the Generalized Riemann Hypothesis, and that the arguments have been formalized (<a href="https://alpo.ge/remark.pdf">remark PDF</a>, <a href="https://simonwillison.net/2026/Nov/20/levent-alpoge/">via Simon Willison</a>). Separate but related, Ravi Vakil shares a hurried announcement that Alessandro Masullo has a proposed proof of the Generalized Riemann Hypothesis — this one explicitly human-only, with no AI — that Brian Conrad has been reviewing for months (<a href="https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/">Vakil's announcement</a>, <a href="https://simonwillison.net/2026/Nov/20/ravi-vakil/">via Simon Willison</a>). None of this is peer-reviewed yet; for LLM-watchers, the Alpöge claim is a striking real-world data point about Claude's usefulness in research, but it is firmly in unverified territory.</p>
+<p><strong>Quiet day for open-weight releases.</strong> There were no verified new Ollama releases (<a href="https://github.com/ollama/ollama/releases">Ollama releases</a>), no fresh vLLM release note in the immediate window (<a href="https://localmodelwatch.tsuchitsuchi.com/en/2026/11/17/vllm-v0-34-0-released/">vLLM watch</a>), and no clear new open-weight model launch in the gathered sources. The real engine-level action today is the llama.cpp pre-release above.</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<h3 id="how-to-validate-us-addresses-in-snowflake-step-by-step-demo-snowflake-developers-12-min">How to Validate US Addresses in Snowflake (Step-by-Step Demo) — <a href="https://www.youtube.com/watch?v=r-9SiCC3kQg">Snowflake Developers</a>, 12 min</h3>
+<p>No transcript on this one, but the demo description gives enough to decide:</p>
+<ul>
+<li>Service Objects offers a Snowflake Native App that validates and standardizes US addresses with a single stored procedure call, writing ZIP+4, DPV outcomes, and change details to a table inside your account.</li>
+<li>DPV codes become a workflow decision: accept records, review them, or fix them at the source.</li>
+<li>There's no external pipeline to manage — the app runs inside Snowflake, which is the main governance/security appeal.</li>
+</ul>
+<h3 id="build-your-own-instagram-with-deepseek-rea-your-ai-guy-16-min">Build Your Own Instagram With DeepSeek + REA — <a href="https://www.youtube.com/watch?v=3DMqxYDls-I">Your AI Guy</a>, 16 min</h3>
+<p>Again no transcript, so this is from the description:</p>
+<ul>
+<li>The demo uses DeepSeek + REA to scaffold an Instagram-style app: user profiles, image sharing, social feeds, and general app functionality.</li>
+<li>It's a rapid-prototyping pattern more than a production architecture reference; the interesting part is how AI coding handles a broader product surface than a to-do app.</li>
+<li>If you're curious whether an open-weight model like DeepSeek can drive a full-stack social-app build, this is a low-stakes test case.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/senickimoro-art/pinokio-olvara-ai-workspace">senickimoro-art/pinokio-olvara-ai-workspace</a> — 152 stars. A modular desktop workspace for configuring and running local AI models. Useful if you want a GUI-style control plane for a multi-model local setup instead of juggling terminal commands.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/zavi2997-droid/claude-code-agent-workspace">zavi2997-droid/claude-code-agent-workspace</a> — 152 stars. Orchestrates composable Claude Code agent workflows across isolated workspace contexts. This matches the move from one-off agent scripts to repeatable, isolated agent runs.</li>
+<li><a href="https://github.com/punit2911/meridian-multimodal-rag">punit2911/meridian-multimodal-rag</a> — 72 stars. Evidence-grounded multimodal RAG for industrial maintenance documentation, with hybrid retrieval, citations, conflict resolution, claim verification, abstention, an optional tool-using LLM agent, and a deterministic offline mode. Good reference architecture for high-accuracy RAG.</li>
+<li><a href="https://github.com/AntikvarX/ai--manus2.0">AntikvarX/ai--manus2.0</a> — 56 stars. A general-purpose AI Agent system that runs tools and operations in a sandbox. A useful baseline if you're experimenting with Manus-style agent scaffolds.</li>
+</ul>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/Rahul9121/dbt-analytics-warehouse">Rahul9121/dbt-analytics-warehouse</a> — 1 star. Dimensional analytics warehouse for capital-markets trade data built with dbt on DuckDB. Nice starting point for a local dbt playground or a trade-data modeling pattern.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/riishabhz/langgraph-snowflake-bi-agents">riishabhz/langgraph-snowflake-bi-agents</a> — 1 star. Multi-agent analytics on Snowflake: LangGraph Analyst, BI, and Summary agents turn a plain-English question into governed SQL, an interactive Plotly dashboard, and a narrative on a Snowflake semantic view. Runs on Snowflake Cortex so data stays in Snowflake.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li><a href="https://github.com/tosiabunio/dBTray">tosiabunio/dBTray</a> — Windows 11 tray app with a real-time stereo level meter for everything your PC plays; despite the name, it is not dbt.</li>
+<li><a href="https://github.com/datadoratw/datadoratw-notes">datadoratw/datadoratw-notes</a> — Personal notes on Python, observability, and networking; more a reference dump than a library, but it matches the data-observability keyword watch.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-20.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-20</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
