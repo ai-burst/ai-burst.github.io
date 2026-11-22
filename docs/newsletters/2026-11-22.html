@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-22</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">22 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">8 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.009</span>
+      </div>
+      <h1>Daily Signal — 2026-11-22</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>The math world (and Claude) made headlines this weekend.</strong> Both the <a href="https://www.youtube.com/watch?v=bj3JTd-ezYg">AI Search roundup</a> and <a href="https://www.youtube.com/watch?v=_4NZedIB55o">AI Revolution</a> are leading with extraordinary claims: an Anthropic mathematician says Claude helped prove the <strong>Riemann Hypothesis</strong>, and there's a reported <strong>unforced solution to Navier-Stokes</strong> — two of the hardest open problems in mathematics. Treat these as <em>as-reported, unverified</em> for now: the videos are roundups of claims that haven't passed peer review, and "Claude helped" almost certainly means a substantial human-led proof with AI assistance, not an AI-only result. What's genuinely interesting for you: the workflow behind it — how an LLM was used to explore proof strategies, verify lemmas, and catch gaps. That's a blueprint worth studying for your own agent/eval work.</p>
+<p><strong>Meanwhile, the AI market had its worst week in recent memory.</strong> Per the same roundups, Anthropic went public near a $2 trillion valuation, promptly slid back toward its IPO price amid protests over "AI that builds AI," and <a href="https://www.youtube.com/watch?v=_4NZedIB55o">Nvidia lost roughly $900 billion in a single week</a>, while Trump threatened a "tremendous tax" on AI data centers abroad. If accurate, this is the kind of volatility that reshuffles budgets: enterprise buyers get pricing leverage, and open-weight alternatives look comparatively safer than locked-in frontier API spend.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ul>
+<li><strong>Don't re-platform around math-breaking models yet.</strong> Until the Riemann/Navier-Stokes results are independently verified, treat any "Claude solves P vs NP" style claims as marketing. Do, however, dig into how the human+AI collaboration was structured — that transfers to your agent work.</li>
+<li><strong>Use the market dip to renegotiate or diversify.</strong> If you're paying for frontier model APIs, this is a moment to benchmark open-weight models (Qwen, Llama, DeepSeek lines) against your workloads and build a fallback path.</li>
+<li><strong>Watch GPU prices.</strong> Nvidia's crash and the bubble talk could mean cheaper used/refurbished hardware for your local LLM rig sooner than expected — see the budget GPU analysis in <a href="#">Worth a Skim</a> below.</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Autopilot for sensitive data classification hit Public Preview.</strong> A new <a href="https://docs.snowflake.com/en/release-notes/all-release-notes">Snowflake release note</a> announces that Autopilot now manages the timing of classification, reclassification schedules, and minimum object age — the stated goal being to optimize both performance and cost. This is an operational feature rather than a flashy one, but it matters for anyone running governed data platforms: it removes the manual tuning burden on when sensitive-data scans run, which is exactly the kind of thing that quietly bloats credit consumption if left to naive schedules. Worth enabling in a dev account to observe its reclassification cadence before rolling out.</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>dbt's AI agent is now resilient to flaky LLM providers.</strong> Per the <a href="https://docs.getdbt.com/docs/dbt-versions/release-notes.md">dbt release notes</a>, the platform agent now automatically retries transient LLM provider failures with <strong>exponential backoff</strong>, covering timeouts, rate limits, and server errors. For anyone driving dbt through AI-assisted workflows (model generation, natural-language-to-SQL, code review), this removes a class of nondeterministic failures that plague agent runs — a concrete reliability improvement you can verify in CI.</p>
+<p><strong>Multi-project agent search just got better.</strong> The same <a href="https://docs.getdbt.com/docs/dbt-versions/release-notes.md">dbt release notes</a> add <code>get_related_models</code> to multi-project agent contexts, enabling semantic search for related models across projects. If you use dbt's MCP/agent tooling, this should make cross-project lineage and "what does this model feed?" questions dramatically easier to answer contextually, rather than grepping for refs. (Additional coverage from the <a href="https://docs.getdbt.com/docs/dbt-versions/dbt-platform-release-notes-gen">dbt platform release notes</a>.)</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p>No Cortex Code (CoCo/CoWork) news surfaced in the last 24 hours — the Snowflake release feed mentions Autopilot, but nothing for the AI coding agent specifically. Noted and watching.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong>Riemann solved, unforced Navier-Stokes, realtime waifus, new GPT, Gemini Neon: AI NEWS</strong> — <a href="https://www.youtube.com/watch?v=bj3JTd-ezYg">watch</a> — 34 min
+   The flagship roundup of the day, and the one that earned its runtime: it covers the claimed Riemann/Navier-Stokes solves, Gemini 4 Neon, a new GPT (6.2 per the description), Kling 4 Image, and a stack of tools (LongCat Video Avatar 1.6, Depth Pro 2, FastFrames, MovieRoll, Voice Isolator, Jeveration, Duo). The timestamped table of contents means you can skip straight to the math-results section (08:40–13:00) and the model releases. This is exactly the "this week in AI" compilation style you prefer.</p>
+</li>
+<li>
+<p><strong>It Happened... The AI Bubble Just Cracked (Worst Week For AI Ever)</strong> — <a href="https://www.youtube.com/watch?v=_4NZedIB55o">watch</a> — 14 min
+   The counterweight to the hype: this one tracks Anthropic's post-IPO slide, Nvidia's ~$900B one-week loss, the Trump/Xi human-in-the-loop agreement on military AI, and the "ban AI that builds AI" protests. It's a compact market/regulatory roundup that pairs well with the first video — together they give you the full spectrum from breakthrough science to financial reckoning. Useful context for any capacity or pricing decisions you're making this quarter.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>llama.cpp ships steady-nightly maintenance fixes.</strong> The <a href="https://github.com/ggml-org/llama.cpp/releases">llama.cpp releases feed</a> shows active nightly activity including a Vulkan unaligned memset handling fix and a <code>no_realloc</code> fix for the <code>clef</code> and <code>vllm-decision2</code> models. Nothing flashy, but this is the kind of compatibility churn that affects fresh builds — if you compile from source or run bleeding-edge quantization, worth a pull. Note the upstream mention of <code>vLLM decision</code> model support, which is runtime-level plumbing rather than a vLLM release announcement.</p>
+<p><strong>Ollama sits at v0.40.17 with no major breaking release.</strong> The <a href="https://github.com/ollama/ollama/releases">Ollama releases page</a> and <a href="https://ollama.com/blog">blog</a> confirm a quiet 24 hours — prior GGUF and model-support improvements remain the headliner. If you're on an older Ollama for local serving, there's no urgency to upgrade, but the ongoing model compatibility work is worth tracking for new open-weight drops.</p>
+<p><strong>No major open-weight model launch — infrastructure week, basically.</strong> Across the <a href="https://github.com/ggml-org/llama.cpp/releases">llama.cpp</a>, <a href="https://github.com/ollama/ollama/releases">Ollama</a>, and <a href="https://docs.getdbt.com/docs/dbt-versions/release-notes.md">vLLM</a> sources, the theme is runtime fixes and model-compatibility patches rather than a flagship release. For your open-weight comparisons, that means the frontier gap you were measuring yesterday probably hasn't moved — a good moment to standardize your eval harness before the next wave lands.</p>
+<p><strong><a href="https://www.youtube.com/watch?v=S2_w1ULo_NQ">Tech Unfiltered</a> digs into Anthropic's falling valuation</strong> — the video argues investors are questioning whether Anthropic can justify its market value given competition from OpenAI, Google (Gemini 4 Neon), and open-weight alternatives. A useful counterpoint to the "bubble crack" narrative and relevant to your cost-optimization instincts: enterprise buyers seeing provider turbulence is precisely when local/open-weight plans earn their keep.</p>
+<p><strong>Simon Willison points at muru, an AI-assisted Rust server</strong> — Graham Dumpleton's <a href="https://simonwillison.net/2026/Nov/21/muru/">muru</a> project pairs an ASGI/WSGI Rust server with an AI-coding assistant to build the "best possible" Python production serving stack. Tangential to your beat, but it's a smart data point on how senior infra folks are using AI coding agents to rewrite critical-path infrastructure — and it's already showing up in the wider dev discourse.</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>What Really Happens Inside Your GPU When AI Answers</strong> — <a href="https://www.youtube.com/watch?v=Qw82PnNch58">Cloud Codes</a>, 12 min</p>
+<ul>
+<li>The core thesis: to generate a single token, the GPU reads the entire model (e.g., a 16GB weight set) from memory, up to 100× per second — and the <strong>math cores spend most of their time idle, waiting on memory bandwidth</strong>, not computing.</li>
+<li>Concrete data: the same card runs Qwen 3.8 27B at <strong>78 tokens/s on llama.cpp but jumps to 144 tokens/s with multi-token prediction</strong> — a direct argument for why speculative decoding/multi-token prediction is a free-ish speedup on consumer hardware.</li>
+<li>Key takeaway for you: when buying local-LLM hardware or tuning vLLM/Ollama, <strong>memory bandwidth, not TOPS, is the bottleneck</strong> — the RTX 5090's 3,352 AI TOPS are irrelevant if the memory subsystem starves them.</li>
+</ul>
+<p><strong>Best Budget Nvidia GPUs for Local AI</strong> — <a href="https://www.youtube.com/watch?v=BxAMQB1_GSc">Cloud Codes</a>, 21 min</p>
+<ul>
+<li>The kicker: on the official llama.cpp 56-GPU speed ranking, an <strong>RTX 2080 Ti from 2018 writes 107.5 tok/s while the RTX 5060 Ti (2025, ~$800) manages only 90.9 tok/s</strong> on the same test.</li>
+<li>The explanatory variable the video centers on: <strong>memory bus width</strong>, the spec buying guides gloss over. Wider bus = more bandwidth = more tokens/s for LLMs regardless of FLOPS.</li>
+<li>Practical value: if you're spec'ing a local rig for 27B-32B models, a used 2080 Ti or a high-bandwidth mid-range card may beat a shiny "AI TOPS" flagship at a fraction of the price. This is the video to skim before any GPU purchase.</li>
+</ul>
+<p><strong>The Truth Behind the "Get Paid to Host NVIDIA GPUs" Viral Short</strong> — <a href="https://www.youtube.com/watch?v=VwqoNuqsaQY">Cloud Codes</a>, 2 min</p>
+<ul>
+<li>The viral claim ("NVIDIA pays homeowners $1,000/month") is wrong on both counts: <strong>it's ~$150/month, and the homeowner is the one paying it.</strong></li>
+<li>The program is actually <strong>XFRA</strong>, a distributed data-center project from smart-panel maker Span (announced April 2026), with NVIDIA supplying GPUs — an outdoor box that plugs into your electrical panel.</li>
+<li>Worth 2 minutes if you've seen the claim in your feed: a clean debunk of the economics of "passive income from AI hardware," and a reminder that the local-AI grift radar should stay on.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/sous-labs/songe">sous-labs/songe</a></strong> (207★) — A training engine for your local model that uses your idle compute. The pitch is basically "spare cycles become training budget" — interesting if you experiment with fine-tuning small open-weight models on your workstation without renting cloud GPUs. Worth a look when your rig is otherwise idle for days at a time.</li>
+<li><strong><a href="https://github.com/w01fb0ss/PiBot">w01fb0ss/PiBot</a></strong> (295★) — Open-source, local-first AI agent team for desktop: multi-agent group chats, computer use, browser control, MCP, routines, and approvals, running on your machine. If you're building agent workflows you control end-to-end (no cloud dependency), this is a promising scaffold to study — the MCP and approvals model alone is worth borrowing.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/pierridotite/mobile-agent-testers">pierridotite/mobile-agent-testers</a></strong> (88★) — 20 AI testers on 20 phones in parallel for $0, using Claude Code agents on iOS simulators and Android emulators via GitHub Actions. Clever evals/QA trick: free, parallel device coverage with serverless CI. Relevant if you ship anything with a mobile surface or want a pattern for distributed agent test harnesses.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <strong><a href="https://github.com/pugyy/dq-doctor">pugyy/dq-doctor</a></strong> — Data quality CLI for DuckDB, PostgreSQL, MySQL, and data files; profiles data, pins reusable contracts, and validates new batches in CI. Directly useful for your dbt/data testing work as a lightweight contract-checking layer.</li>
+<li><a href="https://github.com/AkilSweidan/DBTalk">AkilSweidan/DBTalk</a> — CLI for talking to databases in plain language without knowing SQL; fun if a bit gimmicky.</li>
+<li><a href="https://github.com/devarent/snowflake-databricks">devarent/snowflake-databricks</a> — Notes/examples on integrating Snowflake with Databricks.</li>
+<li><a href="https://github.com/devarent/snowflake-lab">devarent/snowflake-lab</a> — Practice Snowflake SQL: warehouses, stages, COPY INTO, QUALIFY, time travel.</li>
+<li><a href="https://github.com/design-gurus/microservices-interview-questions">design-gurus/microservices-interview-questions</a> — Microservices interview prep (sagas, API gateways, observability) — unrelated to your stack.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-21.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-21</span></a><a class="pager-link pager-next" href="2026-11-22-weekly.html"><span class="mono dim">Newer</span><span>Weekly Signal — 2026-11-22</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
