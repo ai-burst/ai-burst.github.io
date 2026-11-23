@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-23</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">23 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">6 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.009</span>
+      </div>
+      <h1>Daily Signal — 2026-11-23</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Reported: Claude helped certify a proof of the Riemann Hypothesis — a 167-year-old unsolved math problem — via a 17-million-line Lean proof.</strong> According to the AI Revolution roundup (<a href="https://www.youtube.com/watch?v=u5aACewFWaw">u5aACewFWaw</a>), Anthropic mathematician Levent Alpöge says Claude "outpaced him at the finish line" of the proof, and the Lean and Mathlib communities have since certified it. Your AI Guy's coverage (<a href="https://www.youtube.com/watch?v=lCe7tqNcLeE">lCe7tqNcLeE</a>) is more cautious, framing the story as "reported" — the right default until a formal write-up circulates. The key detail is <em>machine-checked</em>: unlike most LLM math demos, this claim doesn't rest on a chatbot's confident prose but on a proof assistant's step-by-step verification, which is a much stronger category of evidence.</p>
+<p>A second, related Claude result surfaced via Two Minute Papers (<a href="https://www.youtube.com/watch?v=1jPdehG3Hms">1jPdehG3Hms</a>): an Anthropic/Hexagon Math paper on black-hole physics (<a href="https://www.anthropic.com/research/claude-black-hole-physics">anthropic.com/research/claude-black-hole-physics</a>, <a href="https://hexagonmath.org/2611.00175v1">hexagonmath.org/2611.00175v1</a>). If the Riemann work were a one-off you could shrug; if Claude is producing a run of formally verified results, the "AI as research collaborator" story gets much more concrete — but stay skeptical of the "superintelligence is here" framing until the math community weighs in beyond the Lean certification.</p>
+<p>Make the most of it:</p>
+<ul>
+<li><strong>Add formal-verification tasks to your evals.</strong> Lean/Mathlib-style formalization is one of the few reasoning benchmarks where the checker, not a judge or LLM-as-judge, decides correctness. Watch whether open-weight releases start reporting formal-math scores — that's a signal of real reasoning gains rather than benchmark cramming.</li>
+<li><strong>Borrow the draft-then-verify loop for agents.</strong> The reported workflow — model drafts, tool verifies, human closes the loop — maps directly onto coding agents with test harnesses: generate, verify, and spend your review budget where it matters.</li>
+<li><strong>Don't re-architect for one demo.</strong> Treat this as a strong signal, not a reason to bet the roadmap on AI mathematicians. Keep your eval harness model-agnostic so you can test the next model release locally on the same tasks.</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>AI_COMPLETE now supports Snowflake Decision (public preview, Nov 20, 2026).</strong> Snowflake's release notes (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">1</a></sup>) add a new purpose-built model, Snowflake Decision, callable through AI_COMPLETE (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-20-ai-complete-snowflake-decision-public-preview">6</a></sup>). It targets high-throughput classification, scoring, and decision-making across large datasets: evaluate unstructured data against predefined criteria and get structured answers with probabilities and confidence values — think ticket routing, record prioritization, or lead scoring without leaving SQL. That's the kind of feature that can replace brittle <code>CASE WHEN</code> heuristics, though it's worth benchmarking latency and cost per million rows against a small local model before committing any critical pipeline.</p>
+<p><strong>Snowflake app runtime: run Node.js and Python apps directly on Snowflake.</strong> A new Snowflake Developers walkthrough (<a href="https://www.youtube.com/watch?v=rEzpwkQbzik">rEzpwkQbzik</a>) shows Snow App Deploy in the Snowflake CLI uploading and building your code, storing app versions, and returning a live URL. The use case that jumps out for a data/AI engineer: internal tools that currently sit in a tiny container somewhere can live inside Snowflake next to the data. Watch for platform lock-in and warehouse-compute billing, but the DX — CLI-driven, versioned deploys — looks genuinely convenient for shipping small internal apps.</p>
+<p>dbt and Cortex Code: no news in today's available material.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li><strong>AI Just Solved One Of The World's Biggest Mysteries (Superintelligence Is Here)</strong> — AI Revolution, 14:46 — <a href="https://www.youtube.com/watch?v=u5aACewFWaw">watch</a>. The day's biggest story in the broad AI-roundup format you prefer, covering the Riemann Hypothesis result and its wider implications. Most interesting specific claim: the proof "runs 17 million lines of Lean code" and has been certified by the Lean and Mathlib communities.</li>
+<li><strong>The US Finally Has a Free AI That Matches Qwen</strong> — Devsplainers, 7:48 — <a href="https://www.youtube.com/watch?v=dsUStdaUwsc">watch</a>. A hands-on test of Thinking Machines' Inkling 2 Mini, the most direct local-LLM news of the day: it ties Qwen 3.8 27B on Artificial Analysis at a claimed ~5x speedup. Architecture details worth remembering: 26.4B total parameters, 3.4B active per token (MoE), and two middle blocks run three times so 24 stored layers do the work of 48.</li>
+<li><strong>GitHub Trending Today #61: MROffice, Kernarium, opencomputer, riemann-hypothesis, airhand, songe</strong> — Github Awesome, 14:50 — <a href="https://www.youtube.com/watch?v=RuhuvsofJg8">watch</a>. A 35-project open-source compilation in one sitting — the tool-roundup style ideal for a quick scan. Notably, the roundup includes a "riemann-hypothesis" project, fitting today's math theme, alongside agent and dev tools like MROffice, Kernarium, opencomputer, and mobile-agent-testers.</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>Thinking Machines ships Inkling 2 Mini, a free local model that matches Qwen 3.8 27B.</strong> Devsplainers (<a href="https://www.youtube.com/watch?v=dsUStdaUwsc">dsUStdaUwsc</a>) reports that Mira Murati's lab released Inkling 2 Mini, tying Qwen 3.8 27B on Artificial Analysis at a claimed ~5x speedup, and tests whether it should replace Qwen on your machine. The interesting memory-efficiency trick: 26.4B parameters but only 3.4B active per token, with two middle blocks executed three times — 24 stored layers doing the work of 48. Treat "free local" as distinct from "open-weight" until the license details are confirmed, and check independent coding scores before rebuilding any workflow on it.</p>
+<p><strong>OpenAI publishes a Franklin Templeton investment-research case study.</strong> The OpenAI channel's short film (<a href="https://www.youtube.com/watch?v=gAmjBqXNoFI">gAmjBqXNoFI</a>) profiles Katrina Dudley explaining how the firm connects compliance, risk, and trading information and turns it into insight for portfolio managers — the thesis being that "just delivering data is not enough." For anyone building LLM-powered decision support, it's a clean example of the pattern: model over your data, guardrailed by compliance data, concluding with a human making the call.</p>
+<p><strong>Simon Willison's Select Styling Specimens.</strong> A small but nice utility from his blog (<a href="https://simonwillison.net/2026/Nov/22/select-styling/">simonwillison.net</a>): a tool for comparing how HTML <code>&lt;select&gt;</code> boxes render across browsers, born from his frustration with default styling. Marginal for data work, but genuinely time-saving if you hand-build internal LLM tooling UIs.</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>Claude AI Solved The Secret Of Black Holes</strong> — Two Minute Papers (<a href="https://www.youtube.com/watch?v=1jPdehG3Hms">1jPdehG3Hms</a>), 6:15. Key takeaways:</p>
+<ul>
+<li>Separate from the Riemann story: an Anthropic/Hexagon Math paper on black-hole physics, with an Anthropic research page (<a href="https://www.anthropic.com/research/claude-black-hole-physics">anthropic.com</a>) and preprint (<a href="https://hexagonmath.org/2611.00175v1">hexagonmath.org</a>).</li>
+<li>Another example of Claude producing research results rather than research summaries — skim the abstract to judge whether the physics is genuinely novel.</li>
+<li>Didn't make the playlist only because the Riemann roundup covers the bigger story in one sitting.</li>
+</ul>
+<p><strong>GLM 5.5 IS COMING SOON! Claude CRACKS 167-Year-Old Math Problem?</strong> — Your AI Guy (<a href="https://www.youtube.com/watch?v=lCe7tqNcLeE">lCe7tqNcLeE</a>), 13:38. Key takeaways:</p>
+<ul>
+<li>Z.AI appears to be preparing GLM 5.5 — unverified rumor-level chatter, but a new flagship GLM would matter for the open-weight scene.</li>
+<li>The Claude math segment is the same Riemann story as the AI Revolution video; skip if you watch that one.</li>
+<li>Worth scanning if you want open-weight-model roadmap speculation collected in one place.</li>
+</ul>
+<p><strong>DeepMind's New AI Is A Gift To Humanity</strong> — Tech Unfiltered (<a href="https://www.youtube.com/watch?v=jf9hepNqtpc">jf9hepNqtpc</a>), 16:55. Key takeaways:</p>
+<ul>
+<li>A broad DeepMind roundup: scientific discovery, complex biological systems, research acceleration.</li>
+<li>The transcript is mostly high-level hype with few concrete claims; fine as ambient coverage, not a source for specifics.</li>
+<li>Lowest information density of the day relative to runtime.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong>alesha-pro/inference-optimization-playbook</strong> (<a href="https://github.com/alesha-pro/inference-optimization-playbook">github</a>) — 97 tested hypotheses on getting huge MoE LLMs fast on consumer GPUs (4x RTX 3090 + experts in RAM), documenting what worked, what failed, and why. If you run Qwen-class MoE models on a home rig, this is a practical playbook for VRAM/memory reduction. 83 stars.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong>deeeeone/Anvil</strong> (<a href="https://github.com/deeeeone/Anvil">github</a>) — a native macOS coding agent that works with almost any model, with diffs, checkpoints, sub-sessions, and browser/iOS Simulator tools. Useful as a model-agnostic harness for testing coding models side by side. 45 stars.</li>
+<li><strong>hamin/lotel</strong> (<a href="https://github.com/hamin/lotel">github</a>) — one binary for OpenTelemetry on DuckDB to see what your coding agents did, with data that forgets on schedule. Local-first agent observability that fits the data-observability interest. 2 stars.</li>
+<li><strong>bcyw/ARTEX</strong> (<a href="https://github.com/bcyw/ARTEX">github</a>) — an LLM multi-agent autonomous pentest system in Go with an embedded Next.js + SQLite UI. A concrete reference for orchestrating multiple agents with a shared tool/state layer. 50 stars.</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><strong>Lismo77/lichess-dbt-pipeline</strong> (<a href="https://github.com/Lismo77/lichess-dbt-pipeline">github</a>) — a small, complete ELT reference: Python extract/load into Postgres, dbt models + tests, GitHub Actions CI. A clean template when you need a minimal dbt test-and-CI setup copied quickly. 1 star, but the pattern is the point.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <strong>ananddddubey/chaipoint-dbt</strong> (<a href="https://github.com/ananddddubey/chaipoint-dbt">github</a>) — a dbt project with no description yet; keep an eye on it if Chaipoint content gains traction.</li>
+<li>✅ <strong>oluwafaj/DataDog-observability</strong> (<a href="https://github.com/oluwafaj/DataDog-observability">github</a>) — an Azure monitoring integration for DataDog; marginal, but relevant to the data-observability corner.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-22-weekly.html"><span class="mono dim">Older</span><span>Weekly Signal — 2026-11-22</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
