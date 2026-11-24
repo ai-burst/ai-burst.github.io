@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-24</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">24 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">7 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.010</span>
+      </div>
+      <h1>Daily Signal — 2026-11-24</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>Z.ai releases GLM-5.4, its first loop transformer model</strong> – the Chinese lab published <a href="https://z.ai/blog/glm-5.4">an overview of GLM-5.4</a> and <a href="https://simonwillison.net/2026/Nov/23/glm-54/">Simon Willison wrote a summary</a> on Nov 23. The headline innovation is a looped transformer architecture: a group of weight-shared layers runs multiple iterations per token, refining hidden states. This is the same trick used by Thinking Machines Lab’s Inkling 2 Mini (see Headlines) and promises better capability-per-parameter for on‑prem inference. GLM‑5.4 is aimed at coding and agentic tasks, not just chat. <strong>How to make the most of it:</strong> (1) Watch for a GGUF conversion and test it in llama.cpp once it lands – looped layers may change memory-access patterns compared to standard MoE models; (2) benchmark it against Qwen3.8 27B and similar open‑weights on your own agent tasks, because paper claims may not survive your eval; (3) if you’re running on budget GPUs, pay attention to active-parameter counts – looped transformers with low active parameters could be a sweet spot for 12‑16 GB cards.</p>
+<hr />
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<ul>
+<li>
+<p><strong>Pipeline Builder hits public preview</strong> – a <a href="https://www.youtube.com/watch?v=rlLXA63fvVE">one-minute demo video</a> shows how you can visually assemble Tasks, Notebooks, and ML Jobs on a canvas, schedule them, and then ship the result as versionable code. This is a big win for declarative pipeline development – you get the visual feel without losing git discipline.</p>
+</li>
+<li>
+<p><strong>Run Node.js and Python apps directly on Snowflake</strong> – the <a href="https://www.youtube.com/watch?v=rEzpwkQbzik">Snowflake developers video</a> walks through the new Snow App Deploy in the CLI: upload code, build, store versions, and get a live URL. Useful for embedding small services inside your data platform instead of managing a separate container fleet.</p>
+</li>
+<li>
+<p><strong>Gemini 4 Carbon and Hydrogen now in Public Preview in Cortex AI</strong> – per <a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-12-gemini-4-carbon-hydrogen-preview">release notes</a>, you have two new model tiers to choose from for VLM and heavy reasoning workloads. Carbon/Hydrogen are likely price/quality points you should test against existing GPT‑4‑class models.</p>
+</li>
+<li>
+<p><strong>Cortex Search Retrieve reaches GA</strong> – the <a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-18-cortex-search-retrieve-ga">Nov 18 release note</a> means production RAG workloads no longer need to rely on preview APIs for fetching from vector indexes.</p>
+</li>
+<li>
+<p><strong>Cortex AI Function Studio goes GA</strong> – <a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-19-copy-snowpipe-error-logging-check-constraints-ga">release notes</a> for Nov 19 give you a unified canvas to create, evaluate, and optimize Cortex AI Functions – worth trying if you’re tired of manually wiring prompts and evals.</p>
+</li>
+<li>
+<p><strong>AI_COMPLETE gains support for Snowflake Decision in Preview</strong> – the <a href="https://docs.snowflake.com/en/release-notes/all-release-notes">Nov 20 feature update</a> allows you to invoke decision agents directly from SQL, which could simplify some orchestration logic.</p>
+</li>
+<li>
+<p><strong>Agentic data foundation and manufacturing blogs</strong> – Snowflake published guidance on <a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/trust-ai-agents-data-foundation">trusting AI agents with a governed data foundation</a> and on <a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-manufacturing-institutional-knowledge">preserving institutional knowledge in manufacturing</a> using agents. Both are good source material for selling the “agents need governed data” story internally.</p>
+</li>
+<li>
+<p><strong>Production evaluation framework using dbt and Cortex</strong> – a <a href="https://medium.com/snowflake/evaluating-ai-systems-in-production-on-snowflake-6fdac4f33988?source=rss----34b6daafc07---4">Medium article</a> details a four-stage eval (prompt regression, bad inputs, hallucinated outputs, drift) built with dbt tests and Cortex functions. The example uses a support-ticket classifier. This is a concrete recipe you can adapt to your own LLM pipelines.</p>
+</li>
+</ul>
+<h3 id="dbt">dbt</h3>
+<p>No dedicated dbt release surfaced in the last 24 hours, but the <a href="https://medium.com/snowflake/evaluating-ai-systems-in-production-on-snowflake-6fdac4f33988?source=rss----34b6daafc07---4">production evaluation article</a> shows dbt test blocks being used for LLM outputs – a pattern you’ll want to steal if you’re already running dbt in the warehouse.</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<ul>
+<li>
+<p><strong>CoCo Desktop v2.0.0</strong> – the <a href="https://docs.snowflake.com/en/user-guide/cortex-code/cortex-code-desktop/release-notes">release notes</a> describe a major UI overhaul: separate Agent Window, split panes for side-by-side sessions, a session search palette, and PR status shown directly in chat. If you use CoCo daily, this is worth upgrading to today.</p>
+</li>
+<li>
+<p><strong>CoCo automations reach GA</strong> – <a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-02-cortex-code-automations-ga">release notes</a> turned on scheduled agent prompts. A <a href="https://medium.com/snowflake/snowflake-coco-automations-a-data-health-email-that-arrives-before-your-execs-open-the-dashboard-778be870075e?source=rss----34b6daafc07---4">hands-on Medium post</a> shows a concrete use case: a read-only agent that checks every layer behind a dashboard and emails a 7am status. That’s a perfect pattern for filling in the “last mile” of data-health alerting.</p>
+</li>
+</ul>
+<hr />
+<details class="watchlist" id="todays-watchlist" open><summary>Today’s Watchlist</summary>
+<ol>
+<li>
+<p><a href="https://www.youtube.com/watch?v=HbosmW-RS-U">OpenAI Declares War On Self-Improving AI... Something Is Wrong</a> – 15.7 min. AI Revolution’s weekly roundup packs a lot: OpenAI’s private intelligence scale, Altman’s push for limits, MiniMax breaking 55 cryptography challenges, and AI stocks sliding. Great for a single-breath scan of the week’s meta-story.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=RJxHmzQV0jY">It Happened... The AI Bubble Just Cracked</a> – 16.5 min. Tech Unfiltered takes the other side of the same coin, digging into Anthropic’s IPO, Nvidia’s valuation, and where the knife might fall. Useful counterpoint to the hype.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=X3ENZuTUS3k">Can a looped transformer bring 27B AI to budget GPUs? | Inkling 2 Mini</a> – 20.5 min. Deep dive on Thinking Machines’ 26B MoE (3B active) with a looped transformer, benchmarked against Qwen3.8 27B on six agent tasks and run on a 12 GB RTX 3060 and 16 GB RTX 5060 Ti. Exactly the kind of local‑LLM knowledge you need if you’re planning to run open‑weights on thin GPUs.</p>
+</li>
+</ol>
+<hr />
+</details><h2 id="headlines">Headlines</h2>
+<ul>
+<li>
+<p><strong>Inkling 2 Mini release</strong> – Thinking Machines Lab shipped a 26B MoE with 3B active parameters that matches Qwen3.8 27B on paper, using a looped transformer (12 of 24 layers run three times per token). The <a href="https://www.youtube.com/watch?v=X3ENZuTUS3k">Codacus video</a> tests it on real hardware and reports it actually runs on budget GPUs. This is the first serious open‑weight implementation of the looped‑transformer idea, so keep an eye on GGUF availability.</p>
+</li>
+<li>
+<p><strong>llama.cpp 1.0.0</strong> – The local inference engine hit a major milestone with stable API, FP8 KV cache, MoE expert cache, and server hardening. <a href="https://agentsunrise.pro/articles/local-inference-news-november-2026">Full details</a> are worth reading if you haven’t upgraded in a while – the FP8 KV cache alone can cut memory requirements significantly.</p>
+</li>
+<li>
+<p><strong>Ollama and vLLM releases</strong> – Ollama’s late‑November cadence (v0.40.14–v0.40.16) adds new model support and changes OpenAI API default parameters; vLLM 0.33.0 moves to CUDA 13.0‑only, drops Medusa/MLP speculative decoders, and adds new models. Both are summarized in the same <a href="https://agentsunrise.pro/articles/local-inference-news-november-2026">local inference news roundup</a>.</p>
+</li>
+<li>
+<p><strong>Together AI adds DeepSeek-V4.1-Flash-1017-fast</strong> – the fast serving tier now supports 1,000,000 context length, FP8 quantization, function calling, and structured outputs. See the <a href="https://docs.together.ai/docs/changelog?ref=okapi.bot">changelog</a> for exact availability.</p>
+</li>
+<li>
+<p><strong>“LLM agents work for their parent companies, not for you”</strong> – a <a href="https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you/">thoughtful essay</a> argues that agent oriented around cloud providers will naturally favor those providers’ services and data. Worth reading before you commit to any vendor‑locked agent stack.</p>
+</li>
+<li>
+<p><strong>How should an LLM see a computer?</strong> – <a href="https://www.greptile.com/blog/trex-computer-use">Greptile’s blog</a> compares accessibility‑tree‑based perception with pixel-based for computer‑use agents, a decision that directly affects reliability and latency in your own agent projects.</p>
+</li>
+</ul>
+<hr />
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<h3 id="openai-declares-war-on-self-improving-ai-tech-unfiltered-18-min"><a href="https://www.youtube.com/watch?v=uE_qSFAt-LY">OpenAI Declares War On Self-Improving AI</a> (Tech Unfiltered, 18 min)</h3>
+<ul>
+<li>OpenAI chief scientist warns self‑improving AI could accelerate by 2027; Altman is asking other labs to agree on limits – framed as safety, but arguably a competitive slowdown.</li>
+<li>The video digs into how “self-improvement” is defined (agents rewriting their own code, autonomous R&amp;D) and why even frontier labs are nervous.</li>
+<li>Watch if you want a longer-form analysis than the AI Revolution roundup, but the substance overlaps heavily.</li>
+</ul>
+<h3 id="gemini-5-already-google-is-cooking-while-openai-struggles-your-ai-guy-139-min"><a href="https://www.youtube.com/watch?v=o86gF4OGeH0">Gemini 5 Already?! Google Is Cooking While OpenAI Struggles</a> (Your AI Guy, 13.9 min)</h3>
+<ul>
+<li>Rumour‑tier item: claims Gemini 5 could arrive sooner than expected, with a stronger focus on multimodal and agentic capabilities.</li>
+<li>The video mixes speculation with real signals like Google’s recent model cadence and hardware investments.</li>
+<li>No primary source provided – treat as unverified hype, but useful to track if you’re betting on Google’s roadmap.</li>
+</ul>
+<h3 id="investigating-linux-vulnerabilities-with-gpt-6-cyber-openai-119-min"><a href="https://www.youtube.com/watch?v=MpsO8Ds8uyo">Investigating Linux Vulnerabilities with GPT-6 Cyber</a> (OpenAI, 11.9 min)</h3>
+<ul>
+<li>Demonstrates a practical pipeline: GPT‑6 Cyber validated 948 Linux kernel vulnerabilities and generated candidate patches in one run.</li>
+<li>Covers how the researcher built the vuln‑research pipeline and worked with Linux maintainers to get fixes upstream – a model for how AI can accelerate security work without replacing humans.</li>
+<li>If you’re building agents for code review or patch generation, this is a goldmine of tactical ideas.</li>
+</ul>
+<hr />
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/santoshjammi29/dbt-handbook">dbt-handbook</a> – “The dbt &amp; Analytics Engineering Handbook” with production architectures, runbooks, interview prep, and 52 visual blueprints. A fast way to level up your dbt testing and modeling patterns.</li>
+<li><a href="https://github.com/shyampandey1104/erpnext-fertilizer-dbt-pos-subsidy-reconciliation">erpnext-fertilizer-dbt-pos-subsidy-reconciliation</a> – a dbt bundle for reconciling POS subsidy data in ERPNext. Low stars, but a concrete example of dbt wrapping a complex domain.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/HariHaran-2407/Airbnb_Snowflake_DBT_Data_Engineer_Project">Airbnb_Snowflake_DBT_Data_Engineer_Project</a> – a sample end‑to‑end project combining Airbnb data, Snowflake, and dbt. Good starting skeleton for your own portfolio or internal demo.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/w1ccc/sap-data-mcp">sap-data-mcp</a> – read‑only MCP servers that let any AI assistant query SAP S/4HANA through RFC/BAPI, OData, and released APIs. Audited calls, credentials stay local – exactly the kind of enterprise‑grade agent tooling you want if you ever touch SAP.</li>
+<li><a href="https://github.com/EL4CTEO/godot-skills">godot-skills</a> – Agent Skills for Godot 4.7, with exact API lookup, safe scene editing, and compile checks. Useful if you’re building game‑oriented agents or want a reference for how to structure agent skills.</li>
+<li><a href="https://github.com/brainintelli/BioSignal-Guided-LLM-Reinforcement-Learning">BioSignal-Guided-LLM-Reinforcement-Learning</a> – experiments using organoid neural recordings as policy inputs for LLM agents in a Godot survival game. Research‑y but fascinating for anyone thinking about non‑text signals in RL.</li>
+</ul>
+<hr />
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/208dongpha/multi-signal-aiops-platform">multi-signal-aiops-platform</a> – an end‑to‑end observability/AIOps platform that ingests logs, metrics, and traces, then detects anomalies and correlates signals. Touches data engineering and LLM-flavored analysis.</li>
+<li><a href="https://github.com/lakdhara/observability_insights_data">observability_insights_data</a> – a placeholder repo with no description; likely not worth your time yet.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-23.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-23</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today’s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
