@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-25</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">25 Nov 2026</span>
+        <span class="badge badge-daily">daily</span><span class="badge badge-breaking">Breaking news</span>
+        <span class="mono dim">7 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.012</span>
+      </div>
+      <h1>Daily Signal — 2026-11-25</h1>
+      <h2 id="breaking-news">Breaking News</h2>
+<p><strong>GLM-5.4 is the headline model release, but the surrounding story is still half rumour.</strong> According to AI Revolution's weekly roundup, China has released GLM-5.4, an AI model that "runs part of its brain twice" to get more intelligence without increasing its size. The same video reports that a 3-trillion-parameter follow-up is reportedly coming in December, alongside teases for Google Gemini 5 and an OpenAI model beyond GPT-6.2 Astra that is rumoured to be GPT-7 Bel. I'm treating the future-model claims as unverified — the only artifact we have right now is the roundup itself, not model cards, weight repos, or official release notes. (<a href="https://www.youtube.com/watch?v=goaRfJNvENM">AI Revolution video</a>)</p>
+<p><strong>There is also an unreleased Claude claim about solving a 47-year-old mathematics problem — with a major caveat.</strong> Two Minute Papers has a video explicitly titled "Claude AI's Biggest Math Breakthrough Has A Problem," and its description links to a proof guide, a verification site, and a P=NP site (<a href="https://www.youtube.com/watch?v=hwWlEuI359w">Two Minute Papers video</a>, <a href="https://nasqret.github.io/riemann-rev/guide/proof-guide.pdf">proof guide</a>, <a href="https://riemann.verifytask.cn/">verification site</a>). So the story is as much about proof verification as it is about model capability, and there is no primary confirmation yet.</p>
+<p><strong>How to make the most of it:</strong></p>
+<ul>
+<li>Before betting a workload on GLM-5.4, wait for quantised builds and benchmark VRAM/memory on your own hardware — "smaller but runs twice" can change the maths either way.</li>
+<li>Run your own evals against your current best local models rather than trusting roundup benchmark claims; the architecture is interesting, but your domain prompts are what matter.</li>
+<li>Treat the 3T-parameter model, Gemini 5, GPT-7 Bel, and the Claude mathematics story as leak-tier until primary sources appear.</li>
+</ul>
+<h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<p>No dbt-specific vendor release surfaced in the last 24 hours; the dbt item today is in the Repo Watchlist.</p>
+<h3 id="snowflake">Snowflake</h3>
+<p>Snowflake's November release notes are the strongest verified update: <strong>AI_COMPLETE now supports Snowflake Decision in public preview</strong>, aimed at high-throughput classification, scoring, and decision-making; the same window lists <strong>CoCo Desktop v2.1.0</strong>. For data teams, this is a signal to evaluate whether high-volume row-level inference can move from general chat models to Decision-tuned calls inside Snowflake. (<a href="https://docs.snowflake.com/en/release-notes/all-release-notes">Snowflake release notes</a>)</p>
+<p>Earlier in November, Snowflake also expanded its Cortex model lineup: <strong>Google Gemini 4 Carbon and Hydrogen entered public preview</strong>, while <strong>Claude 5.5 and OpenAI GPT-6 reached general availability</strong>. For teams already on Cortex, that means more frontier-model choice without leaving warehouse-governed data. (<a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-12-gemini-4-carbon-hydrogen-preview">Gemini 4 preview</a>, <a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-06-claude-5-5-openai-gpt-6-ga">Claude 5.5 / GPT-6 GA</a>)</p>
+<p>Snowflake also published a useful healthcare reference architecture: SDG Group built real-time <strong>HL7v2 and FHIR ingestion on Snowflake</strong> using Snowpark Container Services and Snowflake Postgres. This matters if you handle healthcare interoperability or event-based integrations — container services lets you run ingestion next to governed data instead of staging CSV files in external systems. (<a href="https://www.snowflake.com/content/snowflake-site/global/en/blog/healthcare-interoperability-snowflake-hl7-fhir">Snowflake blog</a>)</p>
+<h3 id="cortex-code">Cortex Code</h3>
+<p>Today's CoCo news comes in two formats: a release note and a product demo. <strong>CoCo Desktop v2.1.0</strong> is in Snowflake's official release notes, and the Snowflake Developers channel published a walkthrough of <strong>CoCo for Microsoft Excel and Google Sheets</strong> with product manager Aniruth Narayanan. The pitch: ask questions in plain English and get a native, editable workbook built on live, governed Snowflake data — no CSV exports, no ODBC requests, no IT-managed connectors. (<a href="https://www.youtube.com/watch?v=BCTtEgqrg6o">CoCo for Excel/Sheets video</a>, <a href="https://www.youtube.com/watch?v=egjTBL-Vguc">teaser</a>)</p>
+<p>For anyone running analytics in Snowflake, this is the kind of feature that reduces shadow-IT spreadsheets while keeping lineage attached to the warehouse. It's also the clearest recent example of Snowflake pushing "governed AI" into end-user productivity tools rather than just dashboards or SQL editors.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ul>
+<li>
+<p><strong>China Just Reinvented the Way AI Thinks (GLM 5.4)</strong> — AI Revolution, 17 min. (<a href="https://www.youtube.com/watch?v=goaRfJNvENM">watch</a>)<br />
+  This is the exact weekly-roundup format I want first: GLM-5.4's "run part of the brain twice" design, a reported 3T-parameter model in December, Gemini 5 and GPT-7 Bel rumours, the Claude maths story, and xAI reportedly admitting it's behind. If you only watch one thing today, this is it.</p>
+</li>
+<li>
+<p><strong>Every Cheap AI Plan Ranked (Brutally)</strong> — Devsplainers, 9 min. (<a href="https://www.youtube.com/watch?v=EBc9iiJv0I8">watch</a>)<br />
+  A broad, practical comparison rather than a deep dive: ChatGPT Go, Google AI Plus, X Plus with Grok, GitHub Copilot Pro, OpenCode Go, and Abacus ChatLLM are all benchmarked against a "$10 of API credit" yardstick. Most useful specific claim: ChatGPT Go costs $8/month and runs the same model as free ChatGPT with ads, so the video is a good anti-hype buyer's guide for both chat and coding tools.</p>
+</li>
+</ul>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>Simon Willison: three LLM inflection points in twelve months.</strong> Willison's keynote at the AI Engineer Code Summit argues that coding agents and LLM abilities have crossed three significant inflection points in the past year. The post pulls out the major "inflection point" theme and interrogates it more deeply — worth reading as a framework for deciding when to upgrade models vs. when to improve your agent harness. (<a href="https://simonwillison.net/2026/Nov/24/llm-inflection-points/">blog post</a>, <a href="https://www.youtube.com/watch?v=9RKrSF9d2SE">keynote video</a>)</p>
+<p><strong>GPT-6.2 Astra solves a historical mystery.</strong> History professor Mark Humphries used GPT-6.2 Astra with minimal prompting to autonomously identify the creator of an anonymous 1808 sketchbook held at Yale's Beinecke Library. It's a strong eval-style case study for agentic research: the model surfaced the answer, and a historian then had to verify it. (<a href="https://generativehistory.substack.com/p/gpt-62-astra-solves-a-historical">primary write-up</a>, <a href="https://simonwillison.net/2026/Nov/24/astra-historical-mystery/">Simon Willison commentary</a>)</p>
+<p><strong>The open-weight release radar is busy.</strong> Verified recent releases include OVHcloud's <strong>Olala mini 7A1B</strong>, an Apache-2.0 hybrid Mamba-3/attention MoE reasoning model with a 32,688-token context; Aleph Alpha's <strong>Kolibri 1.1</strong>, an Apache-2.0 successor with sparse attention and up to 1M context; Tencent's <strong>WeMM-Video-4B</strong> multimodal model; and inclusionAI's <strong>Ling-3.2-air</strong>. For local-LLM users, the Mamba/MoE mix and sparse-attention designs are the two to watch: both are aimed at reducing memory and inference cost. (<a href="https://www.llm-releases.com/reports/release-radar">release radar</a>, <a href="https://www.llm-releases.com/changelog">changelog</a>)</p>
+<p><strong>ProofAtlas ranks open problems in mathematics by LLM-assessed importance.</strong> The project made Hacker News with 84 points and 48 comments. For LLM development, it's interesting as an evaluation probe: using an LLM to assess the importance of mathematical problems is itself a test of model judgement, and the discussion is a good source of sceptical takes. (<a href="https://www.proofatlas.ai/open-problems/">ProofAtlas</a>, <a href="https://news.ycombinator.com/item?id=50637871">HN discussion</a>)</p>
+<p><strong>OpenAI pushes consumer agent features.</strong> OpenAI published a how-to for ChatGPT Finances (connect bank accounts, review subscriptions, build budgets), plus a "Make a Day Do Anything" campaign showing calendar rescheduling, family planning, and photo-based queries. The common thread: ChatGPT is being positioned as a proactive day-to-day agent, not just a chatbot. (<a href="https://www.youtube.com/watch?v=hwKct_1ilEQ">Finances in ChatGPT</a>, <a href="https://www.youtube.com/watch?v=4MFBNFyBmQg">Make a day of it</a>)</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<ul>
+<li><strong>"Google Just Solved AI's Biggest Bottleneck (Recursive Self-Improvement)"</strong> — Cloud Codes, 14 min. (<a href="https://www.youtube.com/watch?v=fKgwmagOXUg">watch</a>)  </li>
+<li>The key line from the November 13 preprint: "Improving the harness can raise performance without updating model weights." That reframes the "recursive self-improvement" hype as an engineering problem, not a weights problem.  </li>
+<li>The video investigates Google Cloud AI / DeepMind / Penn State's Self-Improvement Memory (SIM) and explicitly asks whether your agent tuning time is worth more than model upgrades.  </li>
+<li>
+<p>If you spend days tuning prompts, tools, and checks around agents, this is a useful counterweight to the next "new model solves everything" headline.</p>
+</li>
+<li>
+<p><strong>"Claude AI's Biggest Math Breakthrough Has A Problem."</strong> — Two Minute Papers, 8 min. (<a href="https://www.youtube.com/watch?v=hwWlEuI359w">watch</a>)  </p>
+</li>
+<li>The title says it: something about the claimed breakthrough is problematic, and the description links proof PDFs, verification sites, and P=NP-adjacent pages rather than an official paper.  </li>
+<li>For evals, this is a good case study in how to stress-test agent-produced proofs instead of accepting a plausible narrative.  </li>
+<li>
+<p>Don't let an unreleased-model claim change your production model choices until primary evidence is out.</p>
+</li>
+<li>
+<p><strong>"Experiment with SVG &amp; 3D Design with the Codex Plugin"</strong> — OpenAI, 5 min. (<a href="https://www.youtube.com/watch?v=1u0hTd86_HU">watch</a>)  </p>
+</li>
+<li>Codex plugins now cover visual artifacts: a non-designer turns a reference image into an editable SVG or 3D model, then iterates in plain language.  </li>
+<li>The demo shows Codex using Blender to check a model from another angle — external-tool integration beyond pure code generation.  </li>
+<li>Useful mental model if you're building agents that need to iterate on generated assets or work with GUI-ish tools.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt">dbt</h3>
+<ul>
+<li><a href="https://github.com/mz-jy/orca-dbt">orca-dbt</a> — dbt catalog and lineage for Orca: explore models, docs, columns, tests, selectors, visual lineage, and data previews for dbt v1 and v2. Only one star, but it's a useful niche if you want a lightweight catalog UI in front of a dbt project.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/addyclement/genai-powered-intent-detection">genai-powered-intent-detection</a> — companion code for classifying contact-centre transcripts with Snowflake Cortex AI_COMPLETE, comparing against a keyword bot, and governing outputs with roles, tags, and masking policies. Directly relevant to governed LLM inference inside Snowflake.</li>
+<li><a href="https://github.com/Abhishekjha66/Snowflake-Medallion-ETL-Pipeline">Snowflake-Medallion-ETL-Pipeline</a> — end-to-end Snowflake SQL pipeline using Bronze/Silver/Gold medallion architecture, with data cleaning, transformation, aggregation, and scheduled tasks. Solid starter template for cost-conscious Snowflake engineering.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/Sita91/koboldcpp-1-125-suite-llm-local-portable-fr">koboldcpp-1-125-suite-llm-local-portable-fr</a> — a standalone Windows 10/11 KoboldCpp release and config, 129 stars. Handy if you want a zero-dependency local LLM runtime without building from source.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/hustcsking/ibbd-benchmark">ibbd-benchmark</a> — benchmark for evaluating query-conditioned execution risk in LLM agents. This is a good addition to an eval stack if you build agents that decide whether to execute SQL, shell commands, or other high-risk actions.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/VictorHxHugo/VIGIA">VIGIA</a> — open-source data observability platform for quality monitoring, anomaly detection, and incident management.</li>
+<li><a href="https://github.com/manojrevenkar12-web/theranostics-evidence-pipeline">theranostics-evidence-pipeline</a> — auditable clinical-study pipeline with de-identification, content-hashed lineage, LLM ontology induction into a temporal knowledge graph, SHAP diagnostics, and an observability dashboard.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-24.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-24</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#breaking-news">Breaking News</a></li><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
