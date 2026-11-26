@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-26</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">26 Nov 2026</span>
+        <span class="badge badge-daily">daily</span>
+        <span class="mono dim">6 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.009</span>
+      </div>
+      <h1>Daily Signal — 2026-11-26</h1>
+      <h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>Cortex AI Function Optimization reached GA.</strong> Snowflake's release notes say you can now automatically search across prompts and models to improve custom AI function implementations, compare quality and estimated cost, and identify lower-cost model options that still meet workload requirements (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-16-ai-function-optimization-ga">1</a></sup>). For Cortex-heavy accounts, this is a “cost optimisation button” that should go straight into the monthly FinOps review.</p>
+<p><strong>Cortex AI Gateway also hit GA</strong> for inference, observability, and cost management, adding production-facing spend reporting and operational visibility around Gateway usage (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-03-cortex-ai-gateway-ga">9</a></sup>). If you route model calls from multiple teams through one gateway, this is the control surface that makes charging back or throttling actually feasible.</p>
+<p><strong>AI_COMPLETE now supports Snowflake Decision in public preview</strong> — a high-throughput classification/scoring model “priced for large-scale decisioning workloads” (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-20-ai-complete-snowflake-decision-public-preview">13</a></sup>). Worth evaluating if you are currently burning premium LLM tokens on repetitive classification tasks. The price/accuracy trade-off is the interesting question here.</p>
+<p>Two good long-form Snowflake reads landed today. The first is a practical post-mortem on getting an <strong>SPCS Native App onto the Snowflake Marketplace</strong> without copying account metadata out of the consumer’s account: the app reads <code>ACCOUNT_USAGE</code>, finds waste and governance gaps, and uses Cortex for insights, all inside the consumer’s own Snowflake account (<a href="https://medium.com/snowflake/lessons-from-getting-an-spcs-native-app-onto-the-snowflake-marketplace-6b1d1426d70c?source=rss----34b6daafc07---4">Medium</a>). That is a useful reference architecture if you are considering Marketplace-native tools rather than yet another external SaaS connector.</p>
+<p>The second is a compelling “entirely in SQL” walkthrough: <strong>scanned homeowner tax records → governed AI agent</strong>, with claims of 100% field accuracy on digital documents, 94% on scans, and a Cortex Agent on top, all without data leaving Snowflake (<a href="https://medium.com/snowflake/from-scanned-homeowner-tax-records-to-a-governed-ai-agent-entirely-in-sql-8aa4b8fee8f0?source=rss----34b6daafc07---4">Medium</a>). The “no data egress” property is the part that should interest anyone running regulated or public-sector workloads.</p>
+<p>Finally, Snowflake Developers published a 60-second explainer on <strong>real-time analytics for AI agents</strong> firing thousands of queries per second. The useful framing: real-time is not just fast queries — it is a balance between query latency, data freshness, and concurrency, and you should consciously choose streaming vs. near-real-time vs. batch ingestion (<a href="https://www.youtube.com/watch?v=xnmB_K2d8l8">Snowflake Developers</a>).</p>
+<h3 id="dbt">dbt</h3>
+<p>The dbt release-notes stream shows <strong>ongoing dbt AI/agents work</strong>, including improvements to reasoning block rendering and the public preview of <strong>dbt Wizard</strong>, with <strong>dbt Core 2.0 also appearing in beta</strong> (<sup class="cite"><a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">6</a></sup>, <sup class="cite"><a href="https://docs.getdbt.com/docs/dbt-versions/dbt-platform-release-notes-gen">14</a></sup>). The Core 2.0 beta is the headline to watch: any major version bump means migration planning, so start reading the notes now rather than at GA.</p>
+<p><em>No Cortex Code-specific news surfaced in the past 24h; the closest item is the Cortex Agent mention in the tax-records walkthrough above.</em></p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<h3 id="anthropic-opus-56-leak-shows-a-whole-new-level-of-intelligence">Anthropic Opus 5.6 Leak Shows a Whole New Level of Intelligence</h3>
+<p><a href="https://www.youtube.com/watch?v=64hGi-04Mx8">Watch on YouTube</a> · AI Revolution · 14 min</p>
+<p>Exactly the broad “this week in AI” format you want. It compresses the unverified Opus 5.6 leak — reportedly accessed inside Claude Code, with rumours of a 90% SWE-bench score at 20% lower prices — plus OpenAI/Anthropic insider warnings about hidden models and GPT-6.2 Astra cracking an 1808 historical mystery. Treat the model claims as rumour, but the video is a good one-sitting survey of where the frontier chatter is today.</p>
+<h3 id="github-trending-weekly-61-deslop-please-vorssaint-utils-raingen-raingenerator-xnulinux-cookout">GitHub Trending Weekly #61: deslop-please, vorssaint-utils, RainGen-RainGenerator, xnulinux, cookout</h3>
+<p><a href="https://www.youtube.com/watch?v=Z0xEtyaEg24">Watch on YouTube</a> · Github Awesome · 15 min</p>
+<p>A compilation of 35 trending open-source projects — the most playlist-appropriate option in today’s batch. It is useful mainly as a discovery layer: the linked text version is where you’ll actually click through the repos, and this week’s list includes several names worth scanning if you keep an eye on the local-LLM and tooling ecosystem.</p>
+<h3 id="claude-opus-56-early-preview-gemini-4-helium-glm-54-quantum-ai-superintelligence">Claude Opus 5.6 Early Preview! Gemini 4 Helium, GLM-5.4, Quantum AI &amp; Superintelligence!</h3>
+<p><a href="https://www.youtube.com/watch?v=rVd1O3XH9OA">Watch on YouTube</a> · Your AI Guy · 19 min</p>
+<p>A slightly denser companion to the AI Revolution video. The Gemini 4 Helium rumours and GLM-5.4 updates matter most for the open-weight scene, since GLM consistently ships competitive open weights. It is a broad roundup with some speculative framing, so keep your scepticism hat on, but it earns its place as the most story-packed video of the day.</p>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>llama.cpp shipped a fresh pre-release today.</strong> The release notes call out broad model-support updates, token-aware chat parsing, named tool choice, automatic per-tensor quantization targeting a specific bpw or size budget, a slot-scheduling refactor in <code>llama-server</code>, and a redesigned Llama Chat web UI with voice messages and agent traces (<sup class="cite"><a href="https://github.com/ggml-org/llama.cpp/releases">12</a></sup>). The per-tensor quantization targeting is the most interesting item for anyone trying to squeeze models into limited VRAM — it makes hitting a memory budget much more automatic.</p>
+<p><strong>The day’s loudest AI story is an unverified leak, not a release.</strong> AI Revolution reports that users are accessing an unreleased Claude Opus 5.6 inside Claude Code, with early tests said to show stronger reasoning and 3D generation, plus a rumoured 90% SWE-bench score at 20% lower prices (<a href="https://www.youtube.com/watch?v=64hGi-04Mx8">AI Revolution</a>). Your AI Guy’s roundup adds Gemini 4 Helium and GLM-5.4 speculation on top (<a href="https://www.youtube.com/watch?v=rVd1O3XH9OA">Your AI Guy</a>). Do not treat any of these numbers as real yet — but the recurring pattern of people discovering unreleased models via agent tools is itself notable.</p>
+<p><strong>OpenAI pushed its agentic “dot” product with a concrete holiday workflow.</strong> The video shows a dot watching Slack and Linear while the user is away, grouping related feedback, flagging on-call items, and preparing approvals so work keeps moving (<a href="https://www.youtube.com/watch?v=A4UNP-axGHU">OpenAI</a>). It is marketing, but the underlying prompts are a useful reference pattern for anyone building asynchronous agentic triage.</p>
+<p><strong>SQLite’s <code>sqlite3_rsync</code> tool got a fresh look from Simon Willison.</strong> The tool, first added experimentally in SQLite 3.47 and enhanced in 3.50, is a remote-copy option for SQLite databases (<a href="https://simonwillison.net/2026/Nov/26/sqlite3-rsync/">Simon Willison</a>). If you manage SQLite-backed apps or local caches, this is worth a spot in your backup toolbox.</p>
+<p><strong>Two worthwhile cultural/data notes:</strong> Simon Willison surfaced Jack Despain Zhou’s essay on AI’s “de-individualization” — the feeling of opening YouTube and hearing Claude everywhere — which is a useful reminder that generic model voice is becoming a reputational risk (<a href="https://simonwillison.net/2026/Nov/26/jack-despain-zhou/">Simon Willison quoting Zhou</a>). Meanwhile, Scott Aaronson argues we are entering “a whole new continent of mathematical truth” thanks to AI proving assistants (<a href="https://simonwillison.net/2026/Nov/25/scott-aaronson/">Simon Willison quoting Aaronson</a>). Both are good context for how the field is changing beyond release notes.</p>
+<p><strong>Datasette-charts 0.3a0 added chart annotations.</strong> You can now render a chart and annotate it with lines, shaded areas, labels, or a combination, which is handy for drawing attention to thresholds or incidents in data reviews (<a href="https://simonwillison.net/2026/Nov/25/datasette-charts/">Simon Willison</a>).</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<h3 id="cheaper-ai-models-can-make-your-agent-cost-more">Cheaper AI Models Can Make Your Agent Cost More</h3>
+<p><a href="https://www.youtube.com/watch?v=LVWD7qYNf-A">Watch on YouTube</a> · Cloud Codes · 10 min</p>
+<ul>
+<li>A decision model like TypeSafe’s Jev is marketed as up to 100x faster and far cheaper for routine multiple-choice turns, but a model with 92.2% tool-choice accuracy completed only 69.5% of whole agent tasks in the cited paper.</li>
+<li>The failure mode is cascade: one wrong tool choice early in an episode poisons the rest of the run.</li>
+<li>Lesson: evaluate agents end-to-end, not on isolated tool-choice benchmarks. Cheaper turns can still mean more failed episodes — and higher total cost.</li>
+</ul>
+<h3 id="you-probably-dont-need-kubernetes-kafka-or-redis">You Probably Don’t Need Kubernetes, Kafka or Redis</h3>
+<p><a href="https://www.youtube.com/watch?v=VKy-Qpyh_EQ">Watch on YouTube</a> · Cloud Codes · 2 min</p>
+<ul>
+<li>37signals reports that HEY runs 20 million background jobs a day straight through a database table.</li>
+<li>Kafka, Redis, and Kubernetes solve specific scaling symptoms — they are not default starting infrastructure.</li>
+<li>Decision heuristic: start with a load balancer, Docker, and Postgres, and add the heavy tools only when the symptom actually appears.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="dbt_1">dbt</h3>
+<ul>
+<li><a href="https://github.com/ranajahanzaib/railway-intel">ranajahanzaib/railway-intel</a> — Historical railway reliability analytics for Deutsche Bahn, built with DuckDB, dbt, FastAPI, and Next.js. Useful as a reference for a full dbt + DuckDB + API stack.</li>
+<li><a href="https://github.com/HirofumiTsuda/dbt-macro-test">HirofumiTsuda/dbt-macro-test</a> — Unit tests for dbt macros built on dbt’s native unit tests. Directly useful if you have ever had a macro break silently across projects.</li>
+</ul>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><a href="https://github.com/Prafulla-Rajput/snowflake-hotel-booking-data-engineering">Prafulla-Rajput/snowflake-hotel-booking-data-engineering</a> — End-to-end hotel booking data engineering with Snowflake, SQL, and a Bronze-Silver-Gold architecture. A solid skeleton for pipeline patterns.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/enwove/flyx">enwove/flyx</a> — Zero-dependency local LLM inference engine in a ~50 MB binary, with native long context, per-GPU tuning, built-in speculative decoding, and a web dashboard. Worth watching against llama.cpp and Ollama.</li>
+<li><a href="https://github.com/TekihiXac52/unfiltered-ai-chat">TekihiXac52/unfiltered-ai-chat</a> — Local, private, portable AI chat for Windows with no phone-home. “Unfiltered” is a safety-filter red flag, but the local-first distribution angle is relevant.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/Everton-baptista/datalog">Everton-baptista/datalog</a> — Self-hosted observability for applications, AI agents, and data pipelines using OpenTelemetry + PostgreSQL. Useful for agent tracing without locking into a vendor.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li><a href="https://github.com/AaryanSinghChauhan09/SigmaOS-snowflake">AaryanSinghChauhan09/SigmaOS-snowflake</a> — Snowflake-titled repo with no description or README yet; not enough signal to evaluate.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-25.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-25</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
