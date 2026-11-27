@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-27</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">27 Nov 2026</span>
+        <span class="badge badge-daily">daily</span>
+        <span class="mono dim">5 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.012</span>
+      </div>
+      <h1>Daily Signal — 2026-11-27</h1>
+      <h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p>The one solid primary-source item in today's material is a Snowflake release-note update: <strong>Cortex AI_COMPLETE now supports Snowflake Decision in public preview</strong> (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/all-release-notes">1</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/weekly-releases-2026">5</a></sup>). Snowflake describes it as a purpose-built model for high-throughput classification, scoring, and decision-making across large datasets — the kind of workload you would otherwise burn a lot of prompt tokens on with a general LLM. Practical read for me: benchmark it against your current Cortex calls on a labelled sample before trusting it, keep an eye on per-query cost versus quality, and remember that public preview features usually don't come with production-level guarantees. Also worth re-checking the release notes before the weekend, since the entry appears bundled in the wider weekly release feed.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<ol>
+<li>
+<p><strong>Anthropic Just Fired Back At OpenAI... And Exposed The Lie Every AI Lab Is Telling</strong> — <a href="https://www.youtube.com/watch?v=d5pbml1ynxs">AI Revolution</a> (14 min)<br />
+   This is the closest thing to a broad weekly roundup in today's candidate set: frontier-lab politics, agentic coding demos, an AI policy bill, and agent security incidents all in one sitting. The description claims Dario Amodei called the free-will surrender narrative "absurd" and accused rival labs of preaching human control while automating everything; that Anthropic showed Claude agents rebuilding its own API; that OpenAI's Noam Brown allegedly told top students to drop out; that Congress filed a bill to track AI that builds AI; and that AI agents broke into companies in Switzerland and Italy.</p>
+</li>
+<li>
+<p><strong>Download This AI Before Hacking Gets Cut Out for Good</strong> — <a href="https://www.youtube.com/watch?v=fjbLYJABTOY">Devsplainers</a> (11 min)<br />
+   A genuinely useful model-release roundup for the open-weight scene: Moonshot apparently cut the cyber/hacking skill out of the downloadable Kimi K3.1 Pro and says so in writing; Tencent's Hy4 shipped with the same removal; Alibaba kept Qwen4-Max closed; Z.ai is holding back GLM-5.4 weights; and Mistral gave vetted partners a less restricted Large 4 first. That's a five-lab trend in one video, and it directly affects what "open weights" actually means for us.</p>
+</li>
+</ol>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>Gemini 4 Neon may be real — and it comes with a safety report</strong> — Two Minute Papers is pointing at a DeepMind-hosted <a href="https://storage.googleapis.com/deepmind-media/gemini/gemini_4_neon_safety_report.pdf">gemini_4_neon_safety_report.pdf</a> and framing the model as something that "changed the AI race" (<a href="https://www.youtube.com/watch?v=u6UYsl-KEoc">video</a>). No official announcement appears in today's material, so treat the name and exact capabilities as unverified for now. If Gemini 4 Neon does land, it becomes the new comparison baseline for both open-weight releases and API model evals.</p>
+<p><strong>Open-weight labs are quietly gating the sharpest cyber skills</strong> — Per Devsplainers, the downloadable open-weight models are being shipped with offensive-cyber training data removed, while the fuller versions go through vetting gates (<a href="https://www.youtube.com/watch?v=fjbLYJABTOY">Devsplainers</a>). Moonshot's Kimi K3.1 Pro and Tencent's Hy4 shipped reduced; Alibaba kept Qwen4-Max closed rather than weight-released; Z.ai is holding back GLM-5.4 weights; and Mistral gave vetted partners first access to a less restricted Large 4. The implication for local/open-weight users: expect capability gaps in security-adjacent tasks, and expect more gated weight releases going forward.</p>
+<p><strong>A dense week of frontier-agent and policy noise</strong> — The AI Revolution roundup bundles several stories that are individually unverified but collectively describe the current mood (<a href="https://www.youtube.com/watch?v=d5pbml1ynxs">AI Revolution</a>). Most relevant to LLM development: Claude agents reportedly rebuilt Anthropic's own API, a nice proof point for agentic coding; and AI agents breaking into companies in Switzerland and Italy is a reminder that agent evals need security testing, not just accuracy benchmarks. The Congress bill to track "AI that builds AI" and Noam Brown's alleged "drop out" advice are more directional than actionable.</p>
+<p><strong>Claude Next: cool but no receipt</strong> — Your AI Guy is running a classic hype loop about Anthropic's rumoured next model — the title itself conflates "Claude Opus 5.6" and "Claude Next" (<a href="https://www.youtube.com/watch?v=4qm2FKvHahE">Your AI Guy</a>). Unverified, no primary source. Worth knowing because a real Anthropic model release would shake up API evals and pricing, but there's no reason to plan around it yet.</p>
+<p><strong>Microsoft's MAI 2 enters the efficiency rumour mill</strong> — Tech Unfiltered claims Microsoft's MAI 2 "challenged the king of efficiency," but the description includes no benchmark links, paper, or official Microsoft source (<a href="https://www.youtube.com/watch?v=ArFubEUZq0c">Tech Unfiltered</a>). Unverified. The angle that matters: if Microsoft really shipped an efficiency leader, it would pressure API pricing and make local/LLM efficiency tooling less of a necessity.</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<p><strong>Google's harness-based recursive self-improvement</strong> — <a href="https://www.youtube.com/watch?v=YOsQULgqgNA">AI Search</a> (14 min)</p>
+<ul>
+<li>The central claim is "continual RSI" applied to a harness — the scaffolding around the model — rather than to the model weights themselves.</li>
+<li>The video walks through a self-improvement memory ("SIM") and compares SIM vs no-SIM in an ablation; the SIM variant wins in the presented setup.</li>
+<li>It argues for a unified harness and claims the harness may matter more than the model behind it, which is a useful mental model for agent/tool-building even if the Google attribution is unverified.</li>
+<li>No primary paper link is in the description, so classify this as channel-level reporting until a source lands.</li>
+</ul>
+<p><strong>Stanford's "16-token memory" claim</strong> — <a href="https://www.youtube.com/watch?v=BSzbeeUSHFc">Cloud Codes</a> (14 min)</p>
+<ul>
+<li>The video dissects Stanford's Memorilla, which claims to compress hundreds of chats or an entire book into 16 memory tokens for a frozen Qwen3-8B.</li>
+<li>It reports best-on-5-of-8 benchmark results and claims "27x faster" answers at 512 documents, which would be a major improvement for agent memory / KV-cache cost.</li>
+<li>The description says the video also checks the official README and a public H100 test from Andris Gauracs — good instinct, but not a substitute for reproducing the results yourself.</li>
+<li>Even if it doesn't replace RAG, this is the direction I'd watch for reducing context bloat in local-agent workloads.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><a href="https://github.com/CajasiZep76/local-ai-chat-uncensored">CajasiZep76/local-ai-chat-uncensored</a> (52★) — a local, private, unfiltered chat app with a portable Windows x64 prebuilt and no telemetry. Useful for testing less-restricted open-weight variants on a local GPU, with the usual caveat that "uncensored" often means reduced safety alignment.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><a href="https://github.com/duzhenxun/pop-agent">duzhenxun/pop-agent</a> (150★) — a local web UI for watching agent reasoning streams, interrupting mid-turn with corrections, and managing models/tools across pi, Codex, Claude Code, OpenCode and DSH. Sessions stay in the engine's files, no database or account — good for debugging agent runs without adding infrastructure.</li>
+<li><a href="https://github.com/heurica-labs/Anvil">heurica-labs/Anvil</a> (49★) — a native macOS coding agent that works with almost any model, with diffs, checkpoints, sub-sessions, and browser/iOS Simulator tooling. Strong fit if you do agent work on a Mac and want model-agnostic control.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/xleonplayz/dbtest-apps">xleonplayz/dbtest-apps</a> — a small "Lily test apps for managed databases (DBCREATE)" repo; likely useful as a reference if you're wiring dbt tests against managed databases.</li>
+<li>✅ <a href="https://github.com/ATP524/snowflake-unstructured-data-day-1-lab-anna">ATP524/snowflake-unstructured-data-day-1-lab-anna</a> — a Snowflake unstructured-data Day 1 lab, handy for learning document/image ingestion patterns in Snowflake.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-26.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-26</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
