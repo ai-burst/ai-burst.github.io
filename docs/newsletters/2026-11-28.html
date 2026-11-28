@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Signal — 2026-11-28</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/rafiki.png">
+<link rel="stylesheet" href="../assets/style.css?v=a1eee5a1">
+<link rel="alternate" type="application/rss+xml" title="The Daily Signal" href="../feed.xml">
+<script>
+try { document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"; } catch (e) {}
+</script>
+
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="../index.html">Signal<span class="brand-accent">.</span></a>
+  <nav class="head-nav">
+    <a href="https://www.youtube.com/@Data-Signal/playlists" class="head-link">Playlists</a>
+    <a href="../feed.xml" class="head-link">RSS</a>
+    <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme">
+      <span class="toggle-light">Light</span><span class="toggle-dark">Dark</span>
+    </button>
+  </nav>
+</header>
+<main class="wrap article-wrap">
+  <div class="article-grid">
+    <article class="prose">
+      <p class="crumbs"><a href="../index.html">All issues</a></p>
+      <div class="issue-meta">
+        <span class="mono">28 Nov 2026</span>
+        <span class="badge badge-daily">daily</span>
+        <span class="mono dim">4 min read</span>
+    <span class="mono dim" title="LLM cost to generate this issue">$0.011</span>
+      </div>
+      <h1>Daily Signal — 2026-11-28</h1>
+      <h2 id="work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</h2>
+<h3 id="snowflake">Snowflake</h3>
+<p><strong>AI_COMPLETE now covers Snowflake Decision (public preview).</strong> Snowflake shipped a preview update adding <code>AI_COMPLETE</code> support for Snowflake Decision, its purpose-built model for high-throughput classification, scoring, and decision-making over large datasets. If you've been hesitant to wire classification workloads into Snowflake's managed SQL layer, this is a lower-effort path: one function call instead of a separate inference service. (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/new-features">1</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/2026/other/2026-11-20-ai-complete-snowflake-decision-public-preview">14</a></sup>)</p>
+<p><strong>Also in preview: AI_EXTRACT accuracy improvements.</strong> Snowflake's current release notes list accuracy improvements for <code>AI_EXTRACT</code> in public preview. If you're running document- or field-extraction pipelines into structured tables, this is a good moment to re-run your extraction eval set and see whether outputs improved without changing your SQL. (<sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/new-features">1</a></sup>, <sup class="cite"><a href="https://docs.snowflake.com/en/release-notes/feature-releases-2026">3</a></sup>)</p>
+<h3 id="dbt">dbt</h3>
+<p><strong>Remote dbt MCP server gets Gemini Enterprise support.</strong> The November 2026 dbt release notes add support for the remote dbt MCP server with Gemini Enterprise, and the server is now available through the Databricks Marketplace. If you're standardizing AI-assisted dbt workflows on Google's enterprise models, this removes a setup barrier; if you're on Databricks, you can install it from the Marketplace rather than stitching together your own MCP bridge. (<sup class="cite"><a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">2</a></sup>, <sup class="cite"><a href="https://docs.getdbt.com/docs/dbt-versions/dbt-platform-release-notes-gen">4</a></sup>, <sup class="cite"><a href="https://www.getdbt.com/blog/whats-new-in-dbt-november-2026">9</a></sup>)</p>
+<p><strong>dbt agent: automatic retry on LLM provider failures.</strong> dbt also added an automatic retry mechanism for transient LLM provider failures in the agent. Network blips, rate limits, and 5xx-style server errors should now self-heal instead of failing a run — worth knowing if you run AI-assisted dbt jobs unattended. (<sup class="cite"><a href="https://docs.getdbt.com/docs/dbt-versions/release-notes">2</a></sup>, <sup class="cite"><a href="https://docs.getdbt.com/docs/dbt-versions/dbt-platform-release-notes-gen">4</a></sup>)</p>
+<p>No verified Cortex Code / CoCo / CoWork news appeared in today's material, so that section is empty.</p>
+<details class="watchlist" id="todays-watchlist" open><summary>Today's Watchlist</summary>
+<p>Single pick today: the other candidate was a narrow single-company deep dive, so it lands in Worth a Skim instead.</p>
+<h3 id="ai-labs-are-hiding-a-bombshell-and-it-could-break-the-internet-ai-revolution-13-min"><a href="https://www.youtube.com/watch?v=zApB4kG8ASY">AI Labs Are Hiding A Bombshell... And It Could Break The Internet</a> — AI Revolution · 13 min</h3>
+<p>This is the strongest playlist fit because it's a compact, multi-story AI roundup in the style you asked for. Per the video description, <strong>Scott Aaronson says he is "virtually certain" AI labs are sitting on bombshell discoveries</strong>, and that some could break the encryption protecting banks, messages, and much of the internet. The same day, <strong>Google's AI posted six math papers</strong>, including a factoring proof that beats a 1992 record on the exact math underpinning encryption. The encryption-breaking claim is an argument from reputation, not a verified result, so treat it as unverified until there's a paper or reproduction. No auto transcript was available to pull exact quotes, so the description is the source for these claims.</p>
+</details><h2 id="headlines">Headlines</h2>
+<p><strong>A strong day for open-weight releases on the LLM releases changelog.</strong> The standout is <strong>Sber GigaChat 4 708B-A41B</strong>, a 708B-total / 41B-active hybrid MoE model with native 1M-token context and MIT-licensed weights — the license alone makes it worth a closer look for commercial fine-tuning and serving experiments. (<sup class="cite"><a href="https://www.llm-releases.com/changelog">13</a></sup>) <strong>Tencent Hy4</strong> lands at 770B-total / 49B-active MoE with 1M context, with variants on Hugging Face, ModelScope, and GitCode under Tencent's license; it's another signal that the open-weight frontier is now pushing MoE at the same scale as the largest proprietary models. (<sup class="cite"><a href="https://www.llm-releases.com/changelog">13</a></sup>) And <strong>AutoArk Edge0-145B</strong> is the one I'd benchmark first on local hardware: an open MoE positioned as laptop-runnable at roughly 29GB memory use and 80+ tokens/s, with its own inference framework included. (<sup class="cite"><a href="https://www.llm-releases.com/changelog">13</a></sup>)</p>
+<p><strong>datasette-charts 0.4a0 gains a plugin hook for custom chart types.</strong> Simon Willison shipped a new alpha of the Datasette Charts plugin that lets other plugins define new chart types. He used Claude Opus 5.5 to build an experimental plugin against the hook, which surfaced friction points fixed in this release. For local data/AI work, this keeps Datasette useful as a lightweight visualization layer for LLM-generated or scraped data. (<a href="https://simonwillison.net/2026/Nov/27/datasette-charts/">Simon Willison</a>, <a href="https://github.com/datasette/datasette-charts/releases/tag/0.4a0">GitHub release</a>)</p>
+<h2 id="worth-a-skim">Worth a Skim</h2>
+<h3 id="anthropic-the-worlds-biggest-penny-stock-tech-unfiltered-17-min"><a href="https://www.youtube.com/watch?v=Rf52A4YdzXA">Anthropic: 'The world's biggest penny stock'</a> — Tech Unfiltered · 17 min</h3>
+<p>This didn't make the playlist because it's a single-company deep dive, not a broad roundup, and the auto-caption transcript is empty so I can't verify its stronger claims. Based on the published description, the video explores Anthropic's business model, financial position, valuation, and future ambitions as competition from OpenAI and Google intensifies.</p>
+<ul>
+<li>Anthropic is increasingly framed as a high-valuation, weak-fundamentals story relative to OpenAI and Google. (<a href="https://www.youtube.com/watch?v=Rf52A4YdzXA">video</a>)</li>
+<li>The "world's biggest penny stock" comparison is commentary about valuation versus financial reality — take it as an analytical angle, not a market verdict.</li>
+</ul>
+<h2 id="repo-watchlist">Repo Watchlist</h2>
+<h3 id="snowflake_1">Snowflake</h3>
+<ul>
+<li><strong><a href="https://github.com/sidbhaumik/lakefreight">lakefreight</a></strong> — bulk-move warehouse tables into open lakehouse files on cloud storage. Snowflake to S3 as Parquet today, readable by Databricks, Snowflake, Redshift, and BigQuery. I'd reach for it when old warehouse data needs to move to cheaper object storage without building a custom CDC pipeline.</li>
+</ul>
+<h3 id="local-llms">Local LLMs</h3>
+<ul>
+<li><strong><a href="https://github.com/CabreraDTM/repdix-telegram-database-bot">repdix-telegram-database-bot</a></strong> — community-driven SQL orchestrator powered by a local LLM. It turns natural-language requests into SQL inside Telegram; useful as a reference for building local-LLM SQL agents in a chat interface.</li>
+<li><strong><a href="https://github.com/manuelgscom/rumor-village">rumor-village</a></strong> — 100 villagers driven by a fine-tuned local LLM in real time on one consumer GPU via llama.cpp, CUDA, or Vulkan. Offline, no accounts. Great stress test for local inference throughput and multi-agent simulation on modest hardware.</li>
+<li><strong><a href="https://github.com/Powerdaalembic/LocalAI-VRAMReadyCheck">LocalAI-VRAMReadyCheck</a></strong> — audits Windows PC VRAM, CUDA/Vulkan support, and RAM to recommend exact GGUF/Flux models for Ollama, LM Studio, or ComfyUI. Practical before you buy a GPU or download a 70B model blindly.</li>
+</ul>
+<h3 id="llm-development">LLM Development</h3>
+<ul>
+<li><strong><a href="https://github.com/Data-Designer/AgentInputLab-toolkit">AgentInputLab-toolkit</a></strong> — task-aware input preparation and evaluation toolkit for LLM agents. I'd use it to standardize how agent prompts and context are prepared and scored across different eval sets.</li>
+<li><strong><a href="https://github.com/0xTaoZ/onebrain">onebrain</a></strong> — coding agents in one group chat with a shared brain. Only the agent you mention runs, and it reads only what it hasn't seen; the repo claims 31–81% fewer tokens. Directly relevant to token and cost optimization for multi-agent coding setups.</li>
+</ul>
+<h2 id="trending-repos">Trending Repos</h2>
+<ul>
+<li>✅ <a href="https://github.com/nsskn982/applied-TIG">nsskn982/applied-TIG</a> — Telegraf + InfluxDB + Grafana stack for lightweight time-series monitoring and observability.</li>
+<li>✅ <a href="https://github.com/BartoszKalinowski1/spark-data-observability-and-performance-framework">BartoszKalinowski1/spark-data-observability-and-performance-framework</a> — Spark data observability and performance framework, useful when you're inspecting non-Snowflake data pipelines.</li>
+</ul>
+      <nav class="pager"><a class="pager-link" href="2026-11-27.html"><span class="mono dim">Older</span><span>Daily Signal — 2026-11-27</span></a></nav>
+    </article>
+    <aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <ul><li><a href="#work-watch-snowflake-dbt-cortex-code">Work Watch — Snowflake, dbt &amp; Cortex Code</a></li><li><a href="#todays-watchlist">Today&#x27;s Watchlist</a></li><li><a href="#headlines">Headlines</a></li><li><a href="#worth-a-skim">Worth a Skim</a></li><li><a href="#repo-watchlist">Repo Watchlist</a></li><li><a href="#trending-repos">Trending Repos</a></li></ul>
+  <div class="toc-read" id="toc-read" hidden><span id="toc-read-pct">0</span>% read</div>
+</aside>
+  </div>
+</main>
+<footer class="site-foot">
+  <span>Curated daily by the watchlist pipeline.</span>
+  <a href="https://github.com/ai-burst/ai-burst.github.io">Source</a>
+</footer>
+<script src="../assets/app.js?v=a1eee5a1"></script>
+</body>
+</html>
